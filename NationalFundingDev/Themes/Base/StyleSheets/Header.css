@@ -1,0 +1,124 @@
+﻿
+.Header #usgscolorband {
+	font: 14px Verdana, Arial, Helvetica, sans-serif;
+	width: 100%;
+	height: 5.14em;
+	background: #bdbdbd url(http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/banner.png) 178px 0px no-repeat; 
+	min-height: 72px;
+}
+.Header #usgsbanner {
+	width: 100%;
+	height: 72px;	
+}
+.Header #usgsidentifier {
+	background-color: #bdbdbd;
+	width: 180px;
+	height: 5.14em;
+	float: left;
+}
+.Header #usgsidentifier img {
+	border: none;
+}
+.Header #usgscoop { 
+	padding-left: 18px; 
+	position: relative; 
+	float: left;
+	height: 5.14em; 
+	background-color: #edecec;
+	min-height: 72px;   
+} 
+.Header #usgscoop img {
+	margin-right: 3px;
+	border: none;
+}
+.Header #usgstitle { 
+	background: #bdbdbd;
+    background-image: url(http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/usgstitlebackground2.png);
+    background-repeat: repeat-x;
+	width: 100% !important;
+	font: 14px Verdana, Arial, Helvetica, sans-serif;  
+	height: 34px;
+    color: #ffffff;
+} 
+.Header #usgstitle p 
+{
+	font: bold 1.2em Verdana, Arial, Helvetica, sans-serif; 
+	padding: 5px; 
+	margin: 0px; 
+	float: left;
+	width: 99% !important;
+    color: #ffffff;
+} 
+.Header #usgstitle label {
+	font-size: small;
+	font-weight: bold;
+}
+.Header #usgstitle form {
+	float: right;
+	padding: 5px;
+	margin: 0px;
+}
+.Header #usgstitle form input {
+	margin: 0px;
+}
+.Header #usgstitle #sa {
+	font-size: small !important;
+	font-size: x-small;
+}
+
+/* Customer Service Area Box */
+.Header #usgsccsabox {
+	float: right;
+	background-color: #edecec;
+	min-height: 72px;
+}
+.Header #usgsccsa {
+	font:  1em/.5em Verdana, Arial, Helvetica, sans-serif;
+	height: 5.14em;
+	width: 10.5em;
+}
+.Header #usgsccsa a:link, #usgsccsa a:visited { 
+	font: bold 1em/1.3em Verdana, Arial, Helvetica, sans-serif; 
+	color: #2dabc1; 
+	margin-left: 4px; 
+	text-decoration: none; 
+} 
+.Header #usgsccsa a:hover { 
+	font: bold 1em/1.3em Verdana, Arial, Helvetica, sans-serif; 
+	color: #2dabc1; 
+	text-decoration: underline; 
+	margin-left: 4px; 
+} 
+.Header #usgsccsa a:active { 
+	font: bold 1em/1.3em Verdana, Arial, Helvetica, sans-serif; 
+	color: #acdbe3; 
+	margin-left: 4px; 
+	text-decoration: none; 
+}
+
+/* Internal Use Section*/
+.Header #InternalUse
+{
+    height:20px;
+    background: #2895a8;
+    color:#ffffff;
+    vertical-align:middle;
+}
+
+/* Top Navigation Section */
+.Header #TopNavigation {
+    height:37px;
+}
+
+/* Search Bar */
+.Header #SearchBar{
+    position:absolute;
+    top:90px;
+    right:10px;
+}
+
+div.RadMenu .adminMenuItem {
+            float: right;
+        }
+
+

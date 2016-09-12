@@ -1,0 +1,10 @@
+==============================================
+esri-leaflet.js - v1.0.0-rc.3 - 2014-10-25
+    http://cdn-geoweb.s3.amazonaws.com/esri-leaflet/1.0.0-rc.3/esri-leaflet.js
+
+DOCUMENTATION:
+    http://esri.github.io/esri-leaflet/api-reference/
+==============================================
+CAN ALSO SEE THIS FOR A MORE SERIOUS ESRI-LEAFLET LIBRARY:
+    https://github.com/Esri/esri-leaflet
+==============================================

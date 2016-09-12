@@ -1,0 +1,750 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{5C9F7502-7C5B-4409-BC49-A4C54DC6FB40}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NationalFundingDev</RootNamespace>
+    <AssemblyName>NationalFundingDev</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
+    <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
+    <IISExpressUseClassicPipelineMode />
+    <UpgradeBackupLocation />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="DocX, Version=1.0.1.13, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\DocX.dll</HintPath>
+    </Reference>
+    <Reference Include="EPPlus, Version=4.0.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\MessagingToolkit.QRCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.Mobile" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Web.UI, Version=2016.1.225.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Telerik.Web.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Telerik.Web.UI.Skins, Version=2016.1.225.45, Culture=neutral, PublicKeyToken=121fae78165ba3d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\Telerik.Web.UI.Skins.dll</HintPath>
+    </Reference>
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.aspx.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Admin.aspx.designer.cs">
+      <DependentUpon>Admin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\MetricHandler.cs" />
+    <Compile Include="App_Code\RecordIdentifiers.cs" />
+    <Compile Include="Controls\Editable\AgreementLogGrid.ascx.cs">
+      <DependentUpon>AgreementLogGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Editable\AgreementLogGrid.ascx.designer.cs">
+      <DependentUpon>AgreementLogGrid.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.cs">
+      <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.designer.cs">
+      <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="GenerateRecordID.aspx.cs">
+      <DependentUpon>GenerateRecordID.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GenerateRecordID.aspx.designer.cs">
+      <DependentUpon>GenerateRecordID.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Help.aspx.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help.aspx.designer.cs">
+      <DependentUpon>Help.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Agreement\AgreementReport.aspx.cs">
+      <DependentUpon>AgreementReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Agreement\AgreementReport.aspx.designer.cs">
+      <DependentUpon>AgreementReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Center\CoopFunding.aspx.cs">
+      <DependentUpon>CoopFunding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Center\CoopFunding.aspx.designer.cs">
+      <DependentUpon>CoopFunding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Maps\AgreementSiteMap.aspx.cs">
+      <DependentUpon>AgreementSiteMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Maps\AgreementSiteMap.aspx.designer.cs">
+      <DependentUpon>AgreementSiteMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Maps\SiteMap.aspx.cs">
+      <DependentUpon>SiteMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Maps\SiteMap.aspx.designer.cs">
+      <DependentUpon>SiteMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Metrics\ImageSearch.aspx.cs">
+      <DependentUpon>ImageSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Metrics\ImageSearch.aspx.designer.cs">
+      <DependentUpon>ImageSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Metrics\National.aspx.cs">
+      <DependentUpon>National.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Metrics\National.aspx.designer.cs">
+      <DependentUpon>National.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Modules\ModFundingSummary.ascx.cs">
+      <DependentUpon>ModFundingSummary.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Modules\ModFundingSummary.ascx.designer.cs">
+      <DependentUpon>ModFundingSummary.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\National\National.aspx.cs">
+      <DependentUpon>National.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\National\National.aspx.designer.cs">
+      <DependentUpon>National.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\National\RealTimeSitesFunding.aspx.cs">
+      <DependentUpon>RealTimeSitesFunding.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\National\RealTimeSitesFunding.aspx.designer.cs">
+      <DependentUpon>RealTimeSitesFunding.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupAccountDetails.aspx.cs">
+      <DependentUpon>GroupAccountDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupAccountDetails.aspx.designer.cs">
+      <DependentUpon>GroupAccountDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupAccountSum.aspx.cs">
+      <DependentUpon>GroupAccountSum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupAccountSum.aspx.designer.cs">
+      <DependentUpon>GroupAccountSum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupAgreementSum.aspx.cs">
+      <DependentUpon>GroupAgreementSum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupAgreementSum.aspx.designer.cs">
+      <DependentUpon>GroupAgreementSum.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupSiteDetails.aspx.cs">
+      <DependentUpon>GroupSiteDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Thematic\GroupSiteDetails.aspx.designer.cs">
+      <DependentUpon>GroupSiteDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\ActiveDirectoryService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SiftaMapUtils\Map.aspx.cs">
+      <DependentUpon>Map.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiftaMapUtils\Map.aspx.designer.cs">
+      <DependentUpon>Map.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Modules\AgreementDifference.aspx.cs">
+      <DependentUpon>AgreementDifference.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Modules\AgreementDifference.aspx.designer.cs">
+      <DependentUpon>AgreementDifference.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Agreement.aspx.cs">
+      <DependentUpon>Agreement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Agreement.aspx.designer.cs">
+      <DependentUpon>Agreement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\Documents\ExcelFundingOverviewReport.cs" />
+    <Compile Include="App_Code\Documents\JFADocument.cs" />
+    <Compile Include="Center.aspx.cs">
+      <DependentUpon>Center.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Center.aspx.designer.cs">
+      <DependentUpon>Center.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Center\CenterReport.aspx.cs">
+      <DependentUpon>CenterReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Center\CenterReport.aspx.designer.cs">
+      <DependentUpon>CenterReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CentersMap.aspx.cs">
+      <DependentUpon>CentersMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CentersMap.aspx.designer.cs">
+      <DependentUpon>CentersMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AddressEditForm.ascx.cs">
+      <DependentUpon>AddressEditForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AddressEditForm.ascx.designer.cs">
+      <DependentUpon>AddressEditForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AgreementControl.ascx.cs">
+      <DependentUpon>AgreementControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AgreementControl.ascx.designer.cs">
+      <DependentUpon>AgreementControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AgreementModControl.ascx.cs">
+      <DependentUpon>AgreementModControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\AgreementModControl.ascx.designer.cs">
+      <DependentUpon>AgreementModControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\ContactEditForm.ascx.cs">
+      <DependentUpon>ContactEditForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\ContactEditForm.ascx.designer.cs">
+      <DependentUpon>ContactEditForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\CoopFundingControl.ascx.cs">
+      <DependentUpon>CoopFundingControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\CoopFundingControl.ascx.designer.cs">
+      <DependentUpon>CoopFundingControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\CustomerControl.ascx.cs">
+      <DependentUpon>CustomerControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\CustomerControl.ascx.designer.cs">
+      <DependentUpon>CustomerControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\FundingSitesControl.ascx.cs">
+      <DependentUpon>FundingSitesControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\FundingSitesControl.ascx.designer.cs">
+      <DependentUpon>FundingSitesControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\StudiesSupportFundingControl.ascx.cs">
+      <DependentUpon>StudiesSupportFundingControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\StudiesSupportFundingControl.ascx.designer.cs">
+      <DependentUpon>StudiesSupportFundingControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Customer.aspx.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Customer.aspx.designer.cs">
+      <DependentUpon>Customer.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Documents\Download.aspx.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Documents\Download.aspx.designer.cs">
+      <DependentUpon>Download.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NationalReport.aspx.cs">
+      <DependentUpon>NationalReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NationalReport.aspx.designer.cs">
+      <DependentUpon>NationalReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Modules\SiteFundingDetails.aspx.cs">
+      <DependentUpon>SiteFundingDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Modules\SiteFundingDetails.aspx.designer.cs">
+      <DependentUpon>SiteFundingDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Modules\StudiesFundingDetails.aspx.cs">
+      <DependentUpon>StudiesFundingDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Modules\StudiesFundingDetails.aspx.designer.cs">
+      <DependentUpon>StudiesFundingDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Thematic\NSIPOperationReport.aspx.cs">
+      <DependentUpon>NSIPOperationReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Thematic\NSIPOperationReport.aspx.designer.cs">
+      <DependentUpon>NSIPOperationReport.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reports\Maps\SiteFundingMap.aspx.cs">
+      <DependentUpon>SiteFundingMap.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reports\Maps\SiteFundingMap.aspx.designer.cs">
+      <DependentUpon>SiteFundingMap.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Search.aspx.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Search.aspx.designer.cs">
+      <DependentUpon>Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SiftaMapUtils\MapControlClean.ascx.cs">
+      <DependentUpon>MapControlClean.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiftaMapUtils\MapControlClean.ascx.designer.cs">
+      <DependentUpon>MapControlClean.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="SiftaMapUtils\MapControl.ascx.cs">
+      <DependentUpon>MapControl.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SiftaMapUtils\MapControl.ascx.designer.cs">
+      <DependentUpon>MapControl.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Site.aspx.cs">
+      <DependentUpon>Site.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Site.aspx.designer.cs">
+      <DependentUpon>Site.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Base\Empty.Master.cs">
+      <DependentUpon>Empty.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Themes\Base\Empty.Master.designer.cs">
+      <DependentUpon>Empty.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Themes\Base\Main.Master.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Themes\Base\Main.Master.designer.cs">
+      <DependentUpon>Main.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App_Code\FundingExtensions.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="App_Code\User.cs" />
+    <Compile Include="App_Code\SiftaDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SiftaDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="TrackEmployee.aspx.cs">
+      <DependentUpon>TrackEmployee.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TrackEmployee.aspx.designer.cs">
+      <DependentUpon>TrackEmployee.aspx</DependentUpon>
+    </Compile>
+    <Content Include="Admin.aspx" />
+    <Content Include="Controls\Editable\AgreementLogGrid.ascx" />
+    <Content Include="Controls\RadGrid\AgreementLogEditForm.ascx" />
+    <Content Include="GenerateRecordID.aspx" />
+    <Content Include="Help.aspx" />
+    <Content Include="Images\arrow.png" />
+    <Content Include="Images\backarrow.png" />
+    <Content Include="Images\editPencil.png" />
+    <Content Include="Images\fundingSummary.png" />
+    <Content Include="Images\info.png" />
+    <Content Include="Images\loadingGif.gif" />
+    <Content Include="Images\tooltip\ToolTip.gif" />
+    <Content Include="Images\tooltip\ToolTipHover.gif" />
+    <Content Include="Reports\Agreement\AgreementReport.aspx" />
+    <Content Include="Reports\Center\CoopFunding.aspx" />
+    <Content Include="Reports\Maps\AgreementSiteMap.aspx" />
+    <Content Include="Reports\Maps\SiteMap.aspx" />
+    <Content Include="Reports\Metrics\ImageSearch.aspx" />
+    <Content Include="Reports\Metrics\National.aspx" />
+    <Content Include="Reports\Modules\ModFundingSummary.ascx" />
+    <Content Include="Documents\Forms\JFATemplate-old.docx" />
+    <Content Include="Documents\Forms\JFATemplate.docx" />
+    <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\18 - National Funding Dev.pubxml" />
+    <None Include="Properties\PublishProfiles\National Funding.pubxml" />
+    <None Include="Service References\ActiveDirectoryService\ActiveDirectory.disco" />
+    <None Include="Service References\ActiveDirectoryService\configuration91.svcinfo" />
+    <None Include="Service References\ActiveDirectoryService\configuration.svcinfo" />
+    <Content Include="Reports\National\National.aspx" />
+    <Content Include="Reports\National\RealTimeSitesFunding.aspx" />
+    <Content Include="Reports\Thematic\GroupAccountDetails.aspx" />
+    <Content Include="Reports\Thematic\GroupAccountSum.aspx" />
+    <Content Include="Reports\Thematic\GroupAgreementSum.aspx" />
+    <Content Include="Reports\Thematic\GroupSiteDetails.aspx" />
+    <Content Include="Service References\ActiveDirectoryService\NationalFundingDev.ActiveDirectoryService.Employee.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Service References\ActiveDirectoryService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="SiftaMapUtils\jquery\jquery-1.11.1.js" />
+    <Content Include="SiftaMapUtils\jquery\jquery-1.11.1.min.js" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\external\jquery\jquery.js" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-icons_222222_256x240.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-icons_454545_256x240.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-icons_888888_256x240.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\index.html" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.css" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.js" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.min.css" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.min.js" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.structure.css" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.structure.min.css" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.theme.css" />
+    <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\jquery-ui.theme.min.css" />
+    <Content Include="SiftaMapUtils\jquery\SOURCE.txt" />
+    <Content Include="SiftaMapUtils\leaflet\esri-leaflet-0.0.1-beta.5\esri-leaflet.js" />
+    <Content Include="SiftaMapUtils\leaflet\esri-leaflet-0.0.1-beta.5\SOURCE.txt" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\images\layers-2x.png" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\images\layers.png" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\images\marker-icon-2x.png" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\images\marker-icon.png" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\images\marker-shadow.png" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\leaflet-src.js" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\leaflet.css" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\leaflet.js" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-0.7.3\SOURCE.txt" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-zoom-home\L.Control.ZoomHome.css" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-zoom-home\L.Control.ZoomHome.js" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-zoom-home\SOURCE.txt" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\demo.html" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-0.1.4.css" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-0.1.4.ie.css" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-0.1.4.min.js" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-0.1.4.src.js" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\SOURCE.txt" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\fullscreen%402x.png" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\fullscreen.png" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\index.html" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\leaflet.fullscreen.css" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen.js" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen.min.js" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\SOURCE.txt" />
+    <Content Include="SiftaMapUtils\MapControlClean.ascx" />
+    <Content Include="SiftaMapUtils\MapControl.ascx" />
+    <Content Include="SiftaMapUtils\MapUtils\images\button_bg.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\iconAT.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\iconGW.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\iconOT.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\iconSP.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\iconSW.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\thumb_basemap_imagery.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\thumb_basemap_relief.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\thumb_basemap_streets.png" />
+    <Content Include="SiftaMapUtils\MapUtils\images\thumb_basemap_topo.png" />
+    <Content Include="SiftaMapUtils\MapUtils\MapUtilsClean.js" />
+    <Content Include="SiftaMapUtils\MapUtils\MapUtils.css" />
+    <Content Include="SiftaMapUtils\MapUtils\MapUtils.js" />
+    <Content Include="SiftaMapUtils\STAND_ALONE.html" />
+    <Content Include="SiftaMapUtils\Map.aspx" />
+    <Content Include="Reports\Modules\AgreementDifference.aspx" />
+    <Content Include="Agreement.aspx" />
+    <Content Include="Center.aspx" />
+    <Content Include="Reports\Center\CenterReport.aspx" />
+    <Content Include="CentersMap.aspx" />
+    <Content Include="closePage.html" />
+    <Content Include="Controls\RadGrid\AddressEditForm.ascx" />
+    <Content Include="Controls\RadGrid\AgreementControl.ascx" />
+    <Content Include="Controls\RadGrid\AgreementModControl.ascx" />
+    <Content Include="Controls\RadGrid\ContactEditForm.ascx" />
+    <Content Include="Controls\RadGrid\CoopFundingControl.ascx" />
+    <Content Include="Controls\RadGrid\CustomerControl.ascx" />
+    <Content Include="Controls\RadGrid\FundingSitesControl.ascx" />
+    <Content Include="Controls\RadGrid\StudiesSupportFundingControl.ascx" />
+    <Content Include="Customer.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="Documents\Download.aspx" />
+    <Content Include="Images\addLog.png" />
+    <Content Include="Images\copyIcon.gif" />
+    <Content Include="Images\loadingBar.gif" />
+    <Content Include="Images\Maps\usmap.png" />
+    <Content Include="Images\NSIPScores\NSIP0.gif" />
+    <Content Include="Images\NSIPScores\NSIP1.gif" />
+    <Content Include="Images\NSIPScores\NSIP2.gif" />
+    <Content Include="Images\NSIPScores\NSIP3.gif" />
+    <Content Include="Images\NSIPScores\NSIP4.gif" />
+    <Content Include="Images\SearchLogo.png" />
+    <Content Include="Images\SiteIcons\CL.png" />
+    <Content Include="Images\SiteIcons\CLS.png" />
+    <Content Include="Images\SiteIcons\GW.png" />
+    <Content Include="Images\SiteIcons\GWS.png" />
+    <Content Include="Images\SiteIcons\OT.png" />
+    <Content Include="Images\SiteIcons\SW.png" />
+    <Content Include="Images\SiteIcons\SWS.png" />
+    <Content Include="NationalReport.aspx" />
+    <Content Include="Reports\Modules\SiteFundingDetails.aspx" />
+    <Content Include="Reports\Modules\StudiesFundingDetails.aspx" />
+    <Content Include="Reports\Thematic\NSIPOperationReport.aspx" />
+    <Content Include="Reports\Maps\SiteFundingMap.aspx" />
+    <Content Include="Search.aspx" />
+    <Content Include="Site.aspx" />
+    <Content Include="Themes\Base\Images\banner.png" />
+    <Content Include="Themes\Base\Images\favicon.ico" />
+    <Content Include="Themes\Base\Images\maincontentbackground.png" />
+    <Content Include="Themes\Base\Images\USGSLogo.png" />
+    <Content Include="Themes\Base\Images\usgstitlebackground.png" />
+    <Content Include="Themes\Base\Images\usgstitlebackground2.png" />
+    <Content Include="Themes\Base\StyleSheets\Footer.css" />
+    <Content Include="Themes\Base\StyleSheets\Header.css" />
+    <Content Include="Themes\Base\StyleSheets\Main.css" />
+    <Content Include="Themes\Base\StyleSheets\Wrapper.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadCaptcha\0.wav" />
+    <Content Include="App_Data\RadCaptcha\1.wav" />
+    <Content Include="App_Data\RadCaptcha\2.wav" />
+    <Content Include="App_Data\RadCaptcha\3.wav" />
+    <Content Include="App_Data\RadCaptcha\4.wav" />
+    <Content Include="App_Data\RadCaptcha\5.wav" />
+    <Content Include="App_Data\RadCaptcha\6.wav" />
+    <Content Include="App_Data\RadCaptcha\7.wav" />
+    <Content Include="App_Data\RadCaptcha\8.wav" />
+    <Content Include="App_Data\RadCaptcha\9.wav" />
+    <Content Include="App_Data\RadCaptcha\A.wav" />
+    <Content Include="App_Data\RadCaptcha\B.wav" />
+    <Content Include="App_Data\RadCaptcha\C.wav" />
+    <Content Include="App_Data\RadCaptcha\D.wav" />
+    <Content Include="App_Data\RadCaptcha\E.wav" />
+    <Content Include="App_Data\RadCaptcha\F.wav" />
+    <Content Include="App_Data\RadCaptcha\G.wav" />
+    <Content Include="App_Data\RadCaptcha\H.wav" />
+    <Content Include="App_Data\RadCaptcha\I.wav" />
+    <Content Include="App_Data\RadCaptcha\J.wav" />
+    <Content Include="App_Data\RadCaptcha\K.wav" />
+    <Content Include="App_Data\RadCaptcha\L.wav" />
+    <Content Include="App_Data\RadCaptcha\M.wav" />
+    <Content Include="App_Data\RadCaptcha\N.wav" />
+    <Content Include="App_Data\RadCaptcha\O.wav" />
+    <Content Include="App_Data\RadCaptcha\P.wav" />
+    <Content Include="App_Data\RadCaptcha\Q.wav" />
+    <Content Include="App_Data\RadCaptcha\R.wav" />
+    <Content Include="App_Data\RadCaptcha\S.wav" />
+    <Content Include="App_Data\RadCaptcha\T.wav" />
+    <Content Include="App_Data\RadCaptcha\U.wav" />
+    <Content Include="App_Data\RadCaptcha\V.wav" />
+    <Content Include="App_Data\RadCaptcha\W.wav" />
+    <Content Include="App_Data\RadCaptcha\X.wav" />
+    <Content Include="App_Data\RadCaptcha\Y.wav" />
+    <Content Include="App_Data\RadCaptcha\Z.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadSpell\de-DE.tdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadSpell\en-US.tdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RadSpell\fr-FR.tdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TrackEmployee.aspx" />
+    <Content Include="web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="App_Code\SiftaDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>SiftaDB.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Themes\Base\Empty.Master" />
+    <Content Include="Themes\Base\Main.Master" />
+    <Content Include="Documents\Forms\FundingOverviewReportTemplate.xlsx" />
+    <Content Include="SiftaMapUtils\leaflet\leaflet-zoom-home\leaflet-zoom-min-master.zip" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-master.zip" />
+    <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen-gh-pages.zip" />
+    <None Include="Properties\PublishProfiles\NationalFundingDev.pubxml" />
+    <Content Include="SiftaSiteMap.sitemap" />
+    <None Include="Service References\ActiveDirectoryService\ActiveDirectory.wsdl" />
+    <None Include="Service References\ActiveDirectoryService\ActiveDirectory.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ActiveDirectoryService\ActiveDirectory1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ActiveDirectoryService\ActiveDirectory2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Code\SiftaDB.dbml.layout">
+      <DependentUpon>SiftaDB.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Reports\Customer\" />
+    <Folder Include="Reports\Metrics Library\" />
+    <Folder Include="Scripts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\ActiveDirectoryService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49573</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51654/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

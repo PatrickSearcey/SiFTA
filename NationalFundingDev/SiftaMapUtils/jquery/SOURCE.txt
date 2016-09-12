@@ -1,0 +1,12 @@
+============================================
+JQUERY:
+http://jquery.com/download/
+
+===========================================
+JQUERY UI:
+http://jqueryui.com/download/
+can use theme roller, use pre-defined theme, and select components the app will use
+
+===========================================
+END README
+===========================================

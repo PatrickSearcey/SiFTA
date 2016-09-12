@@ -1,0 +1,43 @@
+﻿/* ===STANDARD FOOTER===*/
+.Footer #usgsfooter {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: small;
+	clear: both;
+	margin: 0;
+}
+.Footer #usgsfooterbar {
+	background-color: #bdbdbd;
+	padding: 4px;
+	margin: 0;
+    font-weight:bold;
+}
+.Footer #usgsfooterbar a:link, #usgsfooterbar a:visited {
+	margin-right: 40px;
+	color: #2dabc1;
+	text-decoration: none;
+}
+.Footer #usgsfooterbar a:hover {
+	margin-right: 40px;
+	color: #2dabc1;
+	text-decoration: underline;
+}
+.Footer #usgsfooterbar a:active {
+	margin-right: 40px;
+	color: #2dabc1;
+	text-decoration: none;
+}
+.Footer #usgsfootertext {
+	padding: 4px;
+	margin: 0;
+}
+.Footer #usgsfootertext img {
+	border: none;
+	float: right;
+	margin-right: 5px;
+}
+.Footer .hidden {
+    display:none;
+}
+.Footer .multipleAgreements {
+    background-color:#c1d1a9;
+}

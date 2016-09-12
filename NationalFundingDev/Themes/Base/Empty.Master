@@ -1,0 +1,102 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Empty.master.cs" Inherits="NationalFundingDev.Empty" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>
+        <asp:ContentPlaceHolder ID="cphTitle" runat="server" />
+    </title>
+    <link rel="Shortcut Icon" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/favicon.ico" />
+    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Footer.css" />
+    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Header.css" />
+    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Main.css" />
+    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Wrapper.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <asp:ContentPlaceHolder ID="cphStyles" runat="server" />
+    <script>
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function ()
+            { (i[r].q = i[r].q || []).push(arguments) }
+            , i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+        ga('create', 'UA-37706584-5', 'auto');
+        ga('set', 'anonymizeIp', true);
+        ga('send', 'pageview');
+</script>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <telerik:RadScriptManager runat="server" ID="rsmMain">
+        </telerik:RadScriptManager>
+        <div id="Wrapper">
+            <div class="Header">
+                <div id="usgscolorband">
+                    <div id="usgsbanner">
+                        <div id="usgsidentifier">
+                            <a href="http://www.usgs.gov/">
+                                <img src='<%= ResolveUrl("~/Themes/Base/Images/USGSLogo.png") %>' alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page" width="178" height="72" /></a>
+                        </div>
+                        <div id="usgsccsabox">
+                            <div id="usgsccsa">
+                                <br />
+                                <a href="http://internal.usgs.gov/">Intranet Home</a>
+                                <br />
+                                <a href="http://internal.usgs.gov/ph/">Find A Person</a>
+                                <br />
+                                <a href="http://internal-search.usgs.gov/">Search Intranet</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="usgstitle">
+                    <p>
+                        <%: Title %>Site Funding Tracking Application
+                    </p>
+                </div>
+                <div id="InternalUse">
+                    &nbsp;For Internal USGS Access Only
+                </div>
+                <div id="TopNavigation">
+                    <telerik:RadMenu runat="server" ID="rmTopNav" EnableRoundedCorners="true" EnableShadows="true" Skin="Silk" Width="100%" AppendDataBoundItems="true" DataSourceID="smds1" >
+                        <Items>
+                        </Items>
+                    </telerik:RadMenu>
+                </div>
+                <div id="SearchBar">
+                    <telerik:RadSearchBox runat="server" ID="rsbQuery" Skin="Silk" EmptyMessage="Search..." OnSearch="rsbQuery_Search" />
+                </div>
+            </div>
+            <div id="Content">
+                <asp:ContentPlaceHolder ID="cphBody" runat="server" />
+            </div>
+            <div class="Footer">
+                <div id="usgsfooter">
+                    <p id="usgsfooterbar">
+                        <a href="http://www.usgs.gov/accessibility.html" title="Accessibility Policy (Section 508)">Accessibility</a>
+                        <a href="http://www.usgs.gov/foia/" title="Freedom of Information Act">FOIA</a>
+                        <a href="http://www.usgs.gov/privacy.html" title="Privacy policies of the U.S. Geological Survey.">Privacy</a>
+                        <a href="http://www.usgs.gov/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites.">Policies and Notices</a>
+                        <a href="http://sifta.water.usgs.gov/Services/" title="Web services made available.">Developers Tools</a>
+                    </p>
+                    <p id="usgsfootertext">
+                        <a href="http://www.usgs.gov/">U.S. Geological Survey</a><br />
+                        URL: http://sifta.water.usgs.gov/
+                        <br />
+                        Page Contact Information: <a href="mailto:siftahelp@usgs.gov">siftahelp@usgs.gov</a><br />
+                        Page Last Modified: <%--<%= PageLastModified %>--%>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var height = $(window).height() - $(".Footer").height() - $(".Header").height();
+                $("#Content").css("min-height", height);
+            });
+            </script>
+        <asp:SiteMapDataSource ID="smds1" runat="server" ShowStartingNode="false" SiteMapProvider="MainSiteMap" />
+    </form>
+</body>
+</html>

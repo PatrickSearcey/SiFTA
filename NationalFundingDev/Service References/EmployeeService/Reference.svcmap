@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="ca281f2b-f75c-4861-8d69-ce7172b84085" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://sifta.water.usgs.gov/ServicesDev/WCF/Employee/ActiveDirectory.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ActiveDirectory.xsd" MetadataType="Schema" ID="e8188e5e-ae2d-4ca2-b794-c1ebd4c3432f" SourceId="1" SourceUrl="http://sifta.water.usgs.gov/ServicesDev/WCF/Employee/ActiveDirectory.svc?xsd=xsd0" />
+    <MetadataFile FileName="ActiveDirectory.disco" MetadataType="Disco" ID="3860ab88-2f23-46db-bced-24cb5d091971" SourceId="1" SourceUrl="http://sifta.water.usgs.gov/ServicesDev/WCF/Employee/ActiveDirectory.svc?disco" />
+    <MetadataFile FileName="ActiveDirectory1.xsd" MetadataType="Schema" ID="a85f3ec6-c19d-44c5-aef4-db1cd8ac330a" SourceId="1" SourceUrl="http://sifta.water.usgs.gov/ServicesDev/WCF/Employee/ActiveDirectory.svc?xsd=xsd1" />
+    <MetadataFile FileName="ActiveDirectory.wsdl" MetadataType="Wsdl" ID="7b651ff1-f0ee-403a-94d9-11cefcbb788f" SourceId="1" SourceUrl="http://sifta.water.usgs.gov/ServicesDev/WCF/Employee/ActiveDirectory.svc?wsdl" />
+    <MetadataFile FileName="ActiveDirectory2.xsd" MetadataType="Schema" ID="b878e764-f63e-4a5a-8cb2-bd89f52f5c29" SourceId="1" SourceUrl="http://sifta.water.usgs.gov/ServicesDev/WCF/Employee/ActiveDirectory.svc?xsd=xsd2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

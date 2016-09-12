@@ -1,0 +1,85 @@
+/*
+==========================================
+CSS for MapUtil js module
+==========================================
+*/
+
+/* all leaflet controls */
+.leaflet-control {
+    background: #dddddd url("images/button_bg.png") repeat-x;
+    background-size: 100% 100%;
+}
+
+/* all custom control buttons */
+.M-button {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    
+    width: 130px;
+    height: 25px;
+    
+    background: #dddddd url("images/button_bg.png") repeat-x;
+    background-size: 100% 100%;
+    border-radius: 4px;
+    box-shadow: 5px 5px 15px rgba(0,0,0,0.4);
+    
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/*
+------------------------------------------
+base map
+------------------------------------------
+*/
+
+/* thumbs */
+.M-basemap-thumb {
+    display: inline-block;
+    width: 60px;
+    height: 40px;
+    vertical-align: middle;
+    margin: 2px;
+}
+.M-basemap-thumb.imagery {
+    background-image: url("images/thumb_basemap_imagery.png");
+}
+.M-basemap-thumb.relief {
+    background-image: url("images/thumb_basemap_relief.png");
+}
+.M-basemap-thumb.topo {
+    background-image: url("images/thumb_basemap_topo.png");
+}
+.M-basemap-thumb.streets {
+    background-image: url("images/thumb_basemap_streets.png");
+}
+
+/*
+------------------------------------------
+map scale ruler
+------------------------------------------
+*/
+.leaflet-control-scale {
+    background: none;
+}
+
+/*
+------------------------------------------
+mouse coords
+------------------------------------------
+*/
+/* do all animations using jQuery - mixing JQ & css does not work */
+.leaflet-control-coordinates.leaflet-control.highlight {
+    background: LightYellow;
+}
+.leaflet-control-coordinates input {
+    font-size: 12px;
+}
+
+/*
+==========================================
+END
+==========================================
+*/
+

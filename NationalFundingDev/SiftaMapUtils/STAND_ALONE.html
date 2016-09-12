@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<!--
+STAND-ALONE EXAMPLE FOR USING SiftaMapUtils
+-->
+<html>
+    <!-- ========================================= -->
+    <!-- HTML HEAD -->
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title></title>
+        
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        <!-- SiftaMapUtils -->
+        <script type="text/javascript" src="./MapUtils/MapUtils.js"></script>
+        <script>
+            // create map(s) when SiftaMapUtils is ready
+            // initMap takes the following input:
+            //   "mapElemID"     - [REQUIRED] html map element id
+            //   "mapDataElemID" - [REQUIRED] html hidden element id containing map point geoJSON data
+            //   "basemap"       - [OPTIONAL] startup basemap to use when map is created, one of:
+            //                        "topo" [DEFAULT]
+            //                        "streets"
+            //                        "imagery"
+            //                        "relief"
+            //   "refreshZoom"   - [OPTIONAL] zoom mode when map is refreshed with new data, one of
+            //                        "points" : zoom to all site points on map
+            //                        "extend" : extend the current map extent to include any points outside the current extent
+            //                        "lower48": zoom to lower 48 US States
+            //                        "noZoom" : do nothing [DEFAULT]
+            //   opts.homeZoom    - [OPTIONAL] zoom mode when home button in zoom control is clicked, one of
+            //                        "points" : zoom to all site points on map
+            //                        "lower48": zoom to lower 48 US States [DEFAULT]
+            M.ready = function() {
+                M.initMap({ "mapElemID":"map01", "mapDataElemID":"mapData01", "basemap":"topo",    "refreshZoom":"points",  "homeZoom":"points" });
+                M.initMap({ "mapElemID":"map02", "mapDataElemID":"mapData02", "basemap":"streets", "refreshZoom":"extend",  "homeZoom":"points" });
+                M.initMap({ "mapElemID":"map03", "mapDataElemID":"mapData03", "basemap":"imagery", "refreshZoom":"lower48", "homeZoom":"lower48"});
+                M.initMap({ "mapElemID":"map04", "mapDataElemID":"mapData04", "basemap":"relief",  "refreshZoom":"noZoom",  "homeZoom":"lower48"});
+            };
+            
+            // when sites data for one or more maps changes:
+            // (1) update the geoJSON string stored in the "mapDataElemID"
+            // (2) call M.refreshMaps();
+        </script>
+        <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+        
+        <!-- page style -->
+        <style type="text/css">
+            * {
+                margin  : 0px;
+                padding : 0px;
+            }
+            html, body {
+                height           : 100%;
+                width            : 100%;
+                background-color : #dedede;
+            }
+            button {
+                padding : 5px;
+                color   : #008800;
+                cursor  : pointer;
+            }
+            .table-row-title {
+                border           : 1px solid black;
+                background-color : white;
+                text-align       : center;
+                
+            }
+            .maps {
+                border   : 1px solid black;
+                height   : 400px;
+                width    : 400px;
+                overflow : hidden;
+            }
+        </style>
+    </head>
+    
+    <!-- ========================================= -->
+    <!-- HTML BODY -->
+    <body>
+        <table>
+            <!-- reset random data button -->
+            <tr>
+                <td style="text-align:center;" colspan=2>
+                    <button
+                        id      = "button_setRandomData"
+                        type    = "button"
+                        onclick = "setRandomData(); M.refreshMaps();"
+                    >
+                        <b>Click to Set Random Point Data<br/>and Refresh All Maps</b>
+                    </button>
+                </td>
+            </tr>
+            <!-- maps 01 & 02 -->
+            <tr>
+                <td class="table-row-title">refreshZoom: "points"<br/>homeZoom: "points"</td>
+                <td class="table-row-title">refreshZoom: "extend"<br/>homeZoom: "points"</td>
+            </tr>
+            <tr>
+                <td><div id="map01" class="maps"></td>
+                <td><div id="map02" class="maps"></td>
+            </tr>
+            <!-- maps 03 & 04 -->
+            <tr>
+                <td class="table-row-title">refreshZoom: "lower48"<br/>homeZoom: "lower48"</td>
+                <td class="table-row-title">refreshZoom: "noZoom" <br/>homeZoom: "lower48"</td>
+            </tr>
+            <tr>
+                <td><div id="map03" class="maps"></td>
+                <td><div id="map04" class="maps"></td>
+            </tr>
+        </table>
+        
+        <!-- hidden data elements that the real app updates -->
+        <input id="mapData01" type="hidden" value="" />
+        <input id="mapData02" type="hidden" value="" />
+        <input id="mapData03" type="hidden" value="" />
+        <input id="mapData04" type="hidden" value="" />
+        
+        <!-- javascript for setting random site data for demo -->
+        <script>
+            // function to create a random data point
+            window.getRandomPoint = function() {
+                // template
+                var pt = {
+                    "type":"Feature",
+                    "properties":{
+                        "SiteNumber"  : "########",
+                        "SiteName"    : "RANDOM FAKE SITE",
+                        "iconURL"     : "",
+                        "SiteType"    : "",
+                        "RealTimeSite": "Real-Time Site"
+                   },
+                   "geometry":{
+                        "type":"Point",
+                        "coordinates":[
+                            -(90+5*Math.random()), // [-95,-90]
+                            +(30+5*Math.random())  // [30,35]
+                        ]
+                    }
+                };
+                // set random site type
+                switch( Math.ceil(5*Math.random()) ) {
+                    case 1:
+                        pt.properties.iconURL  = "sw_act_30.png";
+                        pt.properties.SiteType = "Surface Water";
+                        break;
+                    case 2:
+                        pt.properties.iconURL  = "gw_act_30.png";
+                        pt.properties.SiteType = "Ground Water";
+                        break;
+                    case 3:
+                        pt.properties.iconURL  = "sp_act_30.png";
+                        pt.properties.SiteType = "Spring";
+                        break;
+                    case 4:
+                        pt.properties.iconURL  = "at_act_30.png";
+                        pt.properties.SiteType = "Atmospheric";
+                        break;
+                    case 5:
+                    default:
+                        pt.properties.iconURL  = "ot_act_30.png";
+                        pt.properties.SiteType = "Other";
+                        break;
+                }
+                return pt;
+            };
+            
+            // function to set random point data for all maps
+            window.setRandomData = function() {
+                // set random data for all maps
+                var geoJson;
+                for (i = 1; i <= 4; i++) {
+                    // template
+                    var geoJson = {
+                        "type":"FeatureCollection",
+                        "features":[]
+                    };
+                    // add random points
+                    var n = 10 + Math.round(40*Math.random()); // [10,50]
+                    for (ii = 1; ii <= n; ii++) {
+                        geoJson.features.push( getRandomPoint() );
+                    };
+                    // set map data
+                    var mapNum = "0"+i;
+                    mapNum = mapNum.substr(mapNum.length-2); // needs leading 0
+                    document.getElementById("mapData"+mapNum).value = JSON.stringify(geoJson);
+                }
+            };
+            
+            // set random data for all maps at startup
+            setRandomData();
+        </script>
+        
+    </body>
+</html>

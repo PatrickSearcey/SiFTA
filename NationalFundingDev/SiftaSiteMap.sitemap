@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<siteMap xmlns="http://schemas.microsoft.com/AspNet/SiteMap-File-1.0" >
+    <siteMapNode url="" title=""  description="">
+        <siteMapNode url="~/Default.aspx" title="My Center Home"  description="" />
+        <siteMapNode url="~/CentersMap.aspx" title="Centers Map"  description="" />
+
+      <siteMapNode title="Maps"  description="">
+        <siteMapNode title="National Programs Sites" description="" url="~/Reports/Maps/SiteMap.aspx" />
+        <siteMapNode title="Unfunded Real-Time Sites" description="" url="~/Reports/National/RealTimeSitesFunding.aspx" />
+      </siteMapNode>
+        <siteMapNode url="" title="Reports"  description="" >
+          <siteMapNode url="~/Reports/National/National.aspx" title="National" description="" />
+          <siteMapNode url="" title="Thematic" description="">
+            <siteMapNode url="~/Reports/Thematic/NSIPOperationReport.aspx" title="NSIP Operation and Maintenance Cost" description="" />
+            <siteMapNode url="~/Reports/Thematic/GroupAgreementSum.aspx" title="Group Agreement Summary" description="" />
+            <siteMapNode url="~/Reports/Thematic/GroupAccountSum.aspx" title="Group Account Summary" description="" />
+            <siteMapNode url="~/Reports/Thematic/GroupAccountDetails.aspx" title="Group Account Details" description="" />
+            <siteMapNode url="~/Reports/Thematic/GroupSiteDetails.aspx" title="Group Site Details" description="" />
+          </siteMapNode>
+        </siteMapNode>
+        <siteMapNode url="~/Help.aspx" title="Help"  description="" />
+      <siteMapNode url="http://sifta.water.usgs.gov/Documents/SiFTAUserManual_Overview.pdf" title="Quick Start Guide"  description="" />
+    </siteMapNode>
+</siteMap>
