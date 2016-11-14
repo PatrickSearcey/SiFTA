@@ -41,7 +41,7 @@
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="538,190,489,190,476,158,475,143,538,142,540,150,554,162" NavigateUrl="~/Center.aspx?OrgCode=GENP" AlternateText="Iowa" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="501,257,558,256,557,260,567,262,569,253,569,246,565,235,553,223,555,215,536,189,491,192,497,202,492,206,501,213" NavigateUrl="~/Center.aspx?OrgCode=GESG" AlternateText="Missouri" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="524,87,540,80,546,89,572,97,586,110,579,153,547,155,540,144,540,138,519,121,519,102,524,101" NavigateUrl="~/Center.aspx?OrgCode=GENK" AlternateText="Wisconsin" />
-        <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="579,69,544,82,550,89,573,94,581,103,589,110,593,163,632,160,646,138,630,97,604,78" NavigateUrl="~/Center.aspx?OrgCode=GENH" AlternateText="Michigan" />
+        <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="579,69,544,82,550,89,573,94,581,103,589,110,593,163,632,160,646,138,630,97,604,78" NavigateUrl="~/Center.aspx?OrgCode=GENJ" AlternateText="Michigan" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="549,155,578,155,585,166,589,213,581,225,583,230,579,243,566,243,554,223,556,216,541,191,554,163" NavigateUrl="~/Center.aspx?OrgCode=GENE" AlternateText="Illinois" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="623,209,612,224,601,227,584,228,579,225,590,215,586,169,592,162,618,163" NavigateUrl="~/Center.aspx?OrgCode=GENF" AlternateText="Indiana-Kentucky" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="571,253,571,244,578,244,586,229,615,224,623,207,635,212,643,207,653,212,661,229,645,242,581,249" NavigateUrl="~/Center.aspx?OrgCode=GENF" AlternateText="Indiana-Kentucky" />
