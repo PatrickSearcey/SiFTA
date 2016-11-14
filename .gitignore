@@ -1,3 +1,4 @@
 *.suo
 NationalFundingDev/bin/
 NationalFundingDev/obj/
+packages/
