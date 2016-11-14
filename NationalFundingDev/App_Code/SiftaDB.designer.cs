@@ -22,7 +22,7 @@ namespace NationalFundingDev
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="siftadb_dev")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="siftadb")]
 	public partial class SiftaDBDataContext : System.Data.Linq.DataContext
 	{
 		
