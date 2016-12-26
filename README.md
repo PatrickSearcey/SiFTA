@@ -1,46 +1,71 @@
-# Site Information & Funding Tracking Application (SIFTA) #
+# Site Information Funding System (SiFTA) #
 
-## Summary ##
+# General Information #
+---
 
-SIFTA is a web application designed to help Admin of various water science centers keep track of their customers, agreements with those customers, and related funding. The web application portion is a simple asp.net webform CRUD application with a MS SQL Database. 
-#### Version History ####
-* Originally spreadsheets turned into an access database by Kevin S.
-* (Version 1.0) Converted into a web application using MS SQL by Brian Reece and Justin Robertson (Limited to Texas)
-* (Version 2.0) Database fleshed out and web application sterilized of dependencies on specific water science center to make National Product. Updated by Justin Robertson with Brian Reece as contact.
-* (Version 3.0) Database schema cleaned up and relationships enforced, major improvements to UI and reporting capabilities. Updated by Justin Robertson with Brian Reece and Ramona Neafie as contacts. Current Version. 
+#### Description ####
+> An internal application that allows admin to manage customers, agreements with those customers, and the work associated with those agreements. 
 
-## Setup ##
+#### Status ####
+> In Progress (Hosted)
 
-#### Requirements ####
-* Visual Studio
-* Telerik ASP.NET Ajax controls
-#### Dependencies (NuGet) ####
-* DocumentFormat.OpenXml
-* DocX
-* EPPlus
-* Qr Code library
-#### Server Configuration ####
-##### Production #####
-* Web Server: IGSKIACWVMGS014
-    * File Directory: D:\siftaroot\NationalFunding
-* Database Server: IGSKIACWVMGS014
-    * Databse: siftadb
-    * Connection String: Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb;Integrated Security=True
-* Deployment instructions
-##### Development #####
-* Web Server: IGSKIACWVMGS018
-    * File Directory: D:\siftaroot\NationalFunding
-* Database Server: IGSKIACWVMGS014
-    * Databse: siftadb_dev
-    * Connection String: Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb_dev;Integrated Security=True
-* Deployment instructions
+#### Repo Contact ####
+> Justin Robertson jkrobertson@usgs.gov
 
-## Contacts ##
-##### Project Owner #####
-Brian Reece bdreece@usgs.gov
-##### Project Manager #####
-Ramona Neafie rjneafie@usgs.gov 
-##### Lead Developer #####
-Justin Robertson jkrobertson@usgs.gov
-##### Supporting Developers #####
-Deanna Terry dterry@usgs.gov (Design & Layout)
+#### Project Number ####
+> [FBMS Project Number]
+
+#### Project Begin & End Dates ####
+> 2014 - Present
+
+#### Accounts ####
+> Year   | Account Number    | Description
+> ---    | ---               | ---
+> [2015] | [Unknown] | [Unknown]
+> [2016] | [Unknown] | [Unknown]
+
+#### Project Contacts ####
+> Name       | Role                | Email
+> ---        | ---                 | ---
+> Justin Robertson | Lead Developer      | jkrobertson@usgs.gov
+> Ramona Neafie | Project Lead | rjneafie@usgs.gov
+> Deanna Terry |  UI Design | dterry@usgs.gov
+
+# Technical Details #
+---
+
+#### Servers ####
+> Status        | Type       | Server            | Path or Database Name         | Web URL                                                   | Remarks
+> ---           | ---        | ---               | ---                           | ---                                                       | ---
+> [Production]  | [Web Host] | [IGSKIACWVMGS016] | [D:\wwwroot\projectDirectory] | [txpub.usgs.gov/projectDirectory]                         | 
+> [Development] | [Web Host] | [IGSKIACWVMGS004] | [D:\wwwroot\projectDirectory] | [igskiacwvmgs004.cr.usgs.gov/projectDirectory]            | 
+> [Both]        | [Database] | [IGSKIACWVMGS019] | [dataBaseName]                |                                                           | [MS SQL Server 2012 RTM]
+> [Both]        | [ArcGIS]   | [IGSKIACWVMGS016] |                               | [txpub.usgs.gov/arcgis/rest/services/mapServiceDirectory] | [ArcGIS 10.22]
+
+#### Dependencies ####
+> * [Telerik Version 1.2.3]
+> * [CWIS 1.0: txpub.usgs.gov/DSS/CWIS/1.0/]
+> * [GWIS 0.0: txpub.usgs.gov/DSS/GWIS/0.0/]
+> * [search_api 1.1: txpub.usgs.gov/DSS/search_api/1.1/]
+
+#### Workflow Instructions ####
+> [Examples:]  
+> [Clone this repository to your local machine. Work off dev branch - project lead is responsible for master branch merges]  
+> [Clone this repository to your local machine. Create a feature branch named your user id. Make updates, commit, push, and notify Jane Doe] 
+
+#### Build Instructions ####
+> [Write instructions on how to publish the finished work and deploy it. This could be as easy as telling them to copy and paste the project files into a certain directory on the server, or it could be elaborate (build, move to server, set up task manager etc)]
+
+#### Additional Notes ####
+> [Talk about anything necessary to the project but not anywhere else in this readme.]
+
+# Cooperator Information #
+---
+
+#### Cooperator Name ####
+> United States Geological Survey
+
+#### Cooperator Contacts ####
+> Name       | Role              | Email
+> ---        | ---               | ---
+> Brian Reece | HQ Contact | bdreece@usgs.gov
