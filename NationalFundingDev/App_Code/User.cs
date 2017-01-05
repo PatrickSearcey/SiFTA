@@ -14,7 +14,7 @@ namespace NationalFundingDev
         private String user_id, _OrgCode, _Home;
         private Boolean _CanInsert, _CanUpdate, _CanDelete, _IsAdmin;
         private List<string> SuperUsers = new List<string>(){
-            "jkrobertson","bdreece", "sholl", "slvasque", "rjneafie", "epease"
+            "jkrobertson","bdreece", "sholl", "slvasque", "rjneafie", "epease", "afox"
         };
         private EmployeeAccess permissions;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
