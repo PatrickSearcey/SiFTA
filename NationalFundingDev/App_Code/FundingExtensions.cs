@@ -476,7 +476,7 @@ namespace NationalFundingDev
                     siteType = "Other";
                     break;
             }
-            var nsipURL = String.Format(AppendBaseURL("Images/NSIPScores/NSIP{0}.gif"), site.NSIPScore);
+            var nsipURL = String.Format(AppendBaseURL("Images/FPSScores/FPS{0}.gif"), site.FPSScore);
             String GeoJSONSiteFormat = "{\"type\":\"Feature\",\"properties\":{\"SiteNumber\":\"" + site.SiteNumber + "\",\"SiteName\":\"" + site.Name + "\",\"iconURL\":\"" + iconURL + "\",\"NSIPImg\": \"" + nsipURL + "\", \"SiteType\": \"" + siteType + "\",\"RealTimeSite\": \"" + realTime + "\"}, \"geometry\":{\"type\":\"Point\",\"coordinates\":[" + site.Longitude.ToString() + "," + site.Latitude.ToString() + "]}}";
             return GeoJSONSiteFormat;
         }

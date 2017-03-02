@@ -359,12 +359,12 @@
     <Compile Include="Reports\Modules\StudiesFundingDetails.aspx.designer.cs">
       <DependentUpon>StudiesFundingDetails.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Thematic\NSIPOperationReport.aspx.cs">
-      <DependentUpon>NSIPOperationReport.aspx</DependentUpon>
+    <Compile Include="Reports\Thematic\FPSOperationReport.aspx.cs">
+      <DependentUpon>FPSOperationReport.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Reports\Thematic\NSIPOperationReport.aspx.designer.cs">
-      <DependentUpon>NSIPOperationReport.aspx</DependentUpon>
+    <Compile Include="Reports\Thematic\FPSOperationReport.aspx.designer.cs">
+      <DependentUpon>FPSOperationReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="Reports\Maps\SiteFundingMap.aspx.cs">
       <DependentUpon>SiteFundingMap.aspx</DependentUpon>
@@ -569,11 +569,11 @@
     <Content Include="Images\copyIcon.gif" />
     <Content Include="Images\loadingBar.gif" />
     <Content Include="Images\Maps\usmap.png" />
-    <Content Include="Images\NSIPScores\NSIP0.gif" />
-    <Content Include="Images\NSIPScores\NSIP1.gif" />
-    <Content Include="Images\NSIPScores\NSIP2.gif" />
-    <Content Include="Images\NSIPScores\NSIP3.gif" />
-    <Content Include="Images\NSIPScores\NSIP4.gif" />
+    <Content Include="Images\FPSScores\FPS0.gif" />
+    <Content Include="Images\FPSScores\FPS1.gif" />
+    <Content Include="Images\FPSScores\FPS2.gif" />
+    <Content Include="Images\FPSScores\FPS3.gif" />
+    <Content Include="Images\FPSScores\FPS4.gif" />
     <Content Include="Images\SearchLogo.png" />
     <Content Include="Images\SiteIcons\CL.png" />
     <Content Include="Images\SiteIcons\CLS.png" />
@@ -585,7 +585,7 @@
     <Content Include="NationalReport.aspx" />
     <Content Include="Reports\Modules\SiteFundingDetails.aspx" />
     <Content Include="Reports\Modules\StudiesFundingDetails.aspx" />
-    <Content Include="Reports\Thematic\NSIPOperationReport.aspx" />
+    <Content Include="Reports\Thematic\FPSOperationReport.aspx" />
     <Content Include="Reports\Maps\SiteFundingMap.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Site.aspx" />
@@ -746,7 +746,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="siftadb_dev" Class="SiftaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb_dev;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="siftadbConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="siftadb" Class="SiftaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="siftadbConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -356,22 +356,6 @@
       <Column Name="FundingUSGSCWP" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Site" Member="Sites">
-    <Type Name="Site">
-      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="SiteNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="OfficeName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="AgencyCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="TypeCode" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
-      <Column Name="NSIPScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RealTime" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.vReportFundingOverview" Member="vReportFundingOverviews">
     <Type Name="vReportFundingOverview">
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
@@ -446,36 +430,6 @@
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.vSiteFundingInformation" Member="vSiteFundingInformations">
-    <Type Name="vSiteFundingInformation">
-      <Column Name="FundingSiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ModNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="SiteNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SiteName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="OfficeName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="AgencyCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="TypeCode" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
-      <Column Name="NSIPScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="RealTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CollectionCodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Category" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Task" Type="System.String" DbType="VarChar(17) NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CollectionUnits" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DifficultyFactor" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DifficultyFactorReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FundingUSGSCWP" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
@@ -892,14 +846,84 @@
       <Association Name="lutCollectionCode_FundingSite" Member="FundingSites" ThisKey="CollectionCodeID" OtherKey="CollectionCodeID" Type="FundingSite" />
     </Type>
   </Table>
+  <Table Name="dbo.Site" Member="Sites">
+    <Type Name="Site">
+      <Column Name="SiteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="SiteNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="OfficeName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="AgencyCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="TypeCode" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="FPSScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RealTime" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vSiteFundingInformation" Member="vSiteFundingInformations">
+    <Type Name="vSiteFundingInformation">
+      <Column Name="FundingSiteID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ModNumber" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="SiteNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Latitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Longitude" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="OfficeName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="AgencyCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="TypeCode" Type="System.String" DbType="NVarChar(7)" CanBeNull="true" />
+      <Column Name="FPSScore" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RealTime" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CollectionCodeID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Category" Type="System.String" DbType="NVarChar(6)" CanBeNull="true" />
+      <Column Name="Task" Type="System.String" DbType="VarChar(17) NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="CollectionUnits" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DifficultyFactor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DifficultyFactorReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FundingUSGSCWP" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.spAccounts" Method="spAccounts">
+    <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="spAccountsResult">
+      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
+      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="Query" Type="System.String" DbType="NVarChar(53)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spUnfundedRealTimeSitesGeo" Method="spUnfundedRealTimeSitesGeo">
+    <Parameter Name="date" Type="System.DateTime" DbType="DateTime" />
+    <ElementType Name="spUnfundedRealTimeSitesGeoResult">
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="FundedRealTimeSites" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="TotalRealTimeSites" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundedPercentage" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Geo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CenterName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+    </ElementType>
+  </Function>
   <Function Name="dbo.spAgreementDocument" Method="spAgreementDocument">
     <Parameter Name="AgreementID" Parameter="agreementID" Type="System.Int32" DbType="Int" />
     <ElementType Name="spAgreementDocumentResult">
       <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
       <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FundsType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -907,166 +931,99 @@
       <Column Name="FundingUSGSCWP" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="FundingOther" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingOtherReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerTIN" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerDUNS" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerALC" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utFirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utMiddleName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utLastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utDepartment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utStreetOne" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utStreetTwo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utCity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utState" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="utZipCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FundingOtherReason" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CustomerTIN" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="CustomerDUNS" Type="System.String" DbType="NVarChar(20)" CanBeNull="true" />
+      <Column Name="CustomerALC" Type="System.String" DbType="NVarChar(8)" CanBeNull="true" />
+      <Column Name="utFirstName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="utMiddleName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="utLastName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="utTitle" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="utDepartment" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="utEmail" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="utStreetOne" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="utStreetTwo" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="utCity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="utState" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="utZipCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
       <Column Name="utPhoneWork" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="utPhoneMobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="utPhoneFax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubFirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubMiddleName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubLastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubDepartment" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubStreetOne" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubStreetTwo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubCity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubState" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ubZipCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ubFirstName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ubMiddleName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ubLastName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ubTitle" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ubDepartment" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ubEmail" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ubStreetOne" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ubStreetTwo" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ubCity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ubState" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="ubZipCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
       <Column Name="ubPhoneWork" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ubPhoneMobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ubPhoneFax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctSalutation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctFirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctMiddleName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctLastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctPhoneWork" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctPhoneMobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctPhoneFax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctStreetOne" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctStreetTwo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctCity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctState" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ctZipCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbSalutation" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbFirstName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbMiddleName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbLastName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbTitle" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbPhoneWork" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbPhoneMobile" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbPhoneFax" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbEmail" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbStreetOne" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbStreetTwo" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbCity" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbState" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="cbZipCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ctSalutation" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ctFirstName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ctMiddleName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ctLastName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ctTitle" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ctPhoneWork" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ctPhoneMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ctPhoneFax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ctEmail" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ctType" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ctStreetOne" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ctStreetTwo" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="ctCity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ctState" Type="System.String" DbType="NVarChar(14)" CanBeNull="true" />
+      <Column Name="ctZipCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="cbSalutation" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="cbFirstName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="cbMiddleName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="cbLastName" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="cbTitle" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="cbPhoneWork" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cbPhoneMobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cbPhoneFax" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="cbEmail" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="cbType" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="cbStreetOne" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="cbStreetTwo" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="cbCity" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="cbState" Type="System.String" DbType="NVarChar(14)" CanBeNull="true" />
+      <Column Name="cbZipCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
       <Column Name="Number" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.spSearchEngine" Method="spSearchEngine">
-    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="spSearchEngineResult">
-      <Column Name="Query" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Type" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Tags" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.spCooperativeFunding" Method="spCooperativeFunding">
-    <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(5)" />
-    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="spCooperativeFundingResult">
+  <Function Name="dbo.spAgreementSetAccountDetail" Method="spAgreementSetAccountDetail">
+    <Parameter Name="wy" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="agmtset" Type="System.String" DbType="NVarChar(75)" />
+    <ElementType Name="spAgreementSetAccountDetailResult">
       <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Number" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="WSC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FundsType" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.spAccounts" Method="spAccounts">
-    <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(5)" />
-    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="spAccountsResult">
-      <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Query" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.spCoopFundingReport" Method="spCoopFundingReport">
-    <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(5)" />
-    <Parameter Name="FiscalYear" Parameter="fiscalYear" Type="System.String" DbType="NVarChar(4)" />
-    <Parameter Name="Customer" Parameter="customer" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Office" Parameter="office" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Account" Parameter="account" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Project" Parameter="project" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Agreement" Parameter="agreement" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Signatures" Parameter="signatures" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Type" Parameter="type" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Comments" Parameter="comments" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="FiscalYearColumn" Parameter="fiscalYearColumn" Type="System.Boolean" DbType="Bit" />
-    <Parameter Name="Offices" Parameter="offices" Type="System.String" DbType="NVarChar(MAX)" />
-    <ElementType Name="spCoopFundingReportResult">
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="ParentAccount" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
       <Column Name="FiscalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerAgreementType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FundingUSGSCWP" Type="System.Double" DbType="Float" CanBeNull="true" />
       <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
-  <Function Name="dbo.spNSIPOperationReport" Method="spNSIPOperationReport">
-    <Parameter Name="FiscalYear" Parameter="fiscalYear" Type="System.String" DbType="NVarChar(4)" />
-    <ElementType Name="spNSIPOperationReportResult">
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="data_coll_full" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="data_coll_partial" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="data_coll_total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="data_coll_ss_dollars" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="infra_ss_dollars" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="funded_sites_total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="funded_studies_total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="funding_total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="funding_balance" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+  <Function Name="dbo.spAgreementSetAccountSum" Method="spAgreementSetAccountSum">
+    <Parameter Name="wy" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="agmtset" Type="System.String" DbType="NVarChar(75)" />
+    <ElementType Name="spAgreementSetAccountSumResult">
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="WSC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="ParentAccount" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
+      <Column Name="FundingToAccount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
   <Function Name="dbo.spAgreementSetBaseSum" Method="spAgreementSetBaseSum">
@@ -1087,32 +1044,16 @@
       <Column Name="studies" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
     </ElementType>
   </Function>
-  <Function Name="dbo.spAgreementSetAccountSum" Method="spAgreementSetAccountSum">
+  <Function Name="dbo.spAgreementSetSimpleSum" Method="spAgreementSetSimpleSum">
     <Parameter Name="wy" Type="System.String" DbType="NVarChar(4)" />
     <Parameter Name="agmtset" Type="System.String" DbType="NVarChar(75)" />
-    <ElementType Name="spAgreementSetAccountSumResult">
-      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="WSC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="ParentAccount" Type="System.String" DbType="NVarChar(4000) NOT NULL" CanBeNull="false" />
-      <Column Name="FundingToAccount" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.spAgreementSetAccountDetail" Method="spAgreementSetAccountDetail">
-    <Parameter Name="wy" Type="System.String" DbType="NVarChar(4)" />
-    <Parameter Name="agmtset" Type="System.String" DbType="NVarChar(75)" />
-    <ElementType Name="spAgreementSetAccountDetailResult">
-      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
-      <Column Name="WSC" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
-      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="ParentAccount" Type="System.String" DbType="NVarChar(4000)" CanBeNull="true" />
-      <Column Name="FiscalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    <ElementType Name="spAgreementSetSimpleSumResult">
+      <Column Name="CostCenterName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(18)" CanBeNull="true" />
+      <Column Name="created" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="USGSSigned" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="ready2send" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
+      <Column Name="sent2usace" Type="System.String" DbType="VarChar(1)" CanBeNull="true" />
     </ElementType>
   </Function>
   <Function Name="dbo.spAgreementSetSiteDetail" Method="spAgreementSetSiteDetail">
@@ -1135,6 +1076,103 @@
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spCooperativeFunding" Method="spCooperativeFunding">
+    <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="spCooperativeFundingResult">
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spCoopFundingReport" Method="spCoopFundingReport">
+    <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(5)" />
+    <Parameter Name="FiscalYear" Parameter="fiscalYear" Type="System.String" DbType="NVarChar(4)" />
+    <Parameter Name="Customer" Parameter="customer" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Office" Parameter="office" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Account" Parameter="account" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Project" Parameter="project" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Agreement" Parameter="agreement" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Signatures" Parameter="signatures" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Type" Parameter="type" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Status" Parameter="status" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Comments" Parameter="comments" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="FiscalYearColumn" Parameter="fiscalYearColumn" Type="System.Boolean" DbType="Bit" />
+    <Parameter Name="Offices" Parameter="offices" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="spCoopFundingReportResult">
+      <Column Name="FiscalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="CustomerCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CustomerAgreementType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FundingUSGSCWP" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spEvalUSACEAgreement2016" Method="spEvalUSACEAgreement2016" IsComposable="true">
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.spSearchEngine" Method="spSearchEngine">
+    <Parameter Name="Query" Parameter="query" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="spSearchEngineResult">
+      <Column Name="Query" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(9) NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(160)" CanBeNull="true" />
+      <Column Name="URL" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(259)" CanBeNull="true" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spState" Method="spState">
+    <Parameter Name="lat" Type="System.String" DbType="NVarChar(MAX)" />
+    <Parameter Name="long" Type="System.String" DbType="NVarChar(MAX)" />
+    <ElementType Name="spStateResult">
+      <Column Name="StateID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="StateAbbreviation" Type="System.String" DbType="NVarChar(3)" CanBeNull="true" />
+      <Column Name="StateName" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="distance" Type="System.Double" DbType="Float" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.spFPSOperationReport" Method="spFPSOperationReport">
+    <Parameter Name="FiscalYear" Parameter="fiscalYear" Type="System.String" DbType="NVarChar(4)" />
+    <ElementType Name="spFPSOperationReportResult">
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="data_coll_full" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="data_coll_partial" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="data_coll_total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="data_coll_ss_dollars" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="infra_ss_dollars" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="funded_sites_total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="funded_studies_total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="funding_total" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="funding_balance" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </ElementType>
   </Function>
 </Database>

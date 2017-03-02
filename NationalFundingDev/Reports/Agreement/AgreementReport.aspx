@@ -324,7 +324,7 @@
                             <Columns>
                                 <telerik:GridTemplateColumn>
                                     <ItemTemplate>
-                                        <asp:Image runat="server" ID="imgNSIP" Height="15px" Width="15px" ToolTip="NSIP Eligible" ImageUrl='<%# AppendBaseURL(String.Format("Images/NSIPScores/NSIP{0}.gif", Eval("NSIPScore"))) %>' />
+                                        <asp:Image runat="server" ID="imgFPS" Height="15px" Width="15px" ToolTip="FPS Eligible" ImageUrl='<%# AppendBaseURL(String.Format("Images/FPSScores/FPS{0}.gif", Eval("FPSScore"))) %>' />
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                                 <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber">

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" MasterPageFile="~/Themes/Base/Empty.Master" AutoEventWireup="true" CodeBehind="NSIPOperationReport.aspx.cs" Inherits="NationalFundingDev.Reports.NSIPOperationReport" %>
+﻿<%@ Page Language="C#" MasterPageFile="~/Themes/Base/Empty.Master" AutoEventWireup="true" CodeBehind="FPSOperationReport.aspx.cs" Inherits="NationalFundingDev.Reports.NSIPOperationReport" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphTitle" runat="server">
 </asp:Content>
@@ -22,7 +22,7 @@
     </telerik:RadAjaxManager>
     <div style="padding:20px;">
     <telerik:RadAjaxLoadingPanel runat="server" Skin="Silk" ID="ralp" />
-    <h2>NSIP Operation Report</h2>
+    <h2>FPS Operation Report</h2>
     <table>
         <tr>
             <td>
@@ -71,8 +71,8 @@
                 <telerik:GridBoundColumn HeaderText="Data Collection (QCONT)" ColumnGroupName="FundingCount" DataField="data_coll_ss_dollars" SortExpression="data_coll_ss_dollars" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
                 <telerik:GridBoundColumn HeaderText="QCONT-INST and MISC-Upgrades" ColumnGroupName="FundingCount" DataField="infra_ss_dollars" SortExpression="infra_ss_dollars" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
                 <telerik:GridBoundColumn HeaderText="Studies/Support Funding Details" DataField="funded_studies_total" SortExpression="funded_studies_total" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
-                <telerik:GridBoundColumn HeaderText="NSIP Allocation" DataField="funding_total" SortExpression="funding_total" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
-                <telerik:GridBoundColumn HeaderText="Difference Between Total Funding and NSIP Allocation" DataField="funding_balance" SortExpression="funding_balance" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
+                <telerik:GridBoundColumn HeaderText="FPS Allocation" DataField="funding_total" SortExpression="funding_total" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
+                <telerik:GridBoundColumn HeaderText="Difference Between Total Funding and FPS Allocation" DataField="funding_balance" SortExpression="funding_balance" DataFormatString="{0:C0}" HeaderStyle-Width="140px" ItemStyle-HorizontalAlign="Right" HeaderStyle-HorizontalAlign="Center" Aggregate="Sum" FooterAggregateFormatString="{0:c0}" FooterStyle-HorizontalAlign="Right" />
             </Columns>
         </MasterTableView>
     </telerik:RadGrid></div>

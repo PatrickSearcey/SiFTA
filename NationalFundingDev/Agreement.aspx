@@ -273,7 +273,7 @@
                             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" HeaderStyle-Width="10px" />
                             <telerik:GridTemplateColumn>
                                 <ItemTemplate>
-                                    <asp:Image runat="server" ID="imgNSIP" ToolTip="NSIP Eligible" Height="15px" Width="15px" ImageUrl='<%# String.Format("~/Images/NSIPScores/NSIP{0}.gif", Eval("NSIPScore")) %>' />
+                                    <asp:Image runat="server" ID="imgFPS" ToolTip="FPS Eligible" Height="15px" Width="15px" ImageUrl='<%# String.Format("~/Images/FPSScores/FPS{0}.gif", Eval("FPSScore")) %>' />
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
                             <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber">

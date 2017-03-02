@@ -148,15 +148,6 @@ namespace NationalFundingDev.Reports.Agreement {
         protected global::Telerik.Web.UI.RadGrid rgFundedSites;
         
         /// <summary>
-        /// imgNSIP control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Image imgNSIP;
-        
-        /// <summary>
         /// imgEditStudiesFunding control.
         /// </summary>
         /// <remarks>

@@ -25,7 +25,7 @@ namespace NationalFundingDev.Reports
         }
         protected void rgNSIP_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgNSIP.DataSource = siftaDB.spNSIPOperationReport(rcbFY.SelectedValue).OrderBy(p => p.Name);
+            rgNSIP.DataSource = siftaDB.spFPSOperationReport(rcbFY.SelectedValue).OrderBy(p => p.Name);
         }
         protected void rcbFY_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
@@ -34,7 +34,7 @@ namespace NationalFundingDev.Reports
 
         protected void rbMapIt_Click(object sender, EventArgs e)
         {
-            Response.Redirect(String.Format("~/Reports/Maps/SiteMap.aspx?Org=NSIP&fy={0}", rcbFY.SelectedValue));
+            Response.Redirect(String.Format("~/Reports/Maps/SiteMap.aspx?Org=FPS&fy={0}", rcbFY.SelectedValue));
         }
         public string AppendBaseURL(String str)
         {

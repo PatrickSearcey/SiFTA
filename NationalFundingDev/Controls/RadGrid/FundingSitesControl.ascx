@@ -51,7 +51,7 @@
                 <div class="ToolTip" style="width: 200px;">
                     Enter the percent of the total cost of this item funded by the customer or program.
                     <br />
-                    Example: If NSIP is funding 50% of the streamflow data collection, enter .5
+                    Example: If FPS is funding 50% of the streamflow data collection, enter .5
                 </div>
             </telerik:RadToolTip>
         </td>
@@ -114,7 +114,7 @@
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
                 Animation="None" Position="BottomRight" RelativeTo="Element" Skin="BlackMetroTouch">
                 <div class="ToolTip" style="width: 200px;">
-                    Enter USGS CWP funds applied to this agreement/mod. The amount entered is the +/- amount set in your agreement/mod letter. Remember, USGS funds can not be applied to programs such as NAWQA, NSIP, GWRP, etc. The field will not be open for entry for these customers.
+                    Enter USGS CWP funds applied to this agreement/mod. The amount entered is the +/- amount set in your agreement/mod letter. Remember, USGS funds can not be applied to programs such as NAWQA, FPS, GWRP, etc. The field will not be open for entry for these customers.
                 </div>
             </telerik:RadToolTip>
         </td>

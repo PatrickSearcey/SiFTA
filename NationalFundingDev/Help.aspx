@@ -14,7 +14,7 @@
         <ul>
         <li style="margin-bottom:1.5em ; list-style-type:none"><b>Quick Guides</b>
         	<ul>
-            	<li><a style="color:#2dabc1;" href="http://sifta.water.usgs.gov/Documents/NSIP_Agreement.pdf">NSIP Agreement Guidance</a></li>
+            	<li><a style="color:#2dabc1;" href="http://sifta.water.usgs.gov/Documents/NSIP_Agreement.pdf">FPS Agreement Guidance</a></li>
             	<li><a style="color:#2dabc1;" href="http://sifta.water.usgs.gov/Documents/USACE_Guidance.pdf">USACE Agreement Guidance</a> &middot <a style="color:#2dabc1;" href="http://sifta.water.usgs.gov/Documents/USACE_1pager.pdf">USACE 1-pager</a></li>
             	<li><a style="color:#2dabc1;" href="http://sifta.water.usgs.gov/Documents/NGWMN_Agreement.pdf">NGWMN Agreement Guidance</a> &middot; <a style="color:#2dabc1;" href="http://sifta.water.usgs.gov/Documents/NGWMN_Agreement_1pager.pdf">NGWMN 1-pager</a> </li>
             </ul>
