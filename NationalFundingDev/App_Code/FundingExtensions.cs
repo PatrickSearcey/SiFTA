@@ -203,7 +203,7 @@ namespace NationalFundingDev
             foreach (var mod in agreement.AgreementMods)
             {
                 //Add the recorded funding to the mod
-                recordedFunds.Add(mod.Number, new FundingAmounts() { USGS = mod.FundingUSGSCWP == null ? 0 : Convert.ToDouble(mod.FundingUSGSCWP), Customer = mod.FundingCustomer == null ? 0 : Convert.ToDouble(mod.FundingCustomer), Other = mod.FundingOther == null ? 0 : Convert.ToDouble(mod.FundingOther) });
+                recordedFunds.Add(mod.Number, new FundingAmounts() { USGS = mod.FundingUSGSCMF == null ? 0 : Convert.ToDouble(mod.FundingUSGSCMF), Customer = mod.FundingCustomer == null ? 0 : Convert.ToDouble(mod.FundingCustomer), Other = mod.FundingOther == null ? 0 : Convert.ToDouble(mod.FundingOther) });
                 //Add a Site Funding for the mod
                 allocatedSiteFunds.Add(mod.Number, new FundingAmounts() { Customer = 0, Other = 0, USGS = 0 });
                 //Add a Studies Funding for the mod
@@ -217,7 +217,7 @@ namespace NationalFundingDev
                     var funding = allocatedSiteFunds[mod.Number];
                     //Set values
                     funding.Customer += Convert.ToDouble(sf.FundingCustomer);
-                    funding.USGS += Convert.ToDouble(sf.FundingUSGSCWP);
+                    funding.USGS += Convert.ToDouble(sf.FundingUSGSCMF);
                     funding.Other += Convert.ToDouble(sf.FundingOther);
                     //Set the FundingAmounts in the dictionary equal to the one you altered.
                     allocatedSiteFunds[mod.Number] = funding;
@@ -228,7 +228,7 @@ namespace NationalFundingDev
                     var funding = allocatedStudiesFunds[mod.Number];
                     //Set values
                     funding.Customer += Convert.ToDouble(sf.FundingCustomer);
-                    funding.USGS += Convert.ToDouble(sf.FundingUSGSCWP);
+                    funding.USGS += Convert.ToDouble(sf.FundingUSGSCMF);
                     funding.Other += Convert.ToDouble(sf.FundingOther);
                     //Set the FundingAmounts in the dictionary equal to the one you altered.
                     allocatedStudiesFunds[mod.Number] = funding;

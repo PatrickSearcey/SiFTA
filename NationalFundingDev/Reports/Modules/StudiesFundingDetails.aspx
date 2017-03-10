@@ -29,10 +29,10 @@
         </tr>
         <tr>
             <td align="right" valign="top">
-                <b>USGS CWP:</b>
+                <b>USGS CMF:</b>
             </td>
             <td>
-                <%: String.Format("{0:C0}", studyFunding.FundingUSGSCWP) %>
+                <%: String.Format("{0:C0}", studyFunding.FundingUSGSCMF) %>
             </td>
         </tr>
         <tr>

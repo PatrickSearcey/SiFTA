@@ -39,7 +39,7 @@
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
                 Animation="None" Position="BottomRight" RelativeTo="Element" Skin="BlackMetroTouch">
                 <div class="ToolTip" style="width:200px;">
-                    Match Pair Code - Basis+ Specific code used to tie CWP funding to customer funding. Only relevant to JFA's
+                    Match Pair Code - Basis+ Specific code used to tie CMF funding to customer funding. Only relevant to JFA's
                 </div>
             </telerik:RadToolTip>
         </td>
@@ -123,10 +123,10 @@
         </td>
     </tr>
     <tr>
-        <td align="right">USGS CWP Funding:
+        <td align="right">USGS CMF Funding:
         </td>
         <td>
-            <telerik:RadNumericTextBox runat="server" ID="rntbUSGSFunding" Type="Currency" NumberFormat-DecimalDigits="2" Skin="Silk" Value="<%# mod.FundingUSGSCWP %>" />
+            <telerik:RadNumericTextBox runat="server" ID="rntbUSGSFunding" Type="Currency" NumberFormat-DecimalDigits="2" Skin="Silk" Value="<%# mod.FundingUSGSCMF %>" />
         </td>
         <td style="vertical-align:bottom;">
             <a runat="server" id="USGSFundingToolTip" >

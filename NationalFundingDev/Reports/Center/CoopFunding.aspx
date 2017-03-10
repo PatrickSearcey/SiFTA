@@ -149,7 +149,7 @@
                                 </FooterTemplate>
                             </telerik:GridTemplateColumn>
                             <telerik:GridBoundColumn DataField="Remarks" HeaderText="Comment" SortExpression="Remarks" UniqueName="Remarks" />
-                            <telerik:GridBoundColumn DataField="FundingUSGSCWP" HeaderText="USGS CWP" SortExpression="FundingUSGSCWP" UniqueName="FundingUSGSCWP"  Aggregate="Sum" ColumnGroupName="Funds" DataFormatString="{0:c2}" />
+                            <telerik:GridBoundColumn DataField="FundingUSGSCMF" HeaderText="USGS CMF" SortExpression="FundingUSGSCMF" UniqueName="FundingUSGSCMF"  Aggregate="Sum" ColumnGroupName="Funds" DataFormatString="{0:c2}" />
                             <telerik:GridBoundColumn DataField="FundingUSGSAllocation" UniqueName="FundingUSGSAllocation" HeaderText="USGS Allocation" ColumnGroupName="Funds" Aggregate="Sum" DataFormatString="{0:c}" />
                             <telerik:GridBoundColumn DataField="FundingCustomer" HeaderText="Customer" SortExpression="FundingCustomer" UniqueName="FundingCustomer" Aggregate="Sum" ColumnGroupName="Funds" DataFormatString="{0:c2}"  />
                             <telerik:GridBoundColumn DataField="FundingTotal" HeaderText="Total" SortExpression="FundingTotal" UniqueName="FundingTotal" Aggregate="Sum" ColumnGroupName="Funds" DataFormatString="{0:c0}"  />

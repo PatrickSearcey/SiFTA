@@ -53,8 +53,8 @@
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="USGSSignDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="Cust Sign" DataField="CustomerSignDate" DataFormatString="{0:MM/dd/yyyy}" />
-                        <telerik:GridNumericColumn DataField="FundingUSGSCWP" SortExpression="FundingUSGSCWP" AllowSorting="true"
-                            UniqueName="FundingUSGSCWP" HeaderText="USGS CWP" DataFormatString="{0:c0}" DataType="System.Decimal"
+                        <telerik:GridNumericColumn DataField="FundingUSGSCMF" SortExpression="FundingUSGSCMF" AllowSorting="true"
+                            UniqueName="FundingUSGSCMF" HeaderText="USGS CMF" DataFormatString="{0:c0}" DataType="System.Decimal"
                             Aggregate="Sum" FooterAggregateFormatString="{0:c0}"
                             ColumnEditorID="ceFunds" />
                     </Columns>

@@ -88,7 +88,7 @@
                         <telerik:GridBoundColumn HeaderText="Customer Sign Date" SortExpression="SignCustomerDate" DataField="SignCustomerDate" DataFormatString="{0:d}" />
                         <telerik:GridBoundColumn HeaderText="Funding Type" SortExpression="FundsType" DataField="FundsType" />
                         <telerik:GridBoundColumn HeaderText="Billing Cycle" SortExpression="BillingCycleFrequency" DataField="BillingCycleFrequency" />
-                        <telerik:GridBoundColumn HeaderText="USGS Funding" SortExpression="FundingUSGSCWPSum" DataField="FundingUSGSCWPSum" DataFormatString="{0:C0}" />
+                        <telerik:GridBoundColumn HeaderText="USGS Funding" SortExpression="FundingUSGSCMFSum" DataField="FundingUSGSCMFSum" DataFormatString="{0:C0}" />
                         <telerik:GridBoundColumn HeaderText="Customer Funding" SortExpression="FundingCustomerSum" DataField="FundingCustomerSum" DataFormatString="{0:C0}" />
                         <telerik:GridBoundColumn HeaderText="Other Funding" SortExpression="FundingOtherSum" DataField="FundingOtherSum" DataFormatString="{0:C0}" />
                         <telerik:GridBoundColumn HeaderText="Total Funding" SortExpression="TotalFundingSum" DataField="TotalFundingSum" DataFormatString="{0:C0}" />
@@ -285,7 +285,7 @@
                                     <a style="color: #4a95a1;" href='<%# AppendBaseURL(String.Format("Agreement.aspx?AgreementID={0}", Eval("AgreementID"))) %>' target="_blank"><%# Eval("Name") %></a>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
-                            <telerik:GridBoundColumn DataFormatString="{0:c0}" HeaderText="USGS" DataField="USGSCWPDifference" SortExpression="USGSCWPDifference" UniqueName="USGS" AllowSorting="true" />
+                            <telerik:GridBoundColumn DataFormatString="{0:c0}" HeaderText="USGS" DataField="USGSCMFDifference" SortExpression="USGSCMFDifference" UniqueName="USGS" AllowSorting="true" />
                             <telerik:GridBoundColumn DataFormatString="{0:c0}" HeaderText="Customer" DataField="CustomerDifference" SortExpression="CustomerDifference" UniqueName="Customer" AllowSorting="true" />
                             <telerik:GridBoundColumn DataFormatString="{0:c0}" HeaderText="Other" DataField="OtherDifference" SortExpression="OtherDifference" UniqueName="Other" AllowSorting="true" />
                             <telerik:GridBoundColumn DataFormatString="{0:c0}" HeaderText="Total" DataField="TotalDifference" SortExpression="TotalDifference" UniqueName="Total" AllowSorting="true" />

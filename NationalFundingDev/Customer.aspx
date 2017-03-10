@@ -167,11 +167,11 @@
                         <telerik:GridBoundColumn HeaderText="Cust Sign" DataField="SignCustomerDate" SortExpression="SignCustomerDate" UniqueName="SignCustomerDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="Type" DataField="FundsType" SortExpression="FundsType" UniqueName="FundsType" />
                         <telerik:GridBoundColumn HeaderText="Cycle" DataField="BillingCycleFrequency" SortExpression="BillingCycleFrequency" UniqueName="BillingCycleFrequency" />
-                        <telerik:GridBoundColumn HeaderText="USGS CWP" DataField="FundingUSGSCWPSum" SortExpression="FundingUSGSCWPSum" UniqueName="FundingUSGSCWPSum" DataFormatString="{0:c0}" />
+                        <telerik:GridBoundColumn HeaderText="USGS CMF" DataField="FundingUSGSCMFSum" SortExpression="FundingUSGSCMFSum" UniqueName="FundingUSGSCMFSum" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn HeaderText="Customer" DataField="FundingCustomerSum" SortExpression="FundingCustomerSum" UniqueName="FundingCustomerSum" DataFormatString="{0:c0}" />
                         <telerik:GridTemplateColumn HeaderText="Total">
                             <ItemTemplate>
-                                <%# String.Format("{0:c0}", Convert.ToDouble(Eval("FundingUSGSCWPSum")) + Convert.ToDouble(Eval("FundingCustomerSum"))) %>
+                                <%# String.Format("{0:c0}", Convert.ToDouble(Eval("FundingUSGSCMFSum")) + Convert.ToDouble(Eval("FundingCustomerSum"))) %>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
                     </Columns>
@@ -383,7 +383,7 @@
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                                 <telerik:GridBoundColumn HeaderText="Account" DataField="AccountNumber" FooterAggregateFormatString="Agreement Total" FooterStyle-HorizontalAlign="Right" Aggregate="Count" />
-                                <telerik:GridBoundColumn HeaderText="USGS" DataField="FundingUSGSCWP" DataFormatString="{0:c2}" Aggregate="Sum" />
+                                <telerik:GridBoundColumn HeaderText="USGS" DataField="FundingUSGSCMF" DataFormatString="{0:c2}" Aggregate="Sum" />
                                 <telerik:GridBoundColumn HeaderText="Cooperator" DataField="FundingCustomer" DataFormatString="{0:c2}" Aggregate="Sum" />
                                 <telerik:GridBoundColumn HeaderText="Status" DataField="Status" />
                                 <telerik:GridBoundColumn HeaderText="Remarks" DataField="Remarks" />

@@ -139,7 +139,7 @@
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
                                 <telerik:GridBoundColumn HeaderText="Account" DataField="AccountNumber" FooterAggregateFormatString="Agreement Total" FooterStyle-HorizontalAlign="Right" Aggregate="Count" />
-                                <telerik:GridBoundColumn HeaderText="USGS" DataField="FundingUSGSCWP" DataFormatString="{0:c2}" Aggregate="Sum" />
+                                <telerik:GridBoundColumn HeaderText="USGS" DataField="FundingUSGSCMF" DataFormatString="{0:c2}" Aggregate="Sum" />
                                 <telerik:GridBoundColumn HeaderText="Cooperator" DataField="FundingCustomer" DataFormatString="{0:c2}" Aggregate="Sum" />
                                 <telerik:GridBoundColumn HeaderText="Status" DataField="Status" />
                                 <telerik:GridBoundColumn HeaderText="Remarks" DataField="Remarks" />

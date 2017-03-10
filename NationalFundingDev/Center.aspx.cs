@@ -278,7 +278,7 @@ namespace NationalFundingDev
             cf.AgreementModID = mod.AgreementModID;
             cf.FiscalYear = Convert.ToInt32(rntbFiscalYear.Value);
             cf.AccountNumber = rcbAccount.Text;
-            cf.FundingUSGSCWP = Convert.ToDouble(rntbUSGS.Value);
+            cf.FundingUSGSCMF = Convert.ToDouble(rntbUSGS.Value);
             cf.FundingCustomer = Convert.ToDouble(rntbCooperator.Value);
             cf.Status = rcbStatus.SelectedValue;
             cf.Remarks = rtbRemarks.Text;

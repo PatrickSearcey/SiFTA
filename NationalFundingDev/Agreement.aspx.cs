@@ -355,7 +355,7 @@ namespace NationalFundingDev
             }
             m.SignUSGSDate = rdpUSGSSigned.SelectedDate;
             m.SignCustomerDate = rdpCustomerSigned.SelectedDate;
-            m.FundingUSGSCWP = Convert.ToDouble(rntbUSGSFunding.Value);
+            m.FundingUSGSCMF = Convert.ToDouble(rntbUSGSFunding.Value);
             m.FundingCustomer = Convert.ToDouble(rntbCustomerFunding.Value);
             m.FundingOther = Convert.ToDouble(rntbOtherFunding.Value);
             m.FundingOtherReason = rtbOtherFundingReason.Text;
@@ -682,7 +682,7 @@ namespace NationalFundingDev
             var rntbUnits = (RadNumericTextBox)userControl.FindControl("rntbUnits");
             var rntbDifficultyFactor = (RadNumericTextBox)userControl.FindControl("rntbDifficultyFactor");
             var rtbDifficultyFactorReason = (RadTextBox)userControl.FindControl("rtbDifficultyFactorReason");
-            var rntbUSGSCWPFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCWPFunding");
+            var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
@@ -704,7 +704,7 @@ namespace NationalFundingDev
             siteFunding.CollectionUnits = rntbUnits.Value;
             siteFunding.DifficultyFactor = rntbDifficultyFactor.Value;
             siteFunding.DifficultyFactorReason = rtbDifficultyFactorReason.Text;
-            siteFunding.FundingUSGSCWP = rntbUSGSCWPFunding.Value.ToDouble();
+            siteFunding.FundingUSGSCMF = rntbUSGSCMFFunding.Value.ToDouble();
             siteFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             siteFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             siteFunding.Remarks = rtbRemarks.Text;
@@ -782,7 +782,7 @@ namespace NationalFundingDev
             var rcbMod = (RadComboBox)userControl.FindControl("rcbMod");
             var rcbType = (RadComboBox)userControl.FindControl("rcbType");
             var rtbBasisProjectNumber = (RadTextBox)userControl.FindControl("rtbBasisProjectNumber");
-            var rntbUSGSCWPFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCWPFunding");
+            var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
@@ -791,7 +791,7 @@ namespace NationalFundingDev
             #region Assign Values
             StudiesFunding.AgreementModID = Convert.ToInt32(rcbMod.SelectedValue);
             if (String.IsNullOrEmpty(rcbType.SelectedValue)) StudiesFunding.ResearchCodeID = null; else StudiesFunding.ResearchCodeID = Convert.ToInt32(rcbType.SelectedValue);
-            StudiesFunding.FundingUSGSCWP = rntbUSGSCWPFunding.Value.ToDouble();
+            StudiesFunding.FundingUSGSCMF = rntbUSGSCMFFunding.Value.ToDouble();
             StudiesFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             StudiesFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             StudiesFunding.BasisProjectNumber = rtbBasisProjectNumber.Text;
@@ -972,7 +972,7 @@ namespace NationalFundingDev
             cf.AgreementModID = mod.AgreementModID;
             cf.FiscalYear = Convert.ToInt32(rntbFiscalYear.Value);
             cf.AccountNumber = rcbAccount.Text;
-            cf.FundingUSGSCWP = Convert.ToDouble(rntbUSGS.Value);
+            cf.FundingUSGSCMF = Convert.ToDouble(rntbUSGS.Value);
             cf.FundingCustomer = Convert.ToDouble(rntbCooperator.Value);
             cf.Status = rcbStatus.SelectedValue;
             cf.Remarks = rtbRemarks.Text;

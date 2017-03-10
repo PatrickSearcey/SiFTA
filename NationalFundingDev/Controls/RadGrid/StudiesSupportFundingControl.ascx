@@ -22,20 +22,20 @@
             <telerik:RadTextBox runat="server" ID="rtbBasisProjectNumber" Text="<%# research.BasisProjectNumber %>" /></td>
     </tr>
     <tr>
-        <td align="right">USGS CWP Funds:</td>
+        <td align="right">USGS CMF Funds:</td>
         <td>
-            <telerik:RadNumericTextBox runat="server" ID="rntbUSGSCWPFunding" Type="Currency" Value="<%# research.FundingUSGSCWP %>" /></td>
+            <telerik:RadNumericTextBox runat="server" ID="rntbUSGSCMFFunding" Type="Currency" Value="<%# research.FundingUSGSCMF %>" /></td>
         <td style="vertical-align: bottom;">
-            <a runat="server" id="FundingUSGSCWPToolTip">
+            <a runat="server" id="FundingUSGSCMFToolTip">
                 <img src="http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
                     onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
                     onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
             </a>
-            <telerik:RadToolTip runat="server" ID="RadToolTip4" TargetControlID="FundingUSGSCWPToolTip" ShowEvent="OnMouseOver"
+            <telerik:RadToolTip runat="server" ID="RadToolTip4" TargetControlID="FundingUSGSCMFToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
                 Animation="None" Position="BottomRight" RelativeTo="Element" Skin="BlackMetroTouch">
                 <div class="ToolTip" style="width: 200px;">
-                    Enter USGS CWP funds applied to this agreement/mod. The amount entered is the +/- amount set in your agreement/mod letter. Remember, USGS funds can not be applied to programs such as NAWQA, FPS, GWRP, etc. The field will not be open for entry for these customers.
+                    Enter USGS CMF funds applied to this agreement/mod. The amount entered is the +/- amount set in your agreement/mod letter. Remember, USGS funds can not be applied to programs such as NAWQA, FPS, GWRP, etc. The field will not be open for entry for these customers.
                 </div>
             </telerik:RadToolTip>
         </td>

@@ -281,10 +281,10 @@ namespace NationalFundingDev.Reports
             {
                 if (rcbFormat.SelectedValue == "TotalBottom")
                 {
-                    var cmd = "SELECT  COALESCE(dtUSGSCWP.FundingUSGSCWP,0) AS FundingUSGSCWP, COALESCE(dtUSGSAllocation.FundingUSGSAllocation, 0) AS FundingUSGSAllocation, COALESCE(dtCustomer.FundingCustomer, 0) AS FundingCustomer, COALESCE(dtTotal.FundingTotal,0) AS FundingTotal " +
-                              "FROM    (SELECT SUM(FundingUSGSCWP) AS FundingUSGSCWP " +
+                    var cmd = "SELECT  COALESCE(dtUSGSCMF.FundingUSGSCMF,0) AS FundingUSGSCMF, COALESCE(dtUSGSAllocation.FundingUSGSAllocation, 0) AS FundingUSGSAllocation, COALESCE(dtCustomer.FundingCustomer, 0) AS FundingCustomer, COALESCE(dtTotal.FundingTotal,0) AS FundingTotal " +
+                              "FROM    (SELECT SUM(FundingUSGSCMF) AS FundingUSGSCMF " +
                                         "FROM  siftadb.dbo.vCooperativeFundingReport " +
-                                        "WHERE (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtUSGSCWP CROSS JOIN " +
+                                        "WHERE (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtUSGSCMF CROSS JOIN " +
                                       "(SELECT SUM(FundingCustomer) AS FundingUSGSAllocation " +
                                         "FROM siftadb.dbo.vCooperativeFundingReport AS vCooperativeFundingReport_3 " +
                                         "WHERE (CustomerAgreementType = 'FED') AND (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtUSGSAllocation CROSS JOIN " +
@@ -396,7 +396,7 @@ namespace NationalFundingDev.Reports
                     where += String.Format(" AND (CustomerAgreementType = 'JFA')");
                 }
                 //Add totals to the select
-                select += ", SUM(FundingUSGSCWP) AS FundingUSGSCWP, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal ";
+                select += ", SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal ";
                 select = select.Replace("SELECT ,", "SELECT ");
                 return String.Format("{0} {1} {2} {3} {4}", select, from, where, groupBy, orderBy);
             }
@@ -450,7 +450,7 @@ namespace NationalFundingDev.Reports
                         }
                         var cell = worksheet.Cells[1, idx];
                         var name = ds.Columns[idx - 1].ColumnName;
-                        name = Regex.Replace(name, "([a-z])([A-Z])", "$1 $2").Replace("USGSCWP", "USGS CWP").Replace("USGSA","USGS A");
+                        name = Regex.Replace(name, "([a-z])([A-Z])", "$1 $2").Replace("USGSCMF", "USGS CMF").Replace("USGSA","USGS A");
                         cell.Value = name;
                         cell.Style.Font.Bold = true;
                         cell.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
@@ -539,7 +539,7 @@ namespace NationalFundingDev.Reports
                 }
                 else
                 {
-                    return Convert.ToDouble(ds.Compute("SUM(FundingUSGSCWP)", null));
+                    return Convert.ToDouble(ds.Compute("SUM(FundingUSGSCMF)", null));
                 }
             }
         }
@@ -615,7 +615,7 @@ namespace NationalFundingDev.Reports
                         }
                         var cell = worksheet.Cells[1, idx];
                         var name = ds.Columns[idx - 1].ColumnName;
-                        name = Regex.Replace(name, "([a-z])([A-Z])", "$1 $2").Replace("USGSCWP", "USGS CWP").Replace("USGSA", "USGS A");
+                        name = Regex.Replace(name, "([a-z])([A-Z])", "$1 $2").Replace("USGSCMF", "USGS CMF").Replace("USGSA", "USGS A");
                         cell.Value = name;
                         cell.Style.Font.Bold = true;
                         cell.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Thin);
@@ -664,7 +664,7 @@ namespace NationalFundingDev.Reports
         {
             get
             {
-                var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCWP) AS FundingUSGSCWP, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] FROM [siftadb].[dbo].[vCoopFundingReportMultiYear] WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
+                var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] FROM [siftadb].[dbo].[vCoopFundingReportMultiYear] WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
                 var dt = new DataTable();
                 using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb;Integrated Security=True"))
                 {

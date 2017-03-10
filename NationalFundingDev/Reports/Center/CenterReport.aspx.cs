@@ -207,7 +207,7 @@ namespace NationalFundingDev
         }
         protected void rgAgreementDifference_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            var ds = siftaDB.vAgreementModDifferences.Where(p => p.OrgCode == center.OrgCode).Where(p => p.CustomerDifference != 0 || p.USGSCWPDifference != 0 || p.OtherDifference != 0).OrderBy(p=>p.Name).ToList();
+            var ds = siftaDB.vAgreementModDifferences.Where(p => p.OrgCode == center.OrgCode).Where(p => p.CustomerDifference != 0 || p.USGSCMFDifference != 0 || p.OtherDifference != 0).OrderBy(p=>p.Name).ToList();
             if (rdpAgreementDifference.SelectedDate != null) ds = ds.Where(p => p.EndDate >= rdpAgreementDifference.SelectedDate).ToList();
             rgAgreementDifference.DataSource = ds;
         }

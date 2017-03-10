@@ -76,33 +76,6 @@ namespace NationalFundingDev {
         protected global::Telerik.Web.UI.RadGrid rgCustomers;
         
         /// <summary>
-        /// RadBinaryImage1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadBinaryImage RadBinaryImage1;
-        
-        /// <summary>
-        /// lbAgreementId control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lbAgreementId;
-        
-        /// <summary>
-        /// rtbCName control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox rtbCName;
-        
-        /// <summary>
         /// rpvCooperativeFunding control.
         /// </summary>
         /// <remarks>

@@ -348,7 +348,7 @@
                                         <p style="padding: 0px; margin: 0px;" title='<%# Eval("DifficultyFactorReason", "Difficulty Factor Reason: {0}") %>'><%# Eval("DifficultyFactor","{0:0.0}") %></p>
                                     </ItemTemplate>
                                 </telerik:GridTemplateColumn>
-                                <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="USGS CWP" DataField="FundingUSGSCWP" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
+                                <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="USGS CMF" DataField="FundingUSGSCMF" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="Customer" DataField="FundingCustomer" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                                 <telerik:GridBoundColumn AllowSorting="true" HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                                 <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingTotal" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
@@ -397,7 +397,7 @@
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.String" HeaderText="Code" DataField="Code" />
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.String" HeaderText="Description" DataField="Description" />
                                 <telerik:GridBoundColumn DataType="System.String" HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks" />
-                                <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="USGS CWP" DataField="FundingUSGSCWP" DataFormatString="{0:c0}" />
+                                <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="USGS CMF" DataField="FundingUSGSCMF" DataFormatString="{0:c0}" />
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="Customer" DataField="FundingCustomer" DataFormatString="{0:c0}" />
                                 <telerik:GridBoundColumn AllowSorting="true" HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
                                 <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingTotal" DataFormatString="{0:c0}" />

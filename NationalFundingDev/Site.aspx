@@ -91,7 +91,7 @@
                                                 <td><b>Collection:</b> <%# Eval("CollectionCode") %> - <%# Eval("CollectionDescription") %></td>
                                             </tr>
                                             <tr>
-                                                <td><b>Units:</b><%# Eval("CollectionUnits") %> | <b>Difficulty Factor:</b><%# Eval("DifficultyFactor") %> | <b>USGS CWP:</b><%# Eval("FundingUSGSCWP", "{0:c0}") %> | <b>Customer:</b><%# Eval("FundingCustomer", "{0:c0}") %></td>
+                                                <td><b>Units:</b><%# Eval("CollectionUnits") %> | <b>Difficulty Factor:</b><%# Eval("DifficultyFactor") %> | <b>USGS CMF:</b><%# Eval("FundingUSGSCMF", "{0:c0}") %> | <b>Customer:</b><%# Eval("FundingCustomer", "{0:c0}") %></td>
                                                 <td></td>
                                             </tr>
                                             <tr>

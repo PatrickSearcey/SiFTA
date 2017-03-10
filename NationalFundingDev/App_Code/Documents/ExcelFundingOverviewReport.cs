@@ -62,10 +62,10 @@ namespace NationalFundingDev
                 worksheet.Cells[String.Format("H{0}", idx)].Value = row.SignCustomerDate;
                 worksheet.Cells[String.Format("I{0}", idx)].Value = row.FundsType;
                 worksheet.Cells[String.Format("J{0}", idx)].Value = row.BillingCycleFrequency;
-                worksheet.Cells[String.Format("K{0}", idx)].Value = row.FundingUSGSCWPSum;
+                worksheet.Cells[String.Format("K{0}", idx)].Value = row.FundingUSGSCMFSum;
                 worksheet.Cells[String.Format("L{0}", idx)].Value = row.FundingCustomerSum;
                 worksheet.Cells[String.Format("M{0}", idx)].Value = row.FundingOtherSum;
-                worksheet.Cells[String.Format("N{0}", idx)].Value = row.FundingCustomerSum + row.FundingOtherSum + row.FundingUSGSCWPSum;
+                worksheet.Cells[String.Format("N{0}", idx)].Value = row.FundingCustomerSum + row.FundingOtherSum + row.FundingUSGSCMFSum;
                 idx++;
             }
             if(_data.Count() >= 1)

@@ -61,7 +61,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 rcbAccount.DataBind();
                 rcbAccount.SelectedValue = cf.AccountNumber;
                 rntbFiscalYear.Value = cf.FiscalYear;
-                rntbUSGS.Value = cf.FundingUSGSCWP;
+                rntbUSGS.Value = cf.FundingUSGSCMF;
                 rntbCooperator.Value = cf.FundingCustomer;
                 rcbStatus.SelectedValue = cf.Status;
                 rtbRemarks.Text = cf.Remarks;

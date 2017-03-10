@@ -206,7 +206,7 @@ namespace NationalFundingDev
             copyMod.EndDate = copy.EndDate;
 
             //Assign values from old mod to new mod
-            copyMod.FundingUSGSCWP = mod.FundingUSGSCWP;
+            copyMod.FundingUSGSCMF = mod.FundingUSGSCMF;
             copyMod.FundingCustomer = mod.FundingCustomer;
             copyMod.FundingOther = mod.FundingOther;
             copyMod.FundingOtherReason = mod.FundingOtherReason;
@@ -225,7 +225,7 @@ namespace NationalFundingDev
                     DifficultyFactor = siteF.DifficultyFactor,
                     DifficultyFactorReason = siteF.DifficultyFactorReason,
                     FundingCustomer = siteF.FundingCustomer,
-                    FundingUSGSCWP = siteF.FundingUSGSCWP,
+                    FundingUSGSCMF = siteF.FundingUSGSCMF,
                     CollectionUnits = siteF.CollectionUnits,
                     SiteNumber = siteF.SiteNumber,
                     Remarks = siteF.Remarks,
@@ -245,7 +245,7 @@ namespace NationalFundingDev
                     Units = studiesF.Units,
                     Remarks = studiesF.Remarks,
                     FundingCustomer = studiesF.FundingCustomer,
-                    FundingUSGSCWP = studiesF.FundingUSGSCWP,
+                    FundingUSGSCMF = studiesF.FundingUSGSCMF,
                     CreatedBy = user.ID,
                     CreatedDate = DateTime.Now,
                     ModifiedBy = user.ID,
@@ -275,7 +275,7 @@ namespace NationalFundingDev
                     ModNumber = cfunding.ModNumber,
                     FiscalYear = Convert.ToInt32(cfunding.FiscalYear) + 1,
                     FundingCustomer = cfunding.FundingCustomer,
-                    FundingUSGSCWP = cfunding.FundingUSGSCWP
+                    FundingUSGSCMF = cfunding.FundingUSGSCMF
                 });
             }
             siftaDB.SubmitChanges();
@@ -448,7 +448,7 @@ namespace NationalFundingDev
             }
             m.SignUSGSDate = rdpUSGSSigned.SelectedDate;
             m.SignCustomerDate = rdpCustomerSigned.SelectedDate;
-            m.FundingUSGSCWP = rntbUSGSFunding.Value;
+            m.FundingUSGSCMF = rntbUSGSFunding.Value;
             m.FundingCustomer = rntbCustomerFunding.Value;
             m.FundingOther = rntbOtherFunding.Value;
             a.ModifiedBy = m.ModifiedBy = user.ID;
@@ -766,7 +766,7 @@ namespace NationalFundingDev
             cf.AgreementModID = mod.AgreementModID;
             cf.FiscalYear = Convert.ToInt32(rntbFiscalYear.Value);
             cf.AccountNumber = rcbAccount.Text;
-            cf.FundingUSGSCWP = Convert.ToDouble(rntbUSGS.Value);
+            cf.FundingUSGSCMF = Convert.ToDouble(rntbUSGS.Value);
             cf.FundingCustomer = Convert.ToDouble(rntbCooperator.Value);
             cf.Status = rcbStatus.SelectedValue;
             cf.Remarks = rtbRemarks.Text;

@@ -42,8 +42,8 @@ namespace NationalFundingDev.Controls.RadGrid
                 //Check to see if it is a JFA 1=JFA
                 if (customer.CustomerAgreementTypeID != 1)
                 {
-                    rntbUSGSCWPFunding.ReadOnly = true;
-                    rntbUSGSCWPFunding.BackColor = System.Drawing.Color.LightGray;
+                    rntbUSGSCMFFunding.ReadOnly = true;
+                    rntbUSGSCMFFunding.BackColor = System.Drawing.Color.LightGray;
                 }
             }
             //Update
@@ -80,8 +80,8 @@ namespace NationalFundingDev.Controls.RadGrid
                 //Check to see if it is a JFA 1=JFA
                 if (customer.CustomerAgreementTypeID != 1)
                 {
-                    rntbUSGSCWPFunding.ReadOnly = true;
-                    rntbUSGSCWPFunding.BackColor = System.Drawing.Color.LightGray;
+                    rntbUSGSCMFFunding.ReadOnly = true;
+                    rntbUSGSCMFFunding.BackColor = System.Drawing.Color.LightGray;
                 }
             }
         }

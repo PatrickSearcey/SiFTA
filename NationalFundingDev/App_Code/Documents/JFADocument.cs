@@ -59,7 +59,7 @@ namespace NationalFundingDev
             terms.Add("[TIN]", agreement.CustomerTIN);
             terms.Add("[PurchaseOrderNum]", agreement.PurchaseOrderNumber);
             terms.Add("[FundsType]", FixedorActual);
-            terms.Add("[FundingUSGS]", String.Format("{0:C0}", agreement.FundingUSGSCWP));
+            terms.Add("[FundingUSGS]", String.Format("{0:C0}", agreement.FundingUSGSCMF));
             terms.Add("[FundingCust]", String.Format("{0:C0}", agreement.FundingCustomer));
             terms.Add("[usgsFundingSentence]", FundingSentence);
             if(agreement.BillingCycleFrequency != null)terms.Add("[BillingFrequency]", agreement.BillingCycleFrequency.ToLower());
@@ -227,9 +227,9 @@ namespace NationalFundingDev
         {
             get
             {
-                if (agreement.FundingUSGSCWP > 0)
+                if (agreement.FundingUSGSCMF > 0)
                 {
-                    return string.Format("U.S. Geological Survey contributions for this agreement are {0:C0} for a combined total of {1:C0}. ", agreement.FundingUSGSCWP, agreement.FundingCustomer + agreement.FundingUSGSCWP);
+                    return string.Format("U.S. Geological Survey contributions for this agreement are {0:C0} for a combined total of {1:C0}. ", agreement.FundingUSGSCMF, agreement.FundingCustomer + agreement.FundingUSGSCMF);
                 }
                 else
                 {

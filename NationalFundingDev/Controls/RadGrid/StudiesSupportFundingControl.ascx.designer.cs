@@ -40,22 +40,22 @@ namespace NationalFundingDev.Controls.RadGrid {
         protected global::Telerik.Web.UI.RadTextBox rtbBasisProjectNumber;
         
         /// <summary>
-        /// rntbUSGSCWPFunding control.
+        /// rntbUSGSCMFFunding control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadNumericTextBox rntbUSGSCWPFunding;
+        protected global::Telerik.Web.UI.RadNumericTextBox rntbUSGSCMFFunding;
         
         /// <summary>
-        /// FundingUSGSCWPToolTip control.
+        /// FundingUSGSCMFToolTip control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor FundingUSGSCWPToolTip;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor FundingUSGSCMFToolTip;
         
         /// <summary>
         /// RadToolTip4 control.
