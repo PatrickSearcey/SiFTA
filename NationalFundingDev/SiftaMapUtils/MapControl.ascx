@@ -31,7 +31,9 @@
 <script>
     var mapElemID = '<%= map.ClientID %>';
     var siteDataElemID = '<%= hfSites.ClientID %>';
+    
     M.ready = function () {
+        //console.log($("#" + siteDataElemID).val());
         M.initMap({ "mapElemID": mapElemID, "mapDataElemID": siteDataElemID, "basemap": "topo", "refreshZoom": "points", "homeZoom": "points" });
     };
     $(document).ready(function () {
@@ -41,6 +43,7 @@
         map.css("height", height);
         map.css("width", width);
         $(".legendBody").hide();
+        
     });
 </script>
 

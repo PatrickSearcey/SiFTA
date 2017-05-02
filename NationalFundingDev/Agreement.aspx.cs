@@ -132,6 +132,8 @@ namespace NationalFundingDev
         #region Tab Strip
         protected void rtsAgreementOptions_TabClick(object sender, Telerik.Web.UI.RadTabStripEventArgs e)
         {
+            if (e.Tab.TabIndex == 20) Response.Redirect(String.Format("http://nwissdpdasnwra.cr.usgs.gov/cgi-bin/attachment-ca.cgi?AgreementID={0}", agreement.AgreementID));
+            if (e.Tab.TabIndex == 21) Response.Redirect(String.Format("http://nwissdpdasnwra.cr.usgs.gov/cgi-bin/attachment.cgi?AgreementID={0}", agreement.AgreementID));
             //If the tab has children 
             if (e.Tab.Tabs.Count > 0)
             {

@@ -51,7 +51,7 @@ namespace NationalFundingDev.Reports
                 var site = siftaDB.Sites.FirstOrDefault(p => p.SiteNumber == siteNumber);
                 if (site != null) sites.Add(site);
             }
-            map.Sites = sites;
+            map.Sites = sites.Distinct().ToList();
         }
     }
 }

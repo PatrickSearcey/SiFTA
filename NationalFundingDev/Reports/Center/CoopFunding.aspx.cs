@@ -20,7 +20,7 @@ namespace NationalFundingDev.Reports
         private User user = new User();
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private List<vCooperativeFundingReport> report;
-        private Center center;
+        public Center center;
         #endregion
 
         #region Page Initialization

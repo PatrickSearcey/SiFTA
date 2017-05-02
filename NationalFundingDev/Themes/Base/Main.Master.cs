@@ -39,7 +39,7 @@ namespace NationalFundingDev
         {
             if (!String.IsNullOrEmpty(e.Text))
             {
-                var results = siftaDB.spSearchEngine(e.Text).ToList();
+                var results = siftaDB.spSearchEngine(e.Text.Trim()).ToList();
                 if (results.Count() == 1)
                 {
                     var url = results.FirstOrDefault().URL.AppendBaseURL();

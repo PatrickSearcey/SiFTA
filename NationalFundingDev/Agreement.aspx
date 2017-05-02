@@ -100,6 +100,8 @@
                 <Tabs>
                     <telerik:RadTab TabIndex="5" Text="Upload Documents" />
                     <telerik:RadTab TabIndex="4" Text="JFA Document Generator" />
+                    <telerik:RadTab TabIndex="20" Text="Summary Attachment" Target="_blank" />
+                    <telerik:RadTab TabIndex="21" Text="Detailed Attachment" Target="_blank" />
                 </Tabs>
             </telerik:RadTab>
             <telerik:RadTab TabIndex="2" Text="Site Funding" />

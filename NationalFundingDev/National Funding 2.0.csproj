@@ -191,34 +191,6 @@
     <Compile Include="Reports\National\RealTimeSitesFunding.aspx.designer.cs">
       <DependentUpon>RealTimeSitesFunding.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Reports\Thematic\GroupAccountDetails.aspx.cs">
-      <DependentUpon>GroupAccountDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupAccountDetails.aspx.designer.cs">
-      <DependentUpon>GroupAccountDetails.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupAccountSum.aspx.cs">
-      <DependentUpon>GroupAccountSum.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupAccountSum.aspx.designer.cs">
-      <DependentUpon>GroupAccountSum.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupAgreementSum.aspx.cs">
-      <DependentUpon>GroupAgreementSum.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupAgreementSum.aspx.designer.cs">
-      <DependentUpon>GroupAgreementSum.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupSiteDetails.aspx.cs">
-      <DependentUpon>GroupSiteDetails.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Reports\Thematic\GroupSiteDetails.aspx.designer.cs">
-      <DependentUpon>GroupSiteDetails.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Service References\ActiveDirectoryService\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -467,10 +439,6 @@
     <None Include="Service References\ActiveDirectoryService\configuration.svcinfo" />
     <Content Include="Reports\National\National.aspx" />
     <Content Include="Reports\National\RealTimeSitesFunding.aspx" />
-    <Content Include="Reports\Thematic\GroupAccountDetails.aspx" />
-    <Content Include="Reports\Thematic\GroupAccountSum.aspx" />
-    <Content Include="Reports\Thematic\GroupAgreementSum.aspx" />
-    <Content Include="Reports\Thematic\GroupSiteDetails.aspx" />
     <Content Include="Service References\ActiveDirectoryService\NationalFundingDev.ActiveDirectoryService.Employee.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -746,7 +714,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -12,10 +12,6 @@
           <siteMapNode url="~/Reports/National/National.aspx" title="National" description="" />
           <siteMapNode url="" title="Thematic" description="">
             <siteMapNode url="~/Reports/Thematic/FPSOperationReport.aspx" title="FPS Operation and Maintenance Cost" description="" />
-            <siteMapNode url="~/Reports/Thematic/GroupAgreementSum.aspx" title="Group Agreement Summary" description="" />
-            <siteMapNode url="~/Reports/Thematic/GroupAccountSum.aspx" title="Group Account Summary" description="" />
-            <siteMapNode url="~/Reports/Thematic/GroupAccountDetails.aspx" title="Group Account Details" description="" />
-            <siteMapNode url="~/Reports/Thematic/GroupSiteDetails.aspx" title="Group Site Details" description="" />
           </siteMapNode>
         </siteMapNode>
         <siteMapNode url="~/Help.aspx" title="Help"  description="" />
