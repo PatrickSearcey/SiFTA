@@ -64,6 +64,11 @@ namespace NationalFundingDev.Controls.RadGrid
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
                 }
+
+                rdpStartDate.SelectedDate = mod.StartDate;
+                if (mod.StartDate != null) rdpEndDate.MinDate = Convert.ToDateTime(mod.StartDate);
+
+                if (mod.EndDate > mod.StartDate) rdpEndDate.SelectedDate = mod.EndDate;
             }
             
         }
@@ -84,6 +89,12 @@ namespace NationalFundingDev.Controls.RadGrid
             rcbFundsType.DataBind();
             rcbFundsType.SelectedValue = agreement.FundsType;
             rcbBillingCycle.SelectedValue = agreement.BillingCycleFrequency;
+        }
+
+        protected void rdpStartDate_SelectedDateChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
+        {
+            if (rdpStartDate != null) rdpEndDate.MinDate = Convert.ToDateTime(rdpStartDate.SelectedDate);
+            else rdpEndDate.MinDate = new DateTime(1700, 1, 1);
         }
     }
 }

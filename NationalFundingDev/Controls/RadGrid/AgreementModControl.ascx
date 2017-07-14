@@ -70,14 +70,14 @@ Sales Order Number: Auto-populated from FBMS. Not editable for modifications.
         <td align="right">Start Date:
         </td>
         <td>
-            <telerik:RadDatePicker runat="server" ID="rdpStartDate" Skin="Silk" SelectedDate="<%# mod.StartDate %>" />
+            <telerik:RadDatePicker runat="server" ID="rdpStartDate" Skin="Silk" OnSelectedDateChanged="rdpStartDate_SelectedDateChanged" />
         </td>
     </tr>
     <tr>
         <td align="right">End Date:
         </td>
         <td>
-            <telerik:RadDatePicker runat="server" ID="rdpEndDate" Skin="Silk" SelectedDate="<%# mod.EndDate %>" />
+            <telerik:RadDatePicker runat="server" ID="rdpEndDate" Skin="Silk" />
         </td>
     </tr>
     <tr>
