@@ -171,7 +171,7 @@
             title.onAdd = function (map) {
 
                 var div = L.DomUtil.create('div', 'info title');
-                div.innerHTML = "<h1>Unfunded Real-Time Sites Map</h1>";
+                div.innerHTML = "<h1>Real-time Sites Funding Status</h1>";
 
                 return div;
             };

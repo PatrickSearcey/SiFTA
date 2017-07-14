@@ -6,7 +6,7 @@
 
       <siteMapNode title="Maps"  description="">
         <siteMapNode title="National Programs Sites" description="" url="~/Reports/Maps/SiteMap.aspx" />
-        <siteMapNode title="Unfunded Real-Time Sites" description="" url="~/Reports/National/RealTimeSitesFunding.aspx" />
+        <siteMapNode title="Real-time Sites Funding Status" description="" url="~/Reports/National/RealTimeSitesFunding.aspx" />
       </siteMapNode>
         <siteMapNode url="" title="Reports"  description="" >
           <siteMapNode url="~/Reports/National/National.aspx" title="National" description="" />
