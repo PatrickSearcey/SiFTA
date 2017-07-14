@@ -12,7 +12,7 @@ namespace NationalFundingDev
     {
         #region Local Variables
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
-        private Center center;
+        public Center center;
         private User user;
         #endregion 
 

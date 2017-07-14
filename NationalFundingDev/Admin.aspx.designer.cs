@@ -31,6 +31,15 @@ namespace NationalFundingDev {
         protected global::Telerik.Web.UI.RadAjaxLoadingPanel ralp;
         
         /// <summary>
+        /// ltlTitle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal ltlTitle;
+        
+        /// <summary>
         /// rtsAdminOptions control.
         /// </summary>
         /// <remarks>
