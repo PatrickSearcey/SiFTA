@@ -62,7 +62,7 @@
 </asp:Content>
 <asp:Content ID="Content5" ContentPlaceHolderID="cphInformation" runat="server">
     <h2><asp:Literal runat="server" ID="ltlTitle" /></h2>
-    <a href='<%= String.Format("../../Center.aspx?OrgCode={0}", center.OrgCode) %>' style="color: orange;">Center Home</a> >> Coop Funding
+    <a href='<%= String.Format("../../Center.aspx?OrgCode={0}", center.OrgCode) %>' style="color: orange;">Center Home</a> >> Account Funding
 </asp:Content>
 <asp:Content ID="Content6" ContentPlaceHolderID="cphSidePanel" runat="server">
     <hr />

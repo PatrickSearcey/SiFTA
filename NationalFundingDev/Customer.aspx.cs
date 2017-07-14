@@ -51,7 +51,7 @@ namespace NationalFundingDev
                 //Check for Texas Users Only
                 if (customer.Center.CoopDBAccess)
                 {
-                    rtsCustomerOptions.Tabs.Add(new RadTab() { Text = "Coop Funding", TabIndex = 3 });
+                    rtsCustomerOptions.Tabs.Add(new RadTab() { Text = "Account Funding", TabIndex = 3 });
                 }
                 
             }

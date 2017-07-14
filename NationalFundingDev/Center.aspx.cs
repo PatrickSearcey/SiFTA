@@ -40,7 +40,7 @@ namespace NationalFundingDev
                     {
                         rtsCenterOptions.Tabs.Add(new RadTab()
                         {
-                            Text = "Coop Funding",
+                            Text = "Account Funding",
                             TabIndex = 1
                         });
                         rtsCenterOptions.SelectedIndex = rmpCenterOptions.SelectedIndex = SelectedIndex;
