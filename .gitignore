@@ -2,3 +2,5 @@
 NationalFundingDev/bin/
 NationalFundingDev/obj/
 packages/
+.vs/NationalFundingDev/v15/Server/sqlite3/storage.ide
+.vs/NationalFundingDev/v15/Server/sqlite3/db.lock
