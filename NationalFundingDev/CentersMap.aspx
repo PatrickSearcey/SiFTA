@@ -21,7 +21,7 @@
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="406,182,321,173,313,239,403,248" NavigateUrl="~/Center.aspx?OrgCode=GCRE" AlternateText="Colorado" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="307,104,309,103,388,113,381,178,320,173,298,165" NavigateUrl="~/Center.aspx?OrgCode=GWRS" AlternateText="Wyoming-Montana" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="393,48,263,31,262,58,274,71,270,86,277,87,284,108,298,107,306,110,307,102,388,113" NavigateUrl="~/Center.aspx?OrgCode=GWRS" AlternateText="Wyoming-Montana" />
-        <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="468,53,395,49,389,97,475,101" NavigateUrl="~/Center.aspx?OrgCode=GENS" AlternateText="North Dakota" />
+        <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="468,53,395,49,389,97,475,101" NavigateUrl="~/Center.aspx?OrgCode=GENT" AlternateText="North Dakota" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="473,156,475,142,475,112,472,106,473,102,390,99,386,145,454,149,457,152,465,150" NavigateUrl="~/Center.aspx?OrgCode=GENT" AlternateText="South Dakota" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="491,198,474,155,466,150,460,153,454,151,386,146,383,176,403,182,408,195" NavigateUrl="~/Center.aspx?OrgCode=GENR" AlternateText="Nebraska" />
         <asp:PolygonHotSpot HotSpotMode="Navigate" Coordinates="499,250,500,213,492,207,496,202,491,199,406,196,405,247" NavigateUrl="~/Center.aspx?OrgCode=GCSE" AlternateText="Kansas" />
