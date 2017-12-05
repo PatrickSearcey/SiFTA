@@ -66,7 +66,9 @@
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
         <telerik:RadPageView TabIndex="1" runat="server" ID="rpvFundingOverview">
-            <telerik:RadButton runat="server" ID="rbFundingOverview" Skin="MetroTouch" Text="Download Excel File (.xlsx)" OnClick="rbFundingOverviewDownload_Click" Width="100%" AutoPostBack="true" />
+            <center><asp:Literal runat="server" ID="ltlAgreementsEnding" /> active agreements between <telerik:RadDatePicker runat="server" ID="rdpFOStart" OnSelectedDateChanged="agreementEndingChanged" AutoPostBack="true" /> and <telerik:RadDatePicker runat="server" ID="rdpFOEnd" OnSelectedDateChanged="agreementEndingChanged" AutoPostBack="true" /></center>
+                <br />
+            <telerik:RadButton runat="server" ID="rbFundingOverview" Skin="MetroTouch" Text="Download Excel File (.xlsx)[All Data]" OnClick="rbFundingOverviewDownload_Click" Width="100%" AutoPostBack="true" />
             <telerik:RadGrid GroupingEnabled="true" runat="server" ID="rgFundingOverview" AutoGenerateColumns="false" OnNeedDataSource="rgFundingOverview_NeedDataSource">
                 <MasterTableView>
                     <Columns>

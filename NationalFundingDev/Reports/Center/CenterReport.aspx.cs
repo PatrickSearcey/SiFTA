@@ -25,6 +25,7 @@ namespace NationalFundingDev
             ltlTitle.Text = String.Format("{0} Report", center.Name);
             if(!IsPostBack)
             {
+                rdpFOStart.SelectedDate = DateTime.Now;
                 rdpAgreementStatusEndDate.SelectedDate = DateTime.Now;
                 rdpUnfundedRTSitesDate.SelectedDate = DateTime.Now;
                 rdpAgreementDifference.SelectedDate = DateTime.Now;
@@ -120,7 +121,25 @@ namespace NationalFundingDev
         }
         protected void rgFundingOverview_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgFundingOverview.DataSource = siftaDB.vReportFundingOverviews.Where(p => p.OrgCode == center.OrgCode && p.EndDate > DateTime.Now).ToList();
+            var data = siftaDB.vReportFundingOverviews.Where(p => p.OrgCode == center.OrgCode);
+            if(rdpFOStart.SelectedDate > rdpFOEnd.SelectedDate)
+            {
+                rdpFOEnd.SelectedDate = rdpFOStart.SelectedDate;
+            }
+            if(rdpFOEnd.SelectedDate != null)
+            {
+                data = data.Where(p => p.EndDate <= rdpFOEnd.SelectedDate);
+            }
+            if(rdpFOStart.SelectedDate != null)
+            {
+                data = data.Where(p => p.EndDate >= rdpFOStart.SelectedDate);
+            }
+            rgFundingOverview.DataSource = data.ToList();
+            ltlAgreementsEnding.Text = data.Count().ToString();
+        }
+        protected void agreementEndingChanged(object sender, Telerik.Web.UI.Calendar.SelectedDateChangedEventArgs e)
+        {
+            rgFundingOverview.Rebind();
         }
         #endregion
 
