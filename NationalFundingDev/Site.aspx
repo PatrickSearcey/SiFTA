@@ -35,7 +35,7 @@
     <b><%= site.SiteNumber %> - <%= site.Name %></b> (<%= site.Latitude %>, <%= site.Longitude %>)<br />
     <%= site.OfficeCode %> - <%= site.OfficeName %><br />
     <a href='<%= String.Format("http://waterdata.usgs.gov/nwis/nwisman/?site_no={0}", site.SiteNumber) %>'>NWIS</a> | 
-    <a href='<%= String.Format("http://sims.water.usgs.gov/SIMSClassic/StationInfo.asp?site_no={0}&agency_cd=USGS", site.SiteNumber) %>'>SIMS</a><br />
+    <a href='<%= String.Format("http://sims.water.usgs.gov/SIMS/StationInfo.aspx?site_no={0}&agency_cd=USGS", site.SiteNumber) %>'>SIMS</a><br />
     <br />
     <a href='<%= String.Format("Center.aspx?OrgCode={0}", GetSiteCentersHomeURL()) %>' style="color: orange;">Center Home</a> >> Site Portal
 </asp:Content>
