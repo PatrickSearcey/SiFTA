@@ -7,11 +7,11 @@
     <title>
         <asp:ContentPlaceHolder ID="cphTitle" runat="server" />
     </title>
-    <link rel="Shortcut Icon" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/favicon.ico" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Footer.css" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Header.css" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Main.css" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Wrapper.css" />
+    <link rel="Shortcut Icon" href="~/Themes/Base/Images/favicon.ico" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Footer.css" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Header.css" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Main.css" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Wrapper.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <asp:ContentPlaceHolder ID="cphStyles" runat="server" />
     <script>

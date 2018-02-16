@@ -17,7 +17,7 @@
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UseIISExpress>true</UseIISExpress>
-    <IISExpressSSLPort />
+    <IISExpressSSLPort>44393</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication>disabled</IISExpressAnonymousAuthentication>
     <IISExpressWindowsAuthentication>enabled</IISExpressWindowsAuthentication>
     <IISExpressUseClassicPipelineMode />
@@ -27,6 +27,7 @@
     <SccAuxPath>SAK</SccAuxPath>
     <SccProvider>SAK</SccProvider>
     <UseGlobalApplicationHostFile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -432,13 +433,15 @@
     <Content Include="Documents\Forms\JFATemplate-old.docx" />
     <Content Include="Documents\Forms\JFATemplate.docx" />
     <Content Include="packages.config" />
-    <None Include="Properties\PublishProfiles\18 - National Funding Dev.pubxml" />
-    <None Include="Properties\PublishProfiles\National Funding.pubxml" />
+    <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
+    <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <None Include="Service References\ActiveDirectoryService\ActiveDirectory.disco" />
     <None Include="Service References\ActiveDirectoryService\configuration91.svcinfo" />
     <None Include="Service References\ActiveDirectoryService\configuration.svcinfo" />
     <Content Include="Reports\National\National.aspx" />
     <Content Include="Reports\National\RealTimeSitesFunding.aspx" />
+    <Content Include="Scripts\leaflet\leaflet.css" />
+    <Content Include="Scripts\leaflet\leaflet.js" />
     <Content Include="Service References\ActiveDirectoryService\NationalFundingDev.ActiveDirectoryService.Employee.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
@@ -631,7 +634,6 @@
     <Content Include="SiftaMapUtils\leaflet\leaflet-zoom-home\leaflet-zoom-min-master.zip" />
     <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-master.zip" />
     <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen-gh-pages.zip" />
-    <None Include="Properties\PublishProfiles\NationalFundingDev.pubxml" />
     <Content Include="SiftaSiteMap.sitemap" />
     <None Include="Service References\ActiveDirectoryService\ActiveDirectory.wsdl" />
     <None Include="Service References\ActiveDirectoryService\ActiveDirectory.xsd">
@@ -662,7 +664,6 @@
     <Folder Include="Help\" />
     <Folder Include="Reports\Customer\" />
     <Folder Include="Reports\Metrics Library\" />
-    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="VBIDE">
@@ -714,7 +715,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

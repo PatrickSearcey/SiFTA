@@ -7,13 +7,13 @@
     <title>
         <asp:ContentPlaceHolder ID="cphTitle" runat="server" />
     </title>
-    <link rel="icon" href='http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/favicon.ico' />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Footer.css" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Header.css" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Main.css" />
-    <link rel="stylesheet" href="http://sifta.water.usgs.gov/NationalFunding/Themes/Base/StyleSheets/Wrapper.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link rel="icon" href='~/Themes/Base/Images/favicon.ico' />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Footer.css" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Header.css" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Main.css" />
+    <link rel="stylesheet" href="~/Themes/Base/StyleSheets/Wrapper.css" />
+    <script src="Scripts/leaflet/leaflet.js"></script>
+    <link rel="stylesheet" href="~/Scripts/leaflet/leaflet.css" />
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/Leaflet.fullscreen.min.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v0.0.3/leaflet.fullscreen.css' rel='stylesheet' />
@@ -40,7 +40,7 @@
                     <div id="usgsbanner">
                         <div id="usgsidentifier">
                             <a href="http://www.usgs.gov/">
-                                <img src='<%= ResolveUrl("~/Themes/Base/Images/USGSLogo.png") %>' alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page" width="180" height="72" /></a>
+                                <img src='<%= AppendToRoot("Themes/Base/Images/USGSLogo.png") %>' alt="USGS - science for a changing world" title="U.S. Geological Survey Home Page" width="180" height="72" /></a>
                         </div>
                         <div id="usgsccsabox">
                             <div id="usgsccsa">

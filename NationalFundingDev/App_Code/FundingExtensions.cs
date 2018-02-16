@@ -328,7 +328,7 @@ namespace NationalFundingDev
             if (String.IsNullOrEmpty(path)) return baseURL;
             temp = path.Replace("~/", "");
             if (path.StartsWith("/")) temp = temp.Substring(1, path.Length - 1);
-            return String.Format("{0}{1}", baseURL, temp);
+            return String.Format("{0}/{1}", baseURL, temp);
         }
 
         public static String XMLSafe(this string str)

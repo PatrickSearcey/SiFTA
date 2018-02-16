@@ -35,7 +35,7 @@ namespace NationalFundingDev
             //Set Customer Logo Source
             imgCustLogo.ImageUrl = String.Format("http://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", CustomerID);
             //Set the target folder for the image uploader
-            var dir = "D:\\siftaroot\\Temp\\";
+            var dir = @"\\IGSKIACWVMGS018\siftaroot\Temp\";
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);

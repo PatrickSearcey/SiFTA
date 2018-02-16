@@ -3,7 +3,7 @@
 	font: 14px Verdana, Arial, Helvetica, sans-serif;
 	width: 100%;
 	height: 5.14em;
-	background: #bdbdbd url(http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/banner.png) 178px 0px no-repeat; 
+	background: #bdbdbd url(https://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/banner.png) 178px 0px no-repeat; 
 	min-height: 72px;
 }
 .Header #usgsbanner {
@@ -33,7 +33,7 @@
 }
 .Header #usgstitle { 
 	background: #bdbdbd;
-    background-image: url(http://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/usgstitlebackground2.png);
+    background-image: url(https://sifta.water.usgs.gov/NationalFunding/Themes/Base/Images/usgstitlebackground2.png);
     background-repeat: repeat-x;
 	width: 100% !important;
 	font: 14px Verdana, Arial, Helvetica, sans-serif;  

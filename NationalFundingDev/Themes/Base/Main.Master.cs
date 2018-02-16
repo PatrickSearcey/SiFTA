@@ -24,6 +24,11 @@ namespace NationalFundingDev
                 TopBarLoaded = "true";
             }
         }
+        public String AppendToRoot(String destination)
+        {
+            var root = HttpContext.Current.Request.Url.AbsoluteUri.Replace(HttpContext.Current.Request.Url.PathAndQuery, "");
+            return $"{root}{HttpContext.Current.Request.ApplicationPath}/{destination}";
+        }
         /// <summary>
         /// Returns the Title of the current page 
         /// Value is set in Session["Title"]

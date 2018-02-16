@@ -5,8 +5,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStyles" runat="server">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
-    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <style type="text/css">
         .info {
             padding: 6px 8px;
@@ -82,7 +82,7 @@
         }
         function doubleClick(e) {
             var orgCode = e.target.feature.properties.OrgCode;
-            window.open('http://sifta.water.usgs.gov/NationalFunding/Reports/Center/CenterReport.aspx?OrgCode=' + orgCode, 'SiteFunding', 'window settings');
+            window.open('https://sifta.water.usgs.gov/NationalFunding/Reports/Center/CenterReport.aspx?OrgCode=' + orgCode, 'SiteFunding', 'window settings');
         }
         function getColor(d) {
             return d == 100 ? '#1C9412' :
@@ -122,7 +122,7 @@
             map.setView([50.8282, -110.5795], 3);
             L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Map data &copy;' }).addTo(map);
 
-            $.getJSON("http://sifta.water.usgs.gov/ServicesDev/Rest/site/CenterRealTimeSiteFunding.ashx", function (data) {
+            $.getJSON("https://siftadev.cr.usgs.gov/ServicesDev/Rest/site/CenterRealTimeSiteFunding.ashx", function (data) {
                 L.geoJson(data, { style: style, onEachFeature: onEachFeature }).addTo(map);
             });
 
