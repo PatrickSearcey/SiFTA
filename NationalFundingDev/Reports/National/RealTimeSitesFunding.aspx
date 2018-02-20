@@ -122,7 +122,7 @@
             map.setView([50.8282, -110.5795], 3);
             L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Map data &copy;' }).addTo(map);
 
-            $.getJSON("https://siftadev.cr.usgs.gov/ServicesDev/Rest/site/CenterRealTimeSiteFunding.ashx", function (data) {
+            $.getJSON("https://sifta.water.usgs.gov/Services/api/Site/CenterRealTimeSiteFunding", function (data) {
                 L.geoJson(data, { style: style, onEachFeature: onEachFeature }).addTo(map);
             });
 
