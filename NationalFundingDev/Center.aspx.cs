@@ -198,7 +198,7 @@ namespace NationalFundingDev
             {
                 foreach (UploadedFile file in rauImage.UploadedFiles)
                 {
-                    var dir = "D:\\siftaroot\\Temp\\";
+                    var dir = FileDirectoryHelper.GetTempDirectory();
                     if(!Directory.Exists(dir))
                     {
                         Directory.CreateDirectory(dir);

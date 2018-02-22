@@ -28,7 +28,7 @@ namespace NationalFundingDev.Controls.RadGrid
         #endregion
         protected void Page_Load(object sender, EventArgs e)
         {
-            var dir = "D:\\siftaroot\\Temp\\";
+            var dir = FileDirectoryHelper.GetTempDirectory();
             if (!Directory.Exists(dir))
             {
                 Directory.CreateDirectory(dir);

@@ -115,6 +115,7 @@
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.designer.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
     </Compile>
+    <Compile Include="FileDirectoryHelper.cs" />
     <Compile Include="GenerateRecordID.aspx.cs">
       <DependentUpon>GenerateRecordID.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -715,7 +716,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

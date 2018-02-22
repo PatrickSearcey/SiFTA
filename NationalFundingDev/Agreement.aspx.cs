@@ -834,7 +834,7 @@ namespace NationalFundingDev
         protected void rbUploadDocuments_Click(object sender, EventArgs e)
         {
             //\\igskiacwvmgs014\siftaroot\Documents\Agreements\AgreementID\
-            var agreementDocumentsPath = String.Format("D:\\siftaroot\\Documents\\Agreements\\{0}\\", agreement.AgreementID);
+            var agreementDocumentsPath = FileDirectoryHelper.GetAgreementDirectory(agreement.AgreementID);
             if (!Directory.Exists(agreementDocumentsPath)) Directory.CreateDirectory(agreementDocumentsPath);
             foreach(UploadedFile f in rauFile.UploadedFiles)
             {
@@ -859,8 +859,8 @@ namespace NationalFundingDev
 
         protected void rgAgreementDocuments_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            
-            var path = new DirectoryInfo(String.Format("D:\\siftaroot\\Documents\\Agreements\\{0}", agreement.AgreementID));
+
+            var path = new DirectoryInfo(FileDirectoryHelper.GetAgreementDirectory(agreement.AgreementID));
             if (!path.Exists) path.Create();
             var files = path.GetFiles();
             //Create a Datatable to store the information of the files to be used as a datasource for the grid
