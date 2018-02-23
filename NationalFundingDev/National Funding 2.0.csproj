@@ -70,6 +70,7 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Linq" />
+    <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
@@ -92,6 +93,7 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActiveDirectoryService.cs" />
     <Compile Include="Admin.aspx.cs">
       <DependentUpon>Admin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -192,11 +194,6 @@
     </Compile>
     <Compile Include="Reports\National\RealTimeSitesFunding.aspx.designer.cs">
       <DependentUpon>RealTimeSitesFunding.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Service References\ActiveDirectoryService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
     <Compile Include="SiftaMapUtils\Map.aspx.cs">
       <DependentUpon>Map.aspx</DependentUpon>
@@ -436,20 +433,10 @@
     <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
     <None Include="Properties\PublishProfiles\018 Production.pubxml" />
-    <None Include="Service References\ActiveDirectoryService\ActiveDirectory.disco" />
-    <None Include="Service References\ActiveDirectoryService\configuration91.svcinfo" />
-    <None Include="Service References\ActiveDirectoryService\configuration.svcinfo" />
     <Content Include="Reports\National\National.aspx" />
     <Content Include="Reports\National\RealTimeSitesFunding.aspx" />
     <Content Include="Scripts\leaflet\leaflet.css" />
     <Content Include="Scripts\leaflet\leaflet.js" />
-    <Content Include="Service References\ActiveDirectoryService\NationalFundingDev.ActiveDirectoryService.Employee.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\ActiveDirectoryService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="SiftaMapUtils\jquery\jquery-1.11.1.js" />
     <Content Include="SiftaMapUtils\jquery\jquery-1.11.1.min.js" />
     <Content Include="SiftaMapUtils\jquery\jquery-ui-1.11.2.custom\external\jquery\jquery.js" />
@@ -636,16 +623,6 @@
     <Content Include="SiftaMapUtils\leaflet\Leaflet.Coordinates\Leaflet.Coordinates-master.zip" />
     <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen-gh-pages.zip" />
     <Content Include="SiftaSiteMap.sitemap" />
-    <None Include="Service References\ActiveDirectoryService\ActiveDirectory.wsdl" />
-    <None Include="Service References\ActiveDirectoryService\ActiveDirectory.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ActiveDirectoryService\ActiveDirectory1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\ActiveDirectoryService\ActiveDirectory2.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -681,9 +658,6 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\ActiveDirectoryService\" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
   <PropertyGroup>
@@ -716,7 +690,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

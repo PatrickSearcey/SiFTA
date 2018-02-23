@@ -18,7 +18,7 @@ namespace NationalFundingDev
             if (siftaDB.Employees.FirstOrDefault(p => p.EmployeeID == employeeID) == null)
             {
                 //Call the service for Active Directory
-                var service = new ActiveDirectoryService.ActiveDirectoryClient();
+                var service = new ActiveDirectoryService();
                 //Try to get the employee with the same id
                 var employee = service.GetEmployee(employeeID);
                 //Check to see that the employee is not null

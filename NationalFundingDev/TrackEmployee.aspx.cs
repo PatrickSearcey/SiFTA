@@ -19,7 +19,7 @@ namespace NationalFundingDev
         {
             if(!String.IsNullOrEmpty(rtbID.Text))
             {
-                var service = new ActiveDirectoryService.ActiveDirectoryClient();
+                var service = new ActiveDirectoryService();
                 var employee = service.GetEmployee(rtbID.Text);
                 if(employee != null)
                 {
