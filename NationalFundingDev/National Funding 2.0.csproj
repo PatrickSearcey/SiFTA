@@ -422,6 +422,8 @@
     <Content Include="Images\tooltip\ToolTip.gif" />
     <Content Include="Images\tooltip\ToolTipHover.gif" />
     <Content Include="Reports\Agreement\AgreementReport.aspx" />
+    <Content Include="Reports\Agreement\Scripts\leaflet\leaflet.css" />
+    <Content Include="Reports\Agreement\Scripts\leaflet\leaflet.js" />
     <Content Include="Reports\Center\CoopFunding.aspx" />
     <Content Include="Reports\Maps\AgreementSiteMap.aspx" />
     <Content Include="Reports\Maps\SiteMap.aspx" />
@@ -690,7 +692,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

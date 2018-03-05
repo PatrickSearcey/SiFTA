@@ -50,9 +50,9 @@ namespace NationalFundingDev
             var idx = 2;
             foreach(var row in _data)
             {
-                worksheet.Cells[String.Format("A{0}", idx)].Formula = String.Format("HYPERLINK(\"{0}\",\"{1}\")", "http://sifta.water.usgs.gov/NationalFunding/Customer.aspx?CustomerId=" + row.CustomerID.ToString(), row.CustomerName);
+                worksheet.Cells[String.Format("A{0}", idx)].Formula = String.Format("HYPERLINK(\"{0}\",\"{1}\")", "https://sifta.water.usgs.gov/NationalFunding/Customer.aspx?CustomerId=" + row.CustomerID.ToString(), row.CustomerName);
                 worksheet.Cells[String.Format("A{0}", idx)].Style.Font.Color.SetColor(System.Drawing.Color.FromArgb(40, 149, 168));
-                worksheet.Cells[String.Format("B{0}", idx)].Formula = String.Format("HYPERLINK(\"{0}\",\"{1}\")", "http://sifta.water.usgs.gov/NationalFunding/Agreement.aspx?AgreementId=" + row.AgreementID.ToString(), row.PurchaseOrderNumber);
+                worksheet.Cells[String.Format("B{0}", idx)].Formula = String.Format("HYPERLINK(\"{0}\",\"{1}\")", "https://sifta.water.usgs.gov/NationalFunding/Agreement.aspx?AgreementId=" + row.AgreementID.ToString(), row.PurchaseOrderNumber);
                 worksheet.Cells[String.Format("B{0}", idx)].Style.Font.Color.SetColor(System.Drawing.Color.FromArgb(40,149,168));
                 worksheet.Cells[String.Format("C{0}", idx)].Value = row.CustomerCode;
                 worksheet.Cells[String.Format("D{0}", idx)].Value = row.SalesDocument;

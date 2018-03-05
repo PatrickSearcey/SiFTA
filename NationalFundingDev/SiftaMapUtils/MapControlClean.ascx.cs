@@ -21,7 +21,8 @@ namespace NationalFundingDev
         }
         public String AppendBaseURL(string path)
         {
-            return path.AppendBaseURL();
+            path = path.AppendBaseURL();
+            return path;
         }
     }
 }

@@ -9,7 +9,7 @@
 <table cellpadding="3px">
     <tr>
         <td align="right">
-            <telerik:RadBinaryImage runat="server" ID="imgCustomer" ImageUrl='<%# String.Format("http://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", customer.CustomerID) %>' 
+            <telerik:RadBinaryImage runat="server" ID="imgCustomer" ImageUrl='<%# String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", customer.CustomerID) %>' 
                 Width="100px" Height="100px" ResizeMode="Fit" ></telerik:RadBinaryImage>
         </td>
         <td valign="bottom">

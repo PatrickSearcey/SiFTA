@@ -22,7 +22,7 @@ namespace NationalFundingDev.Reports.Agreement
             GetAgreement();
             user = new NationalFundingDev.User(agreement.Customer.OrgCode);
             //Set Customer Logo Source
-            imgCustLogo.ImageUrl = String.Format("http://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", agreement.CustomerID);
+            imgCustLogo.ImageUrl = String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", agreement.CustomerID);
             imgEditAgreementInformation.Visible = imgEditAgreementLogs.Visible = imgEditContacts.Visible = imgEditDocuments.Visible = imgEditSiteFunding.Visible = imgEditStudiesFunding.Visible = user.CanUpdate || user.CanInsert;
             imgEditAgreementInformation.BorderWidth = imgEditAgreementLogs.BorderWidth = imgEditContacts.BorderWidth = imgEditDocuments.BorderWidth = imgEditSiteFunding.BorderWidth = imgEditStudiesFunding.BorderWidth = 0;
             PageDataBind();
@@ -127,7 +127,7 @@ namespace NationalFundingDev.Reports.Agreement
 
                 DataRow doc = dt.NewRow();
                 doc["Name"] = file.Name;
-                doc["URL"] = String.Format("http://sifta.water.usgs.gov/Documents/Agreements/{0}/{1}", agreement.AgreementID, file.Name);
+                doc["URL"] = String.Format("https://sifta.water.usgs.gov/Documents/Agreements/{0}/{1}", agreement.AgreementID, file.Name);
                 doc["Path"] = file.FullName;
                 dt.Rows.Add(doc);
             }

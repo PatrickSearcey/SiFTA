@@ -9,9 +9,9 @@
         </td> 
         <td style="vertical-align:bottom;">
             <a runat="server" id="AgreementToolTip" >
-                <img src="http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="rtt" TargetControlID="AgreementToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -31,9 +31,9 @@
         </td>
         <td style="vertical-align:bottom;">
             <a runat="server" id="MPCToolTip" >
-                <img src="http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip1" TargetControlID="MPCToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -52,9 +52,9 @@
         </td>
         <td style="vertical-align:bottom;">
             <a runat="server" id="SalesOrderNumberToolTip" >
-                <img src="http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip2" TargetControlID="SalesOrderNumberToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -130,9 +130,9 @@
         </td>
         <td style="vertical-align:bottom;">
             <a runat="server" id="USGSFundingToolTip" >
-                <img src="http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip3" TargetControlID="USGSFundingToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -153,9 +153,9 @@
         </td>
         <td style="vertical-align:bottom; float:left;">
             <a runat="server" id="CustomerFundingToolTip" >
-                <img src="http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip4" TargetControlID="CustomerFundingToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"

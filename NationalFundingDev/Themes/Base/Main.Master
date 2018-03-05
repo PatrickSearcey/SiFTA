@@ -102,11 +102,11 @@
                         <a href="http://www.usgs.gov/foia/" title="Freedom of Information Act">FOIA</a>
                         <a href="http://www.usgs.gov/privacy.html" title="Privacy policies of the U.S. Geological Survey.">Privacy</a>
                         <a href="http://www.usgs.gov/policies_notices.html" title="Policies and notices that govern information posted on USGS Web sites.">Policies and Notices</a>
-                        <a href="http://sifta.water.usgs.gov/Services/" title="Web services made available.">Developers Tools</a>
+                        <a href="https://sifta.water.usgs.gov/Services/" title="Web services made available.">Developers Tools</a>
                     </p>
                     <p id="usgsfootertext">
                         <a href="http://www.usgs.gov/">U.S. Geological Survey</a><br />
-                        URL: http://sifta.water.usgs.gov/
+                        URL: https://sifta.water.usgs.gov/
                         <br />
                         Page Contact Information: <a href="mailto:siftahelp@usgs.gov">siftahelp@usgs.gov</a><br />
                         Page Last Modified: <%--<%= PageLastModified %>--%>

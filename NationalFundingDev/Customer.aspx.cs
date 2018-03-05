@@ -33,7 +33,7 @@ namespace NationalFundingDev
             //Set the Session variable Title 
             Session["Title"] = customer.Center.Name.Replace(" Water Science Center", " ");
             //Set Customer Logo Source
-            imgCustLogo.ImageUrl = String.Format("http://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", CustomerID);
+            imgCustLogo.ImageUrl = String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", CustomerID);
             //Set the target folder for the image uploader
             var dir = FileDirectoryHelper.GetTempDirectory();
             if (!Directory.Exists(dir))
@@ -117,7 +117,7 @@ namespace NationalFundingDev
         }
         private void RebindCustomerEditInfo()
         {
-            imgCustomer.ImageUrl = String.Format("http://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", customer.CustomerID);
+            imgCustomer.ImageUrl = String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", customer.CustomerID);
             rtbCustomerCd.Text = customer.Code;
             rcbAgreementType.DataBind();
             rcbAgreementType.SelectedValue = customer.CustomerAgreementTypeID.ToString();

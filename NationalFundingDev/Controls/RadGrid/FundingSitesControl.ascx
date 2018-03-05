@@ -41,9 +41,9 @@
             <telerik:RadNumericTextBox runat="server" ID="rntbUnits" Type="Number" Value="<%# siteFunding.CollectionUnits  %>" /></td>
         <td style="vertical-align: bottom;">
             <a runat="server" id="UnitsToolTip">
-                <img src="http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip4" TargetControlID="UnitsToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -62,9 +62,9 @@
             <telerik:RadNumericTextBox runat="server" ID="rntbDifficultyFactor" Type="Number" Value="<%# siteFunding.DifficultyFactor  %>" /></td>
         <td style="vertical-align: bottom;">
             <a runat="server" id="DifficultyFactorToolTip">
-                <img src="http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="rtt" TargetControlID="DifficultyFactorToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -85,9 +85,9 @@
             <telerik:RadTextBox runat="server" ID="rtbDifficultyFactorReason" Height="50px" Width="100%" TextMode="MultiLine" Text="<%# siteFunding.DifficultyFactorReason %>" /></td>
         <td style="vertical-align: bottom;">
             <a runat="server" id="DifficultyFactorReasonToolTip">
-                <img src="http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip1" TargetControlID="DifficultyFactorReasonToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -106,9 +106,9 @@
             <telerik:RadNumericTextBox runat="server" ID="rntbUSGSCMFFunding" Type="Currency" Value="<%# siteFunding.FundingUSGSCMF  %>" /></td>
         <td style="vertical-align: bottom;">
             <a runat="server" id="FundingUSGSCMFToolTip">
-                <img src="http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip2" TargetControlID="FundingUSGSCMFToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
@@ -125,9 +125,9 @@
             <telerik:RadNumericTextBox runat="server" ID="rntbCustomerFunding" Type="Currency" Value="<%# siteFunding.FundingCustomer %>" /></td>
         <td style="vertical-align: bottom;">
             <a runat="server" id="FundingCustomerToolTip">
-                <img src="http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
-                    onmouseover="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
-                    onmouseout="this.src='http://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
+                <img src="https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15"
+                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
+                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
             </a>
             <telerik:RadToolTip runat="server" ID="RadToolTip3" TargetControlID="FundingCustomerToolTip" ShowEvent="OnMouseOver"
                 OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"

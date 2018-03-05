@@ -30,7 +30,7 @@ namespace NationalFundingDev
             //Set the Session variable Title 
             Session["Title"] = agreement.Customer.Center.Name.Replace(" Water Science Center", " ");
             //Set Customer Logo Source
-            imgCustLogo.ImageUrl = String.Format("http://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", agreement.CustomerID);
+            imgCustLogo.ImageUrl = String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", agreement.CustomerID);
             if (!IsPostBack) initializeTabStrip(rtsAgreementOptions, rmpAgreementOptions);
             //Set Visibilty for the Coop Funding
             if(user.CanUpdate && agreement.Customer.Center.CoopDBAccess)
@@ -883,7 +883,7 @@ namespace NationalFundingDev
 
                 DataRow doc = dt.NewRow();
                 doc["Name"] = file.Name;
-                doc["URL"] = String.Format("http://sifta.water.usgs.gov/Documents/Agreements/{0}/{1}", agreement.AgreementID, file.Name);
+                doc["URL"] = String.Format("https://sifta.water.usgs.gov/Documents/Agreements/{0}/{1}", agreement.AgreementID, file.Name);
                 doc["Path"] = file.FullName;
                 dt.Rows.Add(doc);
             }

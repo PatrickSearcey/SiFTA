@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="MapControl.ascx.cs" Inherits="NationalFundingDev.MapControl" ClassName="MapControl" %>
-<script type="text/javascript" src='<%= AppendBaseURL("/SiftaMapUtils/jquery/jquery-1.11.1.min.js") %>'></script>
-<script type="text/javascript" src='<%= AppendBaseURL("/SiftaMapUtils/MapUtils/MapUtils.js") %>'></script>
+<script type="text/javascript" src='https://sifta.water.usgs.gov/NationalFunding/SiftaMapUtils/jquery/jquery-1.11.1.min.js'></script>
+<script type="text/javascript" src='https://sifta.water.usgs.gov/NationalFunding/SiftaMapUtils/MapUtils/MapUtils.js'></script>
 <style type="text/css">
     .legend {
         position: absolute; 

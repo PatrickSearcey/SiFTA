@@ -70,7 +70,7 @@
                                         <tr>
                                             <td style="border-color: white; width: 30px;" valign="top">
                                                 <a href='<%# String.Format("Customer.aspx?CustomerID={0}", Eval("CustomerID")) %>' style="color: #4a95a1;">
-                                                    <img alt="" height="50px" width="50px" src='<%# String.Format("http://sifta.water.usgs.gov/Services/Rest/Customer/CustomerIcon.ashx?CustomerID={0}", Eval("CustomerID")) %>' /></a>
+                                                    <img alt="" height="50px" width="50px" src='<%# String.Format("https://sifta.water.usgs.gov/Services/Rest/Customer/CustomerIcon.ashx?CustomerID={0}", Eval("CustomerID")) %>' /></a>
                                             </td>
                                             <td style="border-color: white;" align="left" valign="top">
                                                 <b>

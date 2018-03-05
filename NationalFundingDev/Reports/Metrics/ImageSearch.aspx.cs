@@ -62,7 +62,7 @@ namespace NationalFundingDev.Reports.Metrics
                 var customers = db.Customers.Where(p => p.Name == name && p.Icon == icon);
                 foreach(var customer in customers)
                 {
-                    urlHTML += String.Format("<a href='http://sifta.water.usgs.gov/NationalFunding/Customer.aspx?CustomerID={0}' target='_blank'>{2} - {1}</a><br/>", customer.CustomerID, customer.Name, customer.Center.Name);
+                    urlHTML += String.Format("<a href='https://sifta.water.usgs.gov/NationalFunding/Customer.aspx?CustomerID={0}' target='_blank'>{2} - {1}</a><br/>", customer.CustomerID, customer.Name, customer.Center.Name);
                 }
                 return urlHTML;
             }catch

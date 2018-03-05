@@ -15,6 +15,6 @@
           </siteMapNode>
         </siteMapNode>
         <siteMapNode url="~/Help.aspx" title="Help"  description="" />
-      <siteMapNode url="http://sifta.water.usgs.gov/Documents/SiFTAUserManual_Overview.pdf" title="Quick Start Guide"  description="" />
+      <siteMapNode url="https://sifta.water.usgs.gov/Documents/SiFTAUserManual_Overview.pdf" title="Quick Start Guide"  description="" />
     </siteMapNode>
 </siteMap>

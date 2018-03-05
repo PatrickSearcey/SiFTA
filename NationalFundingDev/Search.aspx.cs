@@ -41,7 +41,7 @@ namespace NationalFundingDev
         public String ImageURL(object obj)
         {
             var CustomerID = obj.ToString().Replace("Customer.aspx?CustomerID=", "");
-            return String.Format("http://sifta.water.usgs.gov/Services/CustomerIcon?CustomerID={0}", CustomerID);
+            return String.Format("https://sifta.water.usgs.gov/Services/CustomerIcon?CustomerID={0}", CustomerID);
         }
         public String AppendURL(object obj)
         {
