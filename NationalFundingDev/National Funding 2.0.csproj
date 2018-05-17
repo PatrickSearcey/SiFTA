@@ -431,8 +431,8 @@
     <Content Include="Reports\Metrics\National.aspx" />
     <Content Include="Reports\Modules\ModFundingSummary.ascx" />
     <Content Include="Documents\Forms\JFATemplate-old.docx" />
-    <Content Include="Documents\Forms\JFATemplate.docx" />
     <Content Include="packages.config" />
+    <Content Include="Documents\Forms\JFATemplate.docx" />
     <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
     <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <Content Include="Reports\National\National.aspx" />
@@ -692,7 +692,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
