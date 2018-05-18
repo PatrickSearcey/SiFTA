@@ -45,6 +45,8 @@ namespace NationalFundingDev
         private void ReplaceValues()
         {
             var terms = new Dictionary<string, string>();
+            terms.Add("[FundingOther]", String.Format("{0:C0}", agreement.FundingOther));
+            terms.Add("[FundingOtherReason]", agreement.FundingOtherReason);
             terms.Add("[NowInformal]", DateTime.Now.ToString("MM/dd/yyyy"));
             terms.Add("[Now]", DateTime.Now.ToString("MMM d, yyyy"));
             terms.Add("[NowFormal]", DateTime.Now.ToString("MMMM d, yyyy"));
