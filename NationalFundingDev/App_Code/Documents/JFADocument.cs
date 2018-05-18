@@ -45,6 +45,7 @@ namespace NationalFundingDev
         private void ReplaceValues()
         {
             var terms = new Dictionary<string, string>();
+            terms.Add("[NowInformal]", DateTime.Now.ToString("MM/dd/yyyy"));
             terms.Add("[Now]", DateTime.Now.ToString("MMM d, yyyy"));
             terms.Add("[NowFormal]", DateTime.Now.ToString("MMMM d, yyyy"));
             terms.Add("[CenterName]", center.Name);
