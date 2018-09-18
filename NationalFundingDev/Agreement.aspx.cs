@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -712,6 +713,61 @@ namespace NationalFundingDev
             siteFunding.Remarks = rtbRemarks.Text;
             #endregion
         }
+
+
+        protected void DownloadTemplate(object sender, EventArgs e)
+        {
+            string agID = Request.QueryString["AgreementID"];
+
+            var agModID = siftaDB.AgreementMods.First(x => x.AgreementID == int.Parse(agID));
+            var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == agModID.AgreementModID);
+
+            StringBuilder builder = new StringBuilder();
+            List<string> columns = new List<string>
+            {
+                "\"" + "SiteNumber" + "\"",
+                "\"" + "CollectionCodeCategory" + "\"",
+                "\"" + "CollectionCode" + "\"",
+                "\"" + "Units" + "\"",
+                "\"" + "DifficultyFactor" + "\"",
+                "\"" + "DifficultyFactorReason" + "\"",
+                "\"" + "USGSCMFFunding" + "\"",
+                "\"" + "CustomerFunds" + "\"",
+                "\"" + "OtherFunds" + "\"",
+                "\"" + "Remarks" + "\""
+            };
+            builder.Append(string.Join(",", columns.ToArray()));
+            builder.Append("\n");
+
+            foreach (var entry in entries)
+            {
+                var collectionCodes = siftaDB.lutCollectionCodes.First(x => x.CollectionCodeID == entry.CollectionCodeID);
+
+                List<string> data = new List<string>
+                {
+                    "\"" + entry.SiteNumber + "\"",
+                    "\"" + collectionCodes.Category + "\"",
+                    "\"" + collectionCodes.Code + "\"",
+                    "\"" + "" + entry.CollectionUnits + "\"",
+                    "\"" + "" + entry.DifficultyFactor + "\"",
+                    "\"" + entry.DifficultyFactorReason + "\"",
+                    "\"" + "" + entry.FundingUSGSCMF + "\"",
+                    "\"" + "" + entry.FundingCustomer + "\"",
+                    "\"" + "" + entry.FundingOther + "\"",
+                    "\"" + entry.Remarks + "\""
+
+                };
+
+                builder.Append(string.Join(",", data.ToArray()));
+                builder.Append("\n");
+            }
+
+            Response.Clear();
+            Response.ContentType = "text/csv";
+            Response.AddHeader("Content-Disposition", "attachment;filename=agreements.csv");
+            Response.Write(builder.ToString());
+            Response.End();
+        }
         #endregion
 
         #region Studies / Support
@@ -1076,6 +1132,7 @@ namespace NationalFundingDev
             if (!String.IsNullOrEmpty(l.ToString())) name += l.ToString();
             return name;
         }
+
         public String PhoneFormat(object p)
         {
             if (p == null) return "";

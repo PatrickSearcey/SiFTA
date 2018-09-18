@@ -23,6 +23,10 @@
             left: 125px;
             top: 175px;
         }
+
+        .templateButton {
+            margin-bottom: 20px;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphAJAXManager" runat="server">
@@ -113,6 +117,8 @@
     </telerik:RadTabStrip>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="cphBody" runat="server">
+    <asp:Button Text="Download Bulk Editor Template" runat="server" OnClick="DownloadTemplate" CssClass="templateButton" />
+
     <telerik:RadMultiPage runat="server" ID="rmpAgreementOptions" Width="100%">
         <telerik:RadPageView runat="server" ID="rpvModifyAgreement" TabIndex="0" Selected="true">
             <telerik:RadGrid ID="rgAgreements" runat="server" AutoGenerateColumns="False"
