@@ -719,21 +719,21 @@ namespace NationalFundingDev
         {
             string agID = Request.QueryString["AgreementID"];
 
-            var agModID = siftaDB.AgreementMods.First(x => x.AgreementID == int.Parse(agID));
-            var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == agModID.AgreementModID);
+            //var agModID = siftaDB.AgreementMods.First(x => x.AgreementID == int.Parse(agID));
+            //var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == agModID.AgreementModID);
+
+            var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
 
             StringBuilder builder = new StringBuilder();
             List<string> columns = new List<string>
             {
+                "\"" + "SiteName" + "\"",
                 "\"" + "SiteNumber" + "\"",
-                "\"" + "CollectionCodeCategory" + "\"",
                 "\"" + "CollectionCode" + "\"",
                 "\"" + "Units" + "\"",
                 "\"" + "DifficultyFactor" + "\"",
-                "\"" + "DifficultyFactorReason" + "\"",
                 "\"" + "USGSCMFFunding" + "\"",
                 "\"" + "CustomerFunds" + "\"",
-                "\"" + "OtherFunds" + "\"",
                 "\"" + "Remarks" + "\""
             };
             builder.Append(string.Join(",", columns.ToArray()));
@@ -741,19 +741,17 @@ namespace NationalFundingDev
 
             foreach (var entry in entries)
             {
-                var collectionCodes = siftaDB.lutCollectionCodes.First(x => x.CollectionCodeID == entry.CollectionCodeID);
+                //var collectionCodes = siftaDB.lutCollectionCodes.First(x => x.CollectionCodeID == entry.CollectionCodeID);
 
                 List<string> data = new List<string>
                 {
+                    "\"" + entry.SiteName + "\"",
                     "\"" + entry.SiteNumber + "\"",
-                    "\"" + collectionCodes.Category + "\"",
-                    "\"" + collectionCodes.Code + "\"",
+                    "\"" + entry.CollectionCode + "\"",
                     "\"" + "" + entry.CollectionUnits + "\"",
                     "\"" + "" + entry.DifficultyFactor + "\"",
-                    "\"" + entry.DifficultyFactorReason + "\"",
                     "\"" + "" + entry.FundingUSGSCMF + "\"",
                     "\"" + "" + entry.FundingCustomer + "\"",
-                    "\"" + "" + entry.FundingOther + "\"",
                     "\"" + entry.Remarks + "\""
 
                 };
