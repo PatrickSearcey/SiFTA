@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
@@ -718,53 +720,57 @@ namespace NationalFundingDev
         protected void DownloadTemplate(object sender, EventArgs e)
         {
             string agID = Request.QueryString["AgreementID"];
-
-            //var agModID = siftaDB.AgreementMods.First(x => x.AgreementID == int.Parse(agID));
-            //var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == agModID.AgreementModID);
-
             var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
-
-            StringBuilder builder = new StringBuilder();
-            List<string> columns = new List<string>
+            
+            //Create an excel package from the file stream
+            using (ExcelPackage package = new ExcelPackage())
             {
-                "\"" + "SiteName" + "\"",
-                "\"" + "SiteNumber" + "\"",
-                "\"" + "CollectionCode" + "\"",
-                "\"" + "Units" + "\"",
-                "\"" + "DifficultyFactor" + "\"",
-                "\"" + "USGSCMFFunding" + "\"",
-                "\"" + "CustomerFunds" + "\"",
-                "\"" + "Remarks" + "\""
-            };
-            builder.Append(string.Join(",", columns.ToArray()));
-            builder.Append("\n");
+                //A workbook must have at least on cell, so lets add one... 
+                var ws = package.Workbook.Worksheets.Add("MySheet");
 
-            foreach (var entry in entries)
-            {
-                //var collectionCodes = siftaDB.lutCollectionCodes.First(x => x.CollectionCodeID == entry.CollectionCodeID);
+                //To set values in the spreadsheet use the Cells indexer.
+                ws.Cells["A1"].Value = "SiteName";
+                ws.Cells["B1"].Value = "SiteNumber";
+                ws.Cells["C1"].Value = "CollectionCode";
+                ws.Cells["D1"].Value = "Units";
+                ws.Cells["E1"].Value = "DifficultyFactor";
+                ws.Cells["F1"].Value = "USGSCMFFunding";
+                ws.Cells["G1"].Value = "CustomerFunds";
+                ws.Cells["H1"].Value = "Remarks";
 
-                List<string> data = new List<string>
+                int i = 2;
+                foreach (var entry in entries)
                 {
-                    "\"" + entry.SiteName + "\"",
-                    "\"" + entry.SiteNumber + "\"",
-                    "\"" + entry.CollectionCode + "\"",
-                    "\"" + "" + entry.CollectionUnits + "\"",
-                    "\"" + "" + entry.DifficultyFactor + "\"",
-                    "\"" + "" + entry.FundingUSGSCMF + "\"",
-                    "\"" + "" + entry.FundingCustomer + "\"",
-                    "\"" + entry.Remarks + "\""
+                    ws.Cells["A" + i].Value = entry.SiteName;
+                    ws.Cells["B" + i].Value = entry.SiteNumber;
+                    ws.Cells["C" + i].Value = entry.CollectionCode;
+                    ws.Cells["D" + i].Value = entry.CollectionUnits;
+                    ws.Cells["E" + i].Value = entry.DifficultyFactor;
+                    ws.Cells["F" + i].Value = entry.FundingUSGSCMF;
+                    ws.Cells["G" + i].Value = entry.FundingCustomer;
+                    ws.Cells["H" + i].Value = entry.Remarks;
 
-                };
+                    i++;
+                }
 
-                builder.Append(string.Join(",", data.ToArray()));
-                builder.Append("\n");
+                //Save changes to the same file
+                package.Save();
+
+                //Write excel file to http web response 
+                //context is the HTTPContext for the request/response
+                Response.Clear();
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
+                Response.BinaryWrite(package.GetAsByteArray());
+                //Response.Write(package);
             }
+            
 
-            Response.Clear();
-            Response.ContentType = "text/csv";
-            Response.AddHeader("Content-Disposition", "attachment;filename=agreements.csv");
-            Response.Write(builder.ToString());
-            Response.End();
+            //Response.Clear();
+            //Response.ContentType = "text/csv";
+            //Response.AddHeader("Content-Disposition", "attachment;filename=agreements.csv");
+            //Response.Write(builder.ToString());
+            //Response.End();
         }
         #endregion
 
