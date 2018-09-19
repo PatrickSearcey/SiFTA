@@ -764,13 +764,6 @@ namespace NationalFundingDev
                 Response.BinaryWrite(package.GetAsByteArray());
                 //Response.Write(package);
             }
-            
-
-            //Response.Clear();
-            //Response.ContentType = "text/csv";
-            //Response.AddHeader("Content-Disposition", "attachment;filename=agreements.csv");
-            //Response.Write(builder.ToString());
-            //Response.End();
         }
         
         protected void UploadButtonClick(object sender, EventArgs e)
@@ -788,6 +781,36 @@ namespace NationalFundingDev
                     var path = dir + Path.GetFileName(FileUploadControl.FileName);
                     FileUploadControl.SaveAs(path);
                     StatusLabel.Text = "Upload status: File uploaded!";
+
+                    var file = new FileInfo(path);
+                    using (var package = new ExcelPackage(file))
+                    {
+                        //The actual spread sheets are contained within a work book
+                        var workBook = package.Workbook;
+                        //Grab the first work sheet in the excel document 
+                        var ws = workBook.Worksheets.First();
+
+                        var A1 = ws.Cells["A1"].Value;
+                        var testing = ws.Cells.LoadFromText("test");
+
+                        //Select all cells in column
+                        var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
+
+                        for(int n = 0; n < query.Count(); n++)
+                        {
+                            int i = n + 2;
+                            StatusLabel.Text += "<br><br>";
+
+                            StatusLabel.Text += ws.Cells["A" + i].Value;
+                            StatusLabel.Text += ws.Cells["B" + i].Value;
+                            StatusLabel.Text += ws.Cells["C" + i].Value;
+                            StatusLabel.Text += ws.Cells["D" + i].Value;
+                            StatusLabel.Text += ws.Cells["E" + i].Value;
+                            StatusLabel.Text += ws.Cells["F" + i].Value;
+                            StatusLabel.Text += ws.Cells["G" + i].Value;
+                            StatusLabel.Text += ws.Cells["H" + i].Value;
+                        }
+                    }
                 }
                 catch (Exception ex)
                 {
