@@ -118,6 +118,9 @@
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="cphBody" runat="server">
     <asp:Button Text="Download Bulk Editor Template" runat="server" OnClick="DownloadTemplate" CssClass="templateButton" />
+    <asp:FileUpload id="FileUploadControl" runat="server" />
+    <asp:Button runat="server" id="UploadButton" text="Upload" OnClick="UploadButtonClick" />
+    <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
 
     <telerik:RadMultiPage runat="server" ID="rmpAgreementOptions" Width="100%">
         <telerik:RadPageView runat="server" ID="rpvModifyAgreement" TabIndex="0" Selected="true">

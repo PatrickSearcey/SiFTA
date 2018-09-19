@@ -772,6 +772,32 @@ namespace NationalFundingDev
             //Response.Write(builder.ToString());
             //Response.End();
         }
+        
+        protected void UploadButtonClick(object sender, EventArgs e)
+        {
+            var dir = "D:\\siftaroot\\Temp\\";
+            if (!Directory.Exists(dir))
+            {
+                Directory.CreateDirectory(dir);
+            }
+
+            if (FileUploadControl.HasFile)
+            {
+                try
+                {
+                    var path = dir + Path.GetFileName(FileUploadControl.FileName);
+                    FileUploadControl.SaveAs(path);
+                    StatusLabel.Text = "Upload status: File uploaded!";
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                }
+            }
+        }
+
+
+
         #endregion
 
         #region Studies / Support
@@ -1146,3 +1172,4 @@ namespace NationalFundingDev
         
     }
 }
+ 
