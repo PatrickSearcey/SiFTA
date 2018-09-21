@@ -753,16 +753,22 @@ namespace NationalFundingDev
                     i++;
                 }
 
-                //Save changes to the same file
+                var dir = "D:\\siftaroot\\TempFiles\\";
+                if (!Directory.Exists(dir))
+                {
+                    Directory.CreateDirectory(dir);
+                }
+
                 package.Save();
+                package.SaveAs(new FileInfo(@"D:\siftaroot\TempFiles\agreements.xlsx"));
 
                 //Write excel file to http web response 
-                //context is the HTTPContext for the request/response
                 Response.Clear();
                 Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                 Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
-                Response.BinaryWrite(package.GetAsByteArray());
-                //Response.Write(package);
+                Response.BinaryWrite(File.ReadAllBytes(@"D:\siftaroot\TempFiles\agreements.xlsx"));
+                Response.Flush();
+                Response.End();
             }
         }
         
