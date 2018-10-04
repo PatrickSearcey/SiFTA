@@ -117,11 +117,6 @@
     </telerik:RadTabStrip>
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="cphBody" runat="server">
-    <asp:Button Text="Download Bulk Editor Template" runat="server" OnClick="DownloadTemplate" CssClass="templateButton" />
-    <asp:FileUpload id="FileUploadControl" runat="server" />
-    <asp:Button runat="server" id="UploadButton" text="Upload" OnClick="UploadButtonClick" />
-    <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
-
     <telerik:RadMultiPage runat="server" ID="rmpAgreementOptions" Width="100%">
         <telerik:RadPageView runat="server" ID="rpvModifyAgreement" TabIndex="0" Selected="true">
             <telerik:RadGrid ID="rgAgreements" runat="server" AutoGenerateColumns="False"
@@ -274,6 +269,10 @@
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
         <telerik:RadPageView runat="server" ID="rpvSiteFunding" TabIndex="2">
+            <asp:Button Text="Download Bulk Editor Template" runat="server" OnClick="DownloadTemplate" CssClass="templateButton" />
+            <asp:FileUpload id="FileUploadControl" runat="server" />
+            <asp:Button runat="server" id="UploadButton" text="Upload" OnClick="UploadButtonClick" />
+            <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <telerik:RadGrid runat="server" ID="rgFundedSites" AllowSorting="true" OnNeedDataSource="rgFundedSites_NeedDataSource" OnInsertCommand="rgFundedSites_InsertCommand" OnUpdateCommand="rgFundedSites_UpdateCommand" OnDeleteCommand="rgFundedSites_DeleteCommand" OnPreRender="rgFundedSites_PreRender">
                     <MasterTableView AutoGenerateColumns="False" ShowGroupFooter="true" ShowFooter="true" DataKeyNames="FundingSiteID" EditMode="EditForms">
