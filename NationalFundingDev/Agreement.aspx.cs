@@ -715,130 +715,6 @@ namespace NationalFundingDev
             siteFunding.Remarks = rtbRemarks.Text;
             #endregion
         }
-
-
-        protected void DownloadTemplate(object sender, EventArgs e)
-        {
-            string agID = Request.QueryString["AgreementID"];
-            var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
-            
-            //Create an excel package from the file stream
-            using (ExcelPackage package = new ExcelPackage())
-            {
-                //A workbook must have at least on cell, so lets add one... 
-                var ws = package.Workbook.Worksheets.Add("MySheet");
-
-                //To set values in the spreadsheet use the Cells indexer.
-                ws.Cells["A1"].Value = "SiteName";
-                ws.Cells["B1"].Value = "SiteNumber";
-                ws.Cells["C1"].Value = "CollectionCode";
-                ws.Cells["D1"].Value = "Units";
-                ws.Cells["E1"].Value = "DifficultyFactor";
-                ws.Cells["F1"].Value = "USGSCMFFunding";
-                ws.Cells["G1"].Value = "CustomerFunds";
-                ws.Cells["H1"].Value = "Remarks";
-
-                int i = 2;
-                foreach (var entry in entries)
-                {
-                    ws.Cells["A" + i].Value = entry.SiteName;
-                    ws.Cells["B" + i].Value = entry.SiteNumber;
-                    ws.Cells["C" + i].Value = entry.CollectionCode;
-                    ws.Cells["D" + i].Value = entry.CollectionUnits;
-                    ws.Cells["E" + i].Value = entry.DifficultyFactor;
-                    ws.Cells["F" + i].Value = entry.FundingUSGSCMF;
-                    ws.Cells["G" + i].Value = entry.FundingCustomer;
-                    ws.Cells["H" + i].Value = entry.Remarks;
-
-                    i++;
-                }
-                // Changed it to not depend on a D drive
-                var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
-                if (!dir.Exists)
-                {
-                    dir.Create();
-                }
-
-                package.Save();
-                // Create an id for the temporary file
-                var id = Guid.NewGuid().ToString();
-                var tempPath = Path.Combine(dir.FullName, $"{id}.xlsx");
-                var tempFile = new FileInfo(tempPath);
-                package.SaveAs(tempFile);
-
-                //Write excel file to http web response 
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
-                Response.BinaryWrite(File.ReadAllBytes(tempFile.FullName));
-                Response.Flush();
-                // Added to clean up file after it has finished downloading
-                tempFile.Delete();
-                Response.End();
-            }
-        }
-        
-        protected void UploadButtonClick(object sender, EventArgs e)
-        {
-            // Changed it to not depend on a D drive
-            var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
-            if (!dir.Exists)
-            {
-                dir.Create();
-            }
-
-            if (FileUploadControl.HasFile)
-            {
-                try
-                {
-                    // unique id to avoid overwritting files
-                    var id = Guid.NewGuid().ToString();
-                    var path = Path.Combine(dir.FullName, $"{id}.xlsx");
-
-                    FileUploadControl.SaveAs(path);
-                    StatusLabel.Text = "Upload status: File uploaded!";
-
-                    var file = new FileInfo(path);
-                    using (var package = new ExcelPackage(file))
-                    {
-                        //The actual spread sheets are contained within a work book
-                        var workBook = package.Workbook;
-                        //Grab the first work sheet in the excel document 
-                        var ws = workBook.Worksheets.First();
-
-                        var A1 = ws.Cells["A1"].Value;
-                        var testing = ws.Cells.LoadFromText("test");
-
-                        //Select all cells in column
-                        var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
-
-                        for(int n = 0; n < query.Count(); n++)
-                        {
-                            int i = n + 2;
-                            StatusLabel.Text += "<br><br>";
-
-                            StatusLabel.Text += ws.Cells["A" + i].Value;
-                            StatusLabel.Text += ws.Cells["B" + i].Value;
-                            StatusLabel.Text += ws.Cells["C" + i].Value;
-                            StatusLabel.Text += ws.Cells["D" + i].Value;
-                            StatusLabel.Text += ws.Cells["E" + i].Value;
-                            StatusLabel.Text += ws.Cells["F" + i].Value;
-                            StatusLabel.Text += ws.Cells["G" + i].Value;
-                            StatusLabel.Text += ws.Cells["H" + i].Value;
-                        }
-                    }
-                    // Delete Temporary File
-                    file.Delete();
-                }
-                catch (Exception ex)
-                {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
-                }
-            }
-        }
-
-
-
         #endregion
 
         #region Studies / Support
@@ -1209,8 +1085,225 @@ namespace NationalFundingDev
             if (p == null) return "";
             return p.ToPhoneFormat();
         }
-        #endregion   
-        
+        #endregion
+
+
+        #region DownloadTemplate
+
+        public class DownloadSite
+        {
+            public string SiteName { get; set; }
+            public string SiteNumber { get; set; }
+            public string CollectionCode { get; set; }
+            public string CollectionUnits { get; set; }
+            public string DifficultyFactor { get; set; }
+            public string FundingUSGSCMF { get; set; }
+            public string FundingCustomer { get; set; }
+            public string Remarks { get; set; }
+        }
+
+        protected void DownloadTemplate(object sender, EventArgs e)
+        {
+            string agID = Request.QueryString["AgreementID"];
+            var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
+
+            //Create an excel package from the file stream
+            using (ExcelPackage package = new ExcelPackage())
+            {
+                //A workbook must have at least on cell, so lets add one... 
+                var ws = package.Workbook.Worksheets.Add("MySheet");
+
+                //To set values in the spreadsheet use the Cells indexer.
+                ws.Cells["A1"].Value = "SiteName";
+                ws.Cells["B1"].Value = "SiteNumber";
+                ws.Cells["C1"].Value = "CollectionCode";
+                ws.Cells["D1"].Value = "Units";
+                ws.Cells["E1"].Value = "DifficultyFactor";
+                ws.Cells["F1"].Value = "USGSCMFFunding";
+                ws.Cells["G1"].Value = "CustomerFunds";
+                ws.Cells["H1"].Value = "Remarks";
+
+                int i = 2;
+                foreach (var entry in entries)
+                {
+                    ws.Cells["A" + i].Value = entry.SiteName;
+                    ws.Cells["B" + i].Value = entry.SiteNumber;
+                    ws.Cells["C" + i].Value = entry.CollectionCode;
+                    ws.Cells["D" + i].Value = entry.CollectionUnits;
+                    ws.Cells["E" + i].Value = entry.DifficultyFactor;
+                    ws.Cells["F" + i].Value = entry.FundingUSGSCMF;
+                    ws.Cells["G" + i].Value = entry.FundingCustomer;
+                    ws.Cells["H" + i].Value = entry.Remarks;
+
+                    i++;
+                }
+
+                // Changed it to not depend on a D drive
+                var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
+                if (!dir.Exists)
+                {
+                    dir.Create();
+                }
+
+                package.Save();
+                // Create an id for the temporary file
+                var id = Guid.NewGuid().ToString();
+                var tempPath = Path.Combine(dir.FullName, $"{id}.xlsx");
+                var tempFile = new FileInfo(tempPath);
+                package.SaveAs(tempFile);
+
+                //Write excel file to http web response 
+                Response.Clear();
+                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+                Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
+                Response.BinaryWrite(File.ReadAllBytes(tempFile.FullName));
+                Response.Flush();
+                // Added to clean up file after it has finished downloading
+                tempFile.Delete();
+                Response.End();
+            }
+        }
+
+        protected void UploadButtonClick(object sender, EventArgs e)
+        {
+            var list = new List<DownloadSite>();
+            // Changed it to not depend on a D drive
+            var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+
+            if (FileUploadControl.HasFile)
+            {
+                try
+                {
+                    // unique id to avoid overwritting files
+                    var id = Guid.NewGuid().ToString();
+                    var path = Path.Combine(dir.FullName, $"{id}.xlsx");
+
+                    FileUploadControl.SaveAs(path);
+
+                    StatusLabel.Text = "Upload status: File uploaded!";
+
+                    var file = new FileInfo(path);
+                    using (var package = new ExcelPackage(file))
+                    {
+                        //The actual spread sheets are contained within a work book
+                        var workBook = package.Workbook;
+                        //Grab the first work sheet in the excel document 
+                        var ws = workBook.Worksheets.First();
+
+                        var A1 = ws.Cells["A1"].Value;
+                        var testing = ws.Cells.LoadFromText("test");
+
+                        //Select all cells in column
+                        var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
+
+                        for (int n = 0; n < query.Count(); n++)
+                        {
+                            int i = n + 2;
+                            StatusLabel.Text += "<br><br>";
+
+                            var temp1 = ws.Cells["A" + i].Value;  // entry.SiteName;          Table: Site
+                            var temp2 = ws.Cells["B" + i].Value;  // entry.SiteNumber;        Table: FundingSite
+                            var temp3 = ws.Cells["C" + i].Value;  // entry.CollectionCode;    Table: lutCollectionCode
+                            var temp4 = ws.Cells["D" + i].Value;  // entry.CollectionUnits;   Table: FundingSite
+                            var temp5 = ws.Cells["E" + i].Value;  // entry.DifficultyFactor;  Table: FundingSite
+                            var temp6 = ws.Cells["F" + i].Value;  // entry.FundingUSGSCMF;    Table: FundingSite
+                            var temp7 = ws.Cells["G" + i].Value;  // entry.FundingCustomer;   Table: FundingSite
+                            var temp8 = ws.Cells["H" + i].Value;  // entry.Remarks;           Table: FundingSite
+
+                            list.Add(new DownloadSite {
+                                SiteName = temp1?.ToString(),
+                                SiteNumber = temp2?.ToString(),
+                                CollectionCode = temp3?.ToString(),
+                                CollectionUnits = temp4?.ToString(),
+                                DifficultyFactor = temp5?.ToString(),
+                                FundingUSGSCMF = temp6?.ToString(),
+                                FundingCustomer = temp7?.ToString(),
+                                Remarks = temp8?.ToString()
+                            });
+                        }
+                    }
+                    // Delete Temporary File
+                    file.Delete();
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                }
+            }
+
+            DeleteEntriesFromDB();
+            InsertEntriesToDB(list);
+        }
+
+        protected void DeleteEntriesFromDB()
+        {
+            string agID = Request.QueryString["AgreementID"];
+            var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+            var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
+
+            foreach (var entry in entries)
+            {
+                siftaDB.FundingSites.DeleteOnSubmit(entry);
+            }
+
+            try
+            {
+                siftaDB.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                StatusLabel.Text += e.ToString();
+            }
+        }
+
+        protected void InsertEntriesToDB(List<DownloadSite> list)
+        {
+            string agID = Request.QueryString["AgreementID"];
+            var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+
+            foreach (var site in list)
+            {
+                var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
+                double.TryParse(site.CollectionUnits, out double cu);
+                double.TryParse(site.CollectionUnits, out double df);
+                double.TryParse(site.CollectionUnits, out double fundUSGS);
+                double.TryParse(site.CollectionUnits, out double fundCust);
+                double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
+
+                var fs = new FundingSite
+                {
+                    AgreementModID = modID.AgreementModID,
+                    SiteNumber = site.SiteNumber,
+                    CollectionCodeID = collections.CollectionCodeID,
+                    CollectionUnits = cu,
+                    DifficultyFactor = df,
+                    FundingUSGSCMF = fundUSGS,
+                    FundingCustomer = fundCust,
+                    FundingTotal = total,
+                    FundingOther = 0,
+                    AgencyCode = "USGS",
+                    Remarks = site.Remarks
+                };
+
+                siftaDB.FundingSites.InsertOnSubmit(fs);
+            }
+
+            try
+            {
+                siftaDB.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                StatusLabel.Text += e.ToString();
+            }
+        }
+
+        #endregion
+
     }
 }
  
