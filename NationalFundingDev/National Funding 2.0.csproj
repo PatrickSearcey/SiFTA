@@ -551,6 +551,7 @@
     <Content Include="Reports\Maps\SiteFundingMap.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Site.aspx" />
+    <Content Include="Temporary\READ_ME.txt" />
     <Content Include="Themes\Base\Images\banner.png" />
     <Content Include="Themes\Base\Images\favicon.ico" />
     <Content Include="Themes\Base\Images\maincontentbackground.png" />
@@ -693,7 +694,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

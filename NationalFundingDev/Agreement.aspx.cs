@@ -752,39 +752,49 @@ namespace NationalFundingDev
 
                     i++;
                 }
-
-                var dir = "D:\\siftaroot\\TempFiles\\";
-                if (!Directory.Exists(dir))
+                // Changed it to not depend on a D drive
+                var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
+                if (!dir.Exists)
                 {
-                    Directory.CreateDirectory(dir);
+                    dir.Create();
                 }
 
                 package.Save();
-                package.SaveAs(new FileInfo(@"D:\siftaroot\TempFiles\agreements.xlsx"));
+                // Create an id for the temporary file
+                var id = Guid.NewGuid().ToString();
+                var tempPath = Path.Combine(dir.FullName, $"{id}.xlsx");
+                var tempFile = new FileInfo(tempPath);
+                package.SaveAs(tempFile);
 
                 //Write excel file to http web response 
                 Response.Clear();
                 Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
                 Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
-                Response.BinaryWrite(File.ReadAllBytes(@"D:\siftaroot\TempFiles\agreements.xlsx"));
+                Response.BinaryWrite(File.ReadAllBytes(tempFile.FullName));
                 Response.Flush();
+                // Added to clean up file after it has finished downloading
+                tempFile.Delete();
                 Response.End();
             }
         }
         
         protected void UploadButtonClick(object sender, EventArgs e)
         {
-            var dir = "D:\\siftaroot\\Temp\\";
-            if (!Directory.Exists(dir))
+            // Changed it to not depend on a D drive
+            var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
+            if (!dir.Exists)
             {
-                Directory.CreateDirectory(dir);
+                dir.Create();
             }
 
             if (FileUploadControl.HasFile)
             {
                 try
                 {
-                    var path = dir + Path.GetFileName(FileUploadControl.FileName);
+                    // unique id to avoid overwritting files
+                    var id = Guid.NewGuid().ToString();
+                    var path = Path.Combine(dir.FullName, $"{id}.xlsx");
+
                     FileUploadControl.SaveAs(path);
                     StatusLabel.Text = "Upload status: File uploaded!";
 
@@ -817,6 +827,8 @@ namespace NationalFundingDev
                             StatusLabel.Text += ws.Cells["H" + i].Value;
                         }
                     }
+                    // Delete Temporary File
+                    file.Delete();
                 }
                 catch (Exception ex)
                 {
