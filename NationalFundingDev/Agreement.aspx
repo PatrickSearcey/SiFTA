@@ -269,9 +269,36 @@
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
         <telerik:RadPageView runat="server" ID="rpvSiteFunding" TabIndex="2">
-            <asp:Button Text="Download Bulk Editor Template" runat="server" OnClick="DownloadTemplate" CssClass="templateButton" />
-            <asp:FileUpload id="FileUploadControl" runat="server" />
-            <asp:Button runat="server" id="UploadButton" text="Upload" OnClick="UploadButtonClick" />
+            <script>
+                function getUrlVars()
+                {
+                    var vars = [], hash;
+                    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                    for(var i = 0; i < hashes.length; i++)
+                    {
+                        hash = hashes[i].split('=');
+                        vars.push(hash[0]);
+                        vars[hash[0]] = hash[1];
+                    }
+                    return vars;
+                }
+                var bulkDownloadClicked = function (sender, args) {
+                    var parameters = getUrlVars();
+                    var agreementID = parameters["AgreementID"];
+                    console.log(agreementID);
+                    window.open("/Documents/AgreementSiteBulkEdit.ashx?AgreementID=" + agreementID);
+                }
+            </script>
+            <table>
+                <tr>
+                    <td><telerik:RadButton Text="Download Bulk Editor Template" runat="server" AutoPostBack="true" OnClientClicked="bulkDownloadClicked" /></td>
+                    <td><telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" /></td>
+                    <td><telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" Text="Upload" OnClick="rbUploadBulkSiteTemplate_Click"  /></td>
+                </tr>
+            </table>
+            
+            
+            
             <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <telerik:RadGrid runat="server" ID="rgFundedSites" AllowSorting="true" OnNeedDataSource="rgFundedSites_NeedDataSource" OnInsertCommand="rgFundedSites_InsertCommand" OnUpdateCommand="rgFundedSites_UpdateCommand" OnDeleteCommand="rgFundedSites_DeleteCommand" OnPreRender="rgFundedSites_PreRender">

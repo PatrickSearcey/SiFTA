@@ -1102,69 +1102,35 @@ namespace NationalFundingDev
             public string Remarks { get; set; }
         }
 
-        protected void DownloadTemplate(object sender, EventArgs e)
+        /// <summary>
+        /// Removing, moving to Documents/AgreementSiteBulkEdit.ashx
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        //protected void DownloadTemplate(object sender, EventArgs e);
+
+        protected void DeleteEntriesFromDB()
         {
             string agID = Request.QueryString["AgreementID"];
-            var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
+            var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+            var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
 
-            //Create an excel package from the file stream
-            using (ExcelPackage package = new ExcelPackage())
+            foreach (var entry in entries)
             {
-                //A workbook must have at least on cell, so lets add one... 
-                var ws = package.Workbook.Worksheets.Add("MySheet");
+                siftaDB.FundingSites.DeleteOnSubmit(entry);
+            }
 
-                //To set values in the spreadsheet use the Cells indexer.
-                ws.Cells["A1"].Value = "SiteName";
-                ws.Cells["B1"].Value = "SiteNumber";
-                ws.Cells["C1"].Value = "CollectionCode";
-                ws.Cells["D1"].Value = "Units";
-                ws.Cells["E1"].Value = "DifficultyFactor";
-                ws.Cells["F1"].Value = "USGSCMFFunding";
-                ws.Cells["G1"].Value = "CustomerFunds";
-                ws.Cells["H1"].Value = "Remarks";
-
-                int i = 2;
-                foreach (var entry in entries)
-                {
-                    ws.Cells["A" + i].Value = entry.SiteName;
-                    ws.Cells["B" + i].Value = entry.SiteNumber;
-                    ws.Cells["C" + i].Value = entry.CollectionCode;
-                    ws.Cells["D" + i].Value = entry.CollectionUnits;
-                    ws.Cells["E" + i].Value = entry.DifficultyFactor;
-                    ws.Cells["F" + i].Value = entry.FundingUSGSCMF;
-                    ws.Cells["G" + i].Value = entry.FundingCustomer;
-                    ws.Cells["H" + i].Value = entry.Remarks;
-
-                    i++;
-                }
-
-                // Changed it to not depend on a D drive
-                var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
-                if (!dir.Exists)
-                {
-                    dir.Create();
-                }
-
-                package.Save();
-                // Create an id for the temporary file
-                var id = Guid.NewGuid().ToString();
-                var tempPath = Path.Combine(dir.FullName, $"{id}.xlsx");
-                var tempFile = new FileInfo(tempPath);
-                package.SaveAs(tempFile);
-
-                //Write excel file to http web response 
-                Response.Clear();
-                Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
-                Response.BinaryWrite(File.ReadAllBytes(tempFile.FullName));
-                Response.Flush();
-                // Added to clean up file after it has finished downloading
-                tempFile.Delete();
-                Response.End();
+            try
+            {
+                siftaDB.SubmitChanges();
+            }
+            catch (Exception e)
+            {
+                StatusLabel.Text += e.ToString();
             }
         }
 
-        protected void UploadButtonClick(object sender, EventArgs e)
+        protected void rbUploadBulkSiteTemplate_Click(object sender, EventArgs e)
         {
             var list = new List<DownloadSite>();
             // Changed it to not depend on a D drive
@@ -1174,7 +1140,7 @@ namespace NationalFundingDev
                 dir.Create();
             }
 
-            if (FileUploadControl.HasFile)
+            if (rauBulkSiteUpload.UploadedFiles.Count > 0)
             {
                 try
                 {
@@ -1182,7 +1148,7 @@ namespace NationalFundingDev
                     var id = Guid.NewGuid().ToString();
                     var path = Path.Combine(dir.FullName, $"{id}.xlsx");
 
-                    FileUploadControl.SaveAs(path);
+                    rauBulkSiteUpload.UploadedFiles[0].SaveAs(path);
 
                     StatusLabel.Text = "Upload status: File uploaded!";
 
@@ -1214,7 +1180,8 @@ namespace NationalFundingDev
                             var temp7 = ws.Cells["G" + i].Value;  // entry.FundingCustomer;   Table: FundingSite
                             var temp8 = ws.Cells["H" + i].Value;  // entry.Remarks;           Table: FundingSite
 
-                            list.Add(new DownloadSite {
+                            list.Add(new DownloadSite
+                            {
                                 SiteName = temp1?.ToString(),
                                 SiteNumber = temp2?.ToString(),
                                 CollectionCode = temp3?.ToString(),
@@ -1237,27 +1204,6 @@ namespace NationalFundingDev
 
             DeleteEntriesFromDB();
             InsertEntriesToDB(list);
-        }
-
-        protected void DeleteEntriesFromDB()
-        {
-            string agID = Request.QueryString["AgreementID"];
-            var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
-            var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
-
-            foreach (var entry in entries)
-            {
-                siftaDB.FundingSites.DeleteOnSubmit(entry);
-            }
-
-            try
-            {
-                siftaDB.SubmitChanges();
-            }
-            catch (Exception e)
-            {
-                StatusLabel.Text += e.ToString();
-            }
         }
 
         protected void InsertEntriesToDB(List<DownloadSite> list)

@@ -229,22 +229,22 @@ namespace NationalFundingDev {
         protected global::Telerik.Web.UI.RadPageView rpvSiteFunding;
         
         /// <summary>
-        /// FileUploadControl control.
+        /// rauBulkSiteUpload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadControl;
+        protected global::Telerik.Web.UI.RadAsyncUpload rauBulkSiteUpload;
         
         /// <summary>
-        /// UploadButton control.
+        /// rbUploadBulkSiteTemplate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button UploadButton;
+        protected global::Telerik.Web.UI.RadButton rbUploadBulkSiteTemplate;
         
         /// <summary>
         /// StatusLabel control.

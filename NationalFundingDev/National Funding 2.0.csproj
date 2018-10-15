@@ -118,6 +118,9 @@
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.designer.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Documents\AgreementSiteBulkEdit.ashx.cs">
+      <DependentUpon>AgreementSiteBulkEdit.ashx</DependentUpon>
+    </Compile>
     <Compile Include="FileDirectoryHelper.cs" />
     <Compile Include="GenerateRecordID.aspx.cs">
       <DependentUpon>GenerateRecordID.aspx</DependentUpon>
@@ -434,6 +437,7 @@
     <Content Include="Documents\Forms\JFATemplate-old.docx" />
     <Content Include="packages.config" />
     <Content Include="Documents\Forms\JFATemplate.docx" />
+    <Content Include="Documents\AgreementSiteBulkEdit.ashx" />
     <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
     <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <Content Include="Reports\National\National.aspx" />
@@ -694,7 +698,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
