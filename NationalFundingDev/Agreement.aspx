@@ -286,7 +286,7 @@
                     var parameters = getUrlVars();
                     var agreementID = parameters["AgreementID"];
                     console.log(agreementID);
-                    window.open("/Documents/AgreementSiteBulkEdit.ashx?AgreementID=" + agreementID);
+                    window.open("Documents/AgreementSiteBulkEdit.ashx?AgreementID=" + agreementID);
                 }
             </script>
             <table>

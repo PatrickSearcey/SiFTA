@@ -1246,6 +1246,8 @@ namespace NationalFundingDev
             {
                 StatusLabel.Text += e.ToString();
             }
+
+            Response.Redirect(Request.RawUrl);
         }
 
         #endregion

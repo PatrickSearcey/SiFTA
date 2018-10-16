@@ -71,7 +71,7 @@ namespace NationalFundingDev.Documents
                 //Write excel file to http web response 
                 context.Response.Clear();
                 context.Response.ContentType = "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
-                context.Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements.xlsx"));
+                context.Response.AddHeader("content-disposition", String.Format("attachment;  filename=agreements" + id + ".xlsx"));
                 context.Response.BinaryWrite(File.ReadAllBytes(tempFile.FullName));
                 context.Response.Flush();
                 // Added to clean up file after it has finished downloading
