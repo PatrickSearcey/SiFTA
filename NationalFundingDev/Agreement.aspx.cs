@@ -1215,9 +1215,9 @@ namespace NationalFundingDev
             {
                 var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
                 double.TryParse(site.CollectionUnits, out double cu);
-                double.TryParse(site.CollectionUnits, out double df);
-                double.TryParse(site.CollectionUnits, out double fundUSGS);
-                double.TryParse(site.CollectionUnits, out double fundCust);
+                double.TryParse(site.DifficultyFactor, out double df);
+                double.TryParse(site.FundingUSGSCMF, out double fundUSGS);
+                double.TryParse(site.FundingCustomer, out double fundCust);
                 double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
 
                 var fs = new FundingSite
