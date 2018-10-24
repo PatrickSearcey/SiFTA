@@ -16,12 +16,20 @@ namespace NationalFundingDev.Reports
             Session["Title"] = "";
             if(!IsPostBack)
             {
-                rcbFY.DataBind();
-                foreach(RadComboBoxItem item in rcbFY.Items)
-                {
-                    item.Text = item.Text + " Water Year";
-                }
+                AddFiscalYearsToDropDown();
             }
+        }
+        private void AddFiscalYearsToDropDown()
+        {
+            var currentYear = DateTime.Now.Year;
+            // If the month is past October, we are in the next water year
+            if (DateTime.Now.Month >= 10) currentYear++;
+            // we track from 2007 to the current water year
+            for(int year = currentYear; year >= 2007; year--)
+            {
+                rcbFY.Items.Add(new RadComboBoxItem($"{year} Water Year", year.ToString()));
+            }
+
         }
         protected void rgNSIP_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {

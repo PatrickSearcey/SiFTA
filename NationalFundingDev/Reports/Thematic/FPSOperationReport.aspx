@@ -27,20 +27,7 @@
         <tr>
             <td>
                 <telerik:RadComboBox runat="server" ID="rcbFY" AppendDataBoundItems="true" Skin="Silk" AutoPostBack="true" OnSelectedIndexChanged="rcbFY_SelectedIndexChanged">
-                    <Items>
-                        <telerik:RadComboBoxItem Text="2018" Value="2018" />
-                        <telerik:RadComboBoxItem Text="2017" Value="2017" />
-                        <telerik:RadComboBoxItem Text="2016" Value="2016" />
-                        <telerik:RadComboBoxItem Text="2015" Value="2015" />
-                        <telerik:RadComboBoxItem Text="2014" Value="2014" />
-                        <telerik:RadComboBoxItem Text="2013" Value="2013" />
-                        <telerik:RadComboBoxItem Text="2012" Value="2012" />
-                        <telerik:RadComboBoxItem Text="2011" Value="2011" />
-                        <telerik:RadComboBoxItem Text="2010" Value="2010" />
-                        <telerik:RadComboBoxItem Text="2009" Value="2009" />
-                        <telerik:RadComboBoxItem Text="2008" Value="2008" />
-                        <telerik:RadComboBoxItem Text="2007" Value="2007" />
-                    </Items>
+                    
                 </telerik:RadComboBox>
             </td>
             <td>
