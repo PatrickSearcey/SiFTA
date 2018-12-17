@@ -170,9 +170,9 @@
                                             <telerik:DropDownListItem Text="clim" Value="clim" />
                                             <telerik:DropDownListItem Text="gw" Value="gw" />
                                             <telerik:DropDownListItem Text="misc" Value="misc" />
-                                            <telerik:DropDownListItem Text="gw" Value="gw" />
                                             <telerik:DropDownListItem Text="sed" Value="sed" />
                                             <telerik:DropDownListItem Text="sw" Value="sw" />
+                                            <telerik:DropDownListItem Text="wq" Value="wq" />
                                         </Items>
                                     </telerik:RadDropDownList>
                                 </EditItemTemplate>
