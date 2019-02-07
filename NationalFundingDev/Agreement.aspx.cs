@@ -1109,26 +1109,6 @@ namespace NationalFundingDev
         /// <param name="e"></param>
         //protected void DownloadTemplate(object sender, EventArgs e);
 
-        protected void DeleteEntriesFromDB()
-        {
-            string agID = Request.QueryString["AgreementID"];
-            var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
-            var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
-
-            foreach (var entry in entries)
-            {
-                siftaDB.FundingSites.DeleteOnSubmit(entry);
-            }
-
-            try
-            {
-                siftaDB.SubmitChanges();
-            }
-            catch (Exception e)
-            {
-                StatusLabel.Text += e.ToString();
-            }
-        }
 
         protected void rbUploadBulkSiteTemplate_Click(object sender, EventArgs e)
         {
@@ -1202,7 +1182,7 @@ namespace NationalFundingDev
                 }
             }
 
-            DeleteEntriesFromDB();
+            //DeleteEntriesFromDB();
             InsertEntriesToDB(list);
         }
 
@@ -1210,14 +1190,33 @@ namespace NationalFundingDev
         {
             string agID = Request.QueryString["AgreementID"];
             var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+            List<FundingSite> sitesToInsert = new List<FundingSite>();
+
+            var entriesToDelete = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
 
             foreach (var site in list)
             {
                 var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
-                double.TryParse(site.CollectionUnits, out double cu);
-                double.TryParse(site.DifficultyFactor, out double df);
-                double.TryParse(site.FundingUSGSCMF, out double fundUSGS);
-                double.TryParse(site.FundingCustomer, out double fundCust);
+                if (!double.TryParse(site.CollectionUnits, out double cu))
+                {
+                    StatusLabel.Text = "Problem with field: CollectionUnits";
+                    return;
+                }
+                if (!double.TryParse(site.DifficultyFactor, out double df))
+                {
+                    StatusLabel.Text = "Problem with field: DifficultyFactor";
+                    return;
+                }
+                if (!double.TryParse(site.FundingUSGSCMF, out double fundUSGS))
+                {
+                    StatusLabel.Text = "Problem with field: FundingUSGSCMF";
+                    return;
+                }
+                if (!double.TryParse(site.FundingCustomer, out double fundCust))
+                {
+                    StatusLabel.Text = "Problem with field: FundingCustomer";
+                    return;
+                }
                 double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
 
                 var fs = new FundingSite
@@ -1235,20 +1234,51 @@ namespace NationalFundingDev
                     Remarks = site.Remarks
                 };
 
-                siftaDB.FundingSites.InsertOnSubmit(fs);
+                sitesToInsert.Add(fs);
             }
 
             try
             {
+                foreach (var site in sitesToInsert)
+                {
+                    siftaDB.FundingSites.InsertOnSubmit(site);
+                }
+
+                foreach (var entry in entriesToDelete)
+                {
+                    siftaDB.FundingSites.DeleteOnSubmit(entry);
+                }
+
                 siftaDB.SubmitChanges();
+
+                Response.Redirect(Request.RawUrl);
             }
             catch (Exception e)
             {
                 StatusLabel.Text += e.ToString();
             }
-
-            Response.Redirect(Request.RawUrl);
         }
+
+        //protected void DeleteEntriesFromDB()
+        //{
+        //    string agID = Request.QueryString["AgreementID"];
+        //    var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+        //    var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
+
+        //    foreach (var entry in entries)
+        //    {
+        //        siftaDB.FundingSites.DeleteOnSubmit(entry);
+        //    }
+
+        //    try
+        //    {
+        //        siftaDB.SubmitChanges();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        StatusLabel.Text += e.ToString();
+        //    }
+        //}
 
         #endregion
 
