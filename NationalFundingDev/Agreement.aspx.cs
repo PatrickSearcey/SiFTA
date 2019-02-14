@@ -1130,7 +1130,7 @@ namespace NationalFundingDev
 
                     rauBulkSiteUpload.UploadedFiles[0].SaveAs(path);
 
-                    StatusLabel.Text = "Upload status: File uploaded! + <br>";
+                    StatusLabel.Text = "<span style='color: green; text-weight: bold;'>Upload status: File uploaded!</span><br><br>";
 
                     var file = new FileInfo(path);
                     using (var package = new ExcelPackage(file))
