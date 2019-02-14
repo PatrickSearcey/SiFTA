@@ -1197,12 +1197,7 @@ namespace NationalFundingDev
 
             foreach (var site in list)
             {
-                var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
-                if(collections == null)
-                {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionCode</span></br>";
-                    return;
-                }
+                // try to parse into doubles
                 if (!double.TryParse(site.CollectionUnits, out double cu))
                 {
                     StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionUnits</span></br>";
@@ -1224,6 +1219,19 @@ namespace NationalFundingDev
                     return;
                 }
                 double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
+
+                // check values
+                var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
+                if (collections == null)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionCode</span></br>";
+                    return;
+                }
+                if(df < 0.1 || df > 10)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field has value outside of range (0.1-10)</span></br>";
+                    return;
+                }
 
                 try
                 {
