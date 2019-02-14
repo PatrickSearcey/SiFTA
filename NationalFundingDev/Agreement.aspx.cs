@@ -1197,6 +1197,11 @@ namespace NationalFundingDev
             foreach (var site in list)
             {
                 var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
+                if(collections == null)
+                {
+                    StatusLabel.Text = "Problem with field: CollectionCode";
+                    return;
+                }
                 if (!double.TryParse(site.CollectionUnits, out double cu))
                 {
                     StatusLabel.Text = "Problem with field: CollectionUnits";
@@ -1219,22 +1224,29 @@ namespace NationalFundingDev
                 }
                 double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
 
-                var fs = new FundingSite
+                try
                 {
-                    AgreementModID = modID.AgreementModID,
-                    SiteNumber = site.SiteNumber,
-                    CollectionCodeID = collections.CollectionCodeID,
-                    CollectionUnits = cu,
-                    DifficultyFactor = df,
-                    FundingUSGSCMF = fundUSGS,
-                    FundingCustomer = fundCust,
-                    FundingTotal = total,
-                    FundingOther = 0,
-                    AgencyCode = "USGS",
-                    Remarks = site.Remarks
-                };
+                    var fs = new FundingSite
+                    {
+                        AgreementModID = modID.AgreementModID,
+                        SiteNumber = site.SiteNumber,
+                        CollectionCodeID = collections.CollectionCodeID,
+                        CollectionUnits = cu,
+                        DifficultyFactor = df,
+                        FundingUSGSCMF = fundUSGS,
+                        FundingCustomer = fundCust,
+                        FundingTotal = total,
+                        FundingOther = 0,
+                        AgencyCode = "USGS",
+                        Remarks = site.Remarks
+                    };
 
-                sitesToInsert.Add(fs);
+                    sitesToInsert.Add(fs);
+                }
+                catch (Exception e)
+                {
+                    StatusLabel.Text += "Problem adding entry to List: " + e.ToString();
+                }
             }
 
             try
@@ -1251,7 +1263,7 @@ namespace NationalFundingDev
 
                 siftaDB.SubmitChanges();
 
-                Response.Redirect(Request.RawUrl);
+                //Response.Redirect(Request.RawUrl);
             }
             catch (Exception e)
             {
