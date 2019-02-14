@@ -1130,7 +1130,7 @@ namespace NationalFundingDev
 
                     rauBulkSiteUpload.UploadedFiles[0].SaveAs(path);
 
-                    StatusLabel.Text = "Upload status: File uploaded!";
+                    StatusLabel.Text = "Upload status: File uploaded! + <br>";
 
                     var file = new FileInfo(path);
                     using (var package = new ExcelPackage(file))
@@ -1149,7 +1149,7 @@ namespace NationalFundingDev
                         for (int n = 0; n < query.Count(); n++)
                         {
                             int i = n + 2;
-                            StatusLabel.Text += "<br><br>";
+                            //StatusLabel.Text += "<br><br>";
 
                             var temp1 = ws.Cells["A" + i].Value;  // entry.SiteName;          Table: Site
                             var temp2 = ws.Cells["B" + i].Value;  // entry.SiteNumber;        Table: FundingSite
@@ -1178,7 +1178,8 @@ namespace NationalFundingDev
                 }
                 catch (Exception ex)
                 {
-                    StatusLabel.Text = "Upload status: The file could not be uploaded. The following error occured: " + ex.Message;
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Upload status: The file could not be uploaded. The following error occured: " +
+                        ex.Message + "</span></br>";
                 }
             }
 
@@ -1199,27 +1200,27 @@ namespace NationalFundingDev
                 var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
                 if(collections == null)
                 {
-                    StatusLabel.Text = "Problem with field: CollectionCode";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionCode</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.CollectionUnits, out double cu))
                 {
-                    StatusLabel.Text = "Problem with field: CollectionUnits";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionUnits</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.DifficultyFactor, out double df))
                 {
-                    StatusLabel.Text = "Problem with field: DifficultyFactor";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: DifficultyFactor</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.FundingUSGSCMF, out double fundUSGS))
                 {
-                    StatusLabel.Text = "Problem with field: FundingUSGSCMF";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: FundingUSGSCMF</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.FundingCustomer, out double fundCust))
                 {
-                    StatusLabel.Text = "Problem with field: FundingCustomer";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: FundingCustomer</span></br>";
                     return;
                 }
                 double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
@@ -1245,7 +1246,7 @@ namespace NationalFundingDev
                 }
                 catch (Exception e)
                 {
-                    StatusLabel.Text += "Problem adding entry to List: " + e.ToString();
+                    StatusLabel.Text += "<span style='color: red; text-weight: bold;'>Problem adding entry to List: " + e.ToString() + "</span></br>";
                 }
             }
 
