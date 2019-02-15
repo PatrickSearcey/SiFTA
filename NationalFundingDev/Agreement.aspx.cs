@@ -1182,9 +1182,14 @@ namespace NationalFundingDev
                         ex.Message + "</span></br>";
                 }
             }
+            else
+            {
+                StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>No File Selected</span><br><br>";
+            }
 
             //DeleteEntriesFromDB();
             InsertEntriesToDB(list);
+            rgFundedSites.Rebind();
         }
 
         protected void InsertEntriesToDB(List<DownloadSite> list)
@@ -1229,7 +1234,7 @@ namespace NationalFundingDev
                 }
                 if(df < 0.1 || df > 10)
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field has value outside of range (0.1-10)</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field value: " + df + " has value outside of range (0.1-10)</span></br>";
                     return;
                 }
 

@@ -293,7 +293,7 @@
                 <tr>
                     <td><telerik:RadButton Text="Download Bulk Editor Template" runat="server" AutoPostBack="true" OnClientClicked="bulkDownloadClicked" /></td>
                     <td><telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" /></td>
-                    <td><telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" Text="Upload" OnClick="rbUploadBulkSiteTemplate_Click"  /></td>
+                    <td><telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" AutoPostBack="true" Text="Upload" OnClick="rbUploadBulkSiteTemplate_Click"  /></td>
                 </tr>
             </table>
             
