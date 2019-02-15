@@ -1130,7 +1130,7 @@ namespace NationalFundingDev
 
                     rauBulkSiteUpload.UploadedFiles[0].SaveAs(path);
 
-                    StatusLabel.Text = "<span style='color: green; text-weight: bold;'>Upload status: File uploaded!</span><br><br>";
+                    StatusLabel.Text = "<span style='color: green; text-weight: bold;'>File upload successful.</span><br><br>";
 
                     var file = new FileInfo(path);
                     using (var package = new ExcelPackage(file))
@@ -1184,7 +1184,7 @@ namespace NationalFundingDev
             }
             else
             {
-                StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>No File Selected</span><br><br>";
+                StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>No File Selected. Please select a file, then click upload.</span><br><br>";
             }
 
             //DeleteEntriesFromDB();
@@ -1205,22 +1205,22 @@ namespace NationalFundingDev
                 // try to parse into doubles
                 if (!double.TryParse(site.CollectionUnits, out double cu))
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionUnits</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Collection Units value: " + site.CollectionUnits + "</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.DifficultyFactor, out double df))
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: DifficultyFactor</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Difficulty Factor value: " + site.DifficultyFactor + "</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.FundingUSGSCMF, out double fundUSGS))
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: FundingUSGSCMF</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Funding USGS CMF value: " + site.FundingUSGSCMF + "</span></br>";
                     return;
                 }
                 if (!double.TryParse(site.FundingCustomer, out double fundCust))
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: FundingCustomer</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Funding Customer value: " + site.FundingCustomer + "</span></br>";
                     return;
                 }
                 double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
