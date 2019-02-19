@@ -1102,13 +1102,6 @@ namespace NationalFundingDev
             public string Remarks { get; set; }
         }
 
-        /// <summary>
-        /// Removing, moving to Documents/AgreementSiteBulkEdit.ashx
-        /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
-        //protected void DownloadTemplate(object sender, EventArgs e);
-
 
         protected void rbUploadBulkSiteTemplate_Click(object sender, EventArgs e)
         {
@@ -1230,7 +1223,7 @@ namespace NationalFundingDev
                 var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
                 if (collections == null)
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: CollectionCode</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Collection Code</span></br>";
                     return;
                 }
                 if(df < 0.1 || df > 10)

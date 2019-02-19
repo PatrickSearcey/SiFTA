@@ -288,6 +288,9 @@
                     console.log(agreementID);
                     window.open("Documents/AgreementSiteBulkEdit.ashx?AgreementID=" + agreementID);
                 }
+                function rbUploadedEvent() {
+                    document.getElementById("uploadButtonSpan").style.visibility = "";
+                }
             </script>
 
             <telerik:RadAjaxPanel runat="server" ID="RadAjaxPanel1">
@@ -301,9 +304,9 @@
                     <br /><br />
                     <div>
                         <span style="float:left;margin-left:40px;">
-                            <telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" />
+                            <telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" OnClientFileUploaded="rbUploadedEvent" />
                         </span>
-                        <span style="float:left;">
+                        <span style="float:left; visibility:hidden;" id="uploadButtonSpan">
                             <telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" AutoPostBack="true" Text="Upload Site Funding Spreadsheet" OnClick="rbUploadBulkSiteTemplate_Click"  />
                         </span></div>
                     <br /><br /><br />
