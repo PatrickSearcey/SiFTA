@@ -1231,6 +1231,19 @@ namespace NationalFundingDev
                     StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field value: " + df + " has value outside of range (0.1-10)</span></br>";
                     return;
                 }
+                if (site.SiteNumber == null)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number is empty</span></br>";
+                    return;
+                }
+                if (site.SiteNumber != null && site.SiteNumber.Length < 8)
+                {
+                    if (!site.SiteNumber.Contains("new"))
+                    {
+                        StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number " + site.SiteNumber + "</span></br>";
+                        return;
+                    }
+                }
 
                 try
                 {
