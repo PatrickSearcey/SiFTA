@@ -289,17 +289,30 @@
                     window.open("Documents/AgreementSiteBulkEdit.ashx?AgreementID=" + agreementID);
                 }
             </script>
-            <table>
-                <tr>
-                    <td><telerik:RadButton Text="Download Bulk Editor Template" runat="server" AutoPostBack="true" OnClientClicked="bulkDownloadClicked" /></td>
-                    <td><telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" /></td>
-                    <td><telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" AutoPostBack="true" Text="Upload" OnClick="rbUploadBulkSiteTemplate_Click"  /></td>
-                </tr>
-            </table>
-            
-            
-            
-            <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
+
+            <telerik:RadAjaxPanel runat="server" ID="RadAjaxPanel1">
+                <div style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+                    <span style="font-weight:bold;">Download</span>
+                    <br /><br />
+                    <span style="margin-left:40px;"><telerik:RadButton Text="Download" runat="server" AutoPostBack="true" OnClientClicked="bulkDownloadClicked"/></span>
+                    <hr />
+
+                    <span style="font-weight:bold;">Upload</span>
+                    <br /><br />
+                    <div>
+                        <span style="float:left;margin-left:40px;">
+                            <telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" />
+                        </span>
+                        <span style="float:left;">
+                            <telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" AutoPostBack="true" Text="Upload Site Funding Spreadsheet" OnClick="rbUploadBulkSiteTemplate_Click"  />
+                        </span></div>
+                    <br /><br /><br />
+                    <span style="margin-left:40px;"">
+                        <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
+                    </span>
+                </div><br />
+            </telerik:RadAjaxPanel>
+
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <telerik:RadGrid runat="server" ID="rgFundedSites" AllowSorting="true" OnNeedDataSource="rgFundedSites_NeedDataSource" OnInsertCommand="rgFundedSites_InsertCommand" OnUpdateCommand="rgFundedSites_UpdateCommand" OnDeleteCommand="rgFundedSites_DeleteCommand" OnPreRender="rgFundedSites_PreRender">
                     <MasterTableView AutoGenerateColumns="False" ShowGroupFooter="true" ShowFooter="true" DataKeyNames="FundingSiteID" EditMode="EditForms">

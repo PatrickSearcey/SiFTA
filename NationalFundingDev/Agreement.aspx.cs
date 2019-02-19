@@ -1144,6 +1144,7 @@ namespace NationalFundingDev
                         var testing = ws.Cells.LoadFromText("test");
 
                         //Select all cells in column
+                        // order by Collection Code
                         var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
 
                         for (int n = 0; n < query.Count(); n++)
