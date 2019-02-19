@@ -23,11 +23,14 @@ namespace NationalFundingDev.Documents
             }
             var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
 
+            var modID = siftaDB.Agreements.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+            var pID = modID.PurchaseOrderNumber;
+
             //Create an excel package from the file stream
             using (ExcelPackage package = new ExcelPackage())
             {
                 //A workbook must have at least on cell, so lets add one... 
-                var ws = package.Workbook.Worksheets.Add("MySheet");
+                var ws = package.Workbook.Worksheets.Add(pID);
 
                 //To set values in the spreadsheet use the Cells indexer.
                 ws.Cells["A1"].Value = "SiteName";
