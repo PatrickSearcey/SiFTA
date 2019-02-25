@@ -292,8 +292,8 @@
                     document.getElementById("uploadButtonSpan").style.visibility = "";
                 }
             </script>
-
-            <telerik:RadAjaxPanel runat="server" ID="RadAjaxPanel1">
+            
+            <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <div style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
                     <span style="font-weight:bold;">Download</span>
                     <br /><br />
@@ -314,9 +314,7 @@
                         <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
                     </span>
                 </div><br />
-            </telerik:RadAjaxPanel>
 
-            <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <telerik:RadGrid runat="server" ID="rgFundedSites" AllowSorting="true" OnNeedDataSource="rgFundedSites_NeedDataSource" OnInsertCommand="rgFundedSites_InsertCommand" OnUpdateCommand="rgFundedSites_UpdateCommand" OnDeleteCommand="rgFundedSites_DeleteCommand" OnPreRender="rgFundedSites_PreRender">
                     <MasterTableView AutoGenerateColumns="False" ShowGroupFooter="true" ShowFooter="true" DataKeyNames="FundingSiteID" EditMode="EditForms">
                         <FooterStyle BackColor="Black" ForeColor="White" />
