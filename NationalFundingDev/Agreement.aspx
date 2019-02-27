@@ -291,6 +291,12 @@
                 function rbUploadedEvent() {
                     document.getElementById("uploadButtonSpan").style.visibility = "";
                 }
+
+                window.onerror = function (err) {
+                    if (err == "Uncaught Sys.WebForms.PageRequestManagerServerErrorException: Sys.WebForms.PageRequestManagerServerErrorException: An unknown error occurred while processing the request on the server. The status code returned from the server was: 500") {
+                        alert("Problem with special characters entered in field 'Remarks'");
+                    }
+                }
             </script>
             
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
