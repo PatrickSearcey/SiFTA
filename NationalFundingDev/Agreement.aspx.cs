@@ -1134,10 +1134,12 @@ namespace NationalFundingDev
                         var ws = workBook.Worksheets.First();
 
                         var A1 = ws.Cells["A1"].Value;
-                        var testing = ws.Cells.LoadFromText("test");
+                        if (A1 == null)
+                        {
+                            StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number is empty</span></br>";
+                        }
 
                         //Select all cells in column
-                        // order by Collection Code
                         var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
 
                         for (int n = 0; n < query.Count(); n++)
@@ -1196,6 +1198,11 @@ namespace NationalFundingDev
 
             foreach (var site in list)
             {
+                if (site.SiteNumber == null)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number is empty</span></br>";
+                    return;
+                }
                 // try to parse into doubles
                 if (!double.TryParse(site.CollectionUnits, out double cu))
                 {
@@ -1231,9 +1238,9 @@ namespace NationalFundingDev
                     StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field value: " + df + " has value outside of range (0.1-10)</span></br>";
                     return;
                 }
-                if (site.SiteNumber == null)
+                if (cu < 0.1 || cu > 1)
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number is empty</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Collection Units field value: " + cu + " has value outside of range (0.1-1.0)</span></br>";
                     return;
                 }
                 if (site.SiteNumber != null && site.SiteNumber.Length < 8)
