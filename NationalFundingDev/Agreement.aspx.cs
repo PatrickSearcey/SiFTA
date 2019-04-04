@@ -833,7 +833,7 @@ namespace NationalFundingDev
         }
         protected void rbUploadDocuments_Click(object sender, EventArgs e)
         {
-            //\\igskiacwvmgs014\siftaroot\Documents\Agreements\AgreementID\
+            //\\IGSKIACWVMi01\siftaroot\Documents\Agreements\AgreementID\
             var agreementDocumentsPath = FileDirectoryHelper.GetAgreementDirectory(agreement.AgreementID);
             if (!Directory.Exists(agreementDocumentsPath)) Directory.CreateDirectory(agreementDocumentsPath);
             foreach(UploadedFile f in rauFile.UploadedFiles)

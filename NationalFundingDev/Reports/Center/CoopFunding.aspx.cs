@@ -195,7 +195,7 @@ namespace NationalFundingDev.Reports
             get
             {
                 var dt = new DataTable();
-                using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb;Integrated Security=True"))
+                using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True"))
                 {
                     var da = new SqlDataAdapter();
                     da.SelectCommand = new SqlCommand(CoopFundingQuery, conn);
@@ -666,7 +666,7 @@ namespace NationalFundingDev.Reports
             {
                 var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] FROM [siftadb].[dbo].[vCoopFundingReportMultiYear] WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
                 var dt = new DataTable();
-                using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMGS014;Initial Catalog=siftadb;Integrated Security=True"))
+                using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True"))
                 {
                     var da = new SqlDataAdapter();
                     da.SelectCommand = new SqlCommand(query, conn);
