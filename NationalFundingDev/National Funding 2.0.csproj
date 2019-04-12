@@ -438,6 +438,7 @@
     <Content Include="packages.config" />
     <Content Include="Documents\Forms\JFATemplate.docx" />
     <Content Include="Documents\AgreementSiteBulkEdit.ashx" />
+    <Content Include="Help\SIFTA-BulkUploadforSiteFunding.pdf" />
     <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
     <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <Content Include="Reports\National\National.aspx" />
@@ -647,7 +648,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Help\" />
     <Folder Include="Reports\Customer\" />
     <Folder Include="Reports\Metrics Library\" />
   </ItemGroup>
@@ -698,7 +698,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -301,6 +301,9 @@
             
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <div style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+                    <span style="font-weight:bold;">Bulk Upload Help available <a href="Help/SIFTA-BulkUploadforSiteFunding.pdf">here</a>.</span>
+                    <br /><br />
+                    <hr />
                     <span style="font-weight:bold;">Download</span>
                     <br /><br />
                     <span style="margin-left:40px;"><telerik:RadButton Text="Download" runat="server" AutoPostBack="true" OnClientClicked="bulkDownloadClicked"/></span>
