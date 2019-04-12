@@ -60,7 +60,7 @@
                 <Items>
                     <telerik:RadComboBoxItem Text="All Customers" Value="All" />
                     <telerik:RadComboBoxItem Text="Active Customers" Value="Active" />
-                    <telerik:RadComboBoxItem Text="Customers (recent)" Value="Recent" Selected="true" />
+                    <telerik:RadComboBoxItem Text="Customers (Recent)" Value="Recent" Selected="true" />
                 </Items>
             </telerik:RadComboBox>
             <br />

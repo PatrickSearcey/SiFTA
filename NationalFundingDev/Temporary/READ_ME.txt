@@ -1,0 +1,1 @@
+﻿This directory is a temporary file directory for saving files to. 
