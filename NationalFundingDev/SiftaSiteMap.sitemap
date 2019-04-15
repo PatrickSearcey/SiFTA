@@ -14,7 +14,7 @@
             <siteMapNode url="~/Reports/Thematic/FPSOperationReport.aspx" title="FPS Operation and Maintenance Cost" description="" />
           </siteMapNode>
         </siteMapNode>
-        <siteMapNode url="~/Help.aspx" title="Help"  description="" />
+        <siteMapNode url="https://my.usgs.gov/confluence/display/SIFTA/SIFTA" title="Help"  description="" />
       <siteMapNode url="https://sifta.water.usgs.gov/Documents/SiFTAUserManual_Overview.pdf" title="Quick Start Guide"  description="" />
     </siteMapNode>
 </siteMap>
