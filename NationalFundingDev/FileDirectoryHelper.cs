@@ -10,7 +10,7 @@ namespace NationalFundingDev
         public static String GetTempDirectory()
         {
 #if DEBUG
-            return @"\\IGSKIACWVMi03\dev-siftaroot\Temp\";
+            return @"\\IGSKIACWVMi02\devsiftaroot\Temp\";
 #else
             return @"\\IGSKIACWVMi01\siftaroot\Temp\";
 #endif
@@ -18,7 +18,7 @@ namespace NationalFundingDev
         public static String GetAgreementDirectory(int AgreementID)
         {
 #if DEBUG
-            return String.Format(@"\\IGSKIACWVMi03\dev-siftaroot\Documents\Agreements\{0}\", AgreementID);
+            return String.Format(@"\\IGSKIACWVMi02\devsiftaroot\Documents\Agreements\{0}\", AgreementID);
 #else
             return String.Format(@"\\IGSKIACWVMi01\siftaroot\Documents\Agreements\{0}\", AgreementID);
 #endif
