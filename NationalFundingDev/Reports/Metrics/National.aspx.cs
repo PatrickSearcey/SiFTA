@@ -25,7 +25,7 @@ namespace NationalFundingDev.Reports.Metrics
         #endregion
 
         #region Page Events
-        protected void rcbTimeRange_SelectedIndexChanged(object sender, Telerik.Web.UI.RadComboBoxSelectedIndexChangedEventArgs e)
+        protected void rcbTimeRange_TextChanged(object sender, EventArgs e)
         {
             PageDataBind();
         }
@@ -37,12 +37,25 @@ namespace NationalFundingDev.Reports.Metrics
             var bd = BaseData;
             var tc = TotalsCount;
             var dc = DaysCount;
-            BindTotalsChart(tc);
-            BindUserCommunityPieChart(bd);
-            BindCenterActivityPieChart(bd);
-            BindDayActivityChart(dc);
-        }
 
+            TitleContent.InnerHtml = rcbTimeRange.SelectedItem.Text;
+
+            var ds = bd.Where(p => p.EmployeeTitle != null).GroupBy(p => p.EmployeeTitle.Trim()).Select(g => new { Title = g.Key.Trim(), Count = g.Count() }).OrderBy(p => p.Title).ToDictionary(p => p.Title, p => p.Count);
+            BaseDataContent.InnerHtml += "Employee Titles<br />";
+            foreach (var datum in ds)
+            {
+                BaseDataContent.InnerHtml += "<span style='margin-left: 20px'>" + datum.Key + ": " + datum.Value + "</span><br />";
+            }
+            var ds2 = bd.GroupBy(p => p.CenterName).Select(g => new { Title = g.Key, Count = g.Count() }).ToDictionary(p => p.Title, p => p.Count);
+            CenterDataContent.InnerHtml = "Centers<br>";
+            foreach (var datum in ds2)
+            {
+                CenterDataContent.InnerHtml += "<span style='margin-left: 20px'>" + datum.Key + ": " + datum.Value + "</span><br />";
+            }
+            //TotalsCountContent
+            //DaysCountContent
+        }
+        /*
         private void BindDayActivityChart(DataTable dc)
         {
             rchartDayBreakDown.DataSource = dc;
@@ -64,7 +77,7 @@ namespace NationalFundingDev.Reports.Metrics
             var ds = bd.GroupBy(p => p.CenterName).Select(g => new { Title = g.Key, Count = g.Count() }).ToDictionary(p => p.Title, p => p.Count);
             rchartCenterParticipation.DataSource = ds;
             rchartCenterParticipation.DataBind();
-        }
+        }*/
         #endregion
 
         #region Grabbing Data
@@ -132,5 +145,6 @@ namespace NationalFundingDev.Reports.Metrics
             }
         }
         #endregion
+
     }
 }

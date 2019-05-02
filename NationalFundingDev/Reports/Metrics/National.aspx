@@ -9,16 +9,35 @@
     <telerik:RadAjaxPanel runat="server" ID="rap">
         <div style="width: 100%; padding-top: 20px; padding-left: 10px; padding-right: 10px;">
             <b>Record Time Range</b><br />
-            <telerik:RadComboBox runat="server" ID="rcbTimeRange" AutoPostBack="true" OnSelectedIndexChanged="rcbTimeRange_SelectedIndexChanged">
-                <Items>
-                    <telerik:RadComboBoxItem Text="All" Value="all" />
-                    <telerik:RadComboBoxItem Text="Today" Value="today" Selected="true" />
-                    <telerik:RadComboBoxItem Text="Past 7 Days" Value="7" />
-                    <telerik:RadComboBoxItem Text="Past 30 Days" Value="30" />
-                    <telerik:RadComboBoxItem Text="Past 90 Days" Value="90" />
-                </Items>
-            </telerik:RadComboBox>
+            <asp:DropDownList runat="server" ID="rcbTimeRange" AutoPostBack="true" OnTextChanged="rcbTimeRange_TextChanged">
+                <asp:ListItem Text="All" Value="all" ></asp:ListItem>
+                <asp:ListItem Text="Today" Value="today" Selected="true" ></asp:ListItem>
+                <asp:ListItem Text="Past 7 Days" Value="7" ></asp:ListItem>
+                <asp:ListItem Text="Past 30 Days" Value="30" ></asp:ListItem>
+                <asp:ListItem Text="Past 90 Days" Value="90" ></asp:ListItem>
+            </asp:DropDownList>
         </div>
+
+        <span id="TableContent" runat="server">
+            <br />
+            <span id="TitleContent" runat="server" style="margin-left: 20px; font-weight: bolder;">
+            </span>
+            <br /><br />
+            <span id="BaseDataContent" runat="server" style="margin-left: 20px;">
+            </span>
+            <br /><br />
+            <span id="CenterDataContent" runat="server" style="margin-left: 20px;">
+            </span>
+            <br /><br />
+            <span id="TotalsCountContent" runat="server" style="margin-left: 20px;">
+            </span>
+            <br /><br />
+            <span id="DaysCountContent" runat="server" style="margin-left: 20px;">
+            </span>
+        </span>
+
+
+        <!--
         <table style="padding-top: 20px; padding-left: 10px; padding-right: 10px;">
             <tr>
                 <td>
@@ -185,6 +204,10 @@
                 </td>
             </tr>
         </table>
+            -->
+
+
+
         <br /><br />
     </telerik:RadAjaxPanel>
 </asp:Content>
