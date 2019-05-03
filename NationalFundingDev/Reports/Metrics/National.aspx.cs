@@ -41,7 +41,7 @@ namespace NationalFundingDev.Reports.Metrics
             TitleContent.InnerHtml = rcbTimeRange.SelectedItem.Text;
 
             var ds = bd.Where(p => p.EmployeeTitle != null).GroupBy(p => p.EmployeeTitle.Trim()).Select(g => new { Title = g.Key.Trim(), Count = g.Count() }).OrderBy(p => p.Title).ToDictionary(p => p.Title, p => p.Count);
-            BaseDataContent.InnerHtml += "Employee Titles<br />";
+            BaseDataContent.InnerHtml = "Employee Titles<br />";
             foreach (var datum in ds)
             {
                 BaseDataContent.InnerHtml += "<span style='margin-left: 20px'>" + datum.Key + ": " + datum.Value + "</span><br />";
