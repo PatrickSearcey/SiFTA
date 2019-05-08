@@ -122,10 +122,13 @@ namespace NationalFundingDev
             terms.Add("[EndDate]", end.ToString("M/d/yyyy"));
             terms.Add("[StartDateFormal]", start.ToString("MMMM d, yyyy"));
             terms.Add("[EndDateFormal]", end.ToString("MMMM d, yyyy"));
+
             foreach(var term in terms)
             {
                 document = document.Replace(term.Key, FundingExtensions.XMLSafe(term.Value));
             }
+
+            document = document.Replace("https://www2.usgs.gov/fsp/", "https://www.usgs.gov/about/organization/science-support/science-quality-and-integrity/fundamental-science-practices");
         }
         public void DownloadDocument()
         {
