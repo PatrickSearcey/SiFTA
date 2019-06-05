@@ -646,24 +646,6 @@
       <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
-    <Type Name="vStudiesFundingInformation">
-      <Column Name="FundingStudyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Units" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="BasisProjectNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-    </Type>
-  </Table>
   <Table Name="dbo.vAgreementModDifference" Member="vAgreementModDifferences">
     <Type Name="vAgreementModDifference">
       <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5) NOT NULL" CanBeNull="false" />
@@ -914,6 +896,26 @@
       <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
+    <Type Name="vStudiesFundingInformation">
+      <Column Name="FundingStudyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Units" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BasisProjectNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>

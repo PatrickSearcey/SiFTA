@@ -357,12 +357,6 @@
         <elementListCompartment Id="35a7d904-9c7f-4282-bf8a-fc9d9ac78fac" absoluteBounds="6.765, 6.9600000000000009, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="715a7167-08dd-4f71-a855-84349b98a726" absoluteBounds="15.75, 1, 2, 3.5016097005208326">
-      <DataClassMoniker Name="/SiftaDBDataContext/vStudiesFundingInformation" />
-      <nestedChildShapes>
-        <elementListCompartment Id="c6cffa8d-798d-474a-8cd9-0ef50aa02b5a" absoluteBounds="15.765, 1.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <classShape Id="473960a9-3c8b-4493-a82c-c011bc56422f" absoluteBounds="18.875, 2.125, 2, 3.3093082682291666">
       <DataClassMoniker Name="/SiftaDBDataContext/vAgreementModDifference" />
       <nestedChildShapes>
@@ -470,6 +464,12 @@
       <DataClassMoniker Name="/SiftaDBDataContext/vSiteFundingInformation" />
       <nestedChildShapes>
         <elementListCompartment Id="e32061fd-25b1-4d9d-98c8-88915bf6c60e" absoluteBounds="12.89, 7.2100000000000009, 1.9700000000000002, 5.826131184895833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b99b639b-1030-4a32-b13e-66dbaf7e021a" absoluteBounds="15.625, 0.5, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/SiftaDBDataContext/vStudiesFundingInformation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a50913e-6549-4985-baac-a56193968669" absoluteBounds="15.64, 0.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>

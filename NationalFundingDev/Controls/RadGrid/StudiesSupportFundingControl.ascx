@@ -64,6 +64,22 @@
         <td>
             <telerik:RadNumericTextBox runat="server" ID="rntbOtherFunding" Type="Currency" Value="<%# research.FundingOther %>" /></td>
     </tr>
+
+    <tr>
+        <td align="right"></td>
+        <td>
+            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpStartDate" CssClass="toDate" runat="server" DateInput-Label="Start Date:">
+            </telerik:RadDatePicker>
+        </td>
+    </tr>
+    <tr>
+        <td align="right"></td>
+        <td>
+            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpBeginDate" CssClass="toDate" runat="server" DateInput-Label="Begin Date:">
+            </telerik:RadDatePicker>
+        </td>
+    </tr>
+
     <tr>
         <td align="right">Remarks</td>
         <td>
