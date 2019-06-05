@@ -28,6 +28,7 @@
             margin-bottom: 20px;
         }
     </style>
+    <link href="CSS/CalendarLite.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphAJAXManager" runat="server">
     <telerik:RadAjaxManager runat="server" ID="ram">
@@ -361,6 +362,8 @@
                             <telerik:GridBoundColumn DataType="System.Double" HeaderText="Customer" DataField="FundingCustomer" SortExpression="FundingCustomer" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
+                            <telerik:GridBoundColumn HeaderText="Start Date" DataField="StartDate" DataFormatString="{0:d}" />
+                            <telerik:GridBoundColumn HeaderText="Begin Date" DataField="BeginDate" DataFormatString="{0:d}" />
                             <telerik:GridTemplateColumn HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks">
                                 <ItemTemplate>
                                     <p style="padding: 0px; margin: 0px;" title='<%# Eval("Remarks") %>'><%# GetStationName(Eval("Remarks"), null) %></p>

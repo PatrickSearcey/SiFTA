@@ -415,6 +415,7 @@
     <Content Include="Admin.aspx" />
     <Content Include="Controls\Editable\AgreementLogGrid.ascx" />
     <Content Include="Controls\RadGrid\AgreementLogEditForm.ascx" />
+    <Content Include="CSS\CalendarLite.css" />
     <Content Include="GenerateRecordID.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="Images\arrow.png" />
@@ -698,7 +699,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
