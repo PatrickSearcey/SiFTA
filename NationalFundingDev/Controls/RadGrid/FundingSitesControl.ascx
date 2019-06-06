@@ -154,7 +154,7 @@
     <tr>
         <td align="right"></td>
         <td>
-            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpBeginDate" CssClass="toDate" runat="server" DateInput-Label="Begin Date:">
+            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpEndDate" CssClass="toDate" runat="server" DateInput-Label="End Date:">
             </telerik:RadDatePicker>
         </td>
     </tr>

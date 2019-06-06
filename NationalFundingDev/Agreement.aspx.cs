@@ -690,7 +690,7 @@ namespace NationalFundingDev
             var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rdpStartDate = (RadDatePicker)userControl.FindControl("rdpStartDate");
-            var rdpBeginDate = (RadDatePicker)userControl.FindControl("rdpBeginDate");
+            var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
             #endregion
@@ -715,7 +715,7 @@ namespace NationalFundingDev
             siteFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             siteFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             siteFunding.StartDate = rdpStartDate.SelectedDate;
-            siteFunding.BeginDate = rdpBeginDate.SelectedDate;
+            siteFunding.EndDate = rdpEndDate.SelectedDate;
             siteFunding.Remarks = rtbRemarks.Text;
             #endregion
         }
@@ -795,7 +795,7 @@ namespace NationalFundingDev
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
             var rdpStartDate = (RadDatePicker)userControl.FindControl("rdpStartDate");
-            var rdpBeginDate = (RadDatePicker)userControl.FindControl("rdpBeginDate");
+            var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
             #endregion
 
@@ -807,7 +807,7 @@ namespace NationalFundingDev
             StudiesFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             StudiesFunding.BasisProjectNumber = rtbBasisProjectNumber.Text;
             StudiesFunding.StartDate = rdpStartDate.SelectedDate;
-            StudiesFunding.BeginDate = rdpBeginDate.SelectedDate;
+            StudiesFunding.EndDate = rdpEndDate.SelectedDate;
             StudiesFunding.Remarks = rtbRemarks.Text;
             if (StudiesFunding.CreatedBy == null || StudiesFunding.CreatedDate == null)
             {

@@ -363,7 +363,7 @@
                             <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Start Date" DataField="StartDate" DataFormatString="{0:d}" />
-                            <telerik:GridBoundColumn HeaderText="Begin Date" DataField="BeginDate" DataFormatString="{0:d}" />
+                            <telerik:GridBoundColumn HeaderText="End Date" DataField="EndDate" DataFormatString="{0:d}" />
                             <telerik:GridTemplateColumn HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks">
                                 <ItemTemplate>
                                     <p style="padding: 0px; margin: 0px;" title='<%# Eval("Remarks") %>'><%# GetStationName(Eval("Remarks"), null) %></p>
@@ -409,7 +409,7 @@
                             <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
                             <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Start Date" DataField="StartDate" DataFormatString="{0:d}" />
-                            <telerik:GridBoundColumn HeaderText="Begin Date" DataField="BeginDate" DataFormatString="{0:d}" />
+                            <telerik:GridBoundColumn HeaderText="End Date" DataField="EndDate" DataFormatString="{0:d}" />
                             <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this Studies/Support Funding?" ButtonType="ImageButton"
                                 CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
                         </Columns>

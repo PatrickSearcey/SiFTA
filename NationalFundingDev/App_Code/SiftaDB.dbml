@@ -758,8 +758,8 @@
       <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="AgreementMod_AgreementModLog" Member="AgreementModLogs" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementModLog" />
       <Association Name="AgreementMod_CooperativeFunding" Member="CooperativeFundings" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="CooperativeFunding" />
-      <Association Name="AgreementMod_FundingSite" Member="FundingSites" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="FundingSite" />
       <Association Name="AgreementMod_FundingStudy" Member="FundingStudies" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="FundingStudy" />
+      <Association Name="AgreementMod_FundingSite" Member="FundingSites" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="FundingSite" />
       <Association Name="Agreement_AgreementMod" Member="Agreement" ThisKey="AgreementID" OtherKey="AgreementID" Type="Agreement" IsForeignKey="true" />
     </Type>
   </Table>
@@ -818,6 +818,29 @@
       <Column Name="FBMSNumber" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.FundingStudy" Member="FundingStudies">
+    <Type Name="FundingStudy">
+      <Column Name="FundingStudyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecordID" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Units" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="BasisProjectNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="lutResearchCode_FundingStudy" Member="lutResearchCode" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode" IsForeignKey="true" />
+      <Association Name="AgreementMod_FundingStudy" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
+    </Type>
+  </Table>
   <Table Name="dbo.FundingSite" Member="FundingSites">
     <Type Name="FundingSite">
       <Column Name="FundingSiteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -839,32 +862,9 @@
       <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="lutCollectionCode_FundingSite" Member="lutCollectionCode" ThisKey="CollectionCodeID" OtherKey="CollectionCodeID" Type="lutCollectionCode" IsForeignKey="true" />
       <Association Name="AgreementMod_FundingSite" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.FundingStudy" Member="FundingStudies">
-    <Type Name="FundingStudy">
-      <Column Name="FundingStudyID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RecordID" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Units" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="BasisProjectNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="lutResearchCode_FundingStudy" Member="lutResearchCode" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode" IsForeignKey="true" />
-      <Association Name="AgreementMod_FundingStudy" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.vSiteFundingInformation" Member="vSiteFundingInformations">
@@ -897,7 +897,7 @@
       <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
@@ -917,7 +917,7 @@
       <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="BeginDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">

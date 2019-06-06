@@ -105,12 +105,12 @@ namespace NationalFundingDev
     partial void InsertAgreementMod(AgreementMod instance);
     partial void UpdateAgreementMod(AgreementMod instance);
     partial void DeleteAgreementMod(AgreementMod instance);
-    partial void InsertFundingSite(FundingSite instance);
-    partial void UpdateFundingSite(FundingSite instance);
-    partial void DeleteFundingSite(FundingSite instance);
     partial void InsertFundingStudy(FundingStudy instance);
     partial void UpdateFundingStudy(FundingStudy instance);
     partial void DeleteFundingStudy(FundingStudy instance);
+    partial void InsertFundingSite(FundingSite instance);
+    partial void UpdateFundingSite(FundingSite instance);
+    partial void DeleteFundingSite(FundingSite instance);
     #endregion
 		
 		public SiftaDBDataContext() : 
@@ -495,19 +495,19 @@ namespace NationalFundingDev
 			}
 		}
 		
-		public System.Data.Linq.Table<FundingSite> FundingSites
-		{
-			get
-			{
-				return this.GetTable<FundingSite>();
-			}
-		}
-		
 		public System.Data.Linq.Table<FundingStudy> FundingStudies
 		{
 			get
 			{
 				return this.GetTable<FundingStudy>();
+			}
+		}
+		
+		public System.Data.Linq.Table<FundingSite> FundingSites
+		{
+			get
+			{
+				return this.GetTable<FundingSite>();
 			}
 		}
 		
@@ -14110,9 +14110,9 @@ namespace NationalFundingDev
 		
 		private EntitySet<CooperativeFunding> _CooperativeFundings;
 		
-		private EntitySet<FundingSite> _FundingSites;
-		
 		private EntitySet<FundingStudy> _FundingStudies;
+		
+		private EntitySet<FundingSite> _FundingSites;
 		
 		private EntityRef<Agreement> _Agreement;
 		
@@ -14160,8 +14160,8 @@ namespace NationalFundingDev
 		{
 			this._AgreementModLogs = new EntitySet<AgreementModLog>(new Action<AgreementModLog>(this.attach_AgreementModLogs), new Action<AgreementModLog>(this.detach_AgreementModLogs));
 			this._CooperativeFundings = new EntitySet<CooperativeFunding>(new Action<CooperativeFunding>(this.attach_CooperativeFundings), new Action<CooperativeFunding>(this.detach_CooperativeFundings));
-			this._FundingSites = new EntitySet<FundingSite>(new Action<FundingSite>(this.attach_FundingSites), new Action<FundingSite>(this.detach_FundingSites));
 			this._FundingStudies = new EntitySet<FundingStudy>(new Action<FundingStudy>(this.attach_FundingStudies), new Action<FundingStudy>(this.detach_FundingStudies));
+			this._FundingSites = new EntitySet<FundingSite>(new Action<FundingSite>(this.attach_FundingSites), new Action<FundingSite>(this.detach_FundingSites));
 			this._Agreement = default(EntityRef<Agreement>);
 			OnCreated();
 		}
@@ -14536,19 +14536,6 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgreementMod_FundingSite", Storage="_FundingSites", ThisKey="AgreementModID", OtherKey="AgreementModID")]
-		public EntitySet<FundingSite> FundingSites
-		{
-			get
-			{
-				return this._FundingSites;
-			}
-			set
-			{
-				this._FundingSites.Assign(value);
-			}
-		}
-		
 		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgreementMod_FundingStudy", Storage="_FundingStudies", ThisKey="AgreementModID", OtherKey="AgreementModID")]
 		public EntitySet<FundingStudy> FundingStudies
 		{
@@ -14559,6 +14546,19 @@ namespace NationalFundingDev
 			set
 			{
 				this._FundingStudies.Assign(value);
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgreementMod_FundingSite", Storage="_FundingSites", ThisKey="AgreementModID", OtherKey="AgreementModID")]
+		public EntitySet<FundingSite> FundingSites
+		{
+			get
+			{
+				return this._FundingSites;
+			}
+			set
+			{
+				this._FundingSites.Assign(value);
 			}
 		}
 		
@@ -14640,18 +14640,6 @@ namespace NationalFundingDev
 			entity.AgreementMod = null;
 		}
 		
-		private void attach_FundingSites(FundingSite entity)
-		{
-			this.SendPropertyChanging();
-			entity.AgreementMod = this;
-		}
-		
-		private void detach_FundingSites(FundingSite entity)
-		{
-			this.SendPropertyChanging();
-			entity.AgreementMod = null;
-		}
-		
 		private void attach_FundingStudies(FundingStudy entity)
 		{
 			this.SendPropertyChanging();
@@ -14659,6 +14647,18 @@ namespace NationalFundingDev
 		}
 		
 		private void detach_FundingStudies(FundingStudy entity)
+		{
+			this.SendPropertyChanging();
+			entity.AgreementMod = null;
+		}
+		
+		private void attach_FundingSites(FundingSite entity)
+		{
+			this.SendPropertyChanging();
+			entity.AgreementMod = this;
+		}
+		
+		private void detach_FundingSites(FundingSite entity)
 		{
 			this.SendPropertyChanging();
 			entity.AgreementMod = null;
@@ -15529,6 +15529,534 @@ namespace NationalFundingDev
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FundingStudy")]
+	public partial class FundingStudy : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _FundingStudyID;
+		
+		private int _AgreementModID;
+		
+		private string _RecordID;
+		
+		private System.Nullable<int> _ResearchCodeID;
+		
+		private System.Nullable<double> _Units;
+		
+		private double _FundingUSGSCMF;
+		
+		private double _FundingCustomer;
+		
+		private double _FundingOther;
+		
+		private double _FundingTotal;
+		
+		private string _BasisProjectNumber;
+		
+		private string _Remarks;
+		
+		private string _CreatedBy;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private string _ModifiedBy;
+		
+		private System.Nullable<System.DateTime> _ModifiedDate;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private EntityRef<lutResearchCode> _lutResearchCode;
+		
+		private EntityRef<AgreementMod> _AgreementMod;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnFundingStudyIDChanging(int value);
+    partial void OnFundingStudyIDChanged();
+    partial void OnAgreementModIDChanging(int value);
+    partial void OnAgreementModIDChanged();
+    partial void OnRecordIDChanging(string value);
+    partial void OnRecordIDChanged();
+    partial void OnResearchCodeIDChanging(System.Nullable<int> value);
+    partial void OnResearchCodeIDChanged();
+    partial void OnUnitsChanging(System.Nullable<double> value);
+    partial void OnUnitsChanged();
+    partial void OnFundingUSGSCMFChanging(double value);
+    partial void OnFundingUSGSCMFChanged();
+    partial void OnFundingCustomerChanging(double value);
+    partial void OnFundingCustomerChanged();
+    partial void OnFundingOtherChanging(double value);
+    partial void OnFundingOtherChanged();
+    partial void OnFundingTotalChanging(double value);
+    partial void OnFundingTotalChanged();
+    partial void OnBasisProjectNumberChanging(string value);
+    partial void OnBasisProjectNumberChanged();
+    partial void OnRemarksChanging(string value);
+    partial void OnRemarksChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    partial void OnModifiedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedDateChanged();
+    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnStartDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
+    #endregion
+		
+		public FundingStudy()
+		{
+			this._lutResearchCode = default(EntityRef<lutResearchCode>);
+			this._AgreementMod = default(EntityRef<AgreementMod>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingStudyID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int FundingStudyID
+		{
+			get
+			{
+				return this._FundingStudyID;
+			}
+			set
+			{
+				if ((this._FundingStudyID != value))
+				{
+					this.OnFundingStudyIDChanging(value);
+					this.SendPropertyChanging();
+					this._FundingStudyID = value;
+					this.SendPropertyChanged("FundingStudyID");
+					this.OnFundingStudyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementModID", DbType="Int NOT NULL")]
+		public int AgreementModID
+		{
+			get
+			{
+				return this._AgreementModID;
+			}
+			set
+			{
+				if ((this._AgreementModID != value))
+				{
+					if (this._AgreementMod.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnAgreementModIDChanging(value);
+					this.SendPropertyChanging();
+					this._AgreementModID = value;
+					this.SendPropertyChanged("AgreementModID");
+					this.OnAgreementModIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordID", DbType="NVarChar(25)")]
+		public string RecordID
+		{
+			get
+			{
+				return this._RecordID;
+			}
+			set
+			{
+				if ((this._RecordID != value))
+				{
+					this.OnRecordIDChanging(value);
+					this.SendPropertyChanging();
+					this._RecordID = value;
+					this.SendPropertyChanged("RecordID");
+					this.OnRecordIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResearchCodeID", DbType="Int")]
+		public System.Nullable<int> ResearchCodeID
+		{
+			get
+			{
+				return this._ResearchCodeID;
+			}
+			set
+			{
+				if ((this._ResearchCodeID != value))
+				{
+					if (this._lutResearchCode.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OnResearchCodeIDChanging(value);
+					this.SendPropertyChanging();
+					this._ResearchCodeID = value;
+					this.SendPropertyChanged("ResearchCodeID");
+					this.OnResearchCodeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Units", DbType="Float")]
+		public System.Nullable<double> Units
+		{
+			get
+			{
+				return this._Units;
+			}
+			set
+			{
+				if ((this._Units != value))
+				{
+					this.OnUnitsChanging(value);
+					this.SendPropertyChanging();
+					this._Units = value;
+					this.SendPropertyChanged("Units");
+					this.OnUnitsChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMF", DbType="Float NOT NULL")]
+		public double FundingUSGSCMF
+		{
+			get
+			{
+				return this._FundingUSGSCMF;
+			}
+			set
+			{
+				if ((this._FundingUSGSCMF != value))
+				{
+					this.OnFundingUSGSCMFChanging(value);
+					this.SendPropertyChanging();
+					this._FundingUSGSCMF = value;
+					this.SendPropertyChanged("FundingUSGSCMF");
+					this.OnFundingUSGSCMFChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingCustomer", DbType="Float NOT NULL")]
+		public double FundingCustomer
+		{
+			get
+			{
+				return this._FundingCustomer;
+			}
+			set
+			{
+				if ((this._FundingCustomer != value))
+				{
+					this.OnFundingCustomerChanging(value);
+					this.SendPropertyChanging();
+					this._FundingCustomer = value;
+					this.SendPropertyChanged("FundingCustomer");
+					this.OnFundingCustomerChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingOther", DbType="Float NOT NULL")]
+		public double FundingOther
+		{
+			get
+			{
+				return this._FundingOther;
+			}
+			set
+			{
+				if ((this._FundingOther != value))
+				{
+					this.OnFundingOtherChanging(value);
+					this.SendPropertyChanging();
+					this._FundingOther = value;
+					this.SendPropertyChanged("FundingOther");
+					this.OnFundingOtherChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingTotal", AutoSync=AutoSync.Always, DbType="Float NOT NULL", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
+		public double FundingTotal
+		{
+			get
+			{
+				return this._FundingTotal;
+			}
+			set
+			{
+				if ((this._FundingTotal != value))
+				{
+					this.OnFundingTotalChanging(value);
+					this.SendPropertyChanging();
+					this._FundingTotal = value;
+					this.SendPropertyChanged("FundingTotal");
+					this.OnFundingTotalChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BasisProjectNumber", DbType="NVarChar(50)")]
+		public string BasisProjectNumber
+		{
+			get
+			{
+				return this._BasisProjectNumber;
+			}
+			set
+			{
+				if ((this._BasisProjectNumber != value))
+				{
+					this.OnBasisProjectNumberChanging(value);
+					this.SendPropertyChanging();
+					this._BasisProjectNumber = value;
+					this.SendPropertyChanged("BasisProjectNumber");
+					this.OnBasisProjectNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(MAX)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this.OnRemarksChanging(value);
+					this.SendPropertyChanging();
+					this._Remarks = value;
+					this.SendPropertyChanged("Remarks");
+					this.OnRemarksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50)")]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50)")]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedDate
+		{
+			get
+			{
+				return this._ModifiedDate;
+			}
+			set
+			{
+				if ((this._ModifiedDate != value))
+				{
+					this.OnModifiedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedDate = value;
+					this.SendPropertyChanged("ModifiedDate");
+					this.OnModifiedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this.OnStartDateChanging(value);
+					this.SendPropertyChanging();
+					this._StartDate = value;
+					this.SendPropertyChanged("StartDate");
+					this.OnStartDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this.OnEndDateChanging(value);
+					this.SendPropertyChanging();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="lutResearchCode_FundingStudy", Storage="_lutResearchCode", ThisKey="ResearchCodeID", OtherKey="ResearchCodeID", IsForeignKey=true)]
+		public lutResearchCode lutResearchCode
+		{
+			get
+			{
+				return this._lutResearchCode.Entity;
+			}
+			set
+			{
+				lutResearchCode previousValue = this._lutResearchCode.Entity;
+				if (((previousValue != value) 
+							|| (this._lutResearchCode.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._lutResearchCode.Entity = null;
+						previousValue.FundingStudies.Remove(this);
+					}
+					this._lutResearchCode.Entity = value;
+					if ((value != null))
+					{
+						value.FundingStudies.Add(this);
+						this._ResearchCodeID = value.ResearchCodeID;
+					}
+					else
+					{
+						this._ResearchCodeID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("lutResearchCode");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgreementMod_FundingStudy", Storage="_AgreementMod", ThisKey="AgreementModID", OtherKey="AgreementModID", IsForeignKey=true)]
+		public AgreementMod AgreementMod
+		{
+			get
+			{
+				return this._AgreementMod.Entity;
+			}
+			set
+			{
+				AgreementMod previousValue = this._AgreementMod.Entity;
+				if (((previousValue != value) 
+							|| (this._AgreementMod.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._AgreementMod.Entity = null;
+						previousValue.FundingStudies.Remove(this);
+					}
+					this._AgreementMod.Entity = value;
+					if ((value != null))
+					{
+						value.FundingStudies.Add(this);
+						this._AgreementModID = value.AgreementModID;
+					}
+					else
+					{
+						this._AgreementModID = default(int);
+					}
+					this.SendPropertyChanged("AgreementMod");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FundingSite")]
 	public partial class FundingSite : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -15573,7 +16101,7 @@ namespace NationalFundingDev
 		
 		private System.Nullable<System.DateTime> _StartDate;
 		
-		private System.Nullable<System.DateTime> _BeginDate;
+		private System.Nullable<System.DateTime> _EndDate;
 		
 		private EntityRef<lutCollectionCode> _lutCollectionCode;
 		
@@ -15621,8 +16149,8 @@ namespace NationalFundingDev
     partial void OnModifiedDateChanged();
     partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
     partial void OnStartDateChanged();
-    partial void OnBeginDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnBeginDateChanged();
+    partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnEndDateChanged();
     #endregion
 		
 		public FundingSite()
@@ -16020,22 +16548,22 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeginDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BeginDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
 		{
 			get
 			{
-				return this._BeginDate;
+				return this._EndDate;
 			}
 			set
 			{
-				if ((this._BeginDate != value))
+				if ((this._EndDate != value))
 				{
-					this.OnBeginDateChanging(value);
+					this.OnEndDateChanging(value);
 					this.SendPropertyChanging();
-					this._BeginDate = value;
-					this.SendPropertyChanged("BeginDate");
-					this.OnBeginDateChanged();
+					this._EndDate = value;
+					this.SendPropertyChanged("EndDate");
+					this.OnEndDateChanged();
 				}
 			}
 		}
@@ -16129,534 +16657,6 @@ namespace NationalFundingDev
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FundingStudy")]
-	public partial class FundingStudy : INotifyPropertyChanging, INotifyPropertyChanged
-	{
-		
-		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
-		
-		private int _FundingStudyID;
-		
-		private int _AgreementModID;
-		
-		private string _RecordID;
-		
-		private System.Nullable<int> _ResearchCodeID;
-		
-		private System.Nullable<double> _Units;
-		
-		private double _FundingUSGSCMF;
-		
-		private double _FundingCustomer;
-		
-		private double _FundingOther;
-		
-		private double _FundingTotal;
-		
-		private string _BasisProjectNumber;
-		
-		private string _Remarks;
-		
-		private string _CreatedBy;
-		
-		private System.Nullable<System.DateTime> _CreatedDate;
-		
-		private string _ModifiedBy;
-		
-		private System.Nullable<System.DateTime> _ModifiedDate;
-		
-		private System.Nullable<System.DateTime> _StartDate;
-		
-		private System.Nullable<System.DateTime> _BeginDate;
-		
-		private EntityRef<lutResearchCode> _lutResearchCode;
-		
-		private EntityRef<AgreementMod> _AgreementMod;
-		
-    #region Extensibility Method Definitions
-    partial void OnLoaded();
-    partial void OnValidate(System.Data.Linq.ChangeAction action);
-    partial void OnCreated();
-    partial void OnFundingStudyIDChanging(int value);
-    partial void OnFundingStudyIDChanged();
-    partial void OnAgreementModIDChanging(int value);
-    partial void OnAgreementModIDChanged();
-    partial void OnRecordIDChanging(string value);
-    partial void OnRecordIDChanged();
-    partial void OnResearchCodeIDChanging(System.Nullable<int> value);
-    partial void OnResearchCodeIDChanged();
-    partial void OnUnitsChanging(System.Nullable<double> value);
-    partial void OnUnitsChanged();
-    partial void OnFundingUSGSCMFChanging(double value);
-    partial void OnFundingUSGSCMFChanged();
-    partial void OnFundingCustomerChanging(double value);
-    partial void OnFundingCustomerChanged();
-    partial void OnFundingOtherChanging(double value);
-    partial void OnFundingOtherChanged();
-    partial void OnFundingTotalChanging(double value);
-    partial void OnFundingTotalChanged();
-    partial void OnBasisProjectNumberChanging(string value);
-    partial void OnBasisProjectNumberChanged();
-    partial void OnRemarksChanging(string value);
-    partial void OnRemarksChanged();
-    partial void OnCreatedByChanging(string value);
-    partial void OnCreatedByChanged();
-    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnCreatedDateChanged();
-    partial void OnModifiedByChanging(string value);
-    partial void OnModifiedByChanged();
-    partial void OnModifiedDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnModifiedDateChanged();
-    partial void OnStartDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnStartDateChanged();
-    partial void OnBeginDateChanging(System.Nullable<System.DateTime> value);
-    partial void OnBeginDateChanged();
-    #endregion
-		
-		public FundingStudy()
-		{
-			this._lutResearchCode = default(EntityRef<lutResearchCode>);
-			this._AgreementMod = default(EntityRef<AgreementMod>);
-			OnCreated();
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingStudyID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int FundingStudyID
-		{
-			get
-			{
-				return this._FundingStudyID;
-			}
-			set
-			{
-				if ((this._FundingStudyID != value))
-				{
-					this.OnFundingStudyIDChanging(value);
-					this.SendPropertyChanging();
-					this._FundingStudyID = value;
-					this.SendPropertyChanged("FundingStudyID");
-					this.OnFundingStudyIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementModID", DbType="Int NOT NULL")]
-		public int AgreementModID
-		{
-			get
-			{
-				return this._AgreementModID;
-			}
-			set
-			{
-				if ((this._AgreementModID != value))
-				{
-					if (this._AgreementMod.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnAgreementModIDChanging(value);
-					this.SendPropertyChanging();
-					this._AgreementModID = value;
-					this.SendPropertyChanged("AgreementModID");
-					this.OnAgreementModIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecordID", DbType="NVarChar(25)")]
-		public string RecordID
-		{
-			get
-			{
-				return this._RecordID;
-			}
-			set
-			{
-				if ((this._RecordID != value))
-				{
-					this.OnRecordIDChanging(value);
-					this.SendPropertyChanging();
-					this._RecordID = value;
-					this.SendPropertyChanged("RecordID");
-					this.OnRecordIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResearchCodeID", DbType="Int")]
-		public System.Nullable<int> ResearchCodeID
-		{
-			get
-			{
-				return this._ResearchCodeID;
-			}
-			set
-			{
-				if ((this._ResearchCodeID != value))
-				{
-					if (this._lutResearchCode.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OnResearchCodeIDChanging(value);
-					this.SendPropertyChanging();
-					this._ResearchCodeID = value;
-					this.SendPropertyChanged("ResearchCodeID");
-					this.OnResearchCodeIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Units", DbType="Float")]
-		public System.Nullable<double> Units
-		{
-			get
-			{
-				return this._Units;
-			}
-			set
-			{
-				if ((this._Units != value))
-				{
-					this.OnUnitsChanging(value);
-					this.SendPropertyChanging();
-					this._Units = value;
-					this.SendPropertyChanged("Units");
-					this.OnUnitsChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMF", DbType="Float NOT NULL")]
-		public double FundingUSGSCMF
-		{
-			get
-			{
-				return this._FundingUSGSCMF;
-			}
-			set
-			{
-				if ((this._FundingUSGSCMF != value))
-				{
-					this.OnFundingUSGSCMFChanging(value);
-					this.SendPropertyChanging();
-					this._FundingUSGSCMF = value;
-					this.SendPropertyChanged("FundingUSGSCMF");
-					this.OnFundingUSGSCMFChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingCustomer", DbType="Float NOT NULL")]
-		public double FundingCustomer
-		{
-			get
-			{
-				return this._FundingCustomer;
-			}
-			set
-			{
-				if ((this._FundingCustomer != value))
-				{
-					this.OnFundingCustomerChanging(value);
-					this.SendPropertyChanging();
-					this._FundingCustomer = value;
-					this.SendPropertyChanged("FundingCustomer");
-					this.OnFundingCustomerChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingOther", DbType="Float NOT NULL")]
-		public double FundingOther
-		{
-			get
-			{
-				return this._FundingOther;
-			}
-			set
-			{
-				if ((this._FundingOther != value))
-				{
-					this.OnFundingOtherChanging(value);
-					this.SendPropertyChanging();
-					this._FundingOther = value;
-					this.SendPropertyChanged("FundingOther");
-					this.OnFundingOtherChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingTotal", AutoSync=AutoSync.Always, DbType="Float NOT NULL", IsDbGenerated=true, UpdateCheck=UpdateCheck.Never)]
-		public double FundingTotal
-		{
-			get
-			{
-				return this._FundingTotal;
-			}
-			set
-			{
-				if ((this._FundingTotal != value))
-				{
-					this.OnFundingTotalChanging(value);
-					this.SendPropertyChanging();
-					this._FundingTotal = value;
-					this.SendPropertyChanged("FundingTotal");
-					this.OnFundingTotalChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BasisProjectNumber", DbType="NVarChar(50)")]
-		public string BasisProjectNumber
-		{
-			get
-			{
-				return this._BasisProjectNumber;
-			}
-			set
-			{
-				if ((this._BasisProjectNumber != value))
-				{
-					this.OnBasisProjectNumberChanging(value);
-					this.SendPropertyChanging();
-					this._BasisProjectNumber = value;
-					this.SendPropertyChanged("BasisProjectNumber");
-					this.OnBasisProjectNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(MAX)")]
-		public string Remarks
-		{
-			get
-			{
-				return this._Remarks;
-			}
-			set
-			{
-				if ((this._Remarks != value))
-				{
-					this.OnRemarksChanging(value);
-					this.SendPropertyChanging();
-					this._Remarks = value;
-					this.SendPropertyChanged("Remarks");
-					this.OnRemarksChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50)")]
-		public string CreatedBy
-		{
-			get
-			{
-				return this._CreatedBy;
-			}
-			set
-			{
-				if ((this._CreatedBy != value))
-				{
-					this.OnCreatedByChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedBy = value;
-					this.SendPropertyChanged("CreatedBy");
-					this.OnCreatedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> CreatedDate
-		{
-			get
-			{
-				return this._CreatedDate;
-			}
-			set
-			{
-				if ((this._CreatedDate != value))
-				{
-					this.OnCreatedDateChanging(value);
-					this.SendPropertyChanging();
-					this._CreatedDate = value;
-					this.SendPropertyChanged("CreatedDate");
-					this.OnCreatedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50)")]
-		public string ModifiedBy
-		{
-			get
-			{
-				return this._ModifiedBy;
-			}
-			set
-			{
-				if ((this._ModifiedBy != value))
-				{
-					this.OnModifiedByChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedBy = value;
-					this.SendPropertyChanged("ModifiedBy");
-					this.OnModifiedByChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> ModifiedDate
-		{
-			get
-			{
-				return this._ModifiedDate;
-			}
-			set
-			{
-				if ((this._ModifiedDate != value))
-				{
-					this.OnModifiedDateChanging(value);
-					this.SendPropertyChanging();
-					this._ModifiedDate = value;
-					this.SendPropertyChanged("ModifiedDate");
-					this.OnModifiedDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this.OnStartDateChanging(value);
-					this.SendPropertyChanging();
-					this._StartDate = value;
-					this.SendPropertyChanged("StartDate");
-					this.OnStartDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeginDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BeginDate
-		{
-			get
-			{
-				return this._BeginDate;
-			}
-			set
-			{
-				if ((this._BeginDate != value))
-				{
-					this.OnBeginDateChanging(value);
-					this.SendPropertyChanging();
-					this._BeginDate = value;
-					this.SendPropertyChanged("BeginDate");
-					this.OnBeginDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="lutResearchCode_FundingStudy", Storage="_lutResearchCode", ThisKey="ResearchCodeID", OtherKey="ResearchCodeID", IsForeignKey=true)]
-		public lutResearchCode lutResearchCode
-		{
-			get
-			{
-				return this._lutResearchCode.Entity;
-			}
-			set
-			{
-				lutResearchCode previousValue = this._lutResearchCode.Entity;
-				if (((previousValue != value) 
-							|| (this._lutResearchCode.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._lutResearchCode.Entity = null;
-						previousValue.FundingStudies.Remove(this);
-					}
-					this._lutResearchCode.Entity = value;
-					if ((value != null))
-					{
-						value.FundingStudies.Add(this);
-						this._ResearchCodeID = value.ResearchCodeID;
-					}
-					else
-					{
-						this._ResearchCodeID = default(Nullable<int>);
-					}
-					this.SendPropertyChanged("lutResearchCode");
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="AgreementMod_FundingStudy", Storage="_AgreementMod", ThisKey="AgreementModID", OtherKey="AgreementModID", IsForeignKey=true)]
-		public AgreementMod AgreementMod
-		{
-			get
-			{
-				return this._AgreementMod.Entity;
-			}
-			set
-			{
-				AgreementMod previousValue = this._AgreementMod.Entity;
-				if (((previousValue != value) 
-							|| (this._AgreementMod.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._AgreementMod.Entity = null;
-						previousValue.FundingStudies.Remove(this);
-					}
-					this._AgreementMod.Entity = value;
-					if ((value != null))
-					{
-						value.FundingStudies.Add(this);
-						this._AgreementModID = value.AgreementModID;
-					}
-					else
-					{
-						this._AgreementModID = default(int);
-					}
-					this.SendPropertyChanged("AgreementMod");
-				}
-			}
-		}
-		
-		public event PropertyChangingEventHandler PropertyChanging;
-		
-		public event PropertyChangedEventHandler PropertyChanged;
-		
-		protected virtual void SendPropertyChanging()
-		{
-			if ((this.PropertyChanging != null))
-			{
-				this.PropertyChanging(this, emptyChangingEventArgs);
-			}
-		}
-		
-		protected virtual void SendPropertyChanged(String propertyName)
-		{
-			if ((this.PropertyChanged != null))
-			{
-				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vSiteFundingInformation")]
 	public partial class vSiteFundingInformation
 	{
@@ -16717,7 +16717,7 @@ namespace NationalFundingDev
 		
 		private System.Nullable<System.DateTime> _StartDate;
 		
-		private System.Nullable<System.DateTime> _BeginDate;
+		private System.Nullable<System.DateTime> _EndDate;
 		
 		public vSiteFundingInformation()
 		{
@@ -17171,18 +17171,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeginDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BeginDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
 		{
 			get
 			{
-				return this._BeginDate;
+				return this._EndDate;
 			}
 			set
 			{
-				if ((this._BeginDate != value))
+				if ((this._EndDate != value))
 				{
-					this._BeginDate = value;
+					this._EndDate = value;
 				}
 			}
 		}
@@ -17222,7 +17222,7 @@ namespace NationalFundingDev
 		
 		private System.Nullable<System.DateTime> _StartDate;
 		
-		private System.Nullable<System.DateTime> _BeginDate;
+		private System.Nullable<System.DateTime> _EndDate;
 		
 		public vStudiesFundingInformation()
 		{
@@ -17468,18 +17468,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BeginDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> BeginDate
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
 		{
 			get
 			{
-				return this._BeginDate;
+				return this._EndDate;
 			}
 			set
 			{
-				if ((this._BeginDate != value))
+				if ((this._EndDate != value))
 				{
-					this._BeginDate = value;
+					this._EndDate = value;
 				}
 			}
 		}
