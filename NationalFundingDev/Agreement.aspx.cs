@@ -1232,8 +1232,6 @@ namespace NationalFundingDev
             var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
             List<FundingSite> sitesToInsert = new List<FundingSite>();
 
-            var entriesToDelete = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
-
             foreach (var site in list)
             {
                 if (site.SiteNumber == null)
@@ -1324,9 +1322,14 @@ namespace NationalFundingDev
                     siftaDB.FundingSites.InsertOnSubmit(site);
                 }
 
-                foreach (var entry in entriesToDelete)
-                {
-                    siftaDB.FundingSites.DeleteOnSubmit(entry);
+                var ids = siftaDB.AgreementMods.Where(x => x.AgreementID == int.Parse(agID));
+
+                foreach (var singleID in ids) {
+                    var entriesToDelete = siftaDB.FundingSites.Where(x => x.AgreementModID == singleID.AgreementModID);
+                    foreach (var entry in entriesToDelete)
+                    {
+                        siftaDB.FundingSites.DeleteOnSubmit(entry);
+                    }
                 }
 
                 siftaDB.SubmitChanges();
