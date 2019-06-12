@@ -40,7 +40,9 @@ namespace NationalFundingDev.Documents
                 ws.Cells["E1"].Value = "DifficultyFactor";
                 ws.Cells["F1"].Value = "USGSCMFFunding";
                 ws.Cells["G1"].Value = "CustomerFunds";
-                ws.Cells["H1"].Value = "Remarks";
+                ws.Cells["H1"].Value = "StartDate";
+                ws.Cells["I1"].Value = "EndDate";
+                ws.Cells["J1"].Value = "Remarks";
 
                 int i = 2;
                 foreach (var entry in entries)
@@ -52,7 +54,9 @@ namespace NationalFundingDev.Documents
                     ws.Cells["E" + i].Value = entry.DifficultyFactor;
                     ws.Cells["F" + i].Value = entry.FundingUSGSCMF;
                     ws.Cells["G" + i].Value = entry.FundingCustomer;
-                    ws.Cells["H" + i].Value = entry.Remarks;
+                    ws.Cells["H" + i].Value = entry.StartDate.ToString().Replace(" 12:00:00 AM", "");
+                    ws.Cells["I" + i].Value = entry.EndDate.ToString().Replace(" 12:00:00 AM", "");
+                    ws.Cells["J" + i].Value = entry.Remarks;
 
                     i++;
                 }

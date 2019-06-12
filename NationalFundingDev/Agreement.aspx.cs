@@ -1107,6 +1107,8 @@ namespace NationalFundingDev
             public string DifficultyFactor { get; set; }
             public string FundingUSGSCMF { get; set; }
             public string FundingCustomer { get; set; }
+            public DateTime? StartDate { get; set; }
+            public DateTime? EndDate { get; set; }
             public string Remarks { get; set; }
         }
 
@@ -1162,7 +1164,33 @@ namespace NationalFundingDev
                             var temp5 = ws.Cells["E" + i].Value;  // entry.DifficultyFactor;  Table: FundingSite
                             var temp6 = ws.Cells["F" + i].Value;  // entry.FundingUSGSCMF;    Table: FundingSite
                             var temp7 = ws.Cells["G" + i].Value;  // entry.FundingCustomer;   Table: FundingSite
-                            var temp8 = ws.Cells["H" + i].Value;  // entry.Remarks;           Table: FundingSite
+                            var temp8 = ws.Cells["H" + i].Value;  // entry.StartDate;           Table: FundingSite
+                            var temp9 = ws.Cells["I" + i].Value;  // entry.EndDate;           Table: FundingSite
+                            var temp10 = ws.Cells["J" + i].Value;  // entry.Remarks;           Table: FundingSite
+                            DateTime? start = null, end = null;
+
+                            if(temp8 != null)
+                            {
+                                try
+                                {
+                                    start = temp8.ToString().ToDateTime();
+                                }
+                                catch (Exception ex)
+                                {
+                                    StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                }
+                            }
+                            if (temp9 != null)
+                            {
+                                try
+                                {
+                                    end = temp9.ToString().ToDateTime();
+                                }
+                                catch (Exception ex)
+                                {
+                                    StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                }
+                            }
 
                             list.Add(new DownloadSite
                             {
@@ -1173,7 +1201,9 @@ namespace NationalFundingDev
                                 DifficultyFactor = temp5?.ToString(),
                                 FundingUSGSCMF = temp6?.ToString(),
                                 FundingCustomer = temp7?.ToString(),
-                                Remarks = temp8?.ToString()
+                                StartDate = start,
+                                EndDate = end,
+                                Remarks = temp10?.ToString()
                             });
                         }
                     }
@@ -1274,6 +1304,8 @@ namespace NationalFundingDev
                         FundingTotal = total,
                         FundingOther = 0,
                         AgencyCode = "USGS",
+                        StartDate = site.StartDate,
+                        EndDate = site.EndDate,
                         Remarks = site.Remarks
                     };
 
