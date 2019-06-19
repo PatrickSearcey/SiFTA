@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="siftadb" Class="SiftaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="siftadbConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="siftadb_dev" Class="SiftaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=siftadb_dev;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="siftadbConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -841,30 +841,24 @@
       <Association Name="AgreementMod_FundingStudy" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.FundingSite" Member="FundingSites">
-    <Type Name="FundingSite">
-      <Column Name="FundingSiteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="RecordID" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="AgencyCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="SiteNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CollectionCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CollectionUnits" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DifficultyFactor" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="DifficultyFactorReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+  <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
+    <Type Name="vStudiesFundingInformation">
+      <Column Name="FundingStudyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Units" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="BasisProjectNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Association Name="lutCollectionCode_FundingSite" Member="lutCollectionCode" ThisKey="CollectionCodeID" OtherKey="CollectionCodeID" Type="lutCollectionCode" IsForeignKey="true" />
-      <Association Name="AgreementMod_FundingSite" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.vSiteFundingInformation" Member="vSiteFundingInformations">
@@ -898,26 +892,34 @@
       <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockSite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
-    <Type Name="vStudiesFundingInformation">
-      <Column Name="FundingStudyID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Number" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Units" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="BasisProjectNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+  <Table Name="dbo.FundingSite" Member="FundingSites">
+    <Type Name="FundingSite">
+      <Column Name="FundingSiteID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RecordID" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
+      <Column Name="AgencyCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="SiteNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CollectionCodeID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CollectionUnits" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DifficultyFactor" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="DifficultyFactorReason" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
       <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FundingCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
       <Column Name="FundingOther" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float NOT NULL" IsDbGenerated="true" CanBeNull="false" UpdateCheck="Never" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LockSite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="lutCollectionCode_FundingSite" Member="lutCollectionCode" ThisKey="CollectionCodeID" OtherKey="CollectionCodeID" Type="lutCollectionCode" IsForeignKey="true" />
+      <Association Name="AgreementMod_FundingSite" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">

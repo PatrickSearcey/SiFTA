@@ -28,7 +28,6 @@
             margin-bottom: 20px;
         }
     </style>
-    <link href="CSS/CalendarLite.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphAJAXManager" runat="server">
     <telerik:RadAjaxManager runat="server" ID="ram">
@@ -369,6 +368,7 @@
                                     <p style="padding: 0px; margin: 0px;" title='<%# Eval("Remarks") %>'><%# GetStationName(Eval("Remarks"), null) %></p>
                                 </ItemTemplate>
                             </telerik:GridTemplateColumn>
+                            <telerik:GridBoundColumn HeaderText="Locked" DataField="LockSite" />
                             <telerik:GridButtonColumn ButtonType="ImageButton"
                                 CommandName="Delete" Text="Remove" ConfirmText="Are you sure you wish to remove this Site Funding?" UniqueName="DeleteSiteFunding" Visible="false" HeaderStyle-Width="20px" />
                         </Columns>

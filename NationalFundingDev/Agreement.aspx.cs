@@ -693,6 +693,7 @@ namespace NationalFundingDev
             var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
+            var rtbLock = (RadCheckBox)userControl.FindControl("rtbLock");
             #endregion
             #region Assign Values
             //Add creation date and user if it hasn't been added (new site funding)
@@ -717,6 +718,7 @@ namespace NationalFundingDev
             siteFunding.StartDate = rdpStartDate.SelectedDate;
             siteFunding.EndDate = rdpEndDate.SelectedDate;
             siteFunding.Remarks = rtbRemarks.Text;
+            siteFunding.LockSite = rtbLock.Checked;
             #endregion
         }
         #endregion
