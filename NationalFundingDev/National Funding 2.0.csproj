@@ -55,9 +55,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\DocX.dll</HintPath>
     </Reference>
-    <Reference Include="EPPlus, Version=4.0.2.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Dependencies\EPPlus.dll</HintPath>
+    <Reference Include="EPPlus, Version=4.5.2.1, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.5.2.1\lib\net40\EPPlus.dll</HintPath>
     </Reference>
     <Reference Include="MessagingToolkit.QRCode, Version=1.3.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -66,6 +65,7 @@
     <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="PresentationCore" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -73,6 +73,7 @@
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
@@ -116,6 +117,9 @@
     </Compile>
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.designer.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Documents\AgreementSiteBulkEdit.ashx.cs">
+      <DependentUpon>AgreementSiteBulkEdit.ashx</DependentUpon>
     </Compile>
     <Compile Include="FileDirectoryHelper.cs" />
     <Compile Include="GenerateRecordID.aspx.cs">
@@ -411,6 +415,7 @@
     <Content Include="Admin.aspx" />
     <Content Include="Controls\Editable\AgreementLogGrid.ascx" />
     <Content Include="Controls\RadGrid\AgreementLogEditForm.ascx" />
+    <Content Include="CSS\CalendarLite.css" />
     <Content Include="GenerateRecordID.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="Images\arrow.png" />
@@ -433,6 +438,8 @@
     <Content Include="Documents\Forms\JFATemplate-old.docx" />
     <Content Include="packages.config" />
     <Content Include="Documents\Forms\JFATemplate.docx" />
+    <Content Include="Documents\AgreementSiteBulkEdit.ashx" />
+    <Content Include="Help\SIFTA-BulkUploadforSiteFunding.pdf" />
     <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
     <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <Content Include="Reports\National\National.aspx" />
@@ -550,6 +557,7 @@
     <Content Include="Reports\Maps\SiteFundingMap.aspx" />
     <Content Include="Search.aspx" />
     <Content Include="Site.aspx" />
+    <Content Include="Temporary\READ_ME.txt" />
     <Content Include="Themes\Base\Images\banner.png" />
     <Content Include="Themes\Base\Images\favicon.ico" />
     <Content Include="Themes\Base\Images\maincontentbackground.png" />
@@ -641,7 +649,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Help\" />
     <Folder Include="Reports\Customer\" />
     <Folder Include="Reports\Metrics Library\" />
   </ItemGroup>
@@ -692,7 +699,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

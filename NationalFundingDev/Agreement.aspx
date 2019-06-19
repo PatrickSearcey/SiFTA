@@ -23,7 +23,12 @@
             left: 125px;
             top: 175px;
         }
+
+        .templateButton {
+            margin-bottom: 20px;
+        }
     </style>
+    <link href="CSS/CalendarLite.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphAJAXManager" runat="server">
     <telerik:RadAjaxManager runat="server" ID="ram">
@@ -265,7 +270,61 @@
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
         <telerik:RadPageView runat="server" ID="rpvSiteFunding" TabIndex="2">
+            <script>
+                function getUrlVars()
+                {
+                    var vars = [], hash;
+                    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                    for(var i = 0; i < hashes.length; i++)
+                    {
+                        hash = hashes[i].split('=');
+                        vars.push(hash[0]);
+                        vars[hash[0]] = hash[1];
+                    }
+                    return vars;
+                }
+                var bulkDownloadClicked = function (sender, args) {
+                    var parameters = getUrlVars();
+                    var agreementID = parameters["AgreementID"];
+                    console.log(agreementID);
+                    window.open("Documents/AgreementSiteBulkEdit.ashx?AgreementID=" + agreementID);
+                }
+                function rbUploadedEvent() {
+                    document.getElementById("uploadButtonSpan").style.visibility = "";
+                }
+
+                window.onerror = function (err) {
+                    if (err == "Uncaught Sys.WebForms.PageRequestManagerServerErrorException: Sys.WebForms.PageRequestManagerServerErrorException: An unknown error occurred while processing the request on the server. The status code returned from the server was: 500") {
+                        alert("Problem with special characters entered in field 'Remarks'");
+                    }
+                }
+            </script>
+            
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
+                <div style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+                    <span style="font-weight:bold;">Bulk Upload Help available <a href="https://my.usgs.gov/confluence/display/SIFTA/Bulk+Upload+for+Site+Funding">here</a>.</span>
+                    <br /><br />
+                    <hr />
+                    <span style="font-weight:bold;">Download</span>
+                    <br /><br />
+                    <span style="margin-left:40px;"><telerik:RadButton Text="Download" runat="server" AutoPostBack="true" OnClientClicked="bulkDownloadClicked"/></span>
+                    <hr />
+
+                    <span style="font-weight:bold;">Upload</span>
+                    <br /><br />
+                    <div>
+                        <span style="float:left;margin-left:40px;">
+                            <telerik:RadAsyncUpload runat="server" ID="rauBulkSiteUpload" MaxFileInputsCount="1" AllowedFileExtensions=".xlsx" OnClientFileUploaded="rbUploadedEvent" />
+                        </span>
+                        <span style="float:left; visibility:hidden;" id="uploadButtonSpan">
+                            <telerik:RadButton runat="server" ID="rbUploadBulkSiteTemplate" AutoPostBack="true" Text="Upload Site Funding Spreadsheet" OnClick="rbUploadBulkSiteTemplate_Click"  />
+                        </span></div>
+                    <br /><br /><br />
+                    <span style="margin-left:40px;"">
+                        <asp:Label runat="server" id="StatusLabel" text="Upload status: " />
+                    </span>
+                </div><br />
+
                 <telerik:RadGrid runat="server" ID="rgFundedSites" AllowSorting="true" OnNeedDataSource="rgFundedSites_NeedDataSource" OnInsertCommand="rgFundedSites_InsertCommand" OnUpdateCommand="rgFundedSites_UpdateCommand" OnDeleteCommand="rgFundedSites_DeleteCommand" OnPreRender="rgFundedSites_PreRender">
                     <MasterTableView AutoGenerateColumns="False" ShowGroupFooter="true" ShowFooter="true" DataKeyNames="FundingSiteID" EditMode="EditForms">
                         <FooterStyle BackColor="Black" ForeColor="White" />
@@ -303,6 +362,8 @@
                             <telerik:GridBoundColumn DataType="System.Double" HeaderText="Customer" DataField="FundingCustomer" SortExpression="FundingCustomer" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                             <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
+                            <telerik:GridBoundColumn HeaderText="Start Date" DataField="StartDate" DataFormatString="{0:d}" />
+                            <telerik:GridBoundColumn HeaderText="End Date" DataField="EndDate" DataFormatString="{0:d}" />
                             <telerik:GridTemplateColumn HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks">
                                 <ItemTemplate>
                                     <p style="padding: 0px; margin: 0px;" title='<%# Eval("Remarks") %>'><%# GetStationName(Eval("Remarks"), null) %></p>
@@ -347,6 +408,8 @@
                             <telerik:GridBoundColumn DataType="System.Double" HeaderText="Customer" SortExpression="FundingCustomer" DataField="FundingCustomer" DataFormatString="{0:c0}" />
                             <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
                             <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
+                            <telerik:GridBoundColumn HeaderText="Start Date" DataField="StartDate" DataFormatString="{0:d}" />
+                            <telerik:GridBoundColumn HeaderText="End Date" DataField="EndDate" DataFormatString="{0:d}" />
                             <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this Studies/Support Funding?" ButtonType="ImageButton"
                                 CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
                         </Columns>

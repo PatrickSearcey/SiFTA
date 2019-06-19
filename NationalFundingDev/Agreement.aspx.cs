@@ -1,8 +1,11 @@
-﻿using System;
+﻿using OfficeOpenXml;
+using OfficeOpenXml.Style;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -686,6 +689,8 @@ namespace NationalFundingDev
             var rtbDifficultyFactorReason = (RadTextBox)userControl.FindControl("rtbDifficultyFactorReason");
             var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
+            var rdpStartDate = (RadDatePicker)userControl.FindControl("rdpStartDate");
+            var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
             #endregion
@@ -709,6 +714,8 @@ namespace NationalFundingDev
             siteFunding.FundingUSGSCMF = rntbUSGSCMFFunding.Value.ToDouble();
             siteFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             siteFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
+            siteFunding.StartDate = rdpStartDate.SelectedDate;
+            siteFunding.EndDate = rdpEndDate.SelectedDate;
             siteFunding.Remarks = rtbRemarks.Text;
             #endregion
         }
@@ -787,6 +794,8 @@ namespace NationalFundingDev
             var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
+            var rdpStartDate = (RadDatePicker)userControl.FindControl("rdpStartDate");
+            var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
             #endregion
 
@@ -797,6 +806,8 @@ namespace NationalFundingDev
             StudiesFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             StudiesFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             StudiesFunding.BasisProjectNumber = rtbBasisProjectNumber.Text;
+            StudiesFunding.StartDate = rdpStartDate.SelectedDate;
+            StudiesFunding.EndDate = rdpEndDate.SelectedDate;
             StudiesFunding.Remarks = rtbRemarks.Text;
             if (StudiesFunding.CreatedBy == null || StudiesFunding.CreatedDate == null)
             {
@@ -833,7 +844,7 @@ namespace NationalFundingDev
         }
         protected void rbUploadDocuments_Click(object sender, EventArgs e)
         {
-            //\\igskiacwvmgs014\siftaroot\Documents\Agreements\AgreementID\
+            //\\IGSKIACWVMi01\siftaroot\Documents\Agreements\AgreementID\
             var agreementDocumentsPath = FileDirectoryHelper.GetAgreementDirectory(agreement.AgreementID);
             if (!Directory.Exists(agreementDocumentsPath)) Directory.CreateDirectory(agreementDocumentsPath);
             foreach(UploadedFile f in rauFile.UploadedFiles)
@@ -1076,12 +1087,284 @@ namespace NationalFundingDev
             if (!String.IsNullOrEmpty(l.ToString())) name += l.ToString();
             return name;
         }
+
         public String PhoneFormat(object p)
         {
             if (p == null) return "";
             return p.ToPhoneFormat();
         }
-        #endregion   
-        
+        #endregion
+
+
+        #region DownloadTemplate
+
+        public class DownloadSite
+        {
+            public string SiteName { get; set; }
+            public string SiteNumber { get; set; }
+            public string CollectionCode { get; set; }
+            public string CollectionUnits { get; set; }
+            public string DifficultyFactor { get; set; }
+            public string FundingUSGSCMF { get; set; }
+            public string FundingCustomer { get; set; }
+            public DateTime? StartDate { get; set; }
+            public DateTime? EndDate { get; set; }
+            public string Remarks { get; set; }
+        }
+
+
+        protected void rbUploadBulkSiteTemplate_Click(object sender, EventArgs e)
+        {
+            var list = new List<DownloadSite>();
+            // Changed it to not depend on a D drive
+            var dir = new DirectoryInfo(Context.Server.MapPath("~/Temporary"));
+            if (!dir.Exists)
+            {
+                dir.Create();
+            }
+
+            if (rauBulkSiteUpload.UploadedFiles.Count > 0)
+            {
+                try
+                {
+                    // unique id to avoid overwritting files
+                    var id = Guid.NewGuid().ToString();
+                    var path = Path.Combine(dir.FullName, $"{id}.xlsx");
+
+                    rauBulkSiteUpload.UploadedFiles[0].SaveAs(path);
+
+                    StatusLabel.Text = "<span style='color: green; text-weight: bold;'>File upload successful.</span><br><br>";
+
+                    var file = new FileInfo(path);
+                    using (var package = new ExcelPackage(file))
+                    {
+                        //The actual spread sheets are contained within a work book
+                        var workBook = package.Workbook;
+                        //Grab the first work sheet in the excel document 
+                        var ws = workBook.Worksheets.First();
+
+                        var A1 = ws.Cells["A1"].Value;
+                        if (A1 == null)
+                        {
+                            StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number is empty</span></br>";
+                        }
+
+                        //Select all cells in column
+                        var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
+
+                        for (int n = 0; n < query.Count(); n++)
+                        {
+                            int i = n + 2;
+                            //StatusLabel.Text += "<br><br>";
+
+                            var temp1 = ws.Cells["A" + i].Value;  // entry.SiteName;          Table: Site
+                            var temp2 = ws.Cells["B" + i].Value;  // entry.SiteNumber;        Table: FundingSite
+                            var temp3 = ws.Cells["C" + i].Value;  // entry.CollectionCode;    Table: lutCollectionCode
+                            var temp4 = ws.Cells["D" + i].Value;  // entry.CollectionUnits;   Table: FundingSite
+                            var temp5 = ws.Cells["E" + i].Value;  // entry.DifficultyFactor;  Table: FundingSite
+                            var temp6 = ws.Cells["F" + i].Value;  // entry.FundingUSGSCMF;    Table: FundingSite
+                            var temp7 = ws.Cells["G" + i].Value;  // entry.FundingCustomer;   Table: FundingSite
+                            var temp8 = ws.Cells["H" + i].Value;  // entry.StartDate;           Table: FundingSite
+                            var temp9 = ws.Cells["I" + i].Value;  // entry.EndDate;           Table: FundingSite
+                            var temp10 = ws.Cells["J" + i].Value;  // entry.Remarks;           Table: FundingSite
+                            DateTime? start = null, end = null;
+
+                            if(temp8 != null)
+                            {
+                                try
+                                {
+                                    start = temp8.ToString().ToDateTime();
+                                }
+                                catch (Exception ex)
+                                {
+                                    StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                }
+                            }
+                            if (temp9 != null)
+                            {
+                                try
+                                {
+                                    end = temp9.ToString().ToDateTime();
+                                }
+                                catch (Exception ex)
+                                {
+                                    StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                }
+                            }
+
+                            list.Add(new DownloadSite
+                            {
+                                SiteName = temp1?.ToString(),
+                                SiteNumber = temp2?.ToString(),
+                                CollectionCode = temp3?.ToString(),
+                                CollectionUnits = temp4?.ToString(),
+                                DifficultyFactor = temp5?.ToString(),
+                                FundingUSGSCMF = temp6?.ToString(),
+                                FundingCustomer = temp7?.ToString(),
+                                StartDate = start,
+                                EndDate = end,
+                                Remarks = temp10?.ToString()
+                            });
+                        }
+                    }
+                    // Delete Temporary File
+                    file.Delete();
+                }
+                catch (Exception ex)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Upload status: The file could not be uploaded. The following error occured: " +
+                        ex.Message + "</span></br>";
+                }
+            }
+            else
+            {
+                StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>No File Selected. Please select a file, then click upload.</span><br><br>";
+            }
+
+            //DeleteEntriesFromDB();
+            InsertEntriesToDB(list);
+            rgFundedSites.Rebind();
+        }
+
+        protected void InsertEntriesToDB(List<DownloadSite> list)
+        {
+            string agID = Request.QueryString["AgreementID"];
+            var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+            List<FundingSite> sitesToInsert = new List<FundingSite>();
+
+            foreach (var site in list)
+            {
+                if (site.SiteNumber == null)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number is empty</span></br>";
+                    return;
+                }
+                // try to parse into doubles
+                if (!double.TryParse(site.CollectionUnits, out double cu))
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Collection Units value: " + site.CollectionUnits + "</span></br>";
+                    return;
+                }
+                if (!double.TryParse(site.DifficultyFactor, out double df))
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Difficulty Factor value: " + site.DifficultyFactor + "</span></br>";
+                    return;
+                }
+                if (!double.TryParse(site.FundingUSGSCMF, out double fundUSGS))
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Funding USGS CMF value: " + site.FundingUSGSCMF + "</span></br>";
+                    return;
+                }
+                if (!double.TryParse(site.FundingCustomer, out double fundCust))
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Funding Customer value: " + site.FundingCustomer + "</span></br>";
+                    return;
+                }
+                double total = double.Parse(site.FundingUSGSCMF) + double.Parse(site.FundingCustomer);
+
+                // check values
+                var collections = siftaDB.lutCollectionCodes.FirstOrDefault(x => x.Code == site.CollectionCode);
+                if (collections == null)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Collection Code</span></br>";
+                    return;
+                }
+                if(df < 0.1 || df > 10)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field value: " + df + " has value outside of range (0.1-10)</span></br>";
+                    return;
+                }
+                if (cu < 0.1 || cu > 1)
+                {
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Collection Units field value: " + cu + " has value outside of range (0.1-1.0)</span></br>";
+                    return;
+                }
+                if (site.SiteNumber != null && site.SiteNumber.Length < 8)
+                {
+                    if (!site.SiteNumber.Contains("new"))
+                    {
+                        StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Problem with field: Site Number " + site.SiteNumber + "</span></br>";
+                        return;
+                    }
+                }
+
+                try
+                {
+                    var fs = new FundingSite
+                    {
+                        AgreementModID = modID.AgreementModID,
+                        SiteNumber = site.SiteNumber,
+                        CollectionCodeID = collections.CollectionCodeID,
+                        CollectionUnits = cu,
+                        DifficultyFactor = df,
+                        FundingUSGSCMF = fundUSGS,
+                        FundingCustomer = fundCust,
+                        FundingTotal = total,
+                        FundingOther = 0,
+                        AgencyCode = "USGS",
+                        StartDate = site.StartDate,
+                        EndDate = site.EndDate,
+                        Remarks = site.Remarks
+                    };
+
+                    sitesToInsert.Add(fs);
+                }
+                catch (Exception e)
+                {
+                    StatusLabel.Text += "<span style='color: red; text-weight: bold;'>Problem adding entry to List: " + e.ToString() + "</span></br>";
+                }
+            }
+
+            try
+            {
+                foreach (var site in sitesToInsert)
+                {
+                    siftaDB.FundingSites.InsertOnSubmit(site);
+                }
+
+                var ids = siftaDB.AgreementMods.Where(x => x.AgreementID == int.Parse(agID));
+
+                foreach (var singleID in ids) {
+                    var entriesToDelete = siftaDB.FundingSites.Where(x => x.AgreementModID == singleID.AgreementModID);
+                    foreach (var entry in entriesToDelete)
+                    {
+                        siftaDB.FundingSites.DeleteOnSubmit(entry);
+                    }
+                }
+
+                siftaDB.SubmitChanges();
+
+                //Response.Redirect(Request.RawUrl);
+            }
+            catch (Exception e)
+            {
+                StatusLabel.Text += e.ToString();
+            }
+        }
+
+        //protected void DeleteEntriesFromDB()
+        //{
+        //    string agID = Request.QueryString["AgreementID"];
+        //    var modID = siftaDB.AgreementMods.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
+        //    var entries = siftaDB.FundingSites.Where(x => x.AgreementModID == modID.AgreementModID);
+
+        //    foreach (var entry in entries)
+        //    {
+        //        siftaDB.FundingSites.DeleteOnSubmit(entry);
+        //    }
+
+        //    try
+        //    {
+        //        siftaDB.SubmitChanges();
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        StatusLabel.Text += e.ToString();
+        //    }
+        //}
+
+        #endregion
+
     }
 }
+ 
