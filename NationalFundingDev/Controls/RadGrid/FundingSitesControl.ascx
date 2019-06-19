@@ -170,7 +170,7 @@
 
     
     <tr>
-        <td align="right">Lock Field:</td>
+        <td align="right">Lock Entry:</td>
         <td>
             <telerik:RadCheckBox ID="rtbLock" runat="server" Text=""></telerik:RadCheckBox>
         </td>
