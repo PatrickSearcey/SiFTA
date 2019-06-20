@@ -42,6 +42,23 @@ namespace NationalFundingDev
                 //Set the search box to be a blank list
                 rsbCoopFunding.DataSource = new List<string>();
             }
+
+            if(user.IsSuperUser)
+            {
+                agLockButton.Visible = true;
+            }
+            if(agreement.Lock != true)
+            {
+                //agLockText.InnerText = "Agreement Unlocked";
+                agLockButton.Text = "Lock Agreement";
+                bulkDlUl.Visible = true;
+            }
+            else
+            {
+                agLockText.InnerText = "Agreement Editing is Locked";
+                agLockButton.Text = "Unlock Agreement";
+            }
+
             BindAgreementLog();
         }
         private void GetAgreement()
@@ -74,6 +91,21 @@ namespace NationalFundingDev
             //If the agreement is not valid send them back to the Default Page
             if (agreement == null) Response.Redirect("Default.aspx".AppendBaseURL());
         }
+
+        protected void agLockButtonClick(object sender, EventArgs e)
+        {
+            if(agreement.Lock != true)
+            {
+                agreement.Lock = true;
+            }
+            else
+            {
+                agreement.Lock = false;
+            }
+            siftaDB.SubmitChanges();
+            Response.Redirect(Request.RawUrl);
+        }
+
         private void initializeTabStrip(RadTabStrip rts, RadMultiPage rmp)
         {
             string selected = Request.QueryString["selected"];
@@ -210,16 +242,16 @@ namespace NationalFundingDev
         protected void rgAgreements_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             rgAgreements.DataSource = siftaDB.vAgreementModInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.Number);
-            if (user.CanInsert)
+            if (user.CanInsert && agreement.Lock != true)
             {
                 rgAgreements.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
                 rgAgreements.MasterTableView.CommandItemSettings.ShowRefreshButton = false;
             }
-            if (user.CanUpdate)
+            if (user.CanUpdate && agreement.Lock != true)
             {
                 rgAgreements.Columns.FindByUniqueName("Edit").Visible = true;
             }
-            if (user.CanDelete)
+            if (user.CanDelete && agreement.Lock != true)
             {
                 rgAgreements.Columns.FindByUniqueName("Delete").Visible = true;
             }
@@ -590,15 +622,15 @@ namespace NationalFundingDev
             //Grab all Funded Sites for this agreement order by mod number
             rgFundedSites.DataSource = siftaDB.vSiteFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.FundingSiteID);
             //Set Permissions
-            if (user.CanInsert)
+            if (user.CanInsert && agreement.Lock != true)
             {
                 rgFundedSites.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
             }
-            if (user.CanUpdate)
+            if (user.CanUpdate && agreement.Lock != true)
             {
                 rgFundedSites.Columns.FindByUniqueName("Edit").Visible = true;
             }
-            if (user.CanDelete)
+            if (user.CanDelete && agreement.Lock != true)
             {
                 rgFundedSites.Columns.FindByUniqueName("DeleteSiteFunding").Visible = true;
             }
@@ -725,17 +757,17 @@ namespace NationalFundingDev
         protected void rgStudiesSupport_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             rgStudiesSupport.DataSource = siftaDB.vStudiesFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.Number);
-            if (user.CanInsert)
+            if (user.CanInsert && agreement.Lock != true)
             {
                 rgStudiesSupport.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
                 rgStudiesSupport.MasterTableView.CommandItemSettings.AddNewRecordText = "Add New Studies/Support Funding";
                 rgStudiesSupport.MasterTableView.CommandItemSettings.ShowRefreshButton = false;
             }
-            if (user.CanUpdate)
+            if (user.CanUpdate && agreement.Lock != true)
             {
                 rgStudiesSupport.Columns.FindByUniqueName("Edit").Visible = true;
             }
-            if (user.CanDelete)
+            if (user.CanDelete && agreement.Lock != true)
             {
                 rgStudiesSupport.Columns.FindByUniqueName("Delete").Visible = true;
             }
@@ -1178,6 +1210,7 @@ namespace NationalFundingDev
                                 catch (Exception ex)
                                 {
                                     StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                    return;
                                 }
                             }
                             if (temp9 != null)
@@ -1189,6 +1222,7 @@ namespace NationalFundingDev
                                 catch (Exception ex)
                                 {
                                     StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                    return;
                                 }
                             }
 
