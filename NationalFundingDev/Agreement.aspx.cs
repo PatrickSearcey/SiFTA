@@ -588,7 +588,7 @@ namespace NationalFundingDev
         protected void rgFundedSites_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             //Grab all Funded Sites for this agreement order by mod number
-            rgFundedSites.DataSource = siftaDB.vSiteFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.SiteNumber);
+            rgFundedSites.DataSource = siftaDB.vSiteFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.FundingSiteID);
             //Set Permissions
             if (user.CanInsert)
             {
