@@ -168,14 +168,6 @@
         </td>
     </tr>
 
-    
-    <tr>
-        <td align="right">Lock Entry:</td>
-        <td>
-            <telerik:RadCheckBox ID="rtbLock" runat="server" Text=""></telerik:RadCheckBox>
-        </td>
-    </tr>
-
     <tr>
         <td align="right"></td>
         <td>

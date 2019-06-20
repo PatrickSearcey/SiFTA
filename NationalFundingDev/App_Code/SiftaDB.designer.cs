@@ -16416,8 +16416,6 @@ namespace NationalFundingDev
 		
 		private System.Nullable<System.DateTime> _EndDate;
 		
-		private System.Nullable<bool> _LockSite;
-		
 		public vSiteFundingInformation()
 		{
 		}
@@ -16885,22 +16883,6 @@ namespace NationalFundingDev
 				}
 			}
 		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LockSite", DbType="Bit")]
-		public System.Nullable<bool> LockSite
-		{
-			get
-			{
-				return this._LockSite;
-			}
-			set
-			{
-				if ((this._LockSite != value))
-				{
-					this._LockSite = value;
-				}
-			}
-		}
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.FundingSite")]
@@ -16948,8 +16930,6 @@ namespace NationalFundingDev
 		private System.Nullable<System.DateTime> _StartDate;
 		
 		private System.Nullable<System.DateTime> _EndDate;
-		
-		private System.Nullable<bool> _LockSite;
 		
 		private EntityRef<lutCollectionCode> _lutCollectionCode;
 		
@@ -16999,8 +16979,6 @@ namespace NationalFundingDev
     partial void OnStartDateChanged();
     partial void OnEndDateChanging(System.Nullable<System.DateTime> value);
     partial void OnEndDateChanged();
-    partial void OnLockSiteChanging(System.Nullable<bool> value);
-    partial void OnLockSiteChanged();
     #endregion
 		
 		public FundingSite()
@@ -17414,26 +17392,6 @@ namespace NationalFundingDev
 					this._EndDate = value;
 					this.SendPropertyChanged("EndDate");
 					this.OnEndDateChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LockSite", DbType="Bit")]
-		public System.Nullable<bool> LockSite
-		{
-			get
-			{
-				return this._LockSite;
-			}
-			set
-			{
-				if ((this._LockSite != value))
-				{
-					this.OnLockSiteChanging(value);
-					this.SendPropertyChanging();
-					this._LockSite = value;
-					this.SendPropertyChanged("LockSite");
-					this.OnLockSiteChanged();
 				}
 			}
 		}
