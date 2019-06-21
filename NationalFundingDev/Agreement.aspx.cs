@@ -43,7 +43,7 @@ namespace NationalFundingDev
                 rsbCoopFunding.DataSource = new List<string>();
             }
 
-            if(user.IsSuperUser)
+            if(user.IsSuperUser || user.IsCenterAdmin)
             {
                 agLockButton.Visible = true;
             }
