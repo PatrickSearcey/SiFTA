@@ -826,8 +826,8 @@ namespace NationalFundingDev
             var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
-            var rdpStartDate = (RadDatePicker)userControl.FindControl("rdpStartDate");
-            var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
+            var rntbStartDate = (RadDatePicker)userControl.FindControl("rntbStartDate");
+            var rntbEndDate = (RadDatePicker)userControl.FindControl("rntbEndDate");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
             #endregion
 
@@ -838,8 +838,8 @@ namespace NationalFundingDev
             StudiesFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             StudiesFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             StudiesFunding.BasisProjectNumber = rtbBasisProjectNumber.Text;
-            StudiesFunding.StartDate = rdpStartDate.SelectedDate;
-            StudiesFunding.EndDate = rdpEndDate.SelectedDate;
+            StudiesFunding.StartDate = rntbStartDate.SelectedDate;
+            StudiesFunding.EndDate = rntbEndDate.SelectedDate;
             StudiesFunding.Remarks = rtbRemarks.Text;
             if (StudiesFunding.CreatedBy == null || StudiesFunding.CreatedDate == null)
             {
