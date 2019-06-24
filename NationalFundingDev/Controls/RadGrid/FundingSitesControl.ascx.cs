@@ -19,12 +19,14 @@ namespace NationalFundingDev.Controls.RadGrid
         }
         #endregion
         public vSiteFundingInformation siteFunding;
+        public AgreementMod mod;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private int AgreementID;
         protected void Page_Load(object sender, EventArgs e)
         {
             //Grab the AgreementID from the URL
             AgreementID = Convert.ToInt32(Request.QueryString["AgreementID"]);
+            mod = siftaDB.AgreementMods.FirstOrDefault(p => p.AgreementID == AgreementID);
             //Insert
             if (DataItem is GridInsertionObject)
             {
