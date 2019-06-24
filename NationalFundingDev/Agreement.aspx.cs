@@ -1308,9 +1308,9 @@ namespace NationalFundingDev
                     StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field value: " + df + " has value outside of range (0.1-10)</span></br>";
                     return;
                 }
-                if (cu < 0.1 || cu > 1)
+                if (cu < 0.01 || cu > 50.0)
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Collection Units field value: " + cu + " has value outside of range (0.1-1.0)</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Collection Units field value: " + cu + " has value outside of range (0.01-50.0)</span></br>";
                     return;
                 }
                 if (site.SiteNumber != null && site.SiteNumber.Length < 8)
