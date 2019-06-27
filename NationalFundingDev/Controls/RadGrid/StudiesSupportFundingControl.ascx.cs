@@ -20,8 +20,13 @@ namespace NationalFundingDev.Controls.RadGrid
         #endregion
         public vStudiesFundingInformation research;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
+        public AgreementMod mod;
+        private int AgreementID;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Grab the AgreementID from the URL
+            AgreementID = Convert.ToInt32(Request.QueryString["AgreementID"]);
+            mod = siftaDB.AgreementMods.FirstOrDefault(p => p.AgreementID == AgreementID);
             if (rcbType.Items.Count <= 1)
             {
                 //Set the Types to be the Look up table of research codes
