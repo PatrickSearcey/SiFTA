@@ -85,6 +85,33 @@ namespace NationalFundingDev {
         protected global::Telerik.Web.UI.RadPageView rpvModifyAgreement;
         
         /// <summary>
+        /// agLock control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agLock;
+        
+        /// <summary>
+        /// agLockText control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl agLockText;
+        
+        /// <summary>
+        /// agLockButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button agLockButton;
+        
+        /// <summary>
         /// rgAgreements control.
         /// </summary>
         /// <remarks>
@@ -236,6 +263,15 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxPanel rapFundedSites;
+        
+        /// <summary>
+        /// bulkDlUl control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl bulkDlUl;
         
         /// <summary>
         /// rauBulkSiteUpload control.

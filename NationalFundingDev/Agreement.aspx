@@ -28,7 +28,6 @@
             margin-bottom: 20px;
         }
     </style>
-    <link href="CSS/CalendarLite.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphAJAXManager" runat="server">
     <telerik:RadAjaxManager runat="server" ID="ram">
@@ -120,6 +119,10 @@
 <asp:Content ID="Content7" ContentPlaceHolderID="cphBody" runat="server">
     <telerik:RadMultiPage runat="server" ID="rmpAgreementOptions" Width="100%">
         <telerik:RadPageView runat="server" ID="rpvModifyAgreement" TabIndex="0" Selected="true">
+            <div runat="server" id="agLock" style="float: right; margin-bottom: 15px;">
+                <span runat="server" id="agLockText"></span>
+                <asp:Button runat="server" ID="agLockButton" OnClick="agLockButtonClick" visible="false"></asp:Button>
+            </div>
             <telerik:RadGrid ID="rgAgreements" runat="server" AutoGenerateColumns="False"
                 OnNeedDataSource="rgAgreements_NeedDataSource" OnUpdateCommand="rgAgreements_UpdateCommand" OnInsertCommand="rgAgreements_InsertCommand" OnDeleteCommand="rgAgreements_DeleteCommand" OnPreRender="rgAgreements_PreRender"
                 AllowSorting="True" AllowMultiRowSelection="false" Skin="Silk" Width="100%">
@@ -301,7 +304,7 @@
             </script>
             
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
-                <div style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+                <div runat="server" id="bulkDlUl" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;" visible="false">
                     <span style="font-weight:bold;">Bulk Upload Help available <a href="https://my.usgs.gov/confluence/display/SIFTA/Bulk+Upload+for+Site+Funding">here</a>.</span>
                     <br /><br />
                     <hr />

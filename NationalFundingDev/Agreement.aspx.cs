@@ -42,6 +42,23 @@ namespace NationalFundingDev
                 //Set the search box to be a blank list
                 rsbCoopFunding.DataSource = new List<string>();
             }
+
+            if(user.IsSuperUser || user.IsCenterAdmin)
+            {
+                agLockButton.Visible = true;
+            }
+            if(agreement.Lock != true)
+            {
+                //agLockText.InnerText = "Agreement Unlocked";
+                agLockButton.Text = "Lock Agreement";
+                bulkDlUl.Visible = true;
+            }
+            else
+            {
+                agLockText.InnerText = "Agreement Editing is Locked";
+                agLockButton.Text = "Unlock Agreement";
+            }
+
             BindAgreementLog();
         }
         private void GetAgreement()
@@ -74,6 +91,21 @@ namespace NationalFundingDev
             //If the agreement is not valid send them back to the Default Page
             if (agreement == null) Response.Redirect("Default.aspx".AppendBaseURL());
         }
+
+        protected void agLockButtonClick(object sender, EventArgs e)
+        {
+            if(agreement.Lock != true)
+            {
+                agreement.Lock = true;
+            }
+            else
+            {
+                agreement.Lock = false;
+            }
+            siftaDB.SubmitChanges();
+            Response.Redirect(Request.RawUrl);
+        }
+
         private void initializeTabStrip(RadTabStrip rts, RadMultiPage rmp)
         {
             string selected = Request.QueryString["selected"];
@@ -210,16 +242,16 @@ namespace NationalFundingDev
         protected void rgAgreements_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             rgAgreements.DataSource = siftaDB.vAgreementModInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.Number);
-            if (user.CanInsert)
+            if (user.CanInsert && agreement.Lock != true)
             {
                 rgAgreements.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
                 rgAgreements.MasterTableView.CommandItemSettings.ShowRefreshButton = false;
             }
-            if (user.CanUpdate)
+            if (user.CanUpdate && agreement.Lock != true)
             {
                 rgAgreements.Columns.FindByUniqueName("Edit").Visible = true;
             }
-            if (user.CanDelete)
+            if (user.CanDelete && agreement.Lock != true)
             {
                 rgAgreements.Columns.FindByUniqueName("Delete").Visible = true;
             }
@@ -588,17 +620,17 @@ namespace NationalFundingDev
         protected void rgFundedSites_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             //Grab all Funded Sites for this agreement order by mod number
-            rgFundedSites.DataSource = siftaDB.vSiteFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.SiteNumber);
+            rgFundedSites.DataSource = siftaDB.vSiteFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.FundingSiteID);
             //Set Permissions
-            if (user.CanInsert)
+            if (user.CanInsert && agreement.Lock != true)
             {
                 rgFundedSites.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
             }
-            if (user.CanUpdate)
+            if (user.CanUpdate && agreement.Lock != true)
             {
                 rgFundedSites.Columns.FindByUniqueName("Edit").Visible = true;
             }
-            if (user.CanDelete)
+            if (user.CanDelete && agreement.Lock != true)
             {
                 rgFundedSites.Columns.FindByUniqueName("DeleteSiteFunding").Visible = true;
             }
@@ -725,17 +757,17 @@ namespace NationalFundingDev
         protected void rgStudiesSupport_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
             rgStudiesSupport.DataSource = siftaDB.vStudiesFundingInformations.Where(p => p.AgreementID == agreement.AgreementID).OrderBy(p => p.Number);
-            if (user.CanInsert)
+            if (user.CanInsert && agreement.Lock != true)
             {
                 rgStudiesSupport.MasterTableView.CommandItemDisplay = GridCommandItemDisplay.Top;
                 rgStudiesSupport.MasterTableView.CommandItemSettings.AddNewRecordText = "Add New Studies/Support Funding";
                 rgStudiesSupport.MasterTableView.CommandItemSettings.ShowRefreshButton = false;
             }
-            if (user.CanUpdate)
+            if (user.CanUpdate && agreement.Lock != true)
             {
                 rgStudiesSupport.Columns.FindByUniqueName("Edit").Visible = true;
             }
-            if (user.CanDelete)
+            if (user.CanDelete && agreement.Lock != true)
             {
                 rgStudiesSupport.Columns.FindByUniqueName("Delete").Visible = true;
             }
@@ -794,8 +826,8 @@ namespace NationalFundingDev
             var rntbUSGSCMFFunding = (RadNumericTextBox)userControl.FindControl("rntbUSGSCMFFunding");
             var rntbCustomerFunding = (RadNumericTextBox)userControl.FindControl("rntbCustomerFunding");
             var rntbOtherFunding = (RadNumericTextBox)userControl.FindControl("rntbOtherFunding");
-            var rdpStartDate = (RadDatePicker)userControl.FindControl("rdpStartDate");
-            var rdpEndDate = (RadDatePicker)userControl.FindControl("rdpEndDate");
+            var rntbStartDate = (RadDatePicker)userControl.FindControl("rntbStartDate");
+            var rntbEndDate = (RadDatePicker)userControl.FindControl("rntbEndDate");
             var rtbRemarks = (RadTextBox)userControl.FindControl("rtbRemarks");
             #endregion
 
@@ -806,8 +838,8 @@ namespace NationalFundingDev
             StudiesFunding.FundingCustomer = rntbCustomerFunding.Value.ToDouble();
             StudiesFunding.FundingOther = rntbOtherFunding.Value.ToDouble();
             StudiesFunding.BasisProjectNumber = rtbBasisProjectNumber.Text;
-            StudiesFunding.StartDate = rdpStartDate.SelectedDate;
-            StudiesFunding.EndDate = rdpEndDate.SelectedDate;
+            StudiesFunding.StartDate = rntbStartDate.SelectedDate;
+            StudiesFunding.EndDate = rntbEndDate.SelectedDate;
             StudiesFunding.Remarks = rtbRemarks.Text;
             if (StudiesFunding.CreatedBy == null || StudiesFunding.CreatedDate == null)
             {
@@ -1178,6 +1210,7 @@ namespace NationalFundingDev
                                 catch (Exception ex)
                                 {
                                     StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                    return;
                                 }
                             }
                             if (temp9 != null)
@@ -1189,6 +1222,7 @@ namespace NationalFundingDev
                                 catch (Exception ex)
                                 {
                                     StatusLabel.Text = "<span style='color: red; text-weight: bolder;'>Problem with one or more Date Fields.</span><br><br>";
+                                    return;
                                 }
                             }
 
@@ -1274,9 +1308,9 @@ namespace NationalFundingDev
                     StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Difficulty Factor field value: " + df + " has value outside of range (0.1-10)</span></br>";
                     return;
                 }
-                if (cu < 0.1 || cu > 1)
+                if (cu < 0.01 || cu > 50.0)
                 {
-                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Collection Units field value: " + cu + " has value outside of range (0.1-1.0)</span></br>";
+                    StatusLabel.Text = "<span style='color: red; text-weight: bold;'>Collection Units field value: " + cu + " has value outside of range (0.01-50.0)</span></br>";
                     return;
                 }
                 if (site.SiteNumber != null && site.SiteNumber.Length < 8)

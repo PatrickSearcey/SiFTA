@@ -103,22 +103,22 @@ namespace NationalFundingDev.Controls.RadGrid {
         protected global::Telerik.Web.UI.RadNumericTextBox rntbOtherFunding;
         
         /// <summary>
-        /// rdpStartDate control.
+        /// rntbStartDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker rdpStartDate;
+        protected global::Telerik.Web.UI.RadDatePicker rntbStartDate;
         
         /// <summary>
-        /// rdpEndDate control.
+        /// rntbEndDate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::Telerik.Web.UI.RadDatePicker rdpEndDate;
+        protected global::Telerik.Web.UI.RadDatePicker rntbEndDate;
         
         /// <summary>
         /// rtbRemarks control.

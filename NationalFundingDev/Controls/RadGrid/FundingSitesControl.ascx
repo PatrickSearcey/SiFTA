@@ -145,16 +145,16 @@
     </tr>
 
     <tr>
-        <td align="right"></td>
+        <td align="right">Start Date:</td>
         <td>
-            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpStartDate" CssClass="toDate" runat="server" DateInput-Label="Start Date:">
+            <telerik:RadDatePicker ID="rdpStartDate" runat="server" DateInput-Label="" DbSelectedDate="<%# siteFunding.StartDate ?? mod.StartDate %>">
             </telerik:RadDatePicker>
         </td>
     </tr>
     <tr>
-        <td align="right"></td>
+        <td align="right">End Date:</td>
         <td>
-            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpEndDate" CssClass="toDate" runat="server" DateInput-Label="End Date:">
+            <telerik:RadDatePicker ID="rdpEndDate" runat="server" DateInput-Label="" DbSelectedDate="<%# siteFunding.EndDate ?? mod.EndDate %>">
             </telerik:RadDatePicker>
         </td>
     </tr>
@@ -167,6 +167,7 @@
             <telerik:RadTextBox runat="server" ID="rtbRemarks" TextMode="MultiLine" Height="50px" Width="100%" Text="<%# siteFunding.Remarks  %>" />
         </td>
     </tr>
+
     <tr>
         <td align="right"></td>
         <td>

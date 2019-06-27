@@ -21,7 +21,7 @@ namespace NationalFundingDev.Documents
             {
                 context.Response.Write("Invalid AgreementID");
             }
-            var entries = siftaDB.vSiteFundings.Where(x => x.AgreementID == int.Parse(agID));
+            var entries = siftaDB.vSiteFundingInformations.Where(x => x.AgreementID == int.Parse(agID));
 
             var modID = siftaDB.Agreements.FirstOrDefault(x => x.AgreementID == int.Parse(agID));
             var pID = modID.PurchaseOrderNumber;
@@ -49,7 +49,7 @@ namespace NationalFundingDev.Documents
                 {
                     ws.Cells["A" + i].Value = entry.SiteName;
                     ws.Cells["B" + i].Value = entry.SiteNumber;
-                    ws.Cells["C" + i].Value = entry.CollectionCode;
+                    ws.Cells["C" + i].Value = entry.Code;
                     ws.Cells["D" + i].Value = entry.CollectionUnits;
                     ws.Cells["E" + i].Value = entry.DifficultyFactor;
                     ws.Cells["F" + i].Value = entry.FundingUSGSCMF;

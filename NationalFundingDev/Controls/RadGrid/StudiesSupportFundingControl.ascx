@@ -66,16 +66,16 @@
     </tr>
 
     <tr>
-        <td align="right"></td>
+        <td align="right">Start Date:</td>
         <td>
-            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpStartDate" CssClass="toDate" runat="server" DateInput-Label="Start Date:">
+            <telerik:RadDatePicker ID="rntbStartDate" runat="server" DateInput-Label="" DbSelectedDate="<%# research.StartDate %>">
             </telerik:RadDatePicker>
         </td>
     </tr>
     <tr>
-        <td align="right"></td>
+        <td align="right">End Date:</td>
         <td>
-            <telerik:RadDatePicker RenderMode="Lightweight" ID="rdpEndDate" CssClass="toDate" runat="server" DateInput-Label="End Date:">
+            <telerik:RadDatePicker ID="rntbEndDate" runat="server" DateInput-Label="" DbSelectedDate="<%# research.EndDate %>">
             </telerik:RadDatePicker>
         </td>
     </tr>

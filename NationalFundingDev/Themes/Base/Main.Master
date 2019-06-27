@@ -120,8 +120,6 @@
                 var height = $(window).height() - $(".Footer").height() - $(".Header").height();
                 $("#ContentTable").css("min-height", height);
             });
-            var connectionString = document.getElementById("<%: hfConnectionString.ClientID%>");
-            console.log("Database Connection: " + connectionString.value);
             </script>
         <asp:SiteMapDataSource ID="smds1" runat="server" ShowStartingNode="false" SiteMapProvider="MainSiteMap" />
     </form>

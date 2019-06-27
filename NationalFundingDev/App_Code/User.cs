@@ -12,9 +12,9 @@ namespace NationalFundingDev
     {
         #region Local Variables
         private String user_id, _OrgCode, _Home;
-        private Boolean _CanInsert, _CanUpdate, _CanDelete, _IsAdmin;
+        private Boolean _CanInsert, _CanUpdate, _CanDelete, _IsAdmin, _IsCenterAdmin;
         private List<string> SuperUsers = new List<string>(){
-            "jkrobertson","bdreece", "sholl", "slvasque", "rjneafie", "epease", "afox", "kesmith", "cfanguy", "dterry"
+            "bdreece", "sholl", "slvasque", "rjneafie", "epease", "afox", "kesmith", "cfanguy", "dterry"
         };
         private EmployeeAccess permissions;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
@@ -34,7 +34,7 @@ namespace NationalFundingDev
                 _Home = employee.OrgCode;
             }
             //Set permissions to false
-            _CanInsert = _CanUpdate = _CanDelete = _IsAdmin = false;
+            _CanInsert = _CanUpdate = _CanDelete = _IsAdmin = _IsCenterAdmin = false;
         }
         /// <summary>
         /// Overloaded Constructor
@@ -59,7 +59,7 @@ namespace NationalFundingDev
                 if (permissions == null)
                 {
                     //Set permissions to false
-                    _CanInsert = _CanUpdate = _CanDelete = _IsAdmin = false;
+                    _CanInsert = _CanUpdate = _CanDelete = _IsAdmin = _IsCenterAdmin = false;
                 }
                 else
                 {
@@ -68,17 +68,29 @@ namespace NationalFundingDev
                     _CanUpdate = permissions.CanUpdateRecords;
                     _CanDelete = permissions.CanDeleteRecords;
                     _IsAdmin = permissions.CanViewAdminPortal;
+                    _IsCenterAdmin = permissions.CenterAdmin;
                 }
             }
             else
             {
                 //Set permissions to false
-                _CanInsert = _CanUpdate = _CanDelete = _IsAdmin = false;
+                _CanInsert = _CanUpdate = _CanDelete = _IsAdmin = _IsCenterAdmin = false;
             }
         }
         #endregion
 
         #region Properties
+        /// <summary>
+        /// Returns True if the user is a Center Admin
+        /// </summary>
+        public Boolean IsCenterAdmin
+        {
+            get
+            {
+                return _IsCenterAdmin;
+            }
+        }
+
         /// <summary>
         /// The ID of the user ex:jdoe
         /// </summary>
