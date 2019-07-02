@@ -396,7 +396,7 @@ M.initMap = function ( opts ) {
                     "<b>" + $.trim(feature.properties.SiteNumber) + " " + $.trim(feature.properties.SiteName) + "</b>" + "<br/>" +
                     "<br/>" +
                     "<a href='https://sifta.water.usgs.gov/NationalFunding/Site.aspx?SiteNumber="+ $.trim(feature.properties.SiteNumber) +"'        target='_blank'>Funding Details Page              </a>" + "<br/>" +
-                    "<a href='http://sims.water.usgs.gov/SIMSClassic/StationInfo.asp?agency_cd=USGS&site_no="+ $.trim(feature.properties.SiteNumber) +"' target='_blank'>SIMS Station Information Page Page</a>" + "<br/>" +
+                    "<a href='http://sims.water.usgs.gov/SIMS/StationInfo.aspx?agency_cd=USGS&site_no="+ $.trim(feature.properties.SiteNumber) +"' target='_blank'>SIMS Station Information Page Page</a>" + "<br/>" +
                     "<a href='http://waterdata.usgs.gov/nwis/inventory?site_no="+ $.trim(feature.properties.SiteNumber) +"'                              target='_blank'>NWIS Web                          </a>" + "<br/>" +
                     "<br/>" +
                     "<a href='javascript: M.maps[\""+opts.mapElemID+"\"].setView(["+feature.geometry.coordinates[1]+","+feature.geometry.coordinates[0]+"], M.maps[\""+opts.mapElemID+"\"].getMaxZoom()); void(0);'>Zoom To</a>"
