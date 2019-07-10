@@ -442,8 +442,6 @@
     <Content Include="Documents\Forms\JFATemplate.docx" />
     <Content Include="Documents\AgreementSiteBulkEdit.ashx" />
     <Content Include="Help\SIFTA-BulkUploadforSiteFunding.pdf" />
-    <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
-    <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <Content Include="Reports\National\National.aspx" />
     <Content Include="Reports\National\RealTimeSitesFunding.aspx" />
     <Content Include="Scripts\leaflet\leaflet.css" />
@@ -636,6 +634,8 @@
     <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen-gh-pages.zip" />
     <Content Include="SiftaSiteMap.sitemap" />
     <Content Include="Themes\Base\ErrorHandler.ashx" />
+    <None Include="Properties\PublishProfiles\i01 Production.pubxml" />
+    <None Include="Properties\PublishProfiles\i02 Dev.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -703,7 +703,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>
