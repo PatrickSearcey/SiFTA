@@ -94,13 +94,30 @@ namespace NationalFundingDev
 
         protected void agLockButtonClick(object sender, EventArgs e)
         {
-            if(agreement.Lock != true)
+            var mod = agreement.AgreementMods.FirstOrDefault();
+            var log = new AgreementModLog()
+            {
+                AgreementLogTypeID = 7,
+                CreatedBy = user.ID,
+                ModifiedBy = user.ID,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
+                LoggedDate = DateTime.Now
+            };
+
+            if (agreement.Lock != true)
             {
                 agreement.Lock = true;
+
+                log.Remarks = "Agreement Locked.";
+                mod.AgreementModLogs.Add(log);
             }
             else
             {
                 agreement.Lock = false;
+
+                log.Remarks = "Agreement Unlocked.";
+                mod.AgreementModLogs.Add(log);
             }
             siftaDB.SubmitChanges();
             Response.Redirect(Request.RawUrl);
@@ -1365,6 +1382,19 @@ namespace NationalFundingDev
                         siftaDB.FundingSites.DeleteOnSubmit(entry);
                     }
                 }
+
+                var mod = agreement.AgreementMods.FirstOrDefault();
+                var log = new AgreementModLog()
+                {
+                    AgreementLogTypeID = 7,
+                    CreatedBy = user.ID,
+                    ModifiedBy = user.ID,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
+                    LoggedDate = DateTime.Now,
+                    Remarks = "Bulk Uploaded"
+                };
+                mod.AgreementModLogs.Add(log);
 
                 siftaDB.SubmitChanges();
 
