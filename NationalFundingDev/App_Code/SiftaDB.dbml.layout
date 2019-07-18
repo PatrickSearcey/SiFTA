@@ -187,14 +187,14 @@
         <elementListCompartment Id="09debeff-211f-4ab0-9ce4-f9005850344a" absoluteBounds="0.76499999999999968, 16.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(1.75 : 16.25); (1.75 : 14.1354484049479); (3.5 : 14.1354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 16.25); (1.75 : 14.1354484049479); (2.19791916666667 : 14.1354484049479 : JumpStart); (2.36458583333333 : 14.1354484049479 : JumpEnd); (3.5 : 14.1354484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Center/Center_Account" />
       <nodes>
         <classShapeMoniker Id="48c96591-c381-4262-b44b-f8b9485494ce" />
         <classShapeMoniker Id="204e03d1-ddd4-44e6-9efb-723827ed250d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 19.7516097005208); (1.75 : 22.2604484049479); (2.19791916666667 : 22.2604484049479 : JumpStart); (2.36458583333333 : 22.2604484049479 : JumpEnd); (2.46354541666667 : 22.2604484049479 : JumpStart); (2.63021208333333 : 22.2604484049479 : JumpEnd); (3.5 : 22.2604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 19.7516097005208); (1.75 : 22.2604484049479); (2.19791916666667 : 22.2604484049479 : JumpStart); (2.36458583333333 : 22.2604484049479 : JumpEnd); (3.5 : 22.2604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Center/Center_CenterDirector" />
       <nodes>
         <classShapeMoniker Id="48c96591-c381-4262-b44b-f8b9485494ce" />
@@ -222,7 +222,7 @@
         <classShapeMoniker Id="01b3c9f1-d6e0-4ac3-bb05-6d6ac7c09435" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 19.7516097005208); (1.2187475 : 23.5104484049479); (2.19791916666667 : 23.5104484049479 : JumpStart); (2.36458583333333 : 23.5104484049479 : JumpEnd); (2.46354541666667 : 23.5104484049479 : JumpStart); (2.63021208333333 : 23.5104484049479 : JumpEnd); (6.25 : 23.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.2187475 : 19.7516097005208); (1.2187475 : 23.5104484049479); (6.25 : 23.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Center/Center_EmployeeAccess" />
       <nodes>
         <classShapeMoniker Id="48c96591-c381-4262-b44b-f8b9485494ce" />
@@ -417,7 +417,7 @@
         <classShapeMoniker Id="04b136ec-a5a0-4e1a-afbc-e2795a480ba2" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(19.5 : 25.7347796751302); (20.3229166666667 : 25.7347796751302 : JumpStart); (20.4895833333333 : 25.7347796751302 : JumpEnd); (25.96875 : 25.7347796751302); (25.96875 : 24.1554182942708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(19.5 : 25.7347796751302); (25.96875 : 25.7347796751302); (25.96875 : 24.1554182942708)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/AgreementMod/AgreementMod_FundingSite" />
       <nodes>
         <classShapeMoniker Id="a50141d7-fce0-40e3-adaa-d2d1f77d7ce4" />
@@ -430,47 +430,53 @@
         <elementListCompartment Id="6d20a1f8-f382-4589-a5d3-e71402312336" absoluteBounds="14.89, 21.21, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(16.875 : 23.9575105794271); (17.5 : 23.9575105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(16.875 : 23.9575105794271); (17.5 : 23.9575105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Agreement/Agreement_AgreementMod" />
       <nodes>
         <classShapeMoniker Id="3f50eeb3-837b-4532-bae7-5bf7dccb0c13" />
         <classShapeMoniker Id="a50141d7-fce0-40e3-adaa-d2d1f77d7ce4" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(8.5 : 15.65625); (15.875 : 15.65625); (15.875 : 20.75)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(8.5 : 15.65625); (15.875 : 15.65625); (15.875 : 20.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Customer/Customer_Agreement" />
       <nodes>
         <classShapeMoniker Id="53ac213a-ad19-41cb-9c4b-54eb326f3877" />
         <classShapeMoniker Id="3f50eeb3-837b-4532-bae7-5bf7dccb0c13" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13 : 19.7516097005208); (13 : 23.2700105794271); (14.875 : 23.2700105794271)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13 : 19.7516097005208); (13 : 23.2700105794271); (14.875 : 23.2700105794271)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/CustomerContactAddress/CustomerContactAddress_Agreement" />
       <nodes>
         <classShapeMoniker Id="e2c03526-7d04-422e-bd7e-b8001a82dd5f" />
         <classShapeMoniker Id="3f50eeb3-837b-4532-bae7-5bf7dccb0c13" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(13.5312525 : 19.7516097005208); (13.5312525 : 21.9787527897135); (14.875 : 21.9787527897135)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(13.5312525 : 19.7516097005208); (13.5312525 : 21.9787527897135); (14.875 : 21.9787527897135)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/CustomerContactAddress/CustomerContactAddress_Agreement1" />
       <nodes>
         <classShapeMoniker Id="e2c03526-7d04-422e-bd7e-b8001a82dd5f" />
         <classShapeMoniker Id="3f50eeb3-837b-4532-bae7-5bf7dccb0c13" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 27.46875); (7.16666666666667 : 27.46875 : JumpStart); (7.33333333333333 : 27.46875 : JumpEnd); (15.875 : 27.46875); (15.875 : 25.7900211588542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 27.46875); (15.875 : 27.46875); (15.875 : 25.7900211588542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Employee/Employee_Agreement" />
       <nodes>
         <classShapeMoniker Id="01b3c9f1-d6e0-4ac3-bb05-6d6ac7c09435" />
         <classShapeMoniker Id="3f50eeb3-837b-4532-bae7-5bf7dccb0c13" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 27.0781225); (7.16666666666667 : 27.0781225 : JumpStart); (7.33333333333333 : 27.0781225 : JumpEnd); (15.3437475 : 27.0781225); (15.3437475 : 25.7900211588542)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(5.5 : 27.0781225); (15.3437475 : 27.0781225); (15.3437475 : 25.7900211588542)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Employee/Employee_Agreement1" />
       <nodes>
         <classShapeMoniker Id="01b3c9f1-d6e0-4ac3-bb05-6d6ac7c09435" />
         <classShapeMoniker Id="3f50eeb3-837b-4532-bae7-5bf7dccb0c13" />
       </nodes>
     </associationConnector>
+    <classShape Id="32140930-9d41-49f9-9ef1-65cd04b151c8" absoluteBounds="9, 4.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SiftaDBDataContext/Receiver" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8f81388-1d3f-4339-94c0-fb98cb5203a1" absoluteBounds="9.015, 4.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

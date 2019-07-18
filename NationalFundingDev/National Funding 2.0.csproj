@@ -111,12 +111,26 @@
     <Compile Include="Controls\Editable\AgreementLogGrid.ascx.designer.cs">
       <DependentUpon>AgreementLogGrid.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Editable\ReceiverGrid.ascx.cs">
+      <DependentUpon>ReceiverGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Editable\ReceiverGrid.ascx.designer.cs">
+      <DependentUpon>ReceiverGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.designer.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\ReceiverEditForm.ascx.cs">
+      <DependentUpon>ReceiverEditForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\ReceiverEditForm.ascx.designer.cs">
+      <DependentUpon>ReceiverEditForm.ascx</DependentUpon>
     </Compile>
     <Compile Include="Documents\AgreementSiteBulkEdit.ashx.cs">
       <DependentUpon>AgreementSiteBulkEdit.ashx</DependentUpon>
@@ -417,7 +431,9 @@
     </Compile>
     <Content Include="Admin.aspx" />
     <Content Include="Controls\Editable\AgreementLogGrid.ascx" />
+    <Content Include="Controls\Editable\ReceiverGrid.ascx" />
     <Content Include="Controls\RadGrid\AgreementLogEditForm.ascx" />
+    <Content Include="Controls\RadGrid\ReceiverEditForm.ascx" />
     <Content Include="GenerateRecordID.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="Images\arrow.png" />
@@ -703,7 +719,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

@@ -112,8 +112,8 @@
             <telerik:RadTab TabIndex="3" Text="Studies / Support" />
             <telerik:RadTab TabIndex="6" Text="Agreement Log" />
             <telerik:RadTab TabIndex="7" Text="Account Funding" Value="Coop" Visible="false" />
-            <telerik:RadTab TabIndex="9" Text="Receivers" />
-            <telerik:RadTab TabIndex="8" Text="Agreement Overview" Target="_blank" />
+            <telerik:RadTab TabIndex="8" Text="Receivers" />
+            <telerik:RadTab TabIndex="9" Text="Agreement Overview" Target="_blank" />
         </Tabs>
     </telerik:RadTabStrip>
 </asp:Content>
@@ -602,23 +602,8 @@
             </telerik:RadGrid>
         </telerik:RadPageView>
 
-        <telerik:RadPageView ID="rpvReciever" runat="server" TabIndex="9">
-            <table>
-                <tr>
-                    <td>
-                        <span>Test</span>
-                    </td>
-                </tr>
-            </table>
-            <telerik:RadAjaxPanel runat="server" ID="rapReceiver" LoadingPanelID="ralpRec">
-                 <table>
-                    <tr>
-                        <td>
-                            <span>Test</span>
-                        </td>
-                    </tr>
-                </table>
-            </telerik:RadAjaxPanel>
+        <telerik:RadPageView ID="rpvReciever" runat="server" TabIndex="8">
+            <asp:PlaceHolder runat="server" ID="phReceiver" />
         </telerik:RadPageView>
 
     </telerik:RadMultiPage>

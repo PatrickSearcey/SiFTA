@@ -921,6 +921,17 @@
       <Association Name="Employee_Agreement1" Member="Employee1" ThisKey="USGSTechnicalContact" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
+  <Table Name="dbo.Receiver" Member="Receivers">
+    <Type Name="Receiver">
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Funding" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">
     <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(4)" />
     <Parameter Name="BeginFiscalYear" Parameter="beginFiscalYear" Type="System.Int32" DbType="Int" />

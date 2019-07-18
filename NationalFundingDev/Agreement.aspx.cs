@@ -60,6 +60,7 @@ namespace NationalFundingDev
             }
 
             BindAgreementLog();
+            BindReceiver();
         }
         private void GetAgreement()
         {
@@ -245,12 +246,12 @@ namespace NationalFundingDev
                 //Coop
                 case 7:
                     break;
-                //Overview
-                case 8:
-                    Response.Redirect(OverviewURL());
-                    break;
                 //Receiver
+                case 8:
+                    break;
+                //Overview
                 case 9:
+                    Response.Redirect(OverviewURL());
                     break;
             }
             
@@ -1058,6 +1059,18 @@ namespace NationalFundingDev
         protected void rbViewReport_Click(object sender, EventArgs e)
         {
             Response.Redirect(String.Format("Reports/Center/CoopFunding.aspx?OrgCode={0}", agreement.Customer.Center.OrgCode).AppendBaseURL());
+        }
+        #endregion
+
+        #region Receiver
+        private void BindReceiver()
+        {
+            var ctrl = (NationalFundingDev.Controls.Editable.ReceiverGrid)LoadControl("~/Controls/Editable/ReceiverGrid.ascx");
+            ctrl.Edit = user.CanUpdate;
+            ctrl.AddNewRecords = user.CanInsert;
+            ctrl.Delete = user.CanDelete;
+            ctrl.agreement = agreement;
+            phReceiver.Controls.Add(ctrl);
         }
         #endregion
 

@@ -527,6 +527,14 @@ namespace NationalFundingDev
 			}
 		}
 		
+		public System.Data.Linq.Table<Receiver> Receivers
+		{
+			get
+			{
+				return this.GetTable<Receiver>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.spAccountFundingAccountDetail")]
 		public ISingleResult<spAccountFundingAccountDetailResult> spAccountFundingAccountDetail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrgCode", DbType="NVarChar(4)")] string orgCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BeginFiscalYear", DbType="Int")] System.Nullable<int> beginFiscalYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndFiscalYear", DbType="Int")] System.Nullable<int> endFiscalYear)
 		{
@@ -17506,6 +17514,141 @@ namespace NationalFundingDev
 		{
 			this.SendPropertyChanging();
 			entity.Agreement = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Receiver")]
+	public partial class Receiver
+	{
+		
+		private System.Nullable<int> _AgreementModID;
+		
+		private System.Nullable<int> _FY;
+		
+		private string _AccountNumber;
+		
+		private string _CustomerClass;
+		
+		private string _MatchPair;
+		
+		private string _ProgramElementCode;
+		
+		private System.Nullable<decimal> _Funding;
+		
+		public Receiver()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementModID", DbType="Int")]
+		public System.Nullable<int> AgreementModID
+		{
+			get
+			{
+				return this._AgreementModID;
+			}
+			set
+			{
+				if ((this._AgreementModID != value))
+				{
+					this._AgreementModID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FY", DbType="Int")]
+		public System.Nullable<int> FY
+		{
+			get
+			{
+				return this._FY;
+			}
+			set
+			{
+				if ((this._FY != value))
+				{
+					this._FY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="NVarChar(50)")]
+		public string AccountNumber
+		{
+			get
+			{
+				return this._AccountNumber;
+			}
+			set
+			{
+				if ((this._AccountNumber != value))
+				{
+					this._AccountNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerClass", DbType="NVarChar(50)")]
+		public string CustomerClass
+		{
+			get
+			{
+				return this._CustomerClass;
+			}
+			set
+			{
+				if ((this._CustomerClass != value))
+				{
+					this._CustomerClass = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
+		{
+			get
+			{
+				return this._MatchPair;
+			}
+			set
+			{
+				if ((this._MatchPair != value))
+				{
+					this._MatchPair = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgramElementCode", DbType="NVarChar(50)")]
+		public string ProgramElementCode
+		{
+			get
+			{
+				return this._ProgramElementCode;
+			}
+			set
+			{
+				if ((this._ProgramElementCode != value))
+				{
+					this._ProgramElementCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Funding", DbType="Money")]
+		public System.Nullable<decimal> Funding
+		{
+			get
+			{
+				return this._Funding;
+			}
+			set
+			{
+				if ((this._Funding != value))
+				{
+					this._Funding = value;
+				}
+			}
 		}
 	}
 	
