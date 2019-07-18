@@ -515,5 +515,23 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgCoopFunding;
+        
+        /// <summary>
+        /// rpvReciever control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvReciever;
+        
+        /// <summary>
+        /// rapReceiver control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadAjaxPanel rapReceiver;
     }
 }
