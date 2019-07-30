@@ -46,8 +46,8 @@ namespace NationalFundingDev.Controls.Editable
         {
             GridEditableItem editedItem = e.Item as GridEditableItem;
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            var AgreementModID = Convert.ToInt32(editedItem.GetDataKeyValue("AgreementModID").ToString());
-            var rec = siftaDB.Receivers.FirstOrDefault(p => p.AgreementModID == AgreementModID);
+            var ID = Convert.ToInt32(editedItem.GetDataKeyValue("RecID").ToString());
+            var rec = siftaDB.Receivers.FirstOrDefault(p => p.RecID == ID);
             GrabValuesFromUserControl(userControl, ref rec);
             siftaDB.SubmitChanges();
         }
@@ -69,6 +69,9 @@ namespace NationalFundingDev.Controls.Editable
             var rtbMatchPair = (uc.FindControl("rtbMatchPair") as RadTextBox);
             var rtbProgramElementCode = (uc.FindControl("rtbProgramElementCode") as RadTextBox);
             var rtbFunding = (uc.FindControl("rtbFunding") as RadTextBox);
+            var rtbModNumber = (uc.FindControl("rtbModNumber") as RadTextBox);
+            var rtbStatus = (uc.FindControl("rtbStatus") as RadTextBox);
+            var rtbRemarks = (uc.FindControl("rtbRemarks") as RadTextBox);
 
             #endregion
 
@@ -79,7 +82,12 @@ namespace NationalFundingDev.Controls.Editable
             rec.CustomerClass = rtbCustomerClass.Text;
             rec.MatchPair = rtbMatchPair.Text;
             rec.ProgramElementCode = rtbProgramElementCode.Text;
-            rec.Funding = Convert.ToInt32(rtbFunding.Text);
+            rec.Funding = Convert.ToDecimal(rtbFunding.Text);
+            rec.ModNumber = rtbModNumber.Text;
+            rec.Status = rtbStatus.Text;
+            rec.Remarks = rtbRemarks.Text;
+            rec.EditedBy = user.ID;
+            rec.EditedWhen = DateTime.Now;
             #endregion
         }
 

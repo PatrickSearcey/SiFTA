@@ -15,6 +15,13 @@
         </td>
     </tr>
     <tr>
+        <td valign="top" align="right">Mod Number:
+        </td>
+        <td valign="top">
+            <telerik:RadTextBox runat="server" ID="rtbModNumber" Text="<%# rec.ModNumber %>" Skin="Silk" TextMode="SingleLine" />
+        </td>
+    </tr>
+    <tr>
         <td valign="top" align="right">Account Number:
         </td>
         <td valign="top">
@@ -26,6 +33,13 @@
         </td>
         <td valign="top">
             <telerik:RadTextBox runat="server" ID="rtbCustomerClass" Text="<%# rec.CustomerClass %>" Skin="Silk" TextMode="SingleLine" />
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Status:
+        </td>
+        <td valign="top">
+            <telerik:RadTextBox runat="server" ID="rtbStatus" Text="<%# rec.Status %>" Skin="Silk" TextMode="SingleLine" />
         </td>
     </tr>
     <tr>
@@ -47,6 +61,13 @@
         </td>
         <td valign="top">
             <telerik:RadTextBox runat="server" ID="rtbFunding" Text="<%# rec.Funding %>" Skin="Silk" TextMode="SingleLine" />
+        </td>
+    </tr>
+    <tr>
+        <td valign="top" align="right">Remarks:
+        </td>
+        <td valign="top">
+            <telerik:RadTextBox runat="server" ID="rtbRemarks" Text="<%# rec.Remarks %>" Skin="Silk" TextMode="MultiLine" />
         </td>
     </tr>
     <tr>

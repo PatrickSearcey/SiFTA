@@ -111,6 +111,9 @@ namespace NationalFundingDev
     partial void InsertAgreement(Agreement instance);
     partial void UpdateAgreement(Agreement instance);
     partial void DeleteAgreement(Agreement instance);
+    partial void InsertReceiver(Receiver instance);
+    partial void UpdateReceiver(Receiver instance);
+    partial void DeleteReceiver(Receiver instance);
     #endregion
 		
 		public SiftaDBDataContext() : 
@@ -17518,8 +17521,12 @@ namespace NationalFundingDev
 	}
 	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Receiver")]
-	public partial class Receiver
+	public partial class Receiver : INotifyPropertyChanging, INotifyPropertyChanged
 	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ID;
 		
 		private System.Nullable<int> _AgreementModID;
 		
@@ -17535,8 +17542,71 @@ namespace NationalFundingDev
 		
 		private System.Nullable<decimal> _Funding;
 		
+		private string _ModNumber;
+		
+		private string _Status;
+		
+		private string _Remarks;
+		
+		private System.Nullable<System.DateTime> _EditedWhen;
+		
+		private string _EditedBy;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnRecIDChanging(int value);
+    partial void OnRecIDChanged();
+    partial void OnAgreementModIDChanging(System.Nullable<int> value);
+    partial void OnAgreementModIDChanged();
+    partial void OnFYChanging(System.Nullable<int> value);
+    partial void OnFYChanged();
+    partial void OnAccountNumberChanging(string value);
+    partial void OnAccountNumberChanged();
+    partial void OnCustomerClassChanging(string value);
+    partial void OnCustomerClassChanged();
+    partial void OnMatchPairChanging(string value);
+    partial void OnMatchPairChanged();
+    partial void OnProgramElementCodeChanging(string value);
+    partial void OnProgramElementCodeChanged();
+    partial void OnFundingChanging(System.Nullable<decimal> value);
+    partial void OnFundingChanged();
+    partial void OnModNumberChanging(string value);
+    partial void OnModNumberChanged();
+    partial void OnStatusChanging(string value);
+    partial void OnStatusChanged();
+    partial void OnRemarksChanging(string value);
+    partial void OnRemarksChanged();
+    partial void OnEditedWhenChanging(System.Nullable<System.DateTime> value);
+    partial void OnEditedWhenChanged();
+    partial void OnEditedByChanging(string value);
+    partial void OnEditedByChanged();
+    #endregion
+		
 		public Receiver()
 		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ID", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		public int RecID
+		{
+			get
+			{
+				return this._ID;
+			}
+			set
+			{
+				if ((this._ID != value))
+				{
+					this.OnRecIDChanging(value);
+					this.SendPropertyChanging();
+					this._ID = value;
+					this.SendPropertyChanged("RecID");
+					this.OnRecIDChanged();
+				}
+			}
 		}
 		
 		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementModID", DbType="Int")]
@@ -17550,7 +17620,11 @@ namespace NationalFundingDev
 			{
 				if ((this._AgreementModID != value))
 				{
+					this.OnAgreementModIDChanging(value);
+					this.SendPropertyChanging();
 					this._AgreementModID = value;
+					this.SendPropertyChanged("AgreementModID");
+					this.OnAgreementModIDChanged();
 				}
 			}
 		}
@@ -17566,7 +17640,11 @@ namespace NationalFundingDev
 			{
 				if ((this._FY != value))
 				{
+					this.OnFYChanging(value);
+					this.SendPropertyChanging();
 					this._FY = value;
+					this.SendPropertyChanged("FY");
+					this.OnFYChanged();
 				}
 			}
 		}
@@ -17582,7 +17660,11 @@ namespace NationalFundingDev
 			{
 				if ((this._AccountNumber != value))
 				{
+					this.OnAccountNumberChanging(value);
+					this.SendPropertyChanging();
 					this._AccountNumber = value;
+					this.SendPropertyChanged("AccountNumber");
+					this.OnAccountNumberChanged();
 				}
 			}
 		}
@@ -17598,7 +17680,11 @@ namespace NationalFundingDev
 			{
 				if ((this._CustomerClass != value))
 				{
+					this.OnCustomerClassChanging(value);
+					this.SendPropertyChanging();
 					this._CustomerClass = value;
+					this.SendPropertyChanged("CustomerClass");
+					this.OnCustomerClassChanged();
 				}
 			}
 		}
@@ -17614,7 +17700,11 @@ namespace NationalFundingDev
 			{
 				if ((this._MatchPair != value))
 				{
+					this.OnMatchPairChanging(value);
+					this.SendPropertyChanging();
 					this._MatchPair = value;
+					this.SendPropertyChanged("MatchPair");
+					this.OnMatchPairChanged();
 				}
 			}
 		}
@@ -17630,7 +17720,11 @@ namespace NationalFundingDev
 			{
 				if ((this._ProgramElementCode != value))
 				{
+					this.OnProgramElementCodeChanging(value);
+					this.SendPropertyChanging();
 					this._ProgramElementCode = value;
+					this.SendPropertyChanged("ProgramElementCode");
+					this.OnProgramElementCodeChanged();
 				}
 			}
 		}
@@ -17646,8 +17740,132 @@ namespace NationalFundingDev
 			{
 				if ((this._Funding != value))
 				{
+					this.OnFundingChanging(value);
+					this.SendPropertyChanging();
 					this._Funding = value;
+					this.SendPropertyChanged("Funding");
+					this.OnFundingChanged();
 				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModNumber", DbType="NVarChar(50)")]
+		public string ModNumber
+		{
+			get
+			{
+				return this._ModNumber;
+			}
+			set
+			{
+				if ((this._ModNumber != value))
+				{
+					this.OnModNumberChanging(value);
+					this.SendPropertyChanging();
+					this._ModNumber = value;
+					this.SendPropertyChanged("ModNumber");
+					this.OnModNumberChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this.OnStatusChanging(value);
+					this.SendPropertyChanging();
+					this._Status = value;
+					this.SendPropertyChanged("Status");
+					this.OnStatusChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(200)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this.OnRemarksChanging(value);
+					this.SendPropertyChanging();
+					this._Remarks = value;
+					this.SendPropertyChanged("Remarks");
+					this.OnRemarksChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EditedWhen", DbType="Date")]
+		public System.Nullable<System.DateTime> EditedWhen
+		{
+			get
+			{
+				return this._EditedWhen;
+			}
+			set
+			{
+				if ((this._EditedWhen != value))
+				{
+					this.OnEditedWhenChanging(value);
+					this.SendPropertyChanging();
+					this._EditedWhen = value;
+					this.SendPropertyChanged("EditedWhen");
+					this.OnEditedWhenChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EditedBy", DbType="NVarChar(50)")]
+		public string EditedBy
+		{
+			get
+			{
+				return this._EditedBy;
+			}
+			set
+			{
+				if ((this._EditedBy != value))
+				{
+					this.OnEditedByChanging(value);
+					this.SendPropertyChanging();
+					this._EditedBy = value;
+					this.SendPropertyChanged("EditedBy");
+					this.OnEditedByChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
 			}
 		}
 	}
