@@ -64,13 +64,13 @@ namespace NationalFundingDev.Controls.Editable
             //Grab the controls from the user controls
             var rtbAgreementMod = (uc.FindControl("rtbAgreementMod") as RadTextBox);
             var rtbFiscalYear = (uc.FindControl("rtbFiscalYear") as RadTextBox);
-            var rtbAccountNumber = (uc.FindControl("rtbAccountNumber") as RadTextBox);
-            var rtbCustomerClass = (uc.FindControl("rtbCustomerClass") as RadTextBox);
+            var rcbAccount = (uc.FindControl("rcbAccount") as RadComboBox);
+            var rddlCustomerClass = (uc.FindControl("rddlCustomerClass") as RadDropDownList);
             var rtbMatchPair = (uc.FindControl("rtbMatchPair") as RadTextBox);
             var rtbProgramElementCode = (uc.FindControl("rtbProgramElementCode") as RadTextBox);
             var rtbFunding = (uc.FindControl("rtbFunding") as RadTextBox);
             var rtbModNumber = (uc.FindControl("rtbModNumber") as RadTextBox);
-            var rtbStatus = (uc.FindControl("rtbStatus") as RadTextBox);
+            var rddlStatus = (uc.FindControl("rddlStatus") as RadDropDownList);
             var rtbRemarks = (uc.FindControl("rtbRemarks") as RadTextBox);
 
             #endregion
@@ -78,13 +78,13 @@ namespace NationalFundingDev.Controls.Editable
             #region Assign Values
             rec.AgreementModID = Convert.ToInt32(rtbAgreementMod.Text);
             rec.FY = Convert.ToInt32(rtbFiscalYear.Text);
-            rec.AccountNumber = rtbAccountNumber.Text;
-            rec.CustomerClass = rtbCustomerClass.Text;
+            rec.AccountNumber = rcbAccount.SelectedValue;
+            rec.CustomerClass = rddlCustomerClass.SelectedValue;
             rec.MatchPair = rtbMatchPair.Text;
             rec.ProgramElementCode = rtbProgramElementCode.Text;
             rec.Funding = Convert.ToDecimal(rtbFunding.Text);
             rec.ModNumber = rtbModNumber.Text;
-            rec.Status = rtbStatus.Text;
+            rec.Status = rddlStatus.SelectedValue;
             rec.Remarks = rtbRemarks.Text;
             rec.EditedBy = user.ID;
             rec.EditedWhen = DateTime.Now;

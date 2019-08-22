@@ -11,7 +11,7 @@
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>
             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
-            <telerik:GridBoundColumn HeaderText="AgreementModID" DataField="AgreementModID" SortExpression="AgreementModID" AllowSorting="true" />
+            <telerik:GridBoundColumn HeaderText="AgreementModID" DataField="AgreementModID" SortExpression="AgreementModID" Visible="false" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FY" SortExpression="FY" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Mod Number" DataField="ModNumber" SortExpression="ModNumber" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Account Number" DataField="AccountNumber" SortExpression="AccountNumber" AllowSorting="true" />

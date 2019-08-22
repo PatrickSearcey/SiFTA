@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ReceiverEditForm.ascx.cs" Inherits="NationalFundingDev.Controls.RadGrid.ReceiverEditForm" %>
 <table>
-    <tr>
+    <tr style="display: none;">
         <td valign="top" align="right">Agreement ID:
         </td>
         <td valign="top">
@@ -22,24 +22,43 @@
         </td>
     </tr>
     <tr>
-        <td valign="top" align="right">Account Number:
+        <td valign="top" align="right">Account:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbAccountNumber" Text="<%# rec.AccountNumber %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadComboBox runat="server" ID="rcbAccount" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="ldsAccounts"
+                                     DataTextField="AccountNumber" DataValueField="AccountNumber" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
+                <ItemTemplate>
+                    <b></b><%# ProcessMyDataItem(Eval("AccountNumber")) %></b> - 
+                    <%# ProcessMyDataItem(Eval("AccountName")) %><br />
+                </ItemTemplate>
+            </telerik:RadComboBox>
         </td>
     </tr>
     <tr>
         <td valign="top" align="right">Customer Class:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbCustomerClass" Text="<%# rec.CustomerClass %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadDropDownList runat="server" ID="rddlCustomerClass" Skin="Silk">
+                <Items>
+                    <telerik:DropDownListItem Text="Direct (SIR)" Value="Direct" />
+                    <telerik:DropDownListItem Text="Reimburseable" Value="Reimburseable" />
+                </Items>
+            </telerik:RadDropDownList>
         </td>
     </tr>
     <tr>
         <td valign="top" align="right">Status:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbStatus" Text="<%# rec.Status %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadDropDownList runat="server" ID="rddlStatus" Skin="Silk">
+                <Items>
+                    <telerik:DropDownListItem Text="" Value="" />
+                    <telerik:DropDownListItem Text="DRAFT" Value="DRAFT" />
+                    <telerik:DropDownListItem Text="LOW" Value="LOW" />
+                    <telerik:DropDownListItem Text="HIGH" Value="HIGH" />
+                    <telerik:DropDownListItem Text="FIRM" Value="FIRM" />
+                </Items>
+            </telerik:RadDropDownList>
         </td>
     </tr>
     <tr>
@@ -79,3 +98,5 @@
         </td>
     </tr>
 </table>
+<asp:LinqDataSource ID="ldsAccounts" runat="server" OnSelecting="ldsAccounts_Selecting">
+</asp:LinqDataSource>
