@@ -69,7 +69,7 @@ namespace NationalFundingDev.Controls.Editable
             var rtbMatchPair = (uc.FindControl("rtbMatchPair") as RadTextBox);
             var rtbProgramElementCode = (uc.FindControl("rtbProgramElementCode") as RadTextBox);
             var rtbFunding = (uc.FindControl("rtbFunding") as RadTextBox);
-            var rtbModNumber = (uc.FindControl("rtbModNumber") as RadTextBox);
+            var rcbMod = (uc.FindControl("rcbMod") as RadComboBox);
             var rddlStatus = (uc.FindControl("rddlStatus") as RadDropDownList);
             var rtbRemarks = (uc.FindControl("rtbRemarks") as RadTextBox);
 
@@ -83,7 +83,7 @@ namespace NationalFundingDev.Controls.Editable
             rec.MatchPair = rtbMatchPair.Text;
             rec.ProgramElementCode = rtbProgramElementCode.Text;
             rec.Funding = Convert.ToDecimal(rtbFunding.Text);
-            rec.ModNumber = rtbModNumber.Text;
+            rec.ModNumber = rcbMod.SelectedValue;
             rec.Status = rddlStatus.SelectedValue;
             rec.Remarks = rtbRemarks.Text;
             rec.EditedBy = user.ID;

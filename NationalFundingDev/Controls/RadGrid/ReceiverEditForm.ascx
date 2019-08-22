@@ -15,10 +15,11 @@
         </td>
     </tr>
     <tr>
-        <td valign="top" align="right">Mod Number:
+        <td valign="top" align="right">Mod:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbModNumber" Text="<%# rec.ModNumber %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadComboBox runat="server" ID="rcbMod" >
+            </telerik:RadComboBox>
         </td>
     </tr>
     <tr>
@@ -40,7 +41,7 @@
         <td valign="top">
             <telerik:RadDropDownList runat="server" ID="rddlCustomerClass" Skin="Silk">
                 <Items>
-                    <telerik:DropDownListItem Text="Direct (SIR)" Value="Direct" />
+                    <telerik:DropDownListItem Text="Direct (SIR)" Value="Direct (SIR)" />
                     <telerik:DropDownListItem Text="Reimburseable" Value="Reimburseable" />
                 </Items>
             </telerik:RadDropDownList>

@@ -20,7 +20,8 @@ namespace NationalFundingDev.Controls.RadGrid
         #endregion
         public Receiver rec;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
-        public String OrgCode;
+        public string OrgCode;
+        private int AgreementID;
 
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -36,9 +37,11 @@ namespace NationalFundingDev.Controls.RadGrid
             else if (DataItem != null && DataItem.GetType() == typeof(Receiver))
             {
                 rec = (Receiver)DataItem;
+                AgreementID = rec.AgreementModID.GetValueOrDefault();
                 rcbAccount.SelectedValue = rec.AccountNumber;
                 rddlCustomerClass.SelectedValue = rec.CustomerClass;
                 rddlStatus.SelectedValue = rec.Status;
+                rcbMod.SelectedValue = rec.ModNumber;
                 btnUpdate.Visible = true;
             }
         }
@@ -48,15 +51,15 @@ namespace NationalFundingDev.Controls.RadGrid
             var oc = Request.QueryString["OrgCode"];
             var cid = Request.QueryString["CustomerID"];
             var aid = Request.QueryString["AgreementID"];
-            if (!String.IsNullOrEmpty(oc))
+            if (!string.IsNullOrEmpty(oc))
             {
                 OrgCode = oc;
             }
-            if (!String.IsNullOrEmpty(cid))
+            if (!string.IsNullOrEmpty(cid))
             {
                 OrgCode = siftaDB.Customers.FirstOrDefault(p => p.CustomerID.ToString() == cid).OrgCode;
             }
-            if (!String.IsNullOrEmpty(aid))
+            if (!string.IsNullOrEmpty(aid))
             {
                 OrgCode = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID.ToString() == aid).Customer.OrgCode;
             }
@@ -75,6 +78,29 @@ namespace NationalFundingDev.Controls.RadGrid
             }
 
             return myValue.ToString();
+        }
+
+        private void AddModsToComboBox()
+        {
+            if (AgreementID > 0)
+            {
+                var agreement = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
+                foreach (var mod in agreement.AgreementMods)
+                {
+                    if (mod.Number == 0)
+                    {
+                        rcbMod.Items.Add(new RadComboBoxItem() { Text = "Agreement", Value = mod.AgreementModID.ToString() });
+                    }
+                    else
+                    {
+                        rcbMod.Items.Add(new RadComboBoxItem() { Text = String.Format("Mod {0}", mod.Number), Value = mod.AgreementModID.ToString() });
+                    }
+                }
+            }
+            else
+            {
+                rcbMod.Items.Add(new RadComboBoxItem() { Text = "Error", Value = "Error" });
+            }
         }
     }
 }
