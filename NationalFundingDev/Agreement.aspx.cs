@@ -1371,7 +1371,11 @@ namespace NationalFundingDev
                         AgencyCode = "USGS",
                         StartDate = site.StartDate,
                         EndDate = site.EndDate,
-                        Remarks = site.Remarks
+                        Remarks = site.Remarks,
+                        CreatedBy = user.ID,
+                        CreatedDate = DateTime.Now,
+                        ModifiedBy = user.ID,
+                        ModifiedDate = DateTime.Now
                     };
 
                     sitesToInsert.Add(fs);
