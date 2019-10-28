@@ -808,6 +808,7 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="lutResearchCode_FundingStudy" Member="lutResearchCode" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode" IsForeignKey="true" />
       <Association Name="AgreementMod_FundingStudy" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
+      <Association Name="lutResearchCode1_FundingStudy" Member="lutResearchCode1" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
@@ -936,6 +937,31 @@
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
       <Column Name="EditedWhen" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="EditedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lutResearchCode" Member="lutResearchCode1s">
+    <Type Name="lutResearchCode1">
+      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="LegacyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="lutResearchCode1_FundingStudy" Member="FundingStudies" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="FundingStudy" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lutMatchPairCode" Member="lutMatchPairCodes">
+    <Type Name="lutMatchPairCode">
+      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lutProgramElementCode" Member="lutProgramElementCodes">
+    <Type Name="lutProgramElementCode">
+      <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Active" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">

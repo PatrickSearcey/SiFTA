@@ -70,6 +70,16 @@ namespace NationalFundingDev.Controls.RadGrid
             e.Result = siftaDB.vAccounts.Where(p => p.OrgCode == OrgCode);
         }
 
+        protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        {
+            e.Result = siftaDB.lutMatchPairCodes.Select(p => p);
+        }
+
+        protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        {
+            e.Result = siftaDB.lutProgramElementCodes.Select(p => p);
+        }
+
         public string ProcessMyDataItem(object myValue)
         {
             if (myValue == null)

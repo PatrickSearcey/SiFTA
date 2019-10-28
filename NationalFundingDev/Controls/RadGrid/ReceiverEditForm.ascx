@@ -66,14 +66,26 @@
         <td valign="top" align="right">Match Pair:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbMatchPair" Text="<%# rec.MatchPair %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
+                                     DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
+                <ItemTemplate>
+                    <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b> - 
+                    <%# ProcessMyDataItem(Eval("MatchPairCode")) %><br />
+                </ItemTemplate>
+            </telerik:RadComboBox>
         </td>
     </tr>
     <tr>
         <td valign="top" align="right">Program Element Code:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbProgramElementCode" Text="<%# rec.ProgramElementCode %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadComboBox runat="server" ID="rcbProgramElementCode" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbPEC"
+                                     DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
+                <ItemTemplate>
+                    <b></b><%# ProcessMyDataItem(Eval("ProgramElementCode")) %></b> - 
+                    <%# ProcessMyDataItem(Eval("ProgramElementCode")) %><br />
+                </ItemTemplate>
+            </telerik:RadComboBox>
         </td>
     </tr>
     <tr>
@@ -100,4 +112,8 @@
     </tr>
 </table>
 <asp:LinqDataSource ID="ldsAccounts" runat="server" OnSelecting="ldsAccounts_Selecting">
+</asp:LinqDataSource>
+<asp:LinqDataSource ID="rcbMPC" runat="server" OnSelecting="rcbMPC_Selecting">
+</asp:LinqDataSource>
+<asp:LinqDataSource ID="rcbPEC" runat="server" OnSelecting="rcbPEC_Selecting">
 </asp:LinqDataSource>

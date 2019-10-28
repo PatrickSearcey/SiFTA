@@ -114,6 +114,15 @@ namespace NationalFundingDev
     partial void InsertReceiver(Receiver instance);
     partial void UpdateReceiver(Receiver instance);
     partial void DeleteReceiver(Receiver instance);
+    partial void InsertlutResearchCode1(lutResearchCode1 instance);
+    partial void UpdatelutResearchCode1(lutResearchCode1 instance);
+    partial void DeletelutResearchCode1(lutResearchCode1 instance);
+    partial void InsertlutMatchPairCode(lutMatchPairCode instance);
+    partial void UpdatelutMatchPairCode(lutMatchPairCode instance);
+    partial void DeletelutMatchPairCode(lutMatchPairCode instance);
+    partial void InsertlutProgramElementCode(lutProgramElementCode instance);
+    partial void UpdatelutProgramElementCode(lutProgramElementCode instance);
+    partial void DeletelutProgramElementCode(lutProgramElementCode instance);
     #endregion
 		
 		public SiftaDBDataContext() : 
@@ -535,6 +544,30 @@ namespace NationalFundingDev
 			get
 			{
 				return this.GetTable<Receiver>();
+			}
+		}
+		
+		public System.Data.Linq.Table<lutResearchCode1> lutResearchCode1s
+		{
+			get
+			{
+				return this.GetTable<lutResearchCode1>();
+			}
+		}
+		
+		public System.Data.Linq.Table<lutMatchPairCode> lutMatchPairCodes
+		{
+			get
+			{
+				return this.GetTable<lutMatchPairCode>();
+			}
+		}
+		
+		public System.Data.Linq.Table<lutProgramElementCode> lutProgramElementCodes
+		{
+			get
+			{
+				return this.GetTable<lutProgramElementCode>();
 			}
 		}
 		
@@ -14809,6 +14842,8 @@ namespace NationalFundingDev
 		
 		private EntityRef<AgreementMod> _AgreementMod;
 		
+		private EntityRef<lutResearchCode1> _lutResearchCode1;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -14853,6 +14888,7 @@ namespace NationalFundingDev
 		{
 			this._lutResearchCode = default(EntityRef<lutResearchCode>);
 			this._AgreementMod = default(EntityRef<AgreementMod>);
+			this._lutResearchCode1 = default(EntityRef<lutResearchCode1>);
 			OnCreated();
 		}
 		
@@ -14931,7 +14967,7 @@ namespace NationalFundingDev
 			{
 				if ((this._ResearchCodeID != value))
 				{
-					if (this._lutResearchCode.HasLoadedOrAssignedValue)
+					if ((this._lutResearchCode.HasLoadedOrAssignedValue || this._lutResearchCode1.HasLoadedOrAssignedValue))
 					{
 						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
 					}
@@ -15268,6 +15304,40 @@ namespace NationalFundingDev
 						this._AgreementModID = default(int);
 					}
 					this.SendPropertyChanged("AgreementMod");
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="lutResearchCode1_FundingStudy", Storage="_lutResearchCode1", ThisKey="ResearchCodeID", OtherKey="ResearchCodeID", IsForeignKey=true)]
+		public lutResearchCode1 lutResearchCode1
+		{
+			get
+			{
+				return this._lutResearchCode1.Entity;
+			}
+			set
+			{
+				lutResearchCode1 previousValue = this._lutResearchCode1.Entity;
+				if (((previousValue != value) 
+							|| (this._lutResearchCode1.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._lutResearchCode1.Entity = null;
+						previousValue.FundingStudies.Remove(this);
+					}
+					this._lutResearchCode1.Entity = value;
+					if ((value != null))
+					{
+						value.FundingStudies.Add(this);
+						this._ResearchCodeID = value.ResearchCodeID;
+					}
+					else
+					{
+						this._ResearchCodeID = default(Nullable<int>);
+					}
+					this.SendPropertyChanged("lutResearchCode1");
 				}
 			}
 		}
@@ -17845,6 +17915,436 @@ namespace NationalFundingDev
 					this._EditedBy = value;
 					this.SendPropertyChanged("EditedBy");
 					this.OnEditedByChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lutResearchCode")]
+	public partial class lutResearchCode1 : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _ResearchCodeID;
+		
+		private string _Code;
+		
+		private string _Description;
+		
+		private string _CreatedBy;
+		
+		private System.Nullable<System.DateTime> _CreatedDate;
+		
+		private string _ModifiedBy;
+		
+		private System.Nullable<System.DateTime> _ModifiedDate;
+		
+		private System.Nullable<int> _LegacyID;
+		
+		private EntitySet<FundingStudy> _FundingStudies;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnResearchCodeIDChanging(int value);
+    partial void OnResearchCodeIDChanged();
+    partial void OnCodeChanging(string value);
+    partial void OnCodeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnCreatedByChanging(string value);
+    partial void OnCreatedByChanged();
+    partial void OnCreatedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnCreatedDateChanged();
+    partial void OnModifiedByChanging(string value);
+    partial void OnModifiedByChanged();
+    partial void OnModifiedDateChanging(System.Nullable<System.DateTime> value);
+    partial void OnModifiedDateChanged();
+    partial void OnLegacyIDChanging(System.Nullable<int> value);
+    partial void OnLegacyIDChanged();
+    #endregion
+		
+		public lutResearchCode1()
+		{
+			this._FundingStudies = new EntitySet<FundingStudy>(new Action<FundingStudy>(this.attach_FundingStudies), new Action<FundingStudy>(this.detach_FundingStudies));
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ResearchCodeID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int ResearchCodeID
+		{
+			get
+			{
+				return this._ResearchCodeID;
+			}
+			set
+			{
+				if ((this._ResearchCodeID != value))
+				{
+					this.OnResearchCodeIDChanging(value);
+					this.SendPropertyChanging();
+					this._ResearchCodeID = value;
+					this.SendPropertyChanged("ResearchCodeID");
+					this.OnResearchCodeIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Code", DbType="NVarChar(10)")]
+		public string Code
+		{
+			get
+			{
+				return this._Code;
+			}
+			set
+			{
+				if ((this._Code != value))
+				{
+					this.OnCodeChanging(value);
+					this.SendPropertyChanging();
+					this._Code = value;
+					this.SendPropertyChanged("Code");
+					this.OnCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(255)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedBy", DbType="NVarChar(50)")]
+		public string CreatedBy
+		{
+			get
+			{
+				return this._CreatedBy;
+			}
+			set
+			{
+				if ((this._CreatedBy != value))
+				{
+					this.OnCreatedByChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedBy = value;
+					this.SendPropertyChanged("CreatedBy");
+					this.OnCreatedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CreatedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> CreatedDate
+		{
+			get
+			{
+				return this._CreatedDate;
+			}
+			set
+			{
+				if ((this._CreatedDate != value))
+				{
+					this.OnCreatedDateChanging(value);
+					this.SendPropertyChanging();
+					this._CreatedDate = value;
+					this.SendPropertyChanged("CreatedDate");
+					this.OnCreatedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedBy", DbType="NVarChar(50)")]
+		public string ModifiedBy
+		{
+			get
+			{
+				return this._ModifiedBy;
+			}
+			set
+			{
+				if ((this._ModifiedBy != value))
+				{
+					this.OnModifiedByChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedBy = value;
+					this.SendPropertyChanged("ModifiedBy");
+					this.OnModifiedByChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModifiedDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> ModifiedDate
+		{
+			get
+			{
+				return this._ModifiedDate;
+			}
+			set
+			{
+				if ((this._ModifiedDate != value))
+				{
+					this.OnModifiedDateChanging(value);
+					this.SendPropertyChanging();
+					this._ModifiedDate = value;
+					this.SendPropertyChanged("ModifiedDate");
+					this.OnModifiedDateChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_LegacyID", DbType="Int")]
+		public System.Nullable<int> LegacyID
+		{
+			get
+			{
+				return this._LegacyID;
+			}
+			set
+			{
+				if ((this._LegacyID != value))
+				{
+					this.OnLegacyIDChanging(value);
+					this.SendPropertyChanging();
+					this._LegacyID = value;
+					this.SendPropertyChanged("LegacyID");
+					this.OnLegacyIDChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="lutResearchCode1_FundingStudy", Storage="_FundingStudies", ThisKey="ResearchCodeID", OtherKey="ResearchCodeID")]
+		public EntitySet<FundingStudy> FundingStudies
+		{
+			get
+			{
+				return this._FundingStudies;
+			}
+			set
+			{
+				this._FundingStudies.Assign(value);
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+		
+		private void attach_FundingStudies(FundingStudy entity)
+		{
+			this.SendPropertyChanging();
+			entity.lutResearchCode1 = this;
+		}
+		
+		private void detach_FundingStudies(FundingStudy entity)
+		{
+			this.SendPropertyChanging();
+			entity.lutResearchCode1 = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lutMatchPairCode")]
+	public partial class lutMatchPairCode : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _MatchPairCode;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnMatchPairCodeChanging(string value);
+    partial void OnMatchPairCodeChanged();
+    #endregion
+		
+		public lutMatchPairCode()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MatchPairCode
+		{
+			get
+			{
+				return this._MatchPairCode;
+			}
+			set
+			{
+				if ((this._MatchPairCode != value))
+				{
+					this.OnMatchPairCodeChanging(value);
+					this.SendPropertyChanging();
+					this._MatchPairCode = value;
+					this.SendPropertyChanged("MatchPairCode");
+					this.OnMatchPairCodeChanged();
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lutProgramElementCode")]
+	public partial class lutProgramElementCode : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private string _ProgramElementCode;
+		
+		private string _Description;
+		
+		private string _Active;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnProgramElementCodeChanging(string value);
+    partial void OnProgramElementCodeChanged();
+    partial void OnDescriptionChanging(string value);
+    partial void OnDescriptionChanged();
+    partial void OnActiveChanging(string value);
+    partial void OnActiveChanged();
+    #endregion
+		
+		public lutProgramElementCode()
+		{
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ProgramElementCode", DbType="NVarChar(9) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string ProgramElementCode
+		{
+			get
+			{
+				return this._ProgramElementCode;
+			}
+			set
+			{
+				if ((this._ProgramElementCode != value))
+				{
+					this.OnProgramElementCodeChanging(value);
+					this.SendPropertyChanging();
+					this._ProgramElementCode = value;
+					this.SendPropertyChanged("ProgramElementCode");
+					this.OnProgramElementCodeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Description", DbType="NVarChar(50)")]
+		public string Description
+		{
+			get
+			{
+				return this._Description;
+			}
+			set
+			{
+				if ((this._Description != value))
+				{
+					this.OnDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._Description = value;
+					this.SendPropertyChanged("Description");
+					this.OnDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Active", DbType="NVarChar(1)")]
+		public string Active
+		{
+			get
+			{
+				return this._Active;
+			}
+			set
+			{
+				if ((this._Active != value))
+				{
+					this.OnActiveChanging(value);
+					this.SendPropertyChanging();
+					this._Active = value;
+					this.SendPropertyChanged("Active");
+					this.OnActiveChanged();
 				}
 			}
 		}
