@@ -77,7 +77,7 @@ namespace NationalFundingDev.Controls.RadGrid
 
         protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
-            e.Result = siftaDB.lutProgramElementCodes.Select(p => p);
+            e.Result = siftaDB.lutProgramElementCodes.Select(p => p.Active == "Y");
         }
 
         public string ProcessMyDataItem(object myValue)
