@@ -66,8 +66,8 @@ namespace NationalFundingDev.Controls.Editable
             var rtbFiscalYear = (uc.FindControl("rtbFiscalYear") as RadTextBox);
             var rcbAccount = (uc.FindControl("rcbAccount") as RadComboBox);
             var rddlCustomerClass = (uc.FindControl("rddlCustomerClass") as RadDropDownList);
-            var rddlMatchPair = (uc.FindControl("rddlMatchPair") as RadTextBox);
-            var rddlProgramElementCode = (uc.FindControl("rddlProgramElementCode") as RadTextBox);
+            var rcbMatchPair = (uc.FindControl("rcbMatchPair") as RadComboBox);
+            var rcbProgramElementCode = (uc.FindControl("rcbProgramElementCode") as RadComboBox);
             var rtbFunding = (uc.FindControl("rtbFunding") as RadTextBox);
             var rcbMod = (uc.FindControl("rcbMod") as RadComboBox);
             var rddlStatus = (uc.FindControl("rddlStatus") as RadDropDownList);
@@ -80,8 +80,8 @@ namespace NationalFundingDev.Controls.Editable
             rec.FY = Convert.ToInt32(rtbFiscalYear.Text);
             rec.AccountNumber = rcbAccount.SelectedValue;
             rec.CustomerClass = rddlCustomerClass.SelectedValue;
-            rec.MatchPair = rddlMatchPair.Text;
-            rec.ProgramElementCode = rddlProgramElementCode.Text;
+            rec.MatchPair = rcbMatchPair.SelectedValue;
+            rec.ProgramElementCode = rcbProgramElementCode.SelectedValue;
             rec.Funding = Convert.ToDecimal(rtbFunding.Text);
             rec.ModNumber = rcbMod.SelectedValue;
             rec.Status = rddlStatus.SelectedValue;
