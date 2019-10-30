@@ -14,6 +14,7 @@ namespace NationalFundingDev.Controls.Editable
         public Agreement agreement;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private User user = new User();
+        private int grandTotal = 0, sirTotal = 0, reimTotal = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
         }
@@ -58,6 +59,7 @@ namespace NationalFundingDev.Controls.Editable
             siftaDB.Receivers.DeleteOnSubmit(siftaDB.Receivers.FirstOrDefault(p => p.AgreementModID == AgreementModID));
             siftaDB.SubmitChanges();
         }
+
         private void GrabValuesFromUserControl(UserControl uc, ref Receiver rec)
         {
             #region User Controls
@@ -89,6 +91,36 @@ namespace NationalFundingDev.Controls.Editable
             rec.EditedBy = user.ID;
             rec.EditedWhen = DateTime.Now;
             #endregion
+        }
+
+        //grandTotal = 0, sirTotal = 0, reimTotal
+        protected void rgReceiver_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
+        {
+            if (e.Item is GridDataItem)
+            {
+                GridDataItem dataItem = e.Item as GridDataItem;
+                int fieldValue = int.Parse(dataItem["Funding"].Text.Replace("$", "").Replace(",", ""));
+
+                if(dataItem["CustomerClass"].Text.Contains("SIR"))
+                {
+                    sirTotal += fieldValue;
+                }
+                if (dataItem["CustomerClass"].Text.Contains("Reim"))
+                {
+                    reimTotal += fieldValue;
+                }
+
+                grandTotal += fieldValue;
+            }
+            if (e.Item is GridFooterItem)
+            {
+                GridFooterItem footerItem = e.Item as GridFooterItem;
+
+                footerItem["ProgramElementCode"].Text = "Direct Total: $" + sirTotal.ToString();
+                footerItem["Funding"].Text += "Reimburseable Total: $" + reimTotal.ToString();
+
+                footerItem["Remarks"].Text += "Grand Total: $" + grandTotal.ToString();
+            }
         }
 
     }

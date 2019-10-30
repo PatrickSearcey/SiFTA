@@ -6,6 +6,7 @@
                  OnInsertCommand="rgReceiver_InsertCommand"
                  OnUpdateCommand="rgReceiver_UpdateCommand" 
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
+                 OnItemDataBound="rgReceiver_ItemDataBound"
                  AutoGenerateColumns="false" >
     <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" ShowFooter="true">
         <FooterStyle BackColor="Black" ForeColor="White" />
@@ -20,7 +21,7 @@
             <telerik:GridBoundColumn HeaderText="Status" DataField="Status" SortExpression="Status" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Match Pair" DataField="MatchPair" SortExpression="MatchPair" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Program Element Code" DataField="ProgramElementCode" SortExpression="ProgramElementCode" AllowSorting="true" />
-            <telerik:GridBoundColumn HeaderText="Funding Amount" DataField="Funding" SortExpression="Funding" AllowSorting="true" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
+            <telerik:GridBoundColumn HeaderText="Funding Amount" DataField="Funding" SortExpression="Funding" AllowSorting="true" DataFormatString="{0:c0}" />
             <telerik:GridBoundColumn HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks" AllowSorting="true" />
             <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this log?" ButtonType="ImageButton"
                             CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
