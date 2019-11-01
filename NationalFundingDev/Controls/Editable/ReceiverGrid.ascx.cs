@@ -40,8 +40,8 @@ namespace NationalFundingDev.Controls.Editable
             var rec = new Receiver();
             GrabValuesFromUserControl(userControl, ref rec);
 
-            int id = siftaDB.Receivers.Count();
-            rec.RecID = id;
+            int id = siftaDB.Receivers.Max(p => p.RecID);
+            rec.RecID = id + 1;
 
             siftaDB.Receivers.InsertOnSubmit(rec);
             siftaDB.SubmitChanges();
