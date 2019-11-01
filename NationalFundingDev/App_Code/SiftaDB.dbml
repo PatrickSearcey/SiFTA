@@ -922,23 +922,6 @@
       <Association Name="Employee_Agreement1" Member="Employee1" ThisKey="USGSTechnicalContact" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Receiver" Member="Receivers">
-    <Type Name="Receiver">
-      <Column Name="RecID" Storage="_ID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Funding" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EditedWhen" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EditedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.lutResearchCode" Member="lutResearchCode1s">
     <Type Name="lutResearchCode1">
       <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -962,6 +945,24 @@
       <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(9) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="Description" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Active" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Receiver" Member="Receivers">
+    <Type Name="Receiver">
+      <Column Name="RecID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Funding" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="EditedWhen" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="EditedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">

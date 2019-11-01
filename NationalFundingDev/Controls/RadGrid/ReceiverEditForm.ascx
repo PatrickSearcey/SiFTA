@@ -42,7 +42,7 @@
             <telerik:RadDropDownList runat="server" ID="rddlCustomerClass" Skin="Silk">
                 <Items>
                     <telerik:DropDownListItem Text="Direct (SIR)" Value="Direct (SIR)" />
-                    <telerik:DropDownListItem Text="Reimburseable" Value="Reimburseable" />
+                    <telerik:DropDownListItem Text="Reimbursable" Value="Reimbursable" />
                 </Items>
             </telerik:RadDropDownList>
         </td>

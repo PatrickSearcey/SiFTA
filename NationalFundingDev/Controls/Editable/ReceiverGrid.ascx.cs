@@ -21,7 +21,7 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgReceiver.DataSource = siftaDB.Receivers.Where(p => p.AgreementModID == agreement.AgreementID);
+            rgReceiver.DataSource = siftaDB.Receivers.Where(p => p.AgreementID == agreement.AgreementID);
             rgReceiver.Columns.FindByUniqueName("Edit").Visible = Edit;
             rgReceiver.Columns.FindByUniqueName("Delete").Visible = Delete;
             if (AddNewRecords)
@@ -39,6 +39,10 @@ namespace NationalFundingDev.Controls.Editable
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
             var rec = new Receiver();
             GrabValuesFromUserControl(userControl, ref rec);
+
+            int id = siftaDB.Receivers.Count();
+            rec.RecID = id;
+
             siftaDB.Receivers.InsertOnSubmit(rec);
             siftaDB.SubmitChanges();
         }
@@ -55,8 +59,8 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_DeleteCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
-            var AgreementModID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["AgreementModID"];
-            siftaDB.Receivers.DeleteOnSubmit(siftaDB.Receivers.FirstOrDefault(p => p.AgreementModID == AgreementModID));
+            var recID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["RecID"];
+            siftaDB.Receivers.DeleteOnSubmit(siftaDB.Receivers.FirstOrDefault(p => p.RecID == recID));
             siftaDB.SubmitChanges();
         }
 
@@ -78,7 +82,18 @@ namespace NationalFundingDev.Controls.Editable
             #endregion
 
             #region Assign Values
-            rec.AgreementModID = Convert.ToInt32(rtbAgreementMod.Text);
+            int? mod;
+            if(rtbAgreementMod.Text.Length > 0)
+            {
+                mod = Convert.ToInt32(rtbAgreementMod.Text);
+            }
+            else
+            {
+                mod = null;
+            }
+
+            rec.AgreementID = agreement.AgreementID;
+            rec.AgreementModID = mod;
             rec.FY = Convert.ToInt32(rtbFiscalYear.Text);
             rec.AccountNumber = rcbAccount.SelectedValue;
             rec.CustomerClass = rddlCustomerClass.SelectedValue;
@@ -116,8 +131,8 @@ namespace NationalFundingDev.Controls.Editable
             {
                 GridFooterItem footerItem = e.Item as GridFooterItem;
 
-                footerItem["ProgramElementCode"].Text = "Direct Total: $" + sirTotal.ToString();
-                footerItem["Funding"].Text += "Reimburseable Total: $" + reimTotal.ToString();
+                footerItem["ProgramElementCode"].Text = "Direct (SIR) Total: $" + sirTotal.ToString();
+                footerItem["Funding"].Text += "Reimbursable Total: $" + reimTotal.ToString();
 
                 footerItem["Remarks"].Text += "Grand Total: $" + grandTotal.ToString();
             }
