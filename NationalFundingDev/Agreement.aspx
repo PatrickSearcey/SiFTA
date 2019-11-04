@@ -113,7 +113,7 @@
             <telerik:RadTab TabIndex="6" Text="Agreement Log" />
             <telerik:RadTab Text="Account Funding" Value="Coop" Visible="false" >
                 <Tabs>
-                    <telerik:RadTab TabIndex="7" Text="Account Funding" />
+                    <telerik:RadTab TabIndex="7" Text="Account Summary" />
                     <telerik:RadTab TabIndex="8" Text="Receivers" />
                 </Tabs>
             </telerik:RadTab>
