@@ -1,6 +1,19 @@
 ﻿<%@ Control Language="C#" AutoEventWireup="true" CodeBehind="ReceiverGrid.ascx.cs" Inherits="NationalFundingDev.Controls.Editable.ReceiverGrid" %>
 
 <telerik:RadAjaxPanel runat="server" ID="rapReceiver">
+    
+<div runat="server" id="mpcDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+    <span>Default Match Pair Code: </span>
+    <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
+                DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
+                OnSelectedIndexChanged="rcbMatchPair_SelectedIndexChanged" AutoPostBack="true" >
+        <ItemTemplate>
+            <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
+        </ItemTemplate>
+    </telerik:RadComboBox>
+</div>
+<br />
+
 <telerik:RadGrid runat="server" ID="rgReceiver" AllowSorting="true" 
                  OnNeedDataSource="rgReceiver_NeedDataSource" 
                  OnInsertCommand="rgReceiver_InsertCommand"
@@ -33,3 +46,5 @@
     </MasterTableView>
 </telerik:RadGrid>
 </telerik:RadAjaxPanel>
+<asp:LinqDataSource ID="rcbMPC" runat="server" OnSelecting="rcbMPC_Selecting">
+</asp:LinqDataSource>

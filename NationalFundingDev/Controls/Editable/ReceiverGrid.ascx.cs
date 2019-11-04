@@ -14,9 +14,13 @@ namespace NationalFundingDev.Controls.Editable
         public Agreement agreement;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private User user = new User();
+        public int aID;
         private int grandTotal = 0, sirTotal = 0, reimTotal = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
+            aID = int.Parse(Request.QueryString["AgreementID"]);
+            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            rcbMatchPair.SelectedValue = agMPC.MatchPairCode.ToString();
         }
 
         protected void rgReceiver_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -135,6 +139,28 @@ namespace NationalFundingDev.Controls.Editable
 
                 footerItem["Remarks"].Text += "Grand Total: $" + grandTotal.ToString();
             }
+        }
+
+        public string ProcessMyDataItem(object myValue)
+        {
+            if (myValue == null)
+            {
+                return "";
+            }
+
+            return myValue.ToString();
+        }
+
+        protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        {
+            e.Result = siftaDB.lutMatchPairCodes.Select(p => p);
+        }
+
+        protected void rcbMatchPair_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            agMPC.MatchPairCode = e.Value;
+            siftaDB.SubmitChanges();
         }
 
     }

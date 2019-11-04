@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NationalFundingDev.Controls.Editable {
-    
-    
-    public partial class ReceiverGrid {
-        
+namespace NationalFundingDev.Controls.Editable
+{
+
+
+    public partial class ReceiverGrid
+    {
+
         /// <summary>
         /// rapReceiver control.
         /// </summary>
@@ -20,7 +22,25 @@ namespace NationalFundingDev.Controls.Editable {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxPanel rapReceiver;
-        
+
+        /// <summary>
+        /// mpcDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mpcDiv;
+
+        /// <summary>
+        /// rcbMatchPair control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox rcbMatchPair;
+
         /// <summary>
         /// rgReceiver control.
         /// </summary>
@@ -29,5 +49,14 @@ namespace NationalFundingDev.Controls.Editable {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgReceiver;
+
+        /// <summary>
+        /// rcbMPC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinqDataSource rcbMPC;
     }
 }
