@@ -93,7 +93,6 @@ namespace NationalFundingDev.Controls.Editable
             }
 
             rec.AgreementID = agreement.AgreementID;
-            rec.AgreementModID = mod;
             rec.FY = Convert.ToInt32(rtbFiscalYear.Text);
             rec.AccountNumber = rcbAccount.SelectedValue;
             rec.CustomerClass = rddlCustomerClass.SelectedValue;

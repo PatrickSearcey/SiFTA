@@ -4,7 +4,7 @@
         <td valign="top" align="right">Agreement ID:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbAgreementMod" Text="<%# rec.AgreementModID %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadTextBox runat="server" ID="rtbAgreementMod" Text="<%# rec.AgreementID %>" Skin="Silk" TextMode="SingleLine" />
         </td>
     </tr>
     <tr>

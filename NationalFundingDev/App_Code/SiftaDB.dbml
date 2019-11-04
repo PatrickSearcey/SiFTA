@@ -951,7 +951,6 @@
     <Type Name="Receiver">
       <Column Name="RecID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
       <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />

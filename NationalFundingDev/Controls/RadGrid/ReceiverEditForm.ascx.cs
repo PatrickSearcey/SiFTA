@@ -26,6 +26,8 @@ namespace NationalFundingDev.Controls.RadGrid
         protected void Page_Load(object sender, EventArgs e)
         {
             GetOrgCode();
+            AgreementID = int.Parse(Request.QueryString["AgreementID"]);
+            AddModsToComboBox();
 
             //Insert
             if (DataItem is GridInsertionObject)
@@ -37,7 +39,6 @@ namespace NationalFundingDev.Controls.RadGrid
             else if (DataItem != null && DataItem.GetType() == typeof(Receiver))
             {
                 rec = (Receiver)DataItem;
-                AgreementID = rec.AgreementModID.GetValueOrDefault();
                 rcbAccount.SelectedValue = rec.AccountNumber;
                 rddlCustomerClass.SelectedValue = rec.CustomerClass;
                 rddlStatus.SelectedValue = rec.Status;
@@ -99,11 +100,11 @@ namespace NationalFundingDev.Controls.RadGrid
                 {
                     if (mod.Number == 0)
                     {
-                        rcbMod.Items.Add(new RadComboBoxItem() { Text = "Agreement", Value = mod.AgreementModID.ToString() });
+                        rcbMod.Items.Add(new RadComboBoxItem() { Text = "Agreement", Value = "" });
                     }
                     else
                     {
-                        rcbMod.Items.Add(new RadComboBoxItem() { Text = String.Format("Mod {0}", mod.Number), Value = mod.AgreementModID.ToString() });
+                        rcbMod.Items.Add(new RadComboBoxItem() { Text = String.Format("Mod {0}", mod.Number), Value = mod.Number.ToString() });
                     }
                 }
             }

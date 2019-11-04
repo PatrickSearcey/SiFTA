@@ -18030,8 +18030,6 @@ namespace NationalFundingDev
 		
 		private System.Nullable<int> _AgreementID;
 		
-		private System.Nullable<int> _AgreementModID;
-		
 		private System.Nullable<int> _FY;
 		
 		private string _AccountNumber;
@@ -18062,8 +18060,6 @@ namespace NationalFundingDev
     partial void OnRecIDChanged();
     partial void OnAgreementIDChanging(System.Nullable<int> value);
     partial void OnAgreementIDChanged();
-    partial void OnAgreementModIDChanging(System.Nullable<int> value);
-    partial void OnAgreementModIDChanged();
     partial void OnFYChanging(System.Nullable<int> value);
     partial void OnFYChanged();
     partial void OnAccountNumberChanging(string value);
@@ -18129,26 +18125,6 @@ namespace NationalFundingDev
 					this._AgreementID = value;
 					this.SendPropertyChanged("AgreementID");
 					this.OnAgreementIDChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementModID", DbType="Int")]
-		public System.Nullable<int> AgreementModID
-		{
-			get
-			{
-				return this._AgreementModID;
-			}
-			set
-			{
-				if ((this._AgreementModID != value))
-				{
-					this.OnAgreementModIDChanging(value);
-					this.SendPropertyChanging();
-					this._AgreementModID = value;
-					this.SendPropertyChanged("AgreementModID");
-					this.OnAgreementModIDChanged();
 				}
 			}
 		}
