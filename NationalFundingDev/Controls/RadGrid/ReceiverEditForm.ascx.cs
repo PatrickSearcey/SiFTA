@@ -34,6 +34,9 @@ namespace NationalFundingDev.Controls.RadGrid
             {
                 rec = new Receiver();
                 btnInsert.Visible = true;
+
+                var coopMPC = siftaDB.vCooperativeFundingReports.FirstOrDefault(p => p.AgreementID == AgreementID);
+                rcbMatchPair.SelectedValue = coopMPC.MatchPairCode.ToString();
             }
             //Update
             else if (DataItem != null && DataItem.GetType() == typeof(Receiver))

@@ -23,7 +23,7 @@
             <asp:RequiredFieldValidator runat="server" ID="rfvAgreementNumber" ValidationGroup="vgAgreement" ControlToValidate="rtbPurchaseOrderNumber" Text="* Required" ForeColor="Red" />
         </td>
     </tr>
-    <tr>
+    <!--<tr>
         <td align="right">Match Pair Code:
         </td>
         <td>
@@ -44,7 +44,7 @@ Sales Order Number: Auto-populated from FBMS. Not editable for modifications.
                 </div>
             </telerik:RadToolTip>
         </td>
-    </tr>
+    </tr>-->
     <tr>
         <td align="right">Sales Order Number:
         </td>
