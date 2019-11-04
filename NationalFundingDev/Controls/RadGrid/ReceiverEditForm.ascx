@@ -69,8 +69,7 @@
             <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
                                      DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
                 <ItemTemplate>
-                    <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b> - 
-                    <%# ProcessMyDataItem(Eval("MatchPairCode")) %><br />
+                    <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
                 </ItemTemplate>
             </telerik:RadComboBox>
         </td>
@@ -83,7 +82,7 @@
                                      DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
                 <ItemTemplate>
                     <b></b><%# ProcessMyDataItem(Eval("ProgramElementCode")) %></b> - 
-                    <%# ProcessMyDataItem(Eval("ProgramElementCode")) %><br />
+                    <%# ProcessMyDataItem(Eval("Description")) %><br />
                 </ItemTemplate>
             </telerik:RadComboBox>
         </td>
