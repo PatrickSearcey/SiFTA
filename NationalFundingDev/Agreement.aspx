@@ -111,8 +111,12 @@
             <telerik:RadTab TabIndex="2" Text="Site Funding" />
             <telerik:RadTab TabIndex="3" Text="Studies / Support" />
             <telerik:RadTab TabIndex="6" Text="Agreement Log" />
-            <telerik:RadTab TabIndex="7" Text="Account Funding" Value="Coop" Visible="false" />
-            <telerik:RadTab TabIndex="8" Text="Receivers" />
+            <telerik:RadTab Text="Account Funding" Value="Coop" Visible="false" >
+                <Tabs>
+                    <telerik:RadTab TabIndex="7" Text="Account Funding" />
+                    <telerik:RadTab TabIndex="8" Text="Receivers" />
+                </Tabs>
+            </telerik:RadTab>
             <telerik:RadTab TabIndex="9" Text="Agreement Overview" Target="_blank" />
         </Tabs>
     </telerik:RadTabStrip>
