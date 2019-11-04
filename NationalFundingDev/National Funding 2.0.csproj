@@ -37,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -111,12 +112,26 @@
     <Compile Include="Controls\Editable\AgreementLogGrid.ascx.designer.cs">
       <DependentUpon>AgreementLogGrid.ascx</DependentUpon>
     </Compile>
+    <Compile Include="Controls\Editable\ReceiverGrid.ascx.cs">
+      <DependentUpon>ReceiverGrid.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\Editable\ReceiverGrid.ascx.designer.cs">
+      <DependentUpon>ReceiverGrid.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Controls\RadGrid\AgreementLogEditForm.ascx.designer.cs">
       <DependentUpon>AgreementLogEditForm.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RadGrid\ReceiverEditForm.ascx.cs">
+      <DependentUpon>ReceiverEditForm.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Controls\RadGrid\ReceiverEditForm.ascx.designer.cs">
+      <DependentUpon>ReceiverEditForm.ascx</DependentUpon>
     </Compile>
     <Compile Include="Documents\AgreementSiteBulkEdit.ashx.cs">
       <DependentUpon>AgreementSiteBulkEdit.ashx</DependentUpon>
@@ -417,7 +432,9 @@
     </Compile>
     <Content Include="Admin.aspx" />
     <Content Include="Controls\Editable\AgreementLogGrid.ascx" />
+    <Content Include="Controls\Editable\ReceiverGrid.ascx" />
     <Content Include="Controls\RadGrid\AgreementLogEditForm.ascx" />
+    <Content Include="Controls\RadGrid\ReceiverEditForm.ascx" />
     <Content Include="GenerateRecordID.aspx" />
     <Content Include="Help.aspx" />
     <Content Include="Images\arrow.png" />
@@ -442,8 +459,6 @@
     <Content Include="Documents\Forms\JFATemplate.docx" />
     <Content Include="Documents\AgreementSiteBulkEdit.ashx" />
     <Content Include="Help\SIFTA-BulkUploadforSiteFunding.pdf" />
-    <None Include="Properties\PublishProfiles\018 Dev.pubxml" />
-    <None Include="Properties\PublishProfiles\018 Production.pubxml" />
     <Content Include="Reports\National\National.aspx" />
     <Content Include="Reports\National\RealTimeSitesFunding.aspx" />
     <Content Include="Scripts\leaflet\leaflet.css" />
@@ -636,6 +651,8 @@
     <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen-gh-pages.zip" />
     <Content Include="SiftaSiteMap.sitemap" />
     <Content Include="Themes\Base\ErrorHandler.ashx" />
+    <None Include="Properties\PublishProfiles\i01 Production.pubxml" />
+    <None Include="Properties\PublishProfiles\i02 Dev.pubxml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -703,7 +720,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

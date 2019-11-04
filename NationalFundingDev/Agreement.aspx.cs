@@ -60,6 +60,7 @@ namespace NationalFundingDev
             }
 
             BindAgreementLog();
+            BindReceiver();
         }
         private void GetAgreement()
         {
@@ -94,13 +95,30 @@ namespace NationalFundingDev
 
         protected void agLockButtonClick(object sender, EventArgs e)
         {
-            if(agreement.Lock != true)
+            var mod = agreement.AgreementMods.FirstOrDefault();
+            var log = new AgreementModLog()
+            {
+                AgreementLogTypeID = 7,
+                CreatedBy = user.ID,
+                ModifiedBy = user.ID,
+                CreatedDate = DateTime.Now,
+                ModifiedDate = DateTime.Now,
+                LoggedDate = DateTime.Now
+            };
+
+            if (agreement.Lock != true)
             {
                 agreement.Lock = true;
+
+                log.Remarks = "Agreement Locked.";
+                mod.AgreementModLogs.Add(log);
             }
             else
             {
                 agreement.Lock = false;
+
+                log.Remarks = "Agreement Unlocked.";
+                mod.AgreementModLogs.Add(log);
             }
             siftaDB.SubmitChanges();
             Response.Redirect(Request.RawUrl);
@@ -228,8 +246,11 @@ namespace NationalFundingDev
                 //Coop
                 case 7:
                     break;
-                //Overview
+                //Receiver
                 case 8:
+                    break;
+                //Overview
+                case 9:
                     Response.Redirect(OverviewURL());
                     break;
             }
@@ -1041,6 +1062,18 @@ namespace NationalFundingDev
         }
         #endregion
 
+        #region Receiver
+        private void BindReceiver()
+        {
+            var ctrl = (NationalFundingDev.Controls.Editable.ReceiverGrid)LoadControl("~/Controls/Editable/ReceiverGrid.ascx");
+            ctrl.Edit = user.CanUpdate;
+            ctrl.AddNewRecords = user.CanInsert;
+            ctrl.Delete = user.CanDelete;
+            ctrl.agreement = agreement;
+            phReceiver.Controls.Add(ctrl);
+        }
+        #endregion
+
         #region Inline Code
         public String OverviewURL()
         {
@@ -1338,7 +1371,11 @@ namespace NationalFundingDev
                         AgencyCode = "USGS",
                         StartDate = site.StartDate,
                         EndDate = site.EndDate,
-                        Remarks = site.Remarks
+                        Remarks = site.Remarks,
+                        CreatedBy = user.ID,
+                        CreatedDate = DateTime.Now,
+                        ModifiedBy = user.ID,
+                        ModifiedDate = DateTime.Now
                     };
 
                     sitesToInsert.Add(fs);
@@ -1365,6 +1402,19 @@ namespace NationalFundingDev
                         siftaDB.FundingSites.DeleteOnSubmit(entry);
                     }
                 }
+
+                var mod = agreement.AgreementMods.FirstOrDefault();
+                var log = new AgreementModLog()
+                {
+                    AgreementLogTypeID = 7,
+                    CreatedBy = user.ID,
+                    ModifiedBy = user.ID,
+                    CreatedDate = DateTime.Now,
+                    ModifiedDate = DateTime.Now,
+                    LoggedDate = DateTime.Now,
+                    Remarks = "Bulk Uploaded"
+                };
+                mod.AgreementModLogs.Add(log);
 
                 siftaDB.SubmitChanges();
 

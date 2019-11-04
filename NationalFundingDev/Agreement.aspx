@@ -111,8 +111,13 @@
             <telerik:RadTab TabIndex="2" Text="Site Funding" />
             <telerik:RadTab TabIndex="3" Text="Studies / Support" />
             <telerik:RadTab TabIndex="6" Text="Agreement Log" />
-            <telerik:RadTab TabIndex="7" Text="Account Funding" Value="Coop" Visible="false" />
-            <telerik:RadTab TabIndex="8" Text="Agreement Overview" Target="_blank" />
+            <telerik:RadTab Text="Account Funding" Value="Coop" Visible="false" >
+                <Tabs>
+                    <telerik:RadTab TabIndex="7" Text="Account Summary" />
+                    <telerik:RadTab TabIndex="8" Text="Receivers" />
+                </Tabs>
+            </telerik:RadTab>
+            <telerik:RadTab TabIndex="9" Text="Agreement Overview" Target="_blank" />
         </Tabs>
     </telerik:RadTabStrip>
 </asp:Content>
@@ -136,7 +141,7 @@
                         <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
                         <telerik:GridBoundColumn HeaderText="Mod" SortExpression="Number" DataField="ModName" UniqueName="ModName" />
                         <telerik:GridBoundColumn HeaderText="Purchase Order Number" SortExpression="PurchaseOrderNumber" DataField="PurchaseOrderNumber" UniqueName="PurchaseOrderNumber" />
-                        <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPairCode" SortExpression="MatchPairCode" UniqueName="MatchPairCode" />
+                        <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPairCode" SortExpression="MatchPairCode" UniqueName="MatchPairCode" Visible="false" />
                         <telerik:GridBoundColumn HeaderText="Start" DataField="StartDate" SortExpression="StartDate" UniqueName="StartDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" SortExpression="EndDate" UniqueName="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="SignUSGSDate" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:MM/dd/yyyy}" />
@@ -600,5 +605,10 @@
                 </MasterTableView>
             </telerik:RadGrid>
         </telerik:RadPageView>
+
+        <telerik:RadPageView ID="rpvReciever" runat="server" TabIndex="8">
+            <asp:PlaceHolder runat="server" ID="phReceiver" />
+        </telerik:RadPageView>
+
     </telerik:RadMultiPage>
 </asp:Content>

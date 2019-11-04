@@ -147,14 +147,16 @@
     <tr>
         <td align="right">Start Date:</td>
         <td>
-            <telerik:RadDatePicker ID="rdpStartDate" runat="server" DateInput-Label="" DbSelectedDate="<%# siteFunding.StartDate ?? mod.StartDate %>">
+            <telerik:RadDatePicker ID="rdpStartDate" runat="server" DateInput-Label="" DbSelectedDate="<%# siteFunding.StartDate ?? mod.StartDate %>"
+                MinDate="<%# mod.StartDate %>" >
             </telerik:RadDatePicker>
         </td>
     </tr>
     <tr>
         <td align="right">End Date:</td>
         <td>
-            <telerik:RadDatePicker ID="rdpEndDate" runat="server" DateInput-Label="" DbSelectedDate="<%# siteFunding.EndDate ?? mod.EndDate %>">
+            <telerik:RadDatePicker ID="rdpEndDate" runat="server" DateInput-Label="" DbSelectedDate="<%# siteFunding.EndDate ?? mod.EndDate %>"
+                MaxDate="<%# mod.EndDate %>" >
             </telerik:RadDatePicker>
         </td>
     </tr>
