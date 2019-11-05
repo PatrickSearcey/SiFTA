@@ -29,14 +29,14 @@
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
                  OnItemDataBound="rgReceiver_ItemDataBound"
                  AutoGenerateColumns="false" >
-    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" ShowFooter="true">
-        <FooterStyle BackColor="Black" ForeColor="White" />
+    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" ShowFooter="true" >
+        <FooterStyle BackColor="Black" ForeColor="White" Font-Bold="true" />
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>
             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
             <telerik:GridBoundColumn HeaderText="AgreementID" DataField="AgreementID" SortExpression="AgreementID" Visible="false" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FY" SortExpression="FY" AllowSorting="true" />
-            <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber">
+            <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber" UniqueName="ModNumber">
                 <ItemTemplate>
                     <%# Eval("ModNumber").ToString() == "0" ? "" : Eval("ModNumber") %>
                 </ItemTemplate>
@@ -51,6 +51,16 @@
             <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this log?" ButtonType="ImageButton"
                             CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
         </Columns>
+        <GroupByExpressions>
+            <telerik:GridGroupByExpression>
+                <SelectFields>
+                    <telerik:GridGroupByField FieldName="CustomerClass" />
+                </SelectFields>
+                <GroupByFields>
+                    <telerik:GridGroupByField FieldName="CustomerClass" />
+                </GroupByFields>
+            </telerik:GridGroupByExpression>
+        </GroupByExpressions>
     </MasterTableView>
 </telerik:RadGrid>
 </telerik:RadAjaxPanel>

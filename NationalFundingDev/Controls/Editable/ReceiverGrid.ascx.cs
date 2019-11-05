@@ -15,7 +15,7 @@ namespace NationalFundingDev.Controls.Editable
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private User user = new User();
         public int aID;
-        private int grandTotal = 0, sirTotal = 0, reimTotal = 0;
+        private double grandTotal = 0, sirTotal = 0, reimTotal = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
             aID = int.Parse(Request.QueryString["AgreementID"]);
@@ -118,7 +118,7 @@ namespace NationalFundingDev.Controls.Editable
             if (e.Item is GridDataItem)
             {
                 GridDataItem dataItem = e.Item as GridDataItem;
-                int fieldValue = int.Parse(dataItem["Funding"].Text.Replace("$", "").Replace(",", ""));
+                double fieldValue = double.Parse(dataItem["Funding"].Text.Replace("$", "").Replace(",", ""));
 
                 if(dataItem["CustomerClass"].Text.Contains("SIR"))
                 {
@@ -133,12 +133,40 @@ namespace NationalFundingDev.Controls.Editable
             }
             if (e.Item is GridFooterItem)
             {
+                int aID = int.Parse(Request.QueryString["AgreementID"]);
+                var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
+                double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
+                double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
+
                 GridFooterItem footerItem = e.Item as GridFooterItem;
 
-                footerItem["ProgramElementCode"].Text = "Direct (SIR) Total: $" + sirTotal.ToString();
-                footerItem["Funding"].Text += "Reimbursable Total: $" + reimTotal.ToString();
+                footerItem["AccountNumber"].Text = "<span>Planned Total (From Receivers)</span>";
+                footerItem["AccountNumber"].Text += "<br><span>Funding Total (From Agreement Overview)</span>";
+                footerItem["AccountNumber"].Text += "<br><span>Difference</span>";
 
-                footerItem["Remarks"].Text += "Grand Total: $" + grandTotal.ToString();
+                footerItem["ProgramElementCode"].Text = "<span>Direct (SIR) Total: $" + sirTotal.ToString("#,##0") + "</span>";
+                footerItem["ProgramElementCode"].Text += "<br><span>USGS CMF: $" + sumUSGS.ToString("#,##0") + "</span>";
+
+                double dirDiff = (sirTotal - sumUSGS);
+                string dirStyle = dirDiff < 0 ? "color:red" : "";
+
+                footerItem["ProgramElementCode"].Text += "<br><span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
+
+                footerItem["Funding"].Text = "<span>Reimbursable Total: $" + reimTotal.ToString("#,##0") + "</span>";
+                footerItem["Funding"].Text += "<br><span>Customer: $" + sumCust.ToString("#,##0") + "</span>";
+
+                double reimDiff = (reimTotal - sumCust);
+                string reimStyle = reimDiff < 0 ? "color:red" : "";
+
+                footerItem["Funding"].Text += "<br><span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
+
+                footerItem["Remarks"].Text = "<span>Grand Total: $" + grandTotal.ToString("#,##0") + "</span>";
+                footerItem["Remarks"].Text += "<br><span>Grand Total: $" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
+
+                double gDiff = (grandTotal - (sumUSGS + sumCust));
+                string gStyle = gDiff < 0 ? "color:red" : "";
+
+                footerItem["Remarks"].Text += "<br><span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
             }
         }
 
