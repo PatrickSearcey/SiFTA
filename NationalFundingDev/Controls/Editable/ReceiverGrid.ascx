@@ -10,6 +10,14 @@
         <ItemTemplate>
             <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
         </ItemTemplate>
+    </telerik:RadComboBox><br />
+    <span>Default Program Element Code: </span>
+    <telerik:RadComboBox runat="server" ID="rcbProgramElementCode" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbPEC"
+                DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
+                OnSelectedIndexChanged="rcbProgramElementCode_SelectedIndexChanged" AutoPostBack="true" >
+        <ItemTemplate>
+            <b></b><%# ProcessMyDataItem(Eval("ProgramElementCode")) %></b><br />
+        </ItemTemplate>
     </telerik:RadComboBox>
 </div>
 <br />
@@ -47,4 +55,6 @@
 </telerik:RadGrid>
 </telerik:RadAjaxPanel>
 <asp:LinqDataSource ID="rcbMPC" runat="server" OnSelecting="rcbMPC_Selecting">
+</asp:LinqDataSource>
+<asp:LinqDataSource ID="rcbPEC" runat="server" OnSelecting="rcbPEC_Selecting">
 </asp:LinqDataSource>

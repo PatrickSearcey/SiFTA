@@ -35,8 +35,9 @@ namespace NationalFundingDev.Controls.RadGrid
                 rec = new Receiver();
                 btnInsert.Visible = true;
 
-                var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
-                rcbMatchPair.SelectedValue = agMPC.MatchPairCode.ToString();
+                var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
+                rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
             }
             //Update
             else if (DataItem != null && DataItem.GetType() == typeof(Receiver))

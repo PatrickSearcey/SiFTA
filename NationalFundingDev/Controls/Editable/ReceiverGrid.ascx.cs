@@ -19,8 +19,9 @@ namespace NationalFundingDev.Controls.Editable
         protected void Page_Load(object sender, EventArgs e)
         {
             aID = int.Parse(Request.QueryString["AgreementID"]);
-            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
-            rcbMatchPair.SelectedValue = agMPC.MatchPairCode.ToString();
+            var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+            rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
         }
 
         protected void rgReceiver_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
@@ -160,6 +161,18 @@ namespace NationalFundingDev.Controls.Editable
         {
             var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
             agMPC.MatchPairCode = e.Value;
+            siftaDB.SubmitChanges();
+        }
+
+        protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
+        {
+            e.Result = siftaDB.lutProgramElementCodes.Where(p => p.Active == "Y");
+        }
+
+        protected void rcbProgramElementCode_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
+        {
+            var agPEC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            agPEC.ProgramElementCode = e.Value;
             siftaDB.SubmitChanges();
         }
 
