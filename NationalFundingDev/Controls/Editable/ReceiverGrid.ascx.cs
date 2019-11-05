@@ -115,59 +115,40 @@ namespace NationalFundingDev.Controls.Editable
         //grandTotal = 0, sirTotal = 0, reimTotal
         protected void rgReceiver_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
-            if (e.Item is GridDataItem)
-            {
-                GridDataItem dataItem = e.Item as GridDataItem;
-                double fieldValue = double.Parse(dataItem["Funding"].Text.Replace("$", "").Replace(",", ""));
+            int aID = int.Parse(Request.QueryString["AgreementID"]);
+            var rec = siftaDB.Receivers.Where(p => p.AgreementID == aID);
+            decimal sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+            decimal reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
 
-                if(dataItem["CustomerClass"].Text.Contains("SIR"))
-                {
-                    sirTotal += fieldValue;
-                }
-                if (dataItem["CustomerClass"].Text.Contains("Reim"))
-                {
-                    reimTotal += fieldValue;
-                }
+            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
+            double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
+            double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
 
-                grandTotal += fieldValue;
-            }
-            if (e.Item is GridFooterItem)
-            {
-                int aID = int.Parse(Request.QueryString["AgreementID"]);
-                var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
-                double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
-                double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
+            GridFooterItem footerItem = e.Item as GridFooterItem;
 
-                GridFooterItem footerItem = e.Item as GridFooterItem;
+            dirTd.InnerHtml = "<span>Direct (SIR) Total: $" + sirTotal.ToString("#,##0") + "</span>";
+            cmfTd.InnerHtml = "<span>USGS CMF: $" + sumUSGS.ToString("#,##0") + "</span>";
 
-                footerItem["AccountNumber"].Text = "<span>Planned Total (From Receivers)</span>";
-                footerItem["AccountNumber"].Text += "<br><span>Funding Total (From Agreement Overview)</span>";
-                footerItem["AccountNumber"].Text += "<br><span>Difference</span>";
+            double dirDiff = (Decimal.ToDouble(sirTotal) - sumUSGS);
+            string dirStyle = dirDiff < 0 ? "color:red" : "";
 
-                footerItem["ProgramElementCode"].Text = "<span>Direct (SIR) Total: $" + sirTotal.ToString("#,##0") + "</span>";
-                footerItem["ProgramElementCode"].Text += "<br><span>USGS CMF: $" + sumUSGS.ToString("#,##0") + "</span>";
+            diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
 
-                double dirDiff = (sirTotal - sumUSGS);
-                string dirStyle = dirDiff < 0 ? "color:red" : "";
+            reimTd.InnerHtml = "<span>Reimbursable Total: $" + reimTotal.ToString("#,##0") + "</span>";
+            custTd.InnerHtml = "<span>Customer: $" + sumCust.ToString("#,##0") + "</span>";
 
-                footerItem["ProgramElementCode"].Text += "<br><span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
+            double reimDiff = (Decimal.ToDouble(reimTotal) - sumCust);
+            string reimStyle = reimDiff < 0 ? "color:red" : "";
 
-                footerItem["Funding"].Text = "<span>Reimbursable Total: $" + reimTotal.ToString("#,##0") + "</span>";
-                footerItem["Funding"].Text += "<br><span>Customer: $" + sumCust.ToString("#,##0") + "</span>";
+            diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
 
-                double reimDiff = (reimTotal - sumCust);
-                string reimStyle = reimDiff < 0 ? "color:red" : "";
+            totalsTd.InnerHtml = "<span>Grand Total: $" + grandTotal.ToString("#,##0") + "</span>";
+            aogtTd.InnerHtml = "<span>Grand Total: $" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
 
-                footerItem["Funding"].Text += "<br><span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
+            double gDiff = (grandTotal - (sumUSGS + sumCust));
+            string gStyle = gDiff < 0 ? "color:red" : "";
 
-                footerItem["Remarks"].Text = "<span>Grand Total: $" + grandTotal.ToString("#,##0") + "</span>";
-                footerItem["Remarks"].Text += "<br><span>Grand Total: $" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
-
-                double gDiff = (grandTotal - (sumUSGS + sumCust));
-                string gStyle = gDiff < 0 ? "color:red" : "";
-
-                footerItem["Remarks"].Text += "<br><span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
-            }
+            diff3Td.InnerHtml = "<span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
         }
 
         public string ProcessMyDataItem(object myValue)

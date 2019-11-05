@@ -29,8 +29,7 @@
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
                  OnItemDataBound="rgReceiver_ItemDataBound"
                  AutoGenerateColumns="false" >
-    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" ShowFooter="true" >
-        <FooterStyle BackColor="Black" ForeColor="White" Font-Bold="true" />
+    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>
             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
@@ -63,6 +62,30 @@
         </GroupByExpressions>
     </MasterTableView>
 </telerik:RadGrid>
+
+<div runat="server" id="totalsDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+    <table style="width:100%;table-layout:auto;empty-cells:show;border-collapse:collapse;">
+        <tr style="background-color: #bd8f04; color: white; font-weight: bold">
+            <td>Planned Total (From Receivers)</td>
+            <td runat="server" id="dirTd"></td>
+            <td runat="server" id="reimTd"></td>
+            <td runat="server" id="totalsTd"></td>
+        </tr>
+        <tr style="background-color: black; color: white; font-weight: bold">
+            <td>Funding Total (From Agreement Overview)</td>
+            <td runat="server" id="cmfTd"></td>
+            <td runat="server" id="custTd"></td>
+            <td runat="server" id="aogtTd"></td>
+        </tr>
+        <tr style="font-weight: bold">
+            <td>Difference</td>
+            <td runat="server" id="diff1Td"></td>
+            <td runat="server" id="diff2Td"></td>
+            <td runat="server" id="diff3Td"></td>
+        </tr>
+    </table>
+</div>
+
 </telerik:RadAjaxPanel>
 <asp:LinqDataSource ID="rcbMPC" runat="server" OnSelecting="rcbMPC_Selecting">
 </asp:LinqDataSource>
