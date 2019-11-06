@@ -50,16 +50,6 @@
             <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this log?" ButtonType="ImageButton"
                             CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
         </Columns>
-        <GroupByExpressions>
-            <telerik:GridGroupByExpression>
-                <SelectFields>
-                    <telerik:GridGroupByField FieldName="CustomerClass" />
-                </SelectFields>
-                <GroupByFields>
-                    <telerik:GridGroupByField FieldName="CustomerClass" />
-                </GroupByFields>
-            </telerik:GridGroupByExpression>
-        </GroupByExpressions>
     </MasterTableView>
 </telerik:RadGrid>
 
