@@ -1,0 +1,7 @@
+stages:
+    - build
+before_script:
+  - 'C:\Nuget\nuget.exe restore NationalFundingDev.sln'
+job:
+    stage: build
+    script: '"C:\Program Files (x86)\MSBuild\14.0\Bin\MSBuild.exe" "MVCApp.sln"'
