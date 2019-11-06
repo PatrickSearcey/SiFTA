@@ -127,24 +127,24 @@ namespace NationalFundingDev.Controls.Editable
 
             GridFooterItem footerItem = e.Item as GridFooterItem;
 
-            dirTd.InnerHtml = "<span>Direct (SIR) Total: $" + sirTotal.ToString("#,##0") + "</span>";
-            cmfTd.InnerHtml = "<span>USGS CMF: $" + sumUSGS.ToString("#,##0") + "</span>";
+            dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
+            cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
 
             double dirDiff = (Decimal.ToDouble(sirTotal) - sumUSGS);
             string dirStyle = dirDiff < 0 ? "color:red" : "";
 
             diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
 
-            reimTd.InnerHtml = "<span>Reimbursable Total: $" + reimTotal.ToString("#,##0") + "</span>";
-            custTd.InnerHtml = "<span>Customer: $" + sumCust.ToString("#,##0") + "</span>";
+            reimTd.InnerHtml = "<span>$" + reimTotal.ToString("#,##0") + "</span>";
+            custTd.InnerHtml = "<span>$" + sumCust.ToString("#,##0") + "</span>";
 
             double reimDiff = (Decimal.ToDouble(reimTotal) - sumCust);
             string reimStyle = reimDiff < 0 ? "color:red" : "";
 
             diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
 
-            totalsTd.InnerHtml = "<span>Grand Total: $" + grandTotal.ToString("#,##0") + "</span>";
-            aogtTd.InnerHtml = "<span>Grand Total: $" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
+            totalsTd.InnerHtml = "<span>$" + grandTotal.ToString("#,##0") + "</span>";
+            aogtTd.InnerHtml = "<span>$" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
 
             double gDiff = (grandTotal - (sumUSGS + sumCust));
             string gStyle = gDiff < 0 ? "color:red" : "";
