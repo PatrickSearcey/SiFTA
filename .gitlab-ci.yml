@@ -2,9 +2,9 @@
 # This is a simple gitlab continuous integration template (compatible with the shared runner provided on gitlab.com)
 # using the official mono docker image to build a visual studio project.
 #
-# NationalFundingDev.sln
-#   NationalFundingDev\
-#     National Funding 2.0.csproj (console application)
+ NationalFundingDev.sln
+   NationalFundingDev\
+     National Funding 2.0.csproj (console application)
 #
 # Please find the full example project here:
 # https://gitlab.com/tobiaskoch/gitlab-ci-example-mono
