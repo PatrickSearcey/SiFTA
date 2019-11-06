@@ -24,27 +24,6 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Match Pair Code:
-        </td>
-        <td>
-            <telerik:RadTextBox runat="server" ID="rtbMPC" Skin="Silk" Text="<%# agreement.MatchPairCode %>" />
-        </td>
-        <td style="vertical-align:bottom;">
-            <a runat="server" id="MPCToolTip" >
-                <img src="https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTipHover.gif'"
-                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/Images/ToolTip.gif'" />
-            </a>
-            <telerik:RadToolTip runat="server" ID="RadToolTip1" TargetControlID="MPCToolTip" ShowEvent="OnMouseOver"
-                OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
-                Animation="None" Position="BottomRight" RelativeTo="Element" Skin="BlackMetroTouch">
-                <div class="ToolTip" style="width:200px;">
-                    Match Pair Code - Basis+ Specific code used to tie CMF funding to customer funding. Only relevant to JFA's
-                </div>
-            </telerik:RadToolTip>
-        </td>
-    </tr>
-    <tr>
         <td align="right">Sales Order Number:
         </td>
         <td>
