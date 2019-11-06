@@ -106,10 +106,6 @@
                                         <td><%: agreement.PurchaseOrderNumber %></td>
                                     </tr>
                                     <tr>
-                                        <td align="right"><b title="Match Pair Code">MPC :</b></td>
-                                        <td><%: agreement.MatchPairCode %></td>
-                                    </tr>
-                                    <tr>
                                         <td align="right"><b title="Sales Order Number">SO :</b></td>
                                         <td><%: agreement.SalesDocument %></td>
                                     </tr>

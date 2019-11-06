@@ -409,7 +409,6 @@ namespace NationalFundingDev
             #region User Controls
             //Grab the controls from the user controls
             var rtbPurchaseOrderNumber = (uc.FindControl("rtbPurchaseOrderNumber") as RadTextBox);
-            var rtbMPC = (uc.FindControl("rtbMPC") as RadTextBox);
             var rtbSalesDocument = (uc.FindControl("rtbSalesDocument") as RadTextBox);
             var rdpStartDate = (uc.FindControl("rdpStartDate") as RadDatePicker);
             var rdpEndDate = (uc.FindControl("rdpEndDate") as RadDatePicker);
@@ -428,7 +427,6 @@ namespace NationalFundingDev
             //Agreement Info
             a.BillingCycleFrequency = rcbBillingCycle.SelectedValue;
             a.FundsType = rcbFundsType.SelectedValue;
-            a.MatchPairCode = rtbMPC.Text;
             a.SalesDocument = rtbSalesDocument.Text;
             a.PurchaseOrderNumber = rtbPurchaseOrderNumber.Text;
             //Mod Info
