@@ -119,6 +119,7 @@ namespace NationalFundingDev.Controls.Editable
             var rec = siftaDB.Receivers.Where(p => p.AgreementID == aID);
             decimal sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
             decimal reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+            grandTotal = (Decimal.ToDouble(sirTotal + reimTotal));
 
             var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
             double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;

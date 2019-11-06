@@ -66,22 +66,22 @@
 <div runat="server" id="totalsDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
     <table style="width:100%;table-layout:auto;empty-cells:show;border-collapse:collapse;">
         <tr style="background-color: #bd8f04; color: white; font-weight: bold">
-            <td>Planned Total (From Receivers)</td>
-            <td runat="server" id="dirTd"></td>
-            <td runat="server" id="reimTd"></td>
-            <td runat="server" id="totalsTd"></td>
+            <td style="padding:3px;">Planned Total (From Receivers)</td>
+            <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
+            <td align="right" style="padding:3px;" runat="server" id="reimTd"></td>
+            <td align="right" style="padding:3px;" runat="server" id="totalsTd"></td>
         </tr>
         <tr style="background-color: black; color: white; font-weight: bold">
-            <td>Funding Total (From Agreement Overview)</td>
-            <td runat="server" id="cmfTd"></td>
-            <td runat="server" id="custTd"></td>
-            <td runat="server" id="aogtTd"></td>
+            <td style="padding:3px;">Funding Total (From Agreement Overview)</td>
+            <td align="right" style="padding:3px;" runat="server" id="cmfTd"></td>
+            <td align="right" style="padding:3px;" runat="server" id="custTd"></td>
+            <td align="right" style="padding:3px;" runat="server" id="aogtTd"></td>
         </tr>
         <tr style="font-weight: bold">
-            <td>Difference</td>
-            <td runat="server" id="diff1Td"></td>
-            <td runat="server" id="diff2Td"></td>
-            <td runat="server" id="diff3Td"></td>
+            <td style="padding:3px;">Difference</td>
+            <td align="right" style="padding:3px;" runat="server" id="diff1Td"></td>
+            <td align="right" style="padding:3px;" runat="server" id="diff2Td"></td>
+            <td align="right" style="padding:3px;" runat="server" id="diff3Td"></td>
         </tr>
     </table>
 </div>
