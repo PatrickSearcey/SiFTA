@@ -10,7 +10,7 @@
         <ItemTemplate>
             <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
         </ItemTemplate>
-    </telerik:RadComboBox><br />
+    </telerik:RadComboBox>&nbsp;&nbsp;
     <span>Default Program Element Code: </span>
     <telerik:RadComboBox runat="server" ID="rcbProgramElementCode" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbPEC"
                 DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
