@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NationalFundingDev.Controls.RadGrid {
-    
-    
-    public partial class AgreementControl {
-        
+namespace NationalFundingDev.Controls.RadGrid
+{
+
+
+    public partial class AgreementControl
+    {
+
         /// <summary>
         /// rtbPurchaseOrderNumber control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbPurchaseOrderNumber;
-        
+
         /// <summary>
         /// AgreementToolTip control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor AgreementToolTip;
-        
+
         /// <summary>
         /// rtt control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadToolTip rtt;
-        
+
         /// <summary>
         /// rfvAgreementNumber control.
         /// </summary>
@@ -47,34 +49,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAgreementNumber;
-        
-        /// <summary>
-        /// rtbMPC control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadTextBox rtbMPC;
-        
-        /// <summary>
-        /// MPCToolTip control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlAnchor MPCToolTip;
-        
-        /// <summary>
-        /// RadToolTip1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadToolTip RadToolTip1;
-        
+
         /// <summary>
         /// rtbSalesDocument control.
         /// </summary>
@@ -83,7 +58,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbSalesDocument;
-        
+
         /// <summary>
         /// SalesOrderNumberToolTip control.
         /// </summary>
@@ -92,7 +67,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor SalesOrderNumberToolTip;
-        
+
         /// <summary>
         /// RadToolTip2 control.
         /// </summary>
@@ -101,7 +76,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadToolTip RadToolTip2;
-        
+
         /// <summary>
         /// rdpStartDate control.
         /// </summary>
@@ -110,7 +85,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpStartDate;
-        
+
         /// <summary>
         /// rdpEndDate control.
         /// </summary>
@@ -119,7 +94,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpEndDate;
-        
+
         /// <summary>
         /// rdpUSGSSigned control.
         /// </summary>
@@ -128,7 +103,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpUSGSSigned;
-        
+
         /// <summary>
         /// rdpCustomerSigned control.
         /// </summary>
@@ -137,7 +112,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpCustomerSigned;
-        
+
         /// <summary>
         /// rcbFundsType control.
         /// </summary>
@@ -146,7 +121,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox rcbFundsType;
-        
+
         /// <summary>
         /// rcbBillingCycle control.
         /// </summary>
@@ -155,7 +130,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox rcbBillingCycle;
-        
+
         /// <summary>
         /// rntbUSGSFunding control.
         /// </summary>
@@ -164,7 +139,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox rntbUSGSFunding;
-        
+
         /// <summary>
         /// USGSFundingToolTip control.
         /// </summary>
@@ -173,7 +148,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor USGSFundingToolTip;
-        
+
         /// <summary>
         /// RadToolTip3 control.
         /// </summary>
@@ -182,7 +157,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadToolTip RadToolTip3;
-        
+
         /// <summary>
         /// rntbCustomerFunding control.
         /// </summary>
@@ -191,7 +166,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox rntbCustomerFunding;
-        
+
         /// <summary>
         /// CustomerFundingToolTip control.
         /// </summary>
@@ -200,7 +175,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlAnchor CustomerFundingToolTip;
-        
+
         /// <summary>
         /// RadToolTip4 control.
         /// </summary>
@@ -209,7 +184,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadToolTip RadToolTip4;
-        
+
         /// <summary>
         /// rntbOtherFunding control.
         /// </summary>
@@ -218,7 +193,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox rntbOtherFunding;
-        
+
         /// <summary>
         /// rtbOtherFundingReason control.
         /// </summary>
@@ -227,7 +202,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbOtherFundingReason;
-        
+
         /// <summary>
         /// btnUpdate control.
         /// </summary>
@@ -236,7 +211,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnUpdate;
-        
+
         /// <summary>
         /// btnInsert control.
         /// </summary>
@@ -245,7 +220,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnInsert;
-        
+
         /// <summary>
         /// btnCancel control.
         /// </summary>
@@ -254,7 +229,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCancel;
-        
+
         /// <summary>
         /// ldsTags control.
         /// </summary>

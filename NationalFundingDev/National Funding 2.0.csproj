@@ -651,6 +651,7 @@
     <Content Include="SiftaMapUtils\leaflet\Leaflet.fullscreen-gh-pages\Leaflet.fullscreen-gh-pages.zip" />
     <Content Include="SiftaSiteMap.sitemap" />
     <Content Include="Themes\Base\ErrorHandler.ashx" />
+    <None Include="Properties\PublishProfiles\Dev.pubxml" />
     <None Include="Properties\PublishProfiles\i01 Production.pubxml" />
     <None Include="Properties\PublishProfiles\i02 Dev.pubxml" />
     <None Include="web.Debug.config">
@@ -720,7 +721,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

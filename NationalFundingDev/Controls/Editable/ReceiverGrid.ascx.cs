@@ -20,8 +20,12 @@ namespace NationalFundingDev.Controls.Editable
         {
             aID = int.Parse(Request.QueryString["AgreementID"]);
             var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
-            rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
-            rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
+            try
+            {
+                rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
+            }
+            catch { }
         }
 
         protected void rgReceiver_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
