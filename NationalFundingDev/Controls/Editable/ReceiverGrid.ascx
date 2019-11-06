@@ -10,6 +10,14 @@
         <ItemTemplate>
             <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
         </ItemTemplate>
+    </telerik:RadComboBox><br />
+    <span>Default Program Element Code: </span>
+    <telerik:RadComboBox runat="server" ID="rcbProgramElementCode" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbPEC"
+                DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
+                OnSelectedIndexChanged="rcbProgramElementCode_SelectedIndexChanged" AutoPostBack="true" >
+        <ItemTemplate>
+            <b></b><%# ProcessMyDataItem(Eval("ProgramElementCode")) %></b><br />
+        </ItemTemplate>
     </telerik:RadComboBox>
 </div>
 <br />
@@ -21,14 +29,13 @@
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
                  OnItemDataBound="rgReceiver_ItemDataBound"
                  AutoGenerateColumns="false" >
-    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" ShowFooter="true">
-        <FooterStyle BackColor="Black" ForeColor="White" />
+    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>
             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
             <telerik:GridBoundColumn HeaderText="AgreementID" DataField="AgreementID" SortExpression="AgreementID" Visible="false" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FY" SortExpression="FY" AllowSorting="true" />
-            <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber">
+            <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber" UniqueName="ModNumber">
                 <ItemTemplate>
                     <%# Eval("ModNumber").ToString() == "0" ? "" : Eval("ModNumber") %>
                 </ItemTemplate>
@@ -43,8 +50,56 @@
             <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this log?" ButtonType="ImageButton"
                             CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
         </Columns>
+        <GroupByExpressions>
+            <telerik:GridGroupByExpression>
+                <SelectFields>
+                    <telerik:GridGroupByField FieldName="CustomerClass" />
+                </SelectFields>
+                <GroupByFields>
+                    <telerik:GridGroupByField FieldName="CustomerClass" />
+                </GroupByFields>
+            </telerik:GridGroupByExpression>
+        </GroupByExpressions>
     </MasterTableView>
 </telerik:RadGrid>
+
+<div runat="server" id="totalsDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+    <table style="width:100%;table-layout:auto;empty-cells:show;border-collapse:collapse;">
+        <tr style="background-color: #bd8f04; color: white; font-weight: bold">
+            <td align="right" style="padding:3px;"></td>
+            <td style="padding:3px;">Planned Total (From Receivers)</td>
+            <td align="right" style="padding:3px;">Direct(SIR) Total:</td>
+            <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
+            <td align="right" style="padding:3px;">Reimbursable Total:</td>
+            <td align="right" style="padding:3px;" runat="server" id="reimTd"></td>
+            <td align="right" style="padding:3px;">Grand Total:</td>
+            <td align="right" style="padding:3px;" runat="server" id="totalsTd"></td>
+        </tr>
+        <tr style="background-color: black; color: white; font-weight: bold">
+            <td align="right" style="padding:3px;"></td>
+            <td style="padding:3px;">Funding Total (From Agreement Overview)</td>
+            <td align="right" style="padding:3px;">USGS CMF:</td>
+            <td align="right" style="padding:3px;" runat="server" id="cmfTd"></td>
+            <td align="right" style="padding:3px;">Customer:</td>
+            <td align="right" style="padding:3px;" runat="server" id="custTd"></td>
+            <td align="right" style="padding:3px;">Grand Total:</td>
+            <td align="right" style="padding:3px;" runat="server" id="aogtTd"></td>
+        </tr>
+        <tr style="font-weight: bold">
+            <td align="right" style="padding:3px;"></td>
+            <td style="padding:3px;">Difference</td>
+            <td align="right" style="padding:3px;"></td>
+            <td align="right" style="padding:3px;" runat="server" id="diff1Td"></td>
+            <td align="right" style="padding:3px;"></td>
+            <td align="right" style="padding:3px;" runat="server" id="diff2Td"></td>
+            <td align="right" style="padding:3px;"></td>
+            <td align="right" style="padding:3px;" runat="server" id="diff3Td"></td>
+        </tr>
+    </table>
+</div>
+
 </telerik:RadAjaxPanel>
 <asp:LinqDataSource ID="rcbMPC" runat="server" OnSelecting="rcbMPC_Selecting">
+</asp:LinqDataSource>
+<asp:LinqDataSource ID="rcbPEC" runat="server" OnSelecting="rcbPEC_Selecting">
 </asp:LinqDataSource>

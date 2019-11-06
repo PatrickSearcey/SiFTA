@@ -42,6 +42,15 @@ namespace NationalFundingDev.Controls.Editable
         protected global::Telerik.Web.UI.RadComboBox rcbMatchPair;
 
         /// <summary>
+        /// rcbProgramElementCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox rcbProgramElementCode;
+
+        /// <summary>
         /// rgReceiver control.
         /// </summary>
         /// <remarks>
@@ -51,6 +60,96 @@ namespace NationalFundingDev.Controls.Editable
         protected global::Telerik.Web.UI.RadGrid rgReceiver;
 
         /// <summary>
+        /// totalsDiv control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl totalsDiv;
+
+        /// <summary>
+        /// dirTd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell dirTd;
+
+        /// <summary>
+        /// reimTd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell reimTd;
+
+        /// <summary>
+        /// totalsTd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell totalsTd;
+
+        /// <summary>
+        /// cmfTd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell cmfTd;
+
+        /// <summary>
+        /// custTd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell custTd;
+
+        /// <summary>
+        /// aogtTd control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell aogtTd;
+
+        /// <summary>
+        /// diff1Td control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell diff1Td;
+
+        /// <summary>
+        /// diff2Td control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell diff2Td;
+
+        /// <summary>
+        /// diff3Td control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlTableCell diff3Td;
+
+        /// <summary>
         /// rcbMPC control.
         /// </summary>
         /// <remarks>
@@ -58,5 +157,14 @@ namespace NationalFundingDev.Controls.Editable
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinqDataSource rcbMPC;
+
+        /// <summary>
+        /// rcbPEC control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.LinqDataSource rcbPEC;
     }
 }
