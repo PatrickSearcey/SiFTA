@@ -36,8 +36,12 @@ namespace NationalFundingDev.Controls.RadGrid
                 btnInsert.Visible = true;
 
                 var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
-                rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
-                rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
+                try
+                {
+                    rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                    rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
+                }
+                catch { }
             }
             //Update
             else if (DataItem != null && DataItem.GetType() == typeof(Receiver))
