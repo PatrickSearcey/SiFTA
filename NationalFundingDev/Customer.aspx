@@ -97,7 +97,7 @@
     <script type="text/javascript">
         if (!$("#CustomerWebsite").attr("href")) $("#CustomerWebsite").hide();
     </script>
-    <b style="color:mediumpurple"><i>Remarks: <%= String.IsNullOrEmpty(customer.Remarks) == true ? "N/A" : customer.Remarks %></i></b><br />
+    <b><i>Remarks: <%= String.IsNullOrEmpty(customer.Remarks) == true ? "N/A" : customer.Remarks %></i></b><br />
     <%--//Removed 11/4/2014 for to remove tags--%> 
     <a href='<%= String.Format("Center.aspx?OrgCode={0}", customer.OrgCode) %>' style="color: orange;" >Center Home</a> >> Customer Portal
 </asp:Content>
