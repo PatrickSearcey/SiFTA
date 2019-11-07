@@ -451,14 +451,6 @@ namespace NationalFundingDev
 			}
 		}
 		
-		public System.Data.Linq.Table<vCooperativeFundingReport> vCooperativeFundingReports
-		{
-			get
-			{
-				return this.GetTable<vCooperativeFundingReport>();
-			}
-		}
-		
 		public System.Data.Linq.Table<CooperativeFunding> CooperativeFundings
 		{
 			get
@@ -568,6 +560,14 @@ namespace NationalFundingDev
 			get
 			{
 				return this.GetTable<Agreement>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vCooperativeFundingReport> vCooperativeFundingReports
+		{
+			get
+			{
+				return this.GetTable<vCooperativeFundingReport>();
 			}
 		}
 		
@@ -12056,429 +12056,6 @@ namespace NationalFundingDev
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vCooperativeFundingReport")]
-	public partial class vCooperativeFundingReport
-	{
-		
-		private string _OrgCode;
-		
-		private System.Nullable<int> _CustomerID;
-		
-		private System.Nullable<int> _AgreementID;
-		
-		private int _CooperativeFundingID;
-		
-		private string _CustomerCode;
-		
-		private string _CustomerName;
-		
-		private string _CustomerAgreementType;
-		
-		private string _PurchaseOrderNumber;
-		
-		private string _MatchPairCode;
-		
-		private string _AccountNumber;
-		
-		private string _AccountName;
-		
-		private string _OfficeCode;
-		
-		private System.Nullable<int> _ModNumber;
-		
-		private System.Nullable<double> _FundingUSGSCMF;
-		
-		private System.Nullable<double> _FundingCustomer;
-		
-		private string _Remarks;
-		
-		private System.Nullable<int> _FiscalYear;
-		
-		private System.Nullable<System.DateTime> _SignUSGSDate;
-		
-		private System.Nullable<System.DateTime> _SignCustomerDate;
-		
-		private System.Nullable<double> _FundingTotal;
-		
-		private System.Nullable<int> _AccountStatusID;
-		
-		private string _Status;
-		
-		private string _SalesDocument;
-		
-		public vCooperativeFundingReport()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrgCode", DbType="NVarChar(5)")]
-		public string OrgCode
-		{
-			get
-			{
-				return this._OrgCode;
-			}
-			set
-			{
-				if ((this._OrgCode != value))
-				{
-					this._OrgCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
-		public System.Nullable<int> CustomerID
-		{
-			get
-			{
-				return this._CustomerID;
-			}
-			set
-			{
-				if ((this._CustomerID != value))
-				{
-					this._CustomerID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int")]
-		public System.Nullable<int> AgreementID
-		{
-			get
-			{
-				return this._AgreementID;
-			}
-			set
-			{
-				if ((this._AgreementID != value))
-				{
-					this._AgreementID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CooperativeFundingID", DbType="Int NOT NULL")]
-		public int CooperativeFundingID
-		{
-			get
-			{
-				return this._CooperativeFundingID;
-			}
-			set
-			{
-				if ((this._CooperativeFundingID != value))
-				{
-					this._CooperativeFundingID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerCode", DbType="NVarChar(50)")]
-		public string CustomerCode
-		{
-			get
-			{
-				return this._CustomerCode;
-			}
-			set
-			{
-				if ((this._CustomerCode != value))
-				{
-					this._CustomerCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(150)")]
-		public string CustomerName
-		{
-			get
-			{
-				return this._CustomerName;
-			}
-			set
-			{
-				if ((this._CustomerName != value))
-				{
-					this._CustomerName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerAgreementType", DbType="NVarChar(50)")]
-		public string CustomerAgreementType
-		{
-			get
-			{
-				return this._CustomerAgreementType;
-			}
-			set
-			{
-				if ((this._CustomerAgreementType != value))
-				{
-					this._CustomerAgreementType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseOrderNumber", DbType="NVarChar(75)")]
-		public string PurchaseOrderNumber
-		{
-			get
-			{
-				return this._PurchaseOrderNumber;
-			}
-			set
-			{
-				if ((this._PurchaseOrderNumber != value))
-				{
-					this._PurchaseOrderNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
-		{
-			get
-			{
-				return this._MatchPairCode;
-			}
-			set
-			{
-				if ((this._MatchPairCode != value))
-				{
-					this._MatchPairCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="NVarChar(15)")]
-		public string AccountNumber
-		{
-			get
-			{
-				return this._AccountNumber;
-			}
-			set
-			{
-				if ((this._AccountNumber != value))
-				{
-					this._AccountNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(35)")]
-		public string AccountName
-		{
-			get
-			{
-				return this._AccountName;
-			}
-			set
-			{
-				if ((this._AccountName != value))
-				{
-					this._AccountName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficeCode", DbType="NVarChar(15)")]
-		public string OfficeCode
-		{
-			get
-			{
-				return this._OfficeCode;
-			}
-			set
-			{
-				if ((this._OfficeCode != value))
-				{
-					this._OfficeCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModNumber", DbType="Int")]
-		public System.Nullable<int> ModNumber
-		{
-			get
-			{
-				return this._ModNumber;
-			}
-			set
-			{
-				if ((this._ModNumber != value))
-				{
-					this._ModNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMF", DbType="Float")]
-		public System.Nullable<double> FundingUSGSCMF
-		{
-			get
-			{
-				return this._FundingUSGSCMF;
-			}
-			set
-			{
-				if ((this._FundingUSGSCMF != value))
-				{
-					this._FundingUSGSCMF = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingCustomer", DbType="Float")]
-		public System.Nullable<double> FundingCustomer
-		{
-			get
-			{
-				return this._FundingCustomer;
-			}
-			set
-			{
-				if ((this._FundingCustomer != value))
-				{
-					this._FundingCustomer = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(MAX)")]
-		public string Remarks
-		{
-			get
-			{
-				return this._Remarks;
-			}
-			set
-			{
-				if ((this._Remarks != value))
-				{
-					this._Remarks = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FiscalYear", DbType="Int")]
-		public System.Nullable<int> FiscalYear
-		{
-			get
-			{
-				return this._FiscalYear;
-			}
-			set
-			{
-				if ((this._FiscalYear != value))
-				{
-					this._FiscalYear = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignUSGSDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> SignUSGSDate
-		{
-			get
-			{
-				return this._SignUSGSDate;
-			}
-			set
-			{
-				if ((this._SignUSGSDate != value))
-				{
-					this._SignUSGSDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignCustomerDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> SignCustomerDate
-		{
-			get
-			{
-				return this._SignCustomerDate;
-			}
-			set
-			{
-				if ((this._SignCustomerDate != value))
-				{
-					this._SignCustomerDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingTotal", DbType="Float")]
-		public System.Nullable<double> FundingTotal
-		{
-			get
-			{
-				return this._FundingTotal;
-			}
-			set
-			{
-				if ((this._FundingTotal != value))
-				{
-					this._FundingTotal = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountStatusID", DbType="Int")]
-		public System.Nullable<int> AccountStatusID
-		{
-			get
-			{
-				return this._AccountStatusID;
-			}
-			set
-			{
-				if ((this._AccountStatusID != value))
-				{
-					this._AccountStatusID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(5)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this._Status = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesDocument", DbType="NVarChar(50)")]
-		public string SalesDocument
-		{
-			get
-			{
-				return this._SalesDocument;
-			}
-			set
-			{
-				if ((this._SalesDocument != value))
-				{
-					this._SalesDocument = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.CooperativeFunding")]
 	public partial class CooperativeFunding : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -18391,6 +17968,429 @@ namespace NationalFundingDev
 		{
 			this.SendPropertyChanging();
 			entity.Agreement = null;
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vCooperativeFundingReport")]
+	public partial class vCooperativeFundingReport
+	{
+		
+		private string _OrgCode;
+		
+		private System.Nullable<int> _CustomerID;
+		
+		private System.Nullable<int> _AgreementID;
+		
+		private int _CooperativeFundingID;
+		
+		private string _CustomerCode;
+		
+		private string _CustomerName;
+		
+		private string _CustomerAgreementType;
+		
+		private string _PurchaseOrderNumber;
+		
+		private string _MatchPairCode;
+		
+		private string _AccountNumber;
+		
+		private string _AccountName;
+		
+		private string _OfficeCode;
+		
+		private System.Nullable<int> _ModNumber;
+		
+		private System.Nullable<double> _FundingUSGSCMF;
+		
+		private System.Nullable<double> _FundingCustomer;
+		
+		private string _Remarks;
+		
+		private System.Nullable<int> _FiscalYear;
+		
+		private System.Nullable<System.DateTime> _SignUSGSDate;
+		
+		private System.Nullable<System.DateTime> _SignCustomerDate;
+		
+		private System.Nullable<double> _FundingTotal;
+		
+		private System.Nullable<int> _AccountStatusID;
+		
+		private string _Status;
+		
+		private string _SalesDocument;
+		
+		public vCooperativeFundingReport()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OrgCode", DbType="NVarChar(5)")]
+		public string OrgCode
+		{
+			get
+			{
+				return this._OrgCode;
+			}
+			set
+			{
+				if ((this._OrgCode != value))
+				{
+					this._OrgCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int")]
+		public System.Nullable<int> CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this._CustomerID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int")]
+		public System.Nullable<int> AgreementID
+		{
+			get
+			{
+				return this._AgreementID;
+			}
+			set
+			{
+				if ((this._AgreementID != value))
+				{
+					this._AgreementID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CooperativeFundingID", DbType="Int NOT NULL")]
+		public int CooperativeFundingID
+		{
+			get
+			{
+				return this._CooperativeFundingID;
+			}
+			set
+			{
+				if ((this._CooperativeFundingID != value))
+				{
+					this._CooperativeFundingID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerCode", DbType="NVarChar(50)")]
+		public string CustomerCode
+		{
+			get
+			{
+				return this._CustomerCode;
+			}
+			set
+			{
+				if ((this._CustomerCode != value))
+				{
+					this._CustomerCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerName", DbType="NVarChar(150)")]
+		public string CustomerName
+		{
+			get
+			{
+				return this._CustomerName;
+			}
+			set
+			{
+				if ((this._CustomerName != value))
+				{
+					this._CustomerName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerAgreementType", DbType="NVarChar(50)")]
+		public string CustomerAgreementType
+		{
+			get
+			{
+				return this._CustomerAgreementType;
+			}
+			set
+			{
+				if ((this._CustomerAgreementType != value))
+				{
+					this._CustomerAgreementType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseOrderNumber", DbType="NVarChar(75)")]
+		public string PurchaseOrderNumber
+		{
+			get
+			{
+				return this._PurchaseOrderNumber;
+			}
+			set
+			{
+				if ((this._PurchaseOrderNumber != value))
+				{
+					this._PurchaseOrderNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
+		public string MatchPairCode
+		{
+			get
+			{
+				return this._MatchPairCode;
+			}
+			set
+			{
+				if ((this._MatchPairCode != value))
+				{
+					this._MatchPairCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="NVarChar(15)")]
+		public string AccountNumber
+		{
+			get
+			{
+				return this._AccountNumber;
+			}
+			set
+			{
+				if ((this._AccountNumber != value))
+				{
+					this._AccountNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(35)")]
+		public string AccountName
+		{
+			get
+			{
+				return this._AccountName;
+			}
+			set
+			{
+				if ((this._AccountName != value))
+				{
+					this._AccountName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_OfficeCode", DbType="NVarChar(15)")]
+		public string OfficeCode
+		{
+			get
+			{
+				return this._OfficeCode;
+			}
+			set
+			{
+				if ((this._OfficeCode != value))
+				{
+					this._OfficeCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModNumber", DbType="Int")]
+		public System.Nullable<int> ModNumber
+		{
+			get
+			{
+				return this._ModNumber;
+			}
+			set
+			{
+				if ((this._ModNumber != value))
+				{
+					this._ModNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMF", DbType="Float")]
+		public System.Nullable<double> FundingUSGSCMF
+		{
+			get
+			{
+				return this._FundingUSGSCMF;
+			}
+			set
+			{
+				if ((this._FundingUSGSCMF != value))
+				{
+					this._FundingUSGSCMF = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingCustomer", DbType="Float")]
+		public System.Nullable<double> FundingCustomer
+		{
+			get
+			{
+				return this._FundingCustomer;
+			}
+			set
+			{
+				if ((this._FundingCustomer != value))
+				{
+					this._FundingCustomer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(MAX)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this._Remarks = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FiscalYear", DbType="Int")]
+		public System.Nullable<int> FiscalYear
+		{
+			get
+			{
+				return this._FiscalYear;
+			}
+			set
+			{
+				if ((this._FiscalYear != value))
+				{
+					this._FiscalYear = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignUSGSDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SignUSGSDate
+		{
+			get
+			{
+				return this._SignUSGSDate;
+			}
+			set
+			{
+				if ((this._SignUSGSDate != value))
+				{
+					this._SignUSGSDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignCustomerDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SignCustomerDate
+		{
+			get
+			{
+				return this._SignCustomerDate;
+			}
+			set
+			{
+				if ((this._SignCustomerDate != value))
+				{
+					this._SignCustomerDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingTotal", DbType="Float")]
+		public System.Nullable<double> FundingTotal
+		{
+			get
+			{
+				return this._FundingTotal;
+			}
+			set
+			{
+				if ((this._FundingTotal != value))
+				{
+					this._FundingTotal = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountStatusID", DbType="Int")]
+		public System.Nullable<int> AccountStatusID
+		{
+			get
+			{
+				return this._AccountStatusID;
+			}
+			set
+			{
+				if ((this._AccountStatusID != value))
+				{
+					this._AccountStatusID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(5)")]
+		public string Status
+		{
+			get
+			{
+				return this._Status;
+			}
+			set
+			{
+				if ((this._Status != value))
+				{
+					this._Status = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesDocument", DbType="NVarChar(50)")]
+		public string SalesDocument
+		{
+			get
+			{
+				return this._SalesDocument;
+			}
+			set
+			{
+				if ((this._SalesDocument != value))
+				{
+					this._SalesDocument = value;
+				}
+			}
 		}
 	}
 	
