@@ -137,8 +137,8 @@
             info.update = function (props) {
                 this._div.innerHTML = (props ?
                     '<h4>' + props.Center + '</h4>' + props.TotalSites + ' Real-Time Sites <br/>'
-                    + props.Percentage + '% (' + props.FundedSites + ' sites) Funded<br/>'
-                    + (100 - props.Percentage).toFixed(2) + '% (' + (props.TotalSites - props.FundedSites) + ' sites) Unfunded'
+                    + props.FundedSites + ' Sites (' + props.Percentage + '%) Funded<br/>'
+                    + (props.TotalSites - props.FundedSites) + ' Sites (' + (100 - props.Percentage).toFixed(2) +  '%) Unfunded'
                     : 'Hover over a Center for more information <br/> Double-click a Center to view a report');
             };
 
