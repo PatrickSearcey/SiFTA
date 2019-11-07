@@ -56,7 +56,7 @@
     <telerik:RadMultiPage runat="server" ID="rmpCenterOptions" RenderSelectedPageOnly="true">
         <!-- Customers Section -->
         <telerik:RadPageView ID="rpvCustomers" runat="server" Selected="true" TabIndex="0">
-            <telerik:RadComboBox runat="server" ID="rcbCustomer" OnSelectedIndexChanged="rcbCustomer_SelectedIndexChanged" AutoPostBack="true" Skin="Silk">
+            <telerik:RadComboBox runat="server"  ID="rcbCustomer" OnSelectedIndexChanged="rcbCustomer_SelectedIndexChanged" AutoPostBack="true" Skin="Silk">
                 <Items>
                     <telerik:RadComboBoxItem Text="All Customers" Value="All" />
                     <telerik:RadComboBoxItem Text="Active Customers" Value="Active" />

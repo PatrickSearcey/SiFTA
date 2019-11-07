@@ -495,18 +495,18 @@ M.makeMap = function ( opts ) {
     
     // basemaps (uses esri-leaflet.js) - need new layers for each map
     var basemap_topo = L.layerGroup([
-        L.esri.tiledMapLayer("http://basemap.nationalmap.gov/ArcGIS/rest/services/USGSTopo/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
+        L.esri.tiledMapLayer("https://basemap.nationalmap.gov/ArcGIS/rest/services/USGSTopo/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
     ]);
     var basemap_streets = L.layerGroup([
-        L.esri.tiledMapLayer("http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
+        L.esri.tiledMapLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
     ]);
     var basemap_imagery = L.layerGroup([
-        L.esri.tiledMapLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",                           {"opacity":M.startup_basemapOpacity} ), // base
-        L.esri.tiledMapLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
+        L.esri.tiledMapLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",                           {"opacity":M.startup_basemapOpacity} ), // base
+        L.esri.tiledMapLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
     ]);
     var basemap_relief = L.layerGroup([
-        L.esri.tiledMapLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer",                     {"opacity":M.startup_basemapOpacity} ), // base
-        L.esri.tiledMapLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
+        L.esri.tiledMapLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer",                     {"opacity":M.startup_basemapOpacity} ), // base
+        L.esri.tiledMapLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
     ]);
     
     // create map

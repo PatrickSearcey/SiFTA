@@ -125,3 +125,6 @@ a:hover
     margin:0px !important;
 }
 
+.RadComboBox_Silk .rcbInput {
+    width: 125% !important;
+}

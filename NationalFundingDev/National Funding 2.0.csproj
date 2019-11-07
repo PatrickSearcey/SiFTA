@@ -652,6 +652,13 @@
     <Content Include="SiftaSiteMap.sitemap" />
     <Content Include="Themes\Base\ErrorHandler.ashx" />
     <None Include="Properties\PublishProfiles\Dev.pubxml" />
+    <Content Include="SiftaMapUtils\proxy\proxy.ashx" />
+    <Content Include="SiftaMapUtils\proxy\proxy.config" />
+    <None Include="SiftaMapUtils\proxy\proxy.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="SiftaMapUtils\proxy\README.md" />
+    <Content Include="SiftaMapUtils\proxy\Web.config" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -719,7 +726,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
+      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

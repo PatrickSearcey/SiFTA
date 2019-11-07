@@ -120,9 +120,8 @@
             //Set its max zoom to be 14
             map.options.maxZoom = 14;
             map.setView([50.8282, -110.5795], 3);
-            L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Map data &copy;' }).addTo(map);
-
-            $.getJSON("https://sifta.water.usgs.gov/Services/api/Site/CenterRealTimeSiteFunding", function (data) {
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Map data &copy;' }).addTo(map);
+            $.getJSON("../../SiftaMapUtils/proxy/proxy.ashx?https://sifta.water.usgs.gov/Services/api/Site/CenterRealTimeSiteFunding", function (data) {
                 L.geoJson(data, { style: style, onEachFeature: onEachFeature }).addTo(map);
             });
 
