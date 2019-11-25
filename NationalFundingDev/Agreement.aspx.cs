@@ -40,7 +40,7 @@ namespace NationalFundingDev
             {
                 rtsAgreementOptions.Tabs.FindTabByValue("Coop").Visible = true;
                 //Set the search box to be a blank list
-                rsbCoopFunding.DataSource = new List<string>();
+                //rsbCoopFunding.DataSource = new List<string>();
             }
 
             if(user.IsSuperUser || user.IsCenterAdmin)
@@ -980,85 +980,7 @@ namespace NationalFundingDev
         #region Cooperative Funding
         protected void rgCoopFunding_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgCoopFunding.DataSource = siftaDB.spCooperativeFunding(agreement.Customer.Center.OrgCode, rsbCoopFunding.Text).Where(p => p.AgreementID == agreement.AgreementID).OrderByDescending(p => p.StartDate);
-        }
-
-        protected void rgCoopFunding_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
-        {
-            GridDataItem dataItem = (GridDataItem)e.DetailTableView.ParentItem;
-            if (e.DetailTableView.Name == "Accounts")
-            {
-                var AgreementID = Convert.ToInt32(dataItem.GetDataKeyValue("AgreementID"));
-                e.DetailTableView.DataSource = siftaDB.CooperativeFundings.Where(p => p.AgreementID == AgreementID).OrderBy(p => p.FiscalYear);
-            }
-        }
-
-        protected void rgCoopFunding_InsertCommand(object sender, GridCommandEventArgs e)
-        {
-            UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            GridDataItem parentItem = (GridDataItem)e.Item.OwnerTableView.ParentItem;
-            var AgreementID = Convert.ToInt32(parentItem.GetDataKeyValue("AgreementID"));
-            var cf = new CooperativeFunding();
-            GrabCooperativeFundingValuesFromForm(ref cf, userControl);
-            cf.AgreementID = AgreementID;
-            cf.CreatedBy = user.ID;
-            cf.CreatedDate = DateTime.Now;
-            siftaDB.CooperativeFundings.InsertOnSubmit(cf);
-            //Add metrics
-            var metric = new MetricHandler(agreement.Customer.OrgCode, agreement.CustomerID, agreement.AgreementID, MetricType.RecordAdded, "Cooperative Funding", "Cooperative Funding Added");
-            metric.SubmitChanges();
-            siftaDB.SubmitChanges();
-        }
-
-        protected void rgCoopFunding_UpdateCommand(object sender, GridCommandEventArgs e)
-        {
-            UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            GridDataItem parentItem = (GridDataItem)e.Item.OwnerTableView.ParentItem;
-            GridEditableItem editedItem = (GridEditableItem)e.Item;
-            var CooperativeFundingID = Convert.ToInt32(editedItem.GetDataKeyValue("CooperativeFundingID"));
-            var cf = siftaDB.CooperativeFundings.FirstOrDefault(p => p.CooperativeFundingID == CooperativeFundingID);
-            GrabCooperativeFundingValuesFromForm(ref cf, userControl);
-            //Add metrics
-            var metric = new MetricHandler(agreement.Customer.OrgCode, agreement.CustomerID, agreement.AgreementID, MetricType.RecordUpdate, "Cooperative Funding", String.Format("CooperativeFundingID = {0}", CooperativeFundingID));
-            metric.SubmitChanges();
-            siftaDB.SubmitChanges();
-        }
-        private void GrabCooperativeFundingValuesFromForm(ref CooperativeFunding cf, UserControl control)
-        {
-            var rntbFiscalYear = (RadNumericTextBox)control.FindControl("rntbFiscalYear");
-            var rcbMod = (RadComboBox)control.FindControl("rcbMod");
-            var rcbAccount = (RadComboBox)control.FindControl("rcbAccount");
-            var rntbUSGS = (RadNumericTextBox)control.FindControl("rntbUSGS");
-            var rntbCooperator = (RadNumericTextBox)control.FindControl("rntbCooperator");
-            var rcbStatus = (RadComboBox)control.FindControl("rcbStatus");
-            var rtbRemarks = (RadTextBox)control.FindControl("rtbRemarks");
-
-            var mod = siftaDB.AgreementMods.FirstOrDefault(p => p.AgreementModID.ToString() == rcbMod.SelectedValue);
-            cf.ModNumber = mod.Number;
-            cf.AgreementModID = mod.AgreementModID;
-            cf.FiscalYear = Convert.ToInt32(rntbFiscalYear.Value);
-            cf.AccountNumber = rcbAccount.Text;
-            cf.FundingUSGSCMF = Convert.ToDouble(rntbUSGS.Value);
-            cf.FundingCustomer = Convert.ToDouble(rntbCooperator.Value);
-            cf.Status = rcbStatus.SelectedValue;
-            cf.Remarks = rtbRemarks.Text;
-            cf.ModifiedBy = user.ID;
-            cf.ModifiedDate = DateTime.Now;
-        }
-        protected void rbShowAll_Click(object sender, EventArgs e)
-        {
-            rsbCoopFunding.Text = "";
-            rgCoopFunding.Rebind();
-        }
-
-        protected void rsbCoopFunding_Search(object sender, SearchBoxEventArgs e)
-        {
-            rgCoopFunding.Rebind();
-        }
-
-        protected void rbViewReport_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(String.Format("Reports/Center/CoopFunding.aspx?OrgCode={0}", agreement.Customer.Center.OrgCode).AppendBaseURL());
+            rgCoopFunding.DataSource = siftaDB.vAccountSummaries.Where(p => p.AgreementID == agreement.AgreementID);
         }
         #endregion
 

@@ -571,6 +571,14 @@ namespace NationalFundingDev
 			}
 		}
 		
+		public System.Data.Linq.Table<vAccountSummary> vAccountSummaries
+		{
+			get
+			{
+				return this.GetTable<vAccountSummary>();
+			}
+		}
+		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.spAccountFundingAccountDetail")]
 		public ISingleResult<spAccountFundingAccountDetailResult> spAccountFundingAccountDetail([global::System.Data.Linq.Mapping.ParameterAttribute(Name="OrgCode", DbType="NVarChar(4)")] string orgCode, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="BeginFiscalYear", DbType="Int")] System.Nullable<int> beginFiscalYear, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="EndFiscalYear", DbType="Int")] System.Nullable<int> endFiscalYear)
 		{
@@ -18389,6 +18397,141 @@ namespace NationalFundingDev
 				if ((this._SalesDocument != value))
 				{
 					this._SalesDocument = value;
+				}
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAccountSummary")]
+	public partial class vAccountSummary
+	{
+		
+		private System.Nullable<int> _FY;
+		
+		private System.Nullable<int> _AgreementID;
+		
+		private string _ModNumber;
+		
+		private string _AccountName;
+		
+		private System.Nullable<decimal> _USGS;
+		
+		private System.Nullable<decimal> _Cooperator;
+		
+		private System.Nullable<decimal> _Total;
+		
+		public vAccountSummary()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FY", DbType="Int")]
+		public System.Nullable<int> FY
+		{
+			get
+			{
+				return this._FY;
+			}
+			set
+			{
+				if ((this._FY != value))
+				{
+					this._FY = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int")]
+		public System.Nullable<int> AgreementID
+		{
+			get
+			{
+				return this._AgreementID;
+			}
+			set
+			{
+				if ((this._AgreementID != value))
+				{
+					this._AgreementID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModNumber", DbType="NVarChar(50)")]
+		public string ModNumber
+		{
+			get
+			{
+				return this._ModNumber;
+			}
+			set
+			{
+				if ((this._ModNumber != value))
+				{
+					this._ModNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(MAX)")]
+		public string AccountName
+		{
+			get
+			{
+				return this._AccountName;
+			}
+			set
+			{
+				if ((this._AccountName != value))
+				{
+					this._AccountName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USGS", DbType="Money")]
+		public System.Nullable<decimal> USGS
+		{
+			get
+			{
+				return this._USGS;
+			}
+			set
+			{
+				if ((this._USGS != value))
+				{
+					this._USGS = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cooperator", DbType="Money")]
+		public System.Nullable<decimal> Cooperator
+		{
+			get
+			{
+				return this._Cooperator;
+			}
+			set
+			{
+				if ((this._Cooperator != value))
+				{
+					this._Cooperator = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Money")]
+		public System.Nullable<decimal> Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
 				}
 			}
 		}

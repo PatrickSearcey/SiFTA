@@ -965,6 +965,17 @@
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
+  <Table Name="dbo.vAccountSummary" Member="vAccountSummaries">
+    <Type Name="vAccountSummary">
+      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="USGS" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Cooperator" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">
     <Parameter Name="OrgCode" Parameter="orgCode" Type="System.String" DbType="NVarChar(4)" />
     <Parameter Name="BeginFiscalYear" Parameter="beginFiscalYear" Type="System.Int32" DbType="Int" />

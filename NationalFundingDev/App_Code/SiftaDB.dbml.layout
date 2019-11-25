@@ -194,7 +194,7 @@
         <classShapeMoniker Id="204e03d1-ddd4-44e6-9efb-723827ed250d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.75 : 19.7516097005208); (1.75 : 22.2604484049479); (2.19791916666667 : 22.2604484049479 : JumpStart); (2.36458583333333 : 22.2604484049479 : JumpEnd); (2.46354541666667 : 22.2604484049479 : JumpStart); (2.63021208333333 : 22.2604484049479 : JumpEnd); (3.5 : 22.2604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.75 : 19.7516097005208); (1.75 : 22.2604484049479); (3.5 : 22.2604484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Center/Center_CenterDirector" />
       <nodes>
         <classShapeMoniker Id="48c96591-c381-4262-b44b-f8b9485494ce" />
@@ -222,7 +222,7 @@
         <classShapeMoniker Id="01b3c9f1-d6e0-4ac3-bb05-6d6ac7c09435" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(1.2187475 : 19.7516097005208); (1.2187475 : 23.5104484049479); (2.19791916666667 : 23.5104484049479 : JumpStart); (2.36458583333333 : 23.5104484049479 : JumpEnd); (2.46354541666667 : 23.5104484049479 : JumpStart); (2.63021208333333 : 23.5104484049479 : JumpEnd); (6.25 : 23.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(1.2187475 : 19.7516097005208); (1.2187475 : 23.5104484049479); (2.19791916666667 : 23.5104484049479 : JumpStart); (2.36458583333333 : 23.5104484049479 : JumpEnd); (6.25 : 23.5104484049479)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Center/Center_EmployeeAccess" />
       <nodes>
         <classShapeMoniker Id="48c96591-c381-4262-b44b-f8b9485494ce" />
@@ -379,7 +379,7 @@
         <classShapeMoniker Id="a95c088d-e948-4238-85e3-4e345b0e569f" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(19.5 : 25.4230795253906); (23.90625 : 25.4230795253906); (23.90625 : 26.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(19.5 : 25.4230795253906); (22.6354166666667 : 25.4230795253906 : JumpStart); (22.8020833333333 : 25.4230795253906 : JumpEnd); (23.90625 : 25.4230795253906); (23.90625 : 26.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/AgreementMod/AgreementMod_FundingStudy" />
       <nodes>
         <classShapeMoniker Id="a50141d7-fce0-40e3-adaa-d2d1f77d7ce4" />
@@ -483,7 +483,7 @@
         <classShapeMoniker Id="026270d7-d6e6-46ad-b98f-7fe91ce4096d" />
       </nodes>
     </associationConnector>
-    <associationConnector edgePoints="[(5.5 : 27.46875); (16 : 27.46875); (16 : 26.6073225911458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+    <associationConnector edgePoints="[(5.5 : 27.46875); (7.16666666666667 : 27.46875 : JumpStart); (7.33333333333333 : 27.46875 : JumpEnd); (16 : 27.46875); (16 : 26.6073225911458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/SiftaDBDataContext/Employee/Employee_Agreement" />
       <nodes>
         <classShapeMoniker Id="01b3c9f1-d6e0-4ac3-bb05-6d6ac7c09435" />
@@ -501,6 +501,12 @@
       <DataClassMoniker Name="/SiftaDBDataContext/vCooperativeFundingReport" />
       <nestedChildShapes>
         <elementListCompartment Id="df3305a8-03bf-4894-954b-1e17ac9d9f98" absoluteBounds="18.64, 6.4600000000000009, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e394c0a1-df4f-41d3-b291-72398af251fc" absoluteBounds="8.625, 30.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/SiftaDBDataContext/vAccountSummary" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5417eada-2a98-49c3-8235-e2dfc4a9de6c" absoluteBounds="8.64, 30.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
   </nestedChildShapes>
