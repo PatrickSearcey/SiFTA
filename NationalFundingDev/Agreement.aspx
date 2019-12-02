@@ -535,8 +535,7 @@
                     <GroupHeaderItemStyle ForeColor="Black" />
                     <Columns>
                         <telerik:GridBoundColumn DataField="FY" HeaderText="Fiscal Year" />
-                        <telerik:GridBoundColumn DataField="AgreementID" HeaderText="Account Number" />
-                        <telerik:GridBoundColumn DataField="ModNumber" HeaderText="Mod Number" />
+                        <telerik:GridBoundColumn DataField="AccountNumber" HeaderText="Account Number" />
                         <telerik:GridBoundColumn DataField="AccountName" HeaderText="Account Name" />
                         <telerik:GridBoundColumn DataField="USGS" HeaderText="USGS" DataFormatString="{0:c0}"  />
                         <telerik:GridBoundColumn DataField="Cooperator" HeaderText="Cooperator" DataFormatString="{0:c0}" />

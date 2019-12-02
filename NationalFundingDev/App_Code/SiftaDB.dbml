@@ -970,7 +970,8 @@
       <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
       <Column Name="USGS" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Cooperator" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />

@@ -18412,6 +18412,8 @@ namespace NationalFundingDev
 		
 		private string _ModNumber;
 		
+		private string _AccountNumber;
+		
 		private string _AccountName;
 		
 		private System.Nullable<decimal> _USGS;
@@ -18472,7 +18474,23 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(MAX)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="NVarChar(15)")]
+		public string AccountNumber
+		{
+			get
+			{
+				return this._AccountNumber;
+			}
+			set
+			{
+				if ((this._AccountNumber != value))
+				{
+					this._AccountNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(35)")]
 		public string AccountName
 		{
 			get
