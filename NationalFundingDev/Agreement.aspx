@@ -527,7 +527,7 @@
         <telerik:RadPageView ID="rpvCoopFunding" runat="server" TabIndex="7">
             <telerik:RadGrid ID="rgCoopFunding" runat="server" Width="100%" 
                 AutoGenerateColumns="False" Skin="Silk" AllowPaging="true"
-                PageSize="10" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" >
+                PageSize="10" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" OnItemDataBound="rgCoopFunding_ItemDataBound" >
                 <PagerStyle PageSizes="10" Mode="NextPrevAndNumeric" />
                 <ItemStyle />
                 <MasterTableView Width="100%" DataKeyNames="AgreementID" AllowMultiColumnSorting="True" GroupsDefaultExpanded="true" HierarchyDefaultExpanded="true">
@@ -543,6 +543,40 @@
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
+            <div runat="server" id="totalsDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
+                <table style="width:100%;table-layout:auto;empty-cells:show;border-collapse:collapse;">
+                    <tr style="background-color: #bd8f04; color: white; font-weight: bold">
+                        <td align="right" style="padding:3px;"></td>
+                        <td style="padding:3px;">Planned Total (From Receivers)</td>
+                        <td align="right" style="padding:3px;">USGS Total:</td>
+                        <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
+                        <td align="right" style="padding:3px;">Cooperator Total:</td>
+                        <td align="right" style="padding:3px;" runat="server" id="reimTd"></td>
+                        <td align="right" style="padding:3px;">Grand Total:</td>
+                        <td align="right" style="padding:3px;" runat="server" id="totalsTd"></td>
+                    </tr>
+                    <tr style="background-color: black; color: white; font-weight: bold">
+                        <td align="right" style="padding:3px;"></td>
+                        <td style="padding:3px;">Funding Total (From Agreement Overview)</td>
+                        <td align="right" style="padding:3px;">USGS CMF:</td>
+                        <td align="right" style="padding:3px;" runat="server" id="cmfTd"></td>
+                        <td align="right" style="padding:3px;">Customer:</td>
+                        <td align="right" style="padding:3px;" runat="server" id="custTd"></td>
+                        <td align="right" style="padding:3px;">Grand Total:</td>
+                        <td align="right" style="padding:3px;" runat="server" id="aogtTd"></td>
+                    </tr>
+                    <tr style="font-weight: bold">
+                        <td align="right" style="padding:3px;"></td>
+                        <td style="padding:3px;">Difference</td>
+                        <td align="right" style="padding:3px;"></td>
+                        <td align="right" style="padding:3px;" runat="server" id="diff1Td"></td>
+                        <td align="right" style="padding:3px;"></td>
+                        <td align="right" style="padding:3px;" runat="server" id="diff2Td"></td>
+                        <td align="right" style="padding:3px;"></td>
+                        <td align="right" style="padding:3px;" runat="server" id="diff3Td"></td>
+                    </tr>
+                </table>
+            </div>
         </telerik:RadPageView>
 
         <telerik:RadPageView ID="rpvReciever" runat="server" TabIndex="8">

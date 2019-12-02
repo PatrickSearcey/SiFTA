@@ -982,6 +982,43 @@ namespace NationalFundingDev
         {
             rgCoopFunding.DataSource = siftaDB.vAccountSummaries.Where(p => p.AgreementID == agreement.AgreementID);
         }
+
+        protected void rgCoopFunding_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
+        {
+            int aID = int.Parse(Request.QueryString["AgreementID"]);
+            var rec = siftaDB.Receivers.Where(p => p.AgreementID == aID);
+            decimal sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+            decimal reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+            var grandTotal = (Decimal.ToDouble(sirTotal + reimTotal));
+
+            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
+            double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
+            double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
+            
+            dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
+            cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
+
+            double dirDiff = (Decimal.ToDouble(sirTotal) - sumUSGS);
+            string dirStyle = dirDiff < 0 ? "color:red" : "";
+
+            diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
+
+            reimTd.InnerHtml = "<span>$" + reimTotal.ToString("#,##0") + "</span>";
+            custTd.InnerHtml = "<span>$" + sumCust.ToString("#,##0") + "</span>";
+
+            double reimDiff = (Decimal.ToDouble(reimTotal) - sumCust);
+            string reimStyle = reimDiff < 0 ? "color:red" : "";
+
+            diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
+
+            totalsTd.InnerHtml = "<span>$" + grandTotal.ToString("#,##0") + "</span>";
+            aogtTd.InnerHtml = "<span>$" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
+
+            double gDiff = (grandTotal - (sumUSGS + sumCust));
+            string gStyle = gDiff < 0 ? "color:red" : "";
+
+            diff3Td.InnerHtml = "<span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
+        }
         #endregion
 
         #region Receiver
