@@ -888,23 +888,6 @@
       <Column Name="Active" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Receiver" Member="Receivers">
-    <Type Name="Receiver">
-      <Column Name="RecID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Funding" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EditedWhen" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EditedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.Agreement" Member="Agreements">
     <Type Name="Agreement">
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -975,6 +958,25 @@
       <Column Name="USGS" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Cooperator" Type="System.Decimal" DbType="Money" CanBeNull="true" />
       <Column Name="Total" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Receiver" Member="Receivers">
+    <Type Name="Receiver">
+      <Column Name="RecID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Funding" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">

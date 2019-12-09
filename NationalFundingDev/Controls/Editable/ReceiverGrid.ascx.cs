@@ -118,8 +118,14 @@ namespace NationalFundingDev.Controls.Editable
             rec.ModNumber = rcbMod.SelectedValue;
             rec.Status = rddlStatus.SelectedValue;
             rec.Remarks = rtbRemarks.Text;
-            rec.EditedBy = user.ID;
-            rec.EditedWhen = DateTime.Now;
+            rec.ModifiedBy = user.ID;
+            rec.ModifiedDate = DateTime.Now;
+
+            if(String.IsNullOrEmpty(rec.CreatedBy))
+            {
+                rec.CreatedBy = user.ID;
+                rec.CreatedDate = DateTime.Now;
+            }
             #endregion
         }
 
