@@ -18432,6 +18432,8 @@ namespace NationalFundingDev
 		
 		private int _AgreementID;
 		
+		private System.Nullable<int> _FundSourceFY;
+		
 		private string _AccountNumber;
 		
 		private string _AccountName;
@@ -18460,6 +18462,22 @@ namespace NationalFundingDev
 				if ((this._AgreementID != value))
 				{
 					this._AgreementID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundSourceFY", DbType="Int")]
+		public System.Nullable<int> FundSourceFY
+		{
+			get
+			{
+				return this._FundSourceFY;
+			}
+			set
+			{
+				if ((this._FundSourceFY != value))
+				{
+					this._FundSourceFY = value;
 				}
 			}
 		}

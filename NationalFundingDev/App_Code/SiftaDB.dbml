@@ -969,6 +969,7 @@
   <Table Name="dbo.vAccountSummary" Member="vAccountSummaries">
     <Type Name="vAccountSummary">
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FundSourceFY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
       <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />

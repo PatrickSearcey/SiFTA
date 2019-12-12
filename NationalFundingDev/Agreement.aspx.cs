@@ -985,7 +985,9 @@ namespace NationalFundingDev
 
         protected void rgCoopFunding_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
-            int aID = int.Parse(Request.QueryString["AgreementID"]);
+            int modID = int.Parse(Request.QueryString["AgreementID"]);
+            int aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
+
             var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
             double sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
             double reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
@@ -994,7 +996,7 @@ namespace NationalFundingDev
             var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
             double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
             double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
-            
+
             dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
             cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
 

@@ -534,11 +534,12 @@
                     <CommandItemSettings ShowRefreshButton="false" />
                     <GroupHeaderItemStyle ForeColor="Black" />
                     <Columns>
-                        <telerik:GridBoundColumn DataField="FY" HeaderText="Fiscal Year" />
+                        <telerik:GridBoundColumn DataField="FundSourceFY" HeaderText="Fiscal Year" />
                         <telerik:GridBoundColumn DataField="AccountNumber" HeaderText="Account Number" />
                         <telerik:GridBoundColumn DataField="AccountName" HeaderText="Account Name" />
-                        <telerik:GridBoundColumn DataField="USGS-CMF" HeaderText="USGS" DataFormatString="{0:c0}"  />
-                        <telerik:GridBoundColumn DataField="Customer" HeaderText="Cooperator" DataFormatString="{0:c0}" />
+                        <telerik:GridBoundColumn DataField="FundingUSGSCMF" HeaderText="USGS" DataFormatString="{0:c0}"  />
+                        <telerik:GridBoundColumn DataField="FundingUSGSAllocation" HeaderText="USGS Appropriated" DataFormatString="{0:c0}"  />
+                        <telerik:GridBoundColumn DataField="FundingReimbCustomer" HeaderText="Cooperator" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn DataField="Total" HeaderText="Total" DataFormatString="{0:c0}" />
                     </Columns>
                 </MasterTableView>

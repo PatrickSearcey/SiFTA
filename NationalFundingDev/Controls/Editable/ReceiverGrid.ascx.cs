@@ -18,7 +18,8 @@ namespace NationalFundingDev.Controls.Editable
         private double grandTotal = 0, sirTotal = 0, reimTotal = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            aID = int.Parse(Request.QueryString["AgreementID"]);
+            int modID = int.Parse(Request.QueryString["AgreementID"]);
+            aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
             var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
             try
             {
@@ -30,7 +31,10 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgReceiver.DataSource = siftaDB.AccountFundSources.Where(p => p.AgreementModID == agreement.AgreementID);
+            int modID = agreement.AgreementID;
+            int aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
+
+            rgReceiver.DataSource = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
             rgReceiver.Columns.FindByUniqueName("Edit").Visible = Edit;
             rgReceiver.Columns.FindByUniqueName("Delete").Visible = Delete;
             if (AddNewRecords)
@@ -67,7 +71,7 @@ namespace NationalFundingDev.Controls.Editable
         {
             GridEditableItem editedItem = e.Item as GridEditableItem;
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            var ID = Convert.ToInt32(editedItem.GetDataKeyValue("RecID").ToString());
+            var ID = Convert.ToInt32(editedItem.GetDataKeyValue("AFSID").ToString());
             var rec = siftaDB.AccountFundSources.FirstOrDefault(p => p.AFSID == ID);
             GrabValuesFromUserControl(userControl, ref rec);
             siftaDB.SubmitChanges();
@@ -75,7 +79,7 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_DeleteCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
-            var recID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["RecID"];
+            var recID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["AFSID"];
             siftaDB.AccountFundSources.DeleteOnSubmit(siftaDB.AccountFundSources.FirstOrDefault(p => p.AFSID == recID));
             siftaDB.SubmitChanges();
         }
@@ -130,7 +134,9 @@ namespace NationalFundingDev.Controls.Editable
         //grandTotal = 0, sirTotal = 0, reimTotal
         protected void rgReceiver_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
-            int aID = int.Parse(Request.QueryString["AgreementID"]);
+            int modID = int.Parse(Request.QueryString["AgreementID"]);
+            int aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
+
             var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
             double sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
             double reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
