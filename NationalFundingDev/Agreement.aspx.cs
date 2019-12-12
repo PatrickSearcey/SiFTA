@@ -980,16 +980,16 @@ namespace NationalFundingDev
         #region Cooperative Funding
         protected void rgCoopFunding_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgCoopFunding.DataSource = siftaDB.vAccountSummaries.Where(p => p.AgreementID == agreement.AgreementID);
+            rgCoopFunding.DataSource = siftaDB.vAccountSummary1s.Where(p => p.AgreementID == agreement.AgreementID);
         }
 
         protected void rgCoopFunding_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
             int aID = int.Parse(Request.QueryString["AgreementID"]);
-            var rec = siftaDB.Receivers.Where(p => p.AgreementID == aID);
-            decimal sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
-            decimal reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
-            var grandTotal = (Decimal.ToDouble(sirTotal + reimTotal));
+            var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+            double sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+            double reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+            var grandTotal = sirTotal + reimTotal;
 
             var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
             double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
@@ -998,7 +998,7 @@ namespace NationalFundingDev
             dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
             cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
 
-            double dirDiff = (Decimal.ToDouble(sirTotal) - sumUSGS);
+            double dirDiff = sirTotal - sumUSGS;
             string dirStyle = dirDiff < 0 ? "color:red" : "";
 
             diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
@@ -1006,7 +1006,7 @@ namespace NationalFundingDev
             reimTd.InnerHtml = "<span>$" + reimTotal.ToString("#,##0") + "</span>";
             custTd.InnerHtml = "<span>$" + sumCust.ToString("#,##0") + "</span>";
 
-            double reimDiff = (Decimal.ToDouble(reimTotal) - sumCust);
+            double reimDiff = reimTotal - sumCust;
             string reimStyle = reimDiff < 0 ? "color:red" : "";
 
             diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";

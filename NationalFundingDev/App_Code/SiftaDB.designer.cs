@@ -120,9 +120,9 @@ namespace NationalFundingDev
     partial void InsertAgreement(Agreement instance);
     partial void UpdateAgreement(Agreement instance);
     partial void DeleteAgreement(Agreement instance);
-    partial void InsertReceiver(Receiver instance);
-    partial void UpdateReceiver(Receiver instance);
-    partial void DeleteReceiver(Receiver instance);
+    partial void InsertAccountFundSource(AccountFundSource instance);
+    partial void UpdateAccountFundSource(AccountFundSource instance);
+    partial void DeleteAccountFundSource(AccountFundSource instance);
     #endregion
 		
 		public SiftaDBDataContext() : 
@@ -563,19 +563,19 @@ namespace NationalFundingDev
 			}
 		}
 		
-		public System.Data.Linq.Table<vAccountSummary> vAccountSummaries
+		public System.Data.Linq.Table<AccountFundSource> AccountFundSources
 		{
 			get
 			{
-				return this.GetTable<vAccountSummary>();
+				return this.GetTable<AccountFundSource>();
 			}
 		}
 		
-		public System.Data.Linq.Table<Receiver> Receivers
+		public System.Data.Linq.Table<vAccountSummary1> vAccountSummary1s
 		{
 			get
 			{
-				return this.GetTable<Receiver>();
+				return this.GetTable<vAccountSummary1>();
 			}
 		}
 		
@@ -18052,170 +18052,17 @@ namespace NationalFundingDev
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAccountSummary")]
-	public partial class vAccountSummary
-	{
-		
-		private System.Nullable<int> _FY;
-		
-		private System.Nullable<int> _AgreementID;
-		
-		private string _ModNumber;
-		
-		private string _AccountNumber;
-		
-		private string _AccountName;
-		
-		private System.Nullable<decimal> _USGS;
-		
-		private System.Nullable<decimal> _Cooperator;
-		
-		private System.Nullable<decimal> _Total;
-		
-		public vAccountSummary()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FY", DbType="Int")]
-		public System.Nullable<int> FY
-		{
-			get
-			{
-				return this._FY;
-			}
-			set
-			{
-				if ((this._FY != value))
-				{
-					this._FY = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int")]
-		public System.Nullable<int> AgreementID
-		{
-			get
-			{
-				return this._AgreementID;
-			}
-			set
-			{
-				if ((this._AgreementID != value))
-				{
-					this._AgreementID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModNumber", DbType="NVarChar(50)")]
-		public string ModNumber
-		{
-			get
-			{
-				return this._ModNumber;
-			}
-			set
-			{
-				if ((this._ModNumber != value))
-				{
-					this._ModNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="NVarChar(15)")]
-		public string AccountNumber
-		{
-			get
-			{
-				return this._AccountNumber;
-			}
-			set
-			{
-				if ((this._AccountNumber != value))
-				{
-					this._AccountNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(35)")]
-		public string AccountName
-		{
-			get
-			{
-				return this._AccountName;
-			}
-			set
-			{
-				if ((this._AccountName != value))
-				{
-					this._AccountName = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USGS", DbType="Money")]
-		public System.Nullable<decimal> USGS
-		{
-			get
-			{
-				return this._USGS;
-			}
-			set
-			{
-				if ((this._USGS != value))
-				{
-					this._USGS = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Cooperator", DbType="Money")]
-		public System.Nullable<decimal> Cooperator
-		{
-			get
-			{
-				return this._Cooperator;
-			}
-			set
-			{
-				if ((this._Cooperator != value))
-				{
-					this._Cooperator = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Money")]
-		public System.Nullable<decimal> Total
-		{
-			get
-			{
-				return this._Total;
-			}
-			set
-			{
-				if ((this._Total != value))
-				{
-					this._Total = value;
-				}
-			}
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Receiver")]
-	public partial class Receiver : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.AccountFundSource")]
+	public partial class AccountFundSource : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _RecID;
+		private int _AFSID;
 		
-		private System.Nullable<int> _AgreementID;
+		private System.Nullable<int> _AgreementModID;
 		
-		private System.Nullable<int> _FY;
+		private System.Nullable<int> _FundSourceFY;
 		
 		private string _AccountNumber;
 		
@@ -18225,11 +18072,9 @@ namespace NationalFundingDev
 		
 		private string _ProgramElementCode;
 		
-		private System.Nullable<decimal> _Funding;
+		private System.Nullable<double> _Funding;
 		
-		private string _ModNumber;
-		
-		private string _Status;
+		private string _FundStatus;
 		
 		private string _Remarks;
 		
@@ -18245,12 +18090,12 @@ namespace NationalFundingDev
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnRecIDChanging(int value);
-    partial void OnRecIDChanged();
-    partial void OnAgreementIDChanging(System.Nullable<int> value);
-    partial void OnAgreementIDChanged();
-    partial void OnFYChanging(System.Nullable<int> value);
-    partial void OnFYChanged();
+    partial void OnAFSIDChanging(int value);
+    partial void OnAFSIDChanged();
+    partial void OnAgreementModIDChanging(System.Nullable<int> value);
+    partial void OnAgreementModIDChanged();
+    partial void OnFundSourceFYChanging(System.Nullable<int> value);
+    partial void OnFundSourceFYChanged();
     partial void OnAccountNumberChanging(string value);
     partial void OnAccountNumberChanged();
     partial void OnCustomerClassChanging(string value);
@@ -18259,12 +18104,10 @@ namespace NationalFundingDev
     partial void OnMatchPairChanged();
     partial void OnProgramElementCodeChanging(string value);
     partial void OnProgramElementCodeChanged();
-    partial void OnFundingChanging(System.Nullable<decimal> value);
+    partial void OnFundingChanging(System.Nullable<double> value);
     partial void OnFundingChanged();
-    partial void OnModNumberChanging(string value);
-    partial void OnModNumberChanged();
-    partial void OnStatusChanging(string value);
-    partial void OnStatusChanged();
+    partial void OnFundStatusChanging(string value);
+    partial void OnFundStatusChanged();
     partial void OnRemarksChanging(string value);
     partial void OnRemarksChanged();
     partial void OnCreatedByChanging(string value);
@@ -18277,67 +18120,67 @@ namespace NationalFundingDev
     partial void OnModifiedDateChanged();
     #endregion
 		
-		public Receiver()
+		public AccountFundSource()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_RecID", DbType="Int NOT NULL", IsPrimaryKey=true)]
-		public int RecID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AFSID", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int AFSID
 		{
 			get
 			{
-				return this._RecID;
+				return this._AFSID;
 			}
 			set
 			{
-				if ((this._RecID != value))
+				if ((this._AFSID != value))
 				{
-					this.OnRecIDChanging(value);
+					this.OnAFSIDChanging(value);
 					this.SendPropertyChanging();
-					this._RecID = value;
-					this.SendPropertyChanged("RecID");
-					this.OnRecIDChanged();
+					this._AFSID = value;
+					this.SendPropertyChanged("AFSID");
+					this.OnAFSIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int")]
-		public System.Nullable<int> AgreementID
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementModID", DbType="Int")]
+		public System.Nullable<int> AgreementModID
 		{
 			get
 			{
-				return this._AgreementID;
+				return this._AgreementModID;
 			}
 			set
 			{
-				if ((this._AgreementID != value))
+				if ((this._AgreementModID != value))
 				{
-					this.OnAgreementIDChanging(value);
+					this.OnAgreementModIDChanging(value);
 					this.SendPropertyChanging();
-					this._AgreementID = value;
-					this.SendPropertyChanged("AgreementID");
-					this.OnAgreementIDChanged();
+					this._AgreementModID = value;
+					this.SendPropertyChanged("AgreementModID");
+					this.OnAgreementModIDChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FY", DbType="Int")]
-		public System.Nullable<int> FY
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundSourceFY", DbType="Int")]
+		public System.Nullable<int> FundSourceFY
 		{
 			get
 			{
-				return this._FY;
+				return this._FundSourceFY;
 			}
 			set
 			{
-				if ((this._FY != value))
+				if ((this._FundSourceFY != value))
 				{
-					this.OnFYChanging(value);
+					this.OnFundSourceFYChanging(value);
 					this.SendPropertyChanging();
-					this._FY = value;
-					this.SendPropertyChanged("FY");
-					this.OnFYChanged();
+					this._FundSourceFY = value;
+					this.SendPropertyChanged("FundSourceFY");
+					this.OnFundSourceFYChanged();
 				}
 			}
 		}
@@ -18422,8 +18265,8 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Funding", DbType="Money")]
-		public System.Nullable<decimal> Funding
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Funding", DbType="Float")]
+		public System.Nullable<double> Funding
 		{
 			get
 			{
@@ -18442,42 +18285,22 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_ModNumber", DbType="NVarChar(50)")]
-		public string ModNumber
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundStatus", DbType="NVarChar(50)")]
+		public string FundStatus
 		{
 			get
 			{
-				return this._ModNumber;
+				return this._FundStatus;
 			}
 			set
 			{
-				if ((this._ModNumber != value))
+				if ((this._FundStatus != value))
 				{
-					this.OnModNumberChanging(value);
+					this.OnFundStatusChanging(value);
 					this.SendPropertyChanging();
-					this._ModNumber = value;
-					this.SendPropertyChanged("ModNumber");
-					this.OnModNumberChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Status", DbType="NVarChar(50)")]
-		public string Status
-		{
-			get
-			{
-				return this._Status;
-			}
-			set
-			{
-				if ((this._Status != value))
-				{
-					this.OnStatusChanging(value);
-					this.SendPropertyChanging();
-					this._Status = value;
-					this.SendPropertyChanged("Status");
-					this.OnStatusChanged();
+					this._FundStatus = value;
+					this.SendPropertyChanged("FundStatus");
+					this.OnFundStatusChanged();
 				}
 			}
 		}
@@ -18599,6 +18422,141 @@ namespace NationalFundingDev
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAccountSummary1")]
+	public partial class vAccountSummary1
+	{
+		
+		private int _AgreementID;
+		
+		private string _AccountNumber;
+		
+		private string _AccountName;
+		
+		private double _USGS_CMF;
+		
+		private double _USGS_Approp;
+		
+		private double _Customer;
+		
+		private double _Total;
+		
+		public vAccountSummary1()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int NOT NULL")]
+		public int AgreementID
+		{
+			get
+			{
+				return this._AgreementID;
+			}
+			set
+			{
+				if ((this._AgreementID != value))
+				{
+					this._AgreementID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountNumber", DbType="NVarChar(50)")]
+		public string AccountNumber
+		{
+			get
+			{
+				return this._AccountNumber;
+			}
+			set
+			{
+				if ((this._AccountNumber != value))
+				{
+					this._AccountNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AccountName", DbType="NVarChar(35)")]
+		public string AccountName
+		{
+			get
+			{
+				return this._AccountName;
+			}
+			set
+			{
+				if ((this._AccountName != value))
+				{
+					this._AccountName = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[USGS-CMF]", Storage="_USGS_CMF", DbType="Float NOT NULL")]
+		public double USGS_CMF
+		{
+			get
+			{
+				return this._USGS_CMF;
+			}
+			set
+			{
+				if ((this._USGS_CMF != value))
+				{
+					this._USGS_CMF = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[USGS-Approp]", Storage="_USGS_Approp", DbType="Float NOT NULL")]
+		public double USGS_Approp
+		{
+			get
+			{
+				return this._USGS_Approp;
+			}
+			set
+			{
+				if ((this._USGS_Approp != value))
+				{
+					this._USGS_Approp = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer", DbType="Float NOT NULL")]
+		public double Customer
+		{
+			get
+			{
+				return this._Customer;
+			}
+			set
+			{
+				if ((this._Customer != value))
+				{
+					this._Customer = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Total", DbType="Float NOT NULL")]
+		public double Total
+		{
+			get
+			{
+				return this._Total;
+			}
+			set
+			{
+				if ((this._Total != value))
+				{
+					this._Total = value;
+				}
 			}
 		}
 	}

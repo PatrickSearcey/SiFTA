@@ -537,8 +537,8 @@
                         <telerik:GridBoundColumn DataField="FY" HeaderText="Fiscal Year" />
                         <telerik:GridBoundColumn DataField="AccountNumber" HeaderText="Account Number" />
                         <telerik:GridBoundColumn DataField="AccountName" HeaderText="Account Name" />
-                        <telerik:GridBoundColumn DataField="USGS" HeaderText="USGS" DataFormatString="{0:c0}"  />
-                        <telerik:GridBoundColumn DataField="Cooperator" HeaderText="Cooperator" DataFormatString="{0:c0}" />
+                        <telerik:GridBoundColumn DataField="USGS-CMF" HeaderText="USGS" DataFormatString="{0:c0}"  />
+                        <telerik:GridBoundColumn DataField="Customer" HeaderText="Cooperator" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn DataField="Total" HeaderText="Total" DataFormatString="{0:c0}" />
                     </Columns>
                 </MasterTableView>
