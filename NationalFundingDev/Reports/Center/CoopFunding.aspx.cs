@@ -197,7 +197,7 @@ namespace NationalFundingDev.Reports
                 var dt = new DataTable();
                 string connectionString;
 #if DEBUG
-                connectionString = "Data Source=IGSKIACWVMi02;Initial Catalog=siftadb_dev;Integrated Security=True";
+                connectionString = "Data Source=IGSKIACWVMi02;Initial Catalog=siftadb;Integrated Security=True";
 #else
                 connectionString = "Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True";
 #endif
@@ -286,12 +286,7 @@ namespace NationalFundingDev.Reports
             get
             {
 
-                string dbconn;
-#if DEBUG
-                dbconn = "siftadb_dev";
-#else
-                dbconn = "siftadb";
-#endif
+                string dbconn = "siftadb";
 
                 if (rcbFormat.SelectedValue == "TotalBottom")
                 {
@@ -678,13 +673,11 @@ namespace NationalFundingDev.Reports
         {
             get
             {
-                string connectionString, dbconn;
+                string connectionString, dbconn = "siftadb";
 #if DEBUG
-                connectionString = "Data Source=IGSKIACWVMi02;Initial Catalog=siftadb_dev;Integrated Security=True";
-                dbconn = "siftadb_dev";
+                connectionString = "Data Source=IGSKIACWVMi02;Initial Catalog=siftadb;Integrated Security=True";
 #else
                 connectionString = "Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True";
-                dbconn = "siftadb";
 #endif
 
                 var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] " +

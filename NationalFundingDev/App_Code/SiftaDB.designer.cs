@@ -22,7 +22,7 @@ namespace NationalFundingDev
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="siftadb_dev")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="siftadb")]
 	public partial class SiftaDBDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -571,11 +571,11 @@ namespace NationalFundingDev
 			}
 		}
 		
-		public System.Data.Linq.Table<vAccountSummary1> vAccountSummary1s
+		public System.Data.Linq.Table<vAccountSummary> vAccountSummaries
 		{
 			get
 			{
-				return this.GetTable<vAccountSummary1>();
+				return this.GetTable<vAccountSummary>();
 			}
 		}
 		
@@ -18426,8 +18426,8 @@ namespace NationalFundingDev
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAccountSummary1")]
-	public partial class vAccountSummary1
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAccountSummary")]
+	public partial class vAccountSummary
 	{
 		
 		private int _AgreementID;
@@ -18436,15 +18436,15 @@ namespace NationalFundingDev
 		
 		private string _AccountName;
 		
-		private double _USGS_CMF;
+		private double _FundingUSGSCMF;
 		
-		private double _USGS_Approp;
+		private double _FundingUSGSAllocation;
 		
-		private double _Customer;
+		private double _FundingReimbCustomer;
 		
 		private double _Total;
 		
-		public vAccountSummary1()
+		public vAccountSummary()
 		{
 		}
 		
@@ -18496,50 +18496,50 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[USGS-CMF]", Storage="_USGS_CMF", DbType="Float NOT NULL")]
-		public double USGS_CMF
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMF", DbType="Float NOT NULL")]
+		public double FundingUSGSCMF
 		{
 			get
 			{
-				return this._USGS_CMF;
+				return this._FundingUSGSCMF;
 			}
 			set
 			{
-				if ((this._USGS_CMF != value))
+				if ((this._FundingUSGSCMF != value))
 				{
-					this._USGS_CMF = value;
+					this._FundingUSGSCMF = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="[USGS-Approp]", Storage="_USGS_Approp", DbType="Float NOT NULL")]
-		public double USGS_Approp
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSAllocation", DbType="Float NOT NULL")]
+		public double FundingUSGSAllocation
 		{
 			get
 			{
-				return this._USGS_Approp;
+				return this._FundingUSGSAllocation;
 			}
 			set
 			{
-				if ((this._USGS_Approp != value))
+				if ((this._FundingUSGSAllocation != value))
 				{
-					this._USGS_Approp = value;
+					this._FundingUSGSAllocation = value;
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer", DbType="Float NOT NULL")]
-		public double Customer
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingReimbCustomer", DbType="Float NOT NULL")]
+		public double FundingReimbCustomer
 		{
 			get
 			{
-				return this._Customer;
+				return this._FundingReimbCustomer;
 			}
 			set
 			{
-				if ((this._Customer != value))
+				if ((this._FundingReimbCustomer != value))
 				{
-					this._Customer = value;
+					this._FundingReimbCustomer = value;
 				}
 			}
 		}

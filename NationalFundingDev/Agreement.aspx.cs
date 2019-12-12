@@ -980,7 +980,7 @@ namespace NationalFundingDev
         #region Cooperative Funding
         protected void rgCoopFunding_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgCoopFunding.DataSource = siftaDB.vAccountSummary1s.Where(p => p.AgreementID == agreement.AgreementID);
+            rgCoopFunding.DataSource = siftaDB.vAccountSummaries.Where(p => p.AgreementID == agreement.AgreementID);
         }
 
         protected void rgCoopFunding_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)

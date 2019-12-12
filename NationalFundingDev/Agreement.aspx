@@ -114,7 +114,7 @@
             <telerik:RadTab Text="Account Funding" Value="Coop" Visible="false" >
                 <Tabs>
                     <telerik:RadTab TabIndex="7" Text="Account Summary" />
-                    <telerik:RadTab TabIndex="8" Text="Receivers" />
+                    <telerik:RadTab TabIndex="8" Text="Fund Sources" />
                 </Tabs>
             </telerik:RadTab>
             <telerik:RadTab TabIndex="9" Text="Agreement Overview" Target="_blank" />
@@ -547,7 +547,7 @@
                 <table style="width:100%;table-layout:auto;empty-cells:show;border-collapse:collapse;">
                     <tr style="background-color: #bd8f04; color: white; font-weight: bold">
                         <td align="right" style="padding:3px;"></td>
-                        <td style="padding:3px;">Planned Total (From Receivers)</td>
+                        <td style="padding:3px;">Planned Total (From Fund Sources)</td>
                         <td align="right" style="padding:3px;">USGS Total:</td>
                         <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
                         <td align="right" style="padding:3px;">Cooperator Total:</td>

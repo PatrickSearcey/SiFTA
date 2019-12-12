@@ -73,13 +73,7 @@ namespace NationalFundingDev.Reports.Metrics
         private DataTable GetDataTable(String search)
         {
             var dt = new DataTable();
-            string dbName;
-
-#if DEBUG
-            dbName = "siftadb_dev";
-#else
-            dbName = "siftadb";
-#endif
+            string dbName = "siftadb";
 
             var query = String.Format("SELECT DISTINCT [Name],[Icon]FROM [" + dbName + "].[dbo].[Customer]WHERE Name like '%{0}%'", search);
             using(SqlConnection conn = new SqlConnection(db.Connection.ConnectionString))
