@@ -73,14 +73,6 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Agreement Type:
-        </td>
-        <td>
-            <telerik:RadComboBox ID="rcbAType" runat="server" Skin="Silk" Width="160px">
-            </telerik:RadComboBox>
-        </td>
-    </tr>
-    <tr>
         <td align="right">Billing Type:
         </td>
         <td>

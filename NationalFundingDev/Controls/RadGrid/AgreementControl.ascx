@@ -73,7 +73,15 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Type:
+        <td align="right">Agreement Type:
+        </td>
+        <td>
+            <telerik:RadComboBox ID="rcbAType" runat="server" Skin="Silk" Width="160px">
+            </telerik:RadComboBox>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">Billing Type:
         </td>
         <td>
             <telerik:RadComboBox ID="rcbFundsType" runat="server" Skin="Silk" Width="160px">
@@ -86,7 +94,7 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Cycle:
+        <td align="right">Billing Cycle:
         </td>
         <td>
             <telerik:RadComboBox ID="rcbBillingCycle" runat="server" Skin="Silk" Width="160px">

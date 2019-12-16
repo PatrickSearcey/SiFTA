@@ -146,14 +146,6 @@
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" SortExpression="EndDate" UniqueName="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="SignUSGSDate" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="Cust Sign" DataField="SignCustomerDate" SortExpression="SignCustomerDate" UniqueName="SignCustomerDate" DataFormatString="{0:MM/dd/yyyy}" />
-                        
-                        
-                        <telerik:GridTemplateColumn HeaderText="Agreement Type">
-                            <ItemTemplate>
-                                <%# Cust2Group(Eval("Customer2Group")) %>
-                            </ItemTemplate>
-                        </telerik:GridTemplateColumn>
-
                         <telerik:GridBoundColumn HeaderText="Billing Type" DataField="FundsType" SortExpression="FundsType" UniqueName="FundsType" />
                         <telerik:GridBoundColumn HeaderText="Billing Cycle" DataField="BillingCycleFrequency" SortExpression="BillingCycleFrequency" UniqueName="BillingCycleFrequency" />
                         <telerik:GridBoundColumn HeaderText="USGS CMF" DataField="FundingUSGSCMF" SortExpression="FundingUSGSCMF" UniqueName="FundingUSGSCMF" DataFormatString="{0:c0}" />

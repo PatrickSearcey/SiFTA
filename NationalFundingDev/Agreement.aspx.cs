@@ -1120,12 +1120,6 @@ namespace NationalFundingDev
             if (p == null) return "";
             return p.ToPhoneFormat();
         }
-
-        public String Cust2Group(object item)
-        {
-            var value = siftaDB.lutCustomer2Groups.First(x => x.Customer2GroupCode == item.ToString());
-            return value.Customer2Group;
-        }
         #endregion
 
 

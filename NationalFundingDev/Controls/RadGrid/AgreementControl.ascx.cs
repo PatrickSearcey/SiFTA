@@ -43,6 +43,7 @@ namespace NationalFundingDev.Controls.RadGrid
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
                 }
+                AddItemsToAT();
             }
             //Update
             else if (DataItem != null && DataItem.GetType() == typeof(vAgreementInformation))
@@ -66,9 +67,21 @@ namespace NationalFundingDev.Controls.RadGrid
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
                 }
+                AddItemsToAT();
+                rcbAType.SelectedValue = agreement.Customer2Group;
             }
 
         }
-        
+
+        private void AddItemsToAT()
+        {
+            var c2g = siftaDB.lutCustomer2Groups.Where(x => 1 == 1);
+            foreach (var type in c2g)
+            {
+                var item = new RadComboBoxItem(type.Customer2Group, type.Customer2GroupCode);
+                rcbAType.Items.Add(item);
+            }
+        }
+
     }
 }

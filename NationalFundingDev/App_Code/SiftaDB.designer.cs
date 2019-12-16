@@ -430,14 +430,6 @@ namespace NationalFundingDev
 			}
 		}
 		
-		public System.Data.Linq.Table<vAgreementInformation> vAgreementInformations
-		{
-			get
-			{
-				return this.GetTable<vAgreementInformation>();
-			}
-		}
-		
 		public System.Data.Linq.Table<vSiteFundingSum> vSiteFundingSums
 		{
 			get
@@ -579,6 +571,14 @@ namespace NationalFundingDev
 			get
 			{
 				return this.GetTable<Agreement>();
+			}
+		}
+		
+		public System.Data.Linq.Table<vAgreementInformation> vAgreementInformations
+		{
+			get
+			{
+				return this.GetTable<vAgreementInformation>();
 			}
 		}
 		
@@ -11256,375 +11256,6 @@ namespace NationalFundingDev
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAgreementInformation")]
-	public partial class vAgreementInformation
-	{
-		
-		private int _AgreementID;
-		
-		private int _CustomerID;
-		
-		private string _PurchaseOrderNumber;
-		
-		private string _MatchPairCode;
-		
-		private string _SalesDocument;
-		
-		private string _FundsType;
-		
-		private string _BillingCycleFrequency;
-		
-		private System.Nullable<int> _CustomerBillingContact;
-		
-		private System.Nullable<int> _CustomerTechnicalContact;
-		
-		private string _USGSBillingContact;
-		
-		private string _USGSTechnicalContact;
-		
-		private string _Remarks;
-		
-		private string _Tags;
-		
-		private System.Nullable<System.DateTime> _StartDate;
-		
-		private System.Nullable<System.DateTime> _EndDate;
-		
-		private System.Nullable<System.DateTime> _SignUSGSDate;
-		
-		private System.Nullable<System.DateTime> _SignCustomerDate;
-		
-		private System.Nullable<double> _FundingUSGSCMFSum;
-		
-		private System.Nullable<double> _FundingCustomerSum;
-		
-		private System.Nullable<double> _FundingOtherSum;
-		
-		public vAgreementInformation()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int NOT NULL")]
-		public int AgreementID
-		{
-			get
-			{
-				return this._AgreementID;
-			}
-			set
-			{
-				if ((this._AgreementID != value))
-				{
-					this._AgreementID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int NOT NULL")]
-		public int CustomerID
-		{
-			get
-			{
-				return this._CustomerID;
-			}
-			set
-			{
-				if ((this._CustomerID != value))
-				{
-					this._CustomerID = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseOrderNumber", DbType="NVarChar(75)")]
-		public string PurchaseOrderNumber
-		{
-			get
-			{
-				return this._PurchaseOrderNumber;
-			}
-			set
-			{
-				if ((this._PurchaseOrderNumber != value))
-				{
-					this._PurchaseOrderNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
-		{
-			get
-			{
-				return this._MatchPairCode;
-			}
-			set
-			{
-				if ((this._MatchPairCode != value))
-				{
-					this._MatchPairCode = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesDocument", DbType="NVarChar(50)")]
-		public string SalesDocument
-		{
-			get
-			{
-				return this._SalesDocument;
-			}
-			set
-			{
-				if ((this._SalesDocument != value))
-				{
-					this._SalesDocument = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundsType", DbType="NVarChar(1)")]
-		public string FundsType
-		{
-			get
-			{
-				return this._FundsType;
-			}
-			set
-			{
-				if ((this._FundsType != value))
-				{
-					this._FundsType = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillingCycleFrequency", DbType="NVarChar(15)")]
-		public string BillingCycleFrequency
-		{
-			get
-			{
-				return this._BillingCycleFrequency;
-			}
-			set
-			{
-				if ((this._BillingCycleFrequency != value))
-				{
-					this._BillingCycleFrequency = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerBillingContact", DbType="Int")]
-		public System.Nullable<int> CustomerBillingContact
-		{
-			get
-			{
-				return this._CustomerBillingContact;
-			}
-			set
-			{
-				if ((this._CustomerBillingContact != value))
-				{
-					this._CustomerBillingContact = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerTechnicalContact", DbType="Int")]
-		public System.Nullable<int> CustomerTechnicalContact
-		{
-			get
-			{
-				return this._CustomerTechnicalContact;
-			}
-			set
-			{
-				if ((this._CustomerTechnicalContact != value))
-				{
-					this._CustomerTechnicalContact = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USGSBillingContact", DbType="NVarChar(50)")]
-		public string USGSBillingContact
-		{
-			get
-			{
-				return this._USGSBillingContact;
-			}
-			set
-			{
-				if ((this._USGSBillingContact != value))
-				{
-					this._USGSBillingContact = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USGSTechnicalContact", DbType="NVarChar(50)")]
-		public string USGSTechnicalContact
-		{
-			get
-			{
-				return this._USGSTechnicalContact;
-			}
-			set
-			{
-				if ((this._USGSTechnicalContact != value))
-				{
-					this._USGSTechnicalContact = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(255)")]
-		public string Remarks
-		{
-			get
-			{
-				return this._Remarks;
-			}
-			set
-			{
-				if ((this._Remarks != value))
-				{
-					this._Remarks = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tags", DbType="NVarChar(255)")]
-		public string Tags
-		{
-			get
-			{
-				return this._Tags;
-			}
-			set
-			{
-				if ((this._Tags != value))
-				{
-					this._Tags = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> StartDate
-		{
-			get
-			{
-				return this._StartDate;
-			}
-			set
-			{
-				if ((this._StartDate != value))
-				{
-					this._StartDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> EndDate
-		{
-			get
-			{
-				return this._EndDate;
-			}
-			set
-			{
-				if ((this._EndDate != value))
-				{
-					this._EndDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignUSGSDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> SignUSGSDate
-		{
-			get
-			{
-				return this._SignUSGSDate;
-			}
-			set
-			{
-				if ((this._SignUSGSDate != value))
-				{
-					this._SignUSGSDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignCustomerDate", DbType="DateTime")]
-		public System.Nullable<System.DateTime> SignCustomerDate
-		{
-			get
-			{
-				return this._SignCustomerDate;
-			}
-			set
-			{
-				if ((this._SignCustomerDate != value))
-				{
-					this._SignCustomerDate = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMFSum", DbType="Float")]
-		public System.Nullable<double> FundingUSGSCMFSum
-		{
-			get
-			{
-				return this._FundingUSGSCMFSum;
-			}
-			set
-			{
-				if ((this._FundingUSGSCMFSum != value))
-				{
-					this._FundingUSGSCMFSum = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingCustomerSum", DbType="Float")]
-		public System.Nullable<double> FundingCustomerSum
-		{
-			get
-			{
-				return this._FundingCustomerSum;
-			}
-			set
-			{
-				if ((this._FundingCustomerSum != value))
-				{
-					this._FundingCustomerSum = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingOtherSum", DbType="Float")]
-		public System.Nullable<double> FundingOtherSum
-		{
-			get
-			{
-				return this._FundingOtherSum;
-			}
-			set
-			{
-				if ((this._FundingOtherSum != value))
-				{
-					this._FundingOtherSum = value;
-				}
-			}
-		}
-	}
-	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vSiteFundingSum")]
 	public partial class vSiteFundingSum
 	{
@@ -18259,6 +17890,393 @@ namespace NationalFundingDev
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAgreementInformation")]
+	public partial class vAgreementInformation
+	{
+		
+		private int _AgreementID;
+		
+		private int _CustomerID;
+		
+		private string _PurchaseOrderNumber;
+		
+		private string _MatchPairCode;
+		
+		private string _SalesDocument;
+		
+		private string _FundsType;
+		
+		private string _BillingCycleFrequency;
+		
+		private System.Nullable<int> _CustomerBillingContact;
+		
+		private System.Nullable<int> _CustomerTechnicalContact;
+		
+		private string _USGSBillingContact;
+		
+		private string _USGSTechnicalContact;
+		
+		private string _Remarks;
+		
+		private string _Tags;
+		
+		private System.Nullable<System.DateTime> _StartDate;
+		
+		private System.Nullable<System.DateTime> _EndDate;
+		
+		private System.Nullable<System.DateTime> _SignUSGSDate;
+		
+		private System.Nullable<System.DateTime> _SignCustomerDate;
+		
+		private System.Nullable<double> _FundingUSGSCMFSum;
+		
+		private System.Nullable<double> _FundingCustomerSum;
+		
+		private System.Nullable<double> _FundingOtherSum;
+		
+		private string _Customer2Group;
+		
+		public vAgreementInformation()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_AgreementID", DbType="Int NOT NULL")]
+		public int AgreementID
+		{
+			get
+			{
+				return this._AgreementID;
+			}
+			set
+			{
+				if ((this._AgreementID != value))
+				{
+					this._AgreementID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerID", DbType="Int NOT NULL")]
+		public int CustomerID
+		{
+			get
+			{
+				return this._CustomerID;
+			}
+			set
+			{
+				if ((this._CustomerID != value))
+				{
+					this._CustomerID = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_PurchaseOrderNumber", DbType="NVarChar(75)")]
+		public string PurchaseOrderNumber
+		{
+			get
+			{
+				return this._PurchaseOrderNumber;
+			}
+			set
+			{
+				if ((this._PurchaseOrderNumber != value))
+				{
+					this._PurchaseOrderNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
+		public string MatchPairCode
+		{
+			get
+			{
+				return this._MatchPairCode;
+			}
+			set
+			{
+				if ((this._MatchPairCode != value))
+				{
+					this._MatchPairCode = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SalesDocument", DbType="NVarChar(50)")]
+		public string SalesDocument
+		{
+			get
+			{
+				return this._SalesDocument;
+			}
+			set
+			{
+				if ((this._SalesDocument != value))
+				{
+					this._SalesDocument = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundsType", DbType="NVarChar(1)")]
+		public string FundsType
+		{
+			get
+			{
+				return this._FundsType;
+			}
+			set
+			{
+				if ((this._FundsType != value))
+				{
+					this._FundsType = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_BillingCycleFrequency", DbType="NVarChar(15)")]
+		public string BillingCycleFrequency
+		{
+			get
+			{
+				return this._BillingCycleFrequency;
+			}
+			set
+			{
+				if ((this._BillingCycleFrequency != value))
+				{
+					this._BillingCycleFrequency = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerBillingContact", DbType="Int")]
+		public System.Nullable<int> CustomerBillingContact
+		{
+			get
+			{
+				return this._CustomerBillingContact;
+			}
+			set
+			{
+				if ((this._CustomerBillingContact != value))
+				{
+					this._CustomerBillingContact = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_CustomerTechnicalContact", DbType="Int")]
+		public System.Nullable<int> CustomerTechnicalContact
+		{
+			get
+			{
+				return this._CustomerTechnicalContact;
+			}
+			set
+			{
+				if ((this._CustomerTechnicalContact != value))
+				{
+					this._CustomerTechnicalContact = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USGSBillingContact", DbType="NVarChar(50)")]
+		public string USGSBillingContact
+		{
+			get
+			{
+				return this._USGSBillingContact;
+			}
+			set
+			{
+				if ((this._USGSBillingContact != value))
+				{
+					this._USGSBillingContact = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_USGSTechnicalContact", DbType="NVarChar(50)")]
+		public string USGSTechnicalContact
+		{
+			get
+			{
+				return this._USGSTechnicalContact;
+			}
+			set
+			{
+				if ((this._USGSTechnicalContact != value))
+				{
+					this._USGSTechnicalContact = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Remarks", DbType="NVarChar(255)")]
+		public string Remarks
+		{
+			get
+			{
+				return this._Remarks;
+			}
+			set
+			{
+				if ((this._Remarks != value))
+				{
+					this._Remarks = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Tags", DbType="NVarChar(255)")]
+		public string Tags
+		{
+			get
+			{
+				return this._Tags;
+			}
+			set
+			{
+				if ((this._Tags != value))
+				{
+					this._Tags = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_StartDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> StartDate
+		{
+			get
+			{
+				return this._StartDate;
+			}
+			set
+			{
+				if ((this._StartDate != value))
+				{
+					this._StartDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_EndDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> EndDate
+		{
+			get
+			{
+				return this._EndDate;
+			}
+			set
+			{
+				if ((this._EndDate != value))
+				{
+					this._EndDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignUSGSDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SignUSGSDate
+		{
+			get
+			{
+				return this._SignUSGSDate;
+			}
+			set
+			{
+				if ((this._SignUSGSDate != value))
+				{
+					this._SignUSGSDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_SignCustomerDate", DbType="DateTime")]
+		public System.Nullable<System.DateTime> SignCustomerDate
+		{
+			get
+			{
+				return this._SignCustomerDate;
+			}
+			set
+			{
+				if ((this._SignCustomerDate != value))
+				{
+					this._SignCustomerDate = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingUSGSCMFSum", DbType="Float")]
+		public System.Nullable<double> FundingUSGSCMFSum
+		{
+			get
+			{
+				return this._FundingUSGSCMFSum;
+			}
+			set
+			{
+				if ((this._FundingUSGSCMFSum != value))
+				{
+					this._FundingUSGSCMFSum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingCustomerSum", DbType="Float")]
+		public System.Nullable<double> FundingCustomerSum
+		{
+			get
+			{
+				return this._FundingCustomerSum;
+			}
+			set
+			{
+				if ((this._FundingCustomerSum != value))
+				{
+					this._FundingCustomerSum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_FundingOtherSum", DbType="Float")]
+		public System.Nullable<double> FundingOtherSum
+		{
+			get
+			{
+				return this._FundingOtherSum;
+			}
+			set
+			{
+				if ((this._FundingOtherSum != value))
+				{
+					this._FundingOtherSum = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer2Group", DbType="NVarChar(50)")]
+		public string Customer2Group
+		{
+			get
+			{
+				return this._Customer2Group;
+			}
+			set
+			{
+				if ((this._Customer2Group != value))
+				{
+					this._Customer2Group = value;
+				}
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.vAgreementModInformation")]
 	public partial class vAgreementModInformation
 	{
@@ -18310,8 +18328,6 @@ namespace NationalFundingDev
 		private string _FundingOtherReason;
 		
 		private string _Remarks;
-		
-		private string _Customer2Group;
 		
 		public vAgreementModInformation()
 		{
@@ -18697,22 +18713,6 @@ namespace NationalFundingDev
 				if ((this._Remarks != value))
 				{
 					this._Remarks = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_Customer2Group", DbType="NVarChar(50)")]
-		public string Customer2Group
-		{
-			get
-			{
-				return this._Customer2Group;
-			}
-			set
-			{
-				if ((this._Customer2Group != value))
-				{
-					this._Customer2Group = value;
 				}
 			}
 		}

@@ -165,8 +165,15 @@
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" SortExpression="EndDate" UniqueName="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="SignUSGSDate" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="Cust Sign" DataField="SignCustomerDate" SortExpression="SignCustomerDate" UniqueName="SignCustomerDate" DataFormatString="{0:MM/dd/yyyy}" />
-                        <telerik:GridBoundColumn HeaderText="Type" DataField="FundsType" SortExpression="FundsType" UniqueName="FundsType" />
-                        <telerik:GridBoundColumn HeaderText="Cycle" DataField="BillingCycleFrequency" SortExpression="BillingCycleFrequency" UniqueName="BillingCycleFrequency" />
+                        
+                        <telerik:GridTemplateColumn HeaderText="Agreement Type">
+                            <ItemTemplate>
+                                <%# Cust2Group(Eval("Customer2Group")) %>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        
+                        <telerik:GridBoundColumn HeaderText="Billing Type" DataField="FundsType" SortExpression="FundsType" UniqueName="FundsType" />
+                        <telerik:GridBoundColumn HeaderText="Billing Cycle" DataField="BillingCycleFrequency" SortExpression="BillingCycleFrequency" UniqueName="BillingCycleFrequency" />
                         <telerik:GridBoundColumn HeaderText="USGS CMF" DataField="FundingUSGSCMFSum" SortExpression="FundingUSGSCMFSum" UniqueName="FundingUSGSCMFSum" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn HeaderText="Customer" DataField="FundingCustomerSum" SortExpression="FundingCustomerSum" UniqueName="FundingCustomerSum" DataFormatString="{0:c0}" />
                         <telerik:GridTemplateColumn HeaderText="Total">
