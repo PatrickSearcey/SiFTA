@@ -142,6 +142,13 @@
                         <telerik:GridBoundColumn HeaderText="Mod" SortExpression="Number" DataField="ModName" UniqueName="ModName" />
                         <telerik:GridBoundColumn HeaderText="Purchase Order Number" SortExpression="PurchaseOrderNumber" DataField="PurchaseOrderNumber" UniqueName="PurchaseOrderNumber" />
                         <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPairCode" SortExpression="MatchPairCode" UniqueName="MatchPairCode" Visible="false" />
+                        
+                        <telerik:GridTemplateColumn HeaderText="Agreement Type">
+                            <ItemTemplate>
+                                <%# Cust2Group(Eval("Customer2Group")) %>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+
                         <telerik:GridBoundColumn HeaderText="Start" DataField="StartDate" SortExpression="StartDate" UniqueName="StartDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" SortExpression="EndDate" UniqueName="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="SignUSGSDate" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:MM/dd/yyyy}" />
@@ -153,6 +160,7 @@
                         <telerik:GridBoundColumn HeaderText="Customer" DataField="FundingCustomer" SortExpression="FundingCustomer" UniqueName="FundingCustomer" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingTotal" DataFormatString="{0:c0}" />
+
                         <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this mod?" ButtonType="ImageButton"
                             CommandName="Delete" Text="Remove" UniqueName="Delete" Visible="false" />
                     </Columns>

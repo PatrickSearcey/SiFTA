@@ -40,7 +40,7 @@ namespace NationalFundingDev.Controls.RadGrid
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
                 }
-                
+                AddItemsToAT();
             }
             //Update
             else if (DataItem != null && DataItem.GetType() == typeof(vAgreementModInformation))
@@ -64,6 +64,8 @@ namespace NationalFundingDev.Controls.RadGrid
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
                 }
+                AddItemsToAT();
+                rcbAType.SelectedValue = agreement.Customer2Group;
 
                 rdpStartDate.SelectedDate = mod.StartDate;
                 if (mod.StartDate != null) rdpEndDate.MinDate = Convert.ToDateTime(mod.StartDate);
@@ -72,10 +74,19 @@ namespace NationalFundingDev.Controls.RadGrid
             }
             
         }
+
+        private void AddItemsToAT()
+        {
+            var c2g = siftaDB.lutCustomer2Groups.Where(x => 1 == 1);
+            foreach(var type in c2g)
+            {
+                var item = new RadComboBoxItem(type.Customer2Group, type.Customer2GroupCode);
+                rcbAType.Items.Add(item);
+            }
+        }
+
         private void GrayOutAgreementSections()
         {
-            rtbMPC.ReadOnly = true;
-            rtbMPC.BackColor = System.Drawing.Color.LightGray;
             rtbPurchaseOrderNumber.ReadOnly = true;
             rtbPurchaseOrderNumber.BackColor = System.Drawing.Color.LightGray;
             rtbSalesDocument.ReadOnly = true;
@@ -83,6 +94,7 @@ namespace NationalFundingDev.Controls.RadGrid
             rcbBillingCycle.Enabled = false;
             rcbFundsType.Enabled = false;
         }
+
         private void BindComboBoxes()
         {
             rcbBillingCycle.DataBind();

@@ -370,7 +370,7 @@ namespace NationalFundingDev
             #region User Controls
             //Grab the controls from the user controls
             var rtbPurchaseOrderNumber = (uc.FindControl("rtbPurchaseOrderNumber") as RadTextBox);
-            var rtbMPC = (uc.FindControl("rtbMPC") as RadTextBox);
+            var rcbAType = (uc.FindControl("rcbAType") as RadComboBox);
             var rtbSalesDocument = (uc.FindControl("rtbSalesDocument") as RadTextBox);
             var rdpStartDate = (uc.FindControl("rdpStartDate") as RadDatePicker);
             var rdpEndDate = (uc.FindControl("rdpEndDate") as RadDatePicker);
@@ -389,9 +389,9 @@ namespace NationalFundingDev
             //Agreement Info
             a.BillingCycleFrequency = rcbBillingCycle.SelectedValue;
             a.FundsType = rcbFundsType.SelectedValue;
-            a.MatchPairCode = rtbMPC.Text;
             a.SalesDocument = rtbSalesDocument.Text;
             a.PurchaseOrderNumber = rtbPurchaseOrderNumber.Text;
+            a.Customer2Group = rcbAType.SelectedValue;
             //Mod Info
             m.StartDate = rdpStartDate.SelectedDate;
             m.EndDate = rdpEndDate.SelectedDate;
@@ -1118,6 +1118,12 @@ namespace NationalFundingDev
         {
             if (p == null) return "";
             return p.ToPhoneFormat();
+        }
+
+        public String Cust2Group(object item)
+        {
+            var value = siftaDB.lutCustomer2Groups.First(x => x.Customer2GroupCode == item.ToString());
+            return value.Customer2Group;
         }
         #endregion
 

@@ -23,28 +23,6 @@
             <asp:RequiredFieldValidator runat="server" ID="rfvAgreementNumber" ValidationGroup="vgAgreement" ControlToValidate="rtbPurchaseOrderNumber" Text="* Required" ForeColor="Red" />
         </td>
     </tr>
-    <!--<tr>
-        <td align="right">Match Pair Code:
-        </td>
-        <td>
-            <telerik:RadTextBox runat="server" ID="rtbMPC" Skin="Silk" Text="<%# agreement.MatchPairCode %>" />
-        </td>
-        <td style="vertical-align:bottom;">
-            <a runat="server" id="MPCToolTip" >
-                <img src="https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif" height="15" width="15" 
-                    onmouseover="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTipHover.gif'"
-                    onmouseout="this.src='https://sifta.water.usgs.gov/NationalFunding/images/tooltip/ToolTip.gif'" />
-            </a>
-            <telerik:RadToolTip runat="server" ID="RadToolTip1" TargetControlID="MPCToolTip" ShowEvent="OnMouseOver"
-                OffsetX="10" OffsetY="10" HideEvent="LeaveToolTip" HideDelay="0"
-                Animation="None" Position="BottomRight" RelativeTo="Element" Skin="BlackMetroTouch">
-                <div class="ToolTip" style="width:200px;">
-                   Basis + specific used to tie CMF funding to customer funding. Only relevant to JFAs. v
-Sales Order Number: Auto-populated from FBMS. Not editable for modifications.
-                </div>
-            </telerik:RadToolTip>
-        </td>
-    </tr>-->
     <tr>
         <td align="right">Sales Order Number:
         </td>
@@ -64,6 +42,14 @@ Sales Order Number: Auto-populated from FBMS. Not editable for modifications.
                     Auto-populated from FBMS
                 </div>
             </telerik:RadToolTip>
+        </td>
+    </tr>
+    <tr>
+        <td align="right">Agreement Type:
+        </td>
+        <td>
+            <telerik:RadComboBox ID="rcbAType" runat="server" Skin="Silk" Width="160px">
+            </telerik:RadComboBox>
         </td>
     </tr>
     <tr>
