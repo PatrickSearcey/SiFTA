@@ -119,8 +119,6 @@ namespace NationalFundingDev
         {
             imgCustomer.ImageUrl = String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", customer.CustomerID);
             rtbCustomerCd.Text = customer.Code;
-            rcbAgreementType.DataBind();
-            rcbAgreementType.SelectedValue = customer.CustomerAgreementTypeID.ToString();
             rntbCustomerNo.Value = customer.Number;
             rtbCustomerName.Text = customer.Name;
             rtbCustomerAbbrev.Text = customer.Abbreviation;
@@ -796,8 +794,6 @@ namespace NationalFundingDev
         {
             #region Assign Values
             customer.Code = rtbCustomerCd.Text;
-            //If the combo box had a selected value convert it to int and store it as the customer agreement type. If not set the agreementtypeID to null
-            if (!String.IsNullOrEmpty(rcbAgreementType.SelectedValue)) customer.CustomerAgreementTypeID = Convert.ToInt32(rcbAgreementType.SelectedValue); else customer.CustomerAgreementTypeID = null;
             //Convert double to long to store in db
             customer.Number = Convert.ToInt64(rntbCustomerNo.Value);
             customer.Name = rtbCustomerName.Text;
