@@ -461,23 +461,6 @@
       <Column Name="RealTime" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.vAgreementFundingOverview" Member="vAgreementFundingOverview1s">
-    <Type Name="vAgreementFundingOverview1">
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ModName" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
-      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingOther" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SiteFundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SiteFundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="StudiesFundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="StudiesFundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Allocated" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Difference" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.vAgreementDocumentInformation" Member="vAgreementDocumentInformations">
     <Type Name="vAgreementDocumentInformation">
       <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -729,7 +712,6 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="lutResearchCode_FundingStudy" Member="lutResearchCode" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode" IsForeignKey="true" />
       <Association Name="AgreementMod_FundingStudy" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
-      <Association Name="lutResearchCode1_FundingStudy" Member="lutResearchCode1" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
@@ -809,19 +791,6 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="lutCollectionCode_FundingSite" Member="lutCollectionCode" ThisKey="CollectionCodeID" OtherKey="CollectionCodeID" Type="lutCollectionCode" IsForeignKey="true" />
       <Association Name="AgreementMod_FundingSite" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.lutResearchCode" Member="lutResearchCode1s">
-    <Type Name="lutResearchCode1">
-      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LegacyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="lutResearchCode1_FundingStudy" Member="FundingStudies" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="FundingStudy" />
     </Type>
   </Table>
   <Table Name="dbo.lutMatchPairCode" Member="lutMatchPairCodes">

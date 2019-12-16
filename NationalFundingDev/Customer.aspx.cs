@@ -866,8 +866,17 @@ namespace NationalFundingDev
 
         public String Cust2Group(object item)
         {
-            var value = siftaDB.lutCustomer2Groups.First(x => x.Customer2GroupCode == item.ToString());
-            return value.Customer2Group;
+            string retVal = "";
+            try
+            {
+                var temp = siftaDB.lutCustomer2Groups.First(x => x.Customer2GroupCode == item.ToString());
+                retVal = temp.Customer2Group;
+            }
+            catch (Exception ex)
+            {
+                retVal = "Not Assigned";
+            }
+            return retVal;
         }
 
     }
