@@ -78,15 +78,6 @@ namespace NationalFundingDev.Controls.RadGrid
         protected global::Telerik.Web.UI.RadToolTip RadToolTip2;
 
         /// <summary>
-        /// rcbAType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadComboBox rcbAType;
-
-        /// <summary>
         /// rdpStartDate control.
         /// </summary>
         /// <remarks>
@@ -121,6 +112,15 @@ namespace NationalFundingDev.Controls.RadGrid
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpCustomerSigned;
+
+        /// <summary>
+        /// rcbAType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox rcbAType;
 
         /// <summary>
         /// rcbFundsType control.
