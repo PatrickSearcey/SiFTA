@@ -14,11 +14,11 @@ namespace NationalFundingDev.Controls.Editable
         public Agreement agreement;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private User user = new User();
-        public int aID;
+        public int aID, modID;
         private double grandTotal = 0, sirTotal = 0, reimTotal = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            int modID = int.Parse(Request.QueryString["AgreementID"]);
+            modID = int.Parse(Request.QueryString["AgreementID"]);
             aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
             var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
             try
@@ -142,7 +142,7 @@ namespace NationalFundingDev.Controls.Editable
             double reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
             grandTotal = sirTotal + reimTotal;
 
-            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
+            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
             double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
             double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
 
@@ -190,7 +190,7 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rcbMatchPair_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             agMPC.MatchPairCode = e.Value;
             siftaDB.SubmitChanges();
         }
@@ -202,7 +202,7 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rcbProgramElementCode_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            var agPEC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            var agPEC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             agPEC.ProgramElementCode = e.Value;
             siftaDB.SubmitChanges();
         }
