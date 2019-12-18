@@ -4,14 +4,14 @@
         <td valign="top" align="right">Agreement ID:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbAgreementMod" Text="<%# rec.AgreementID %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadTextBox runat="server" ID="rtbAgreementMod" Text="<%# rec.AgreementModID %>" Skin="Silk" TextMode="SingleLine" />
         </td>
     </tr>
     <tr>
         <td valign="top" align="right">Fiscal Year:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbFiscalYear" Text="<%# rec.FY %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadTextBox runat="server" ID="rtbFiscalYear" Text="<%# rec.FundSourceFY %>" Skin="Silk" TextMode="SingleLine" />
         </td>
     </tr>
     <tr>

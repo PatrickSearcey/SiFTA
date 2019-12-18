@@ -994,7 +994,7 @@ namespace NationalFundingDev
             double reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
             var grandTotal = sirTotal + reimTotal;
 
-            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
+            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
             double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
             double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
 
@@ -1177,12 +1177,18 @@ namespace NationalFundingDev
                         }
 
                         //Select all cells in column
-                        var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
+                        var query = (from cell in ws.Cells["f:f"] select cell);
 
                         for (int n = 0; n < query.Count(); n++)
                         {
                             int i = n + 2;
                             //StatusLabel.Text += "<br><br>";
+
+
+                            if (ws.Cells["B" + i].Value == null && ws.Cells["E" + i].Value == null && ws.Cells["F" + i].Value == null)
+                            {
+                                break;
+                            }
 
                             var temp1 = ws.Cells["A" + i].Value;  // entry.SiteName;          Table: Site
                             var temp2 = ws.Cells["B" + i].Value;  // entry.SiteNumber;        Table: FundingSite
