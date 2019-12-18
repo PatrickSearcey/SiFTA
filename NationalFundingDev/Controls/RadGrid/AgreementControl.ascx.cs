@@ -78,7 +78,7 @@ namespace NationalFundingDev.Controls.RadGrid
             var c2g = siftaDB.lutCustomer2Groups.Where(x => 1 == 1);
             foreach (var type in c2g)
             {
-                var item = new RadComboBoxItem(type.Customer2Group, type.Customer2GroupCode);
+                var item = new RadComboBoxItem(type.Customer2GroupCode + " - " + type.Customer2Group, type.Customer2GroupCode);
                 rcbAType.Items.Add(item);
             }
         }
