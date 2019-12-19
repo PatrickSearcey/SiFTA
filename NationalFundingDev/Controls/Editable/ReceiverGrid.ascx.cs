@@ -173,6 +173,12 @@ namespace NationalFundingDev.Controls.Editable
             diff3Td.InnerHtml = "<span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
         }
 
+        protected void PencilEdit(object sender, ImageClickEventArgs e)
+        {
+            rcbMatchPair.Enabled = true;
+            rcbProgramElementCode.Enabled = true;
+        }
+
         public string ProcessMyDataItem(object myValue)
         {
             if (myValue == null)
@@ -193,6 +199,9 @@ namespace NationalFundingDev.Controls.Editable
             var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             agMPC.MatchPairCode = e.Value;
             siftaDB.SubmitChanges();
+
+            rcbMatchPair.Enabled = false;
+            rcbProgramElementCode.Enabled = false;
         }
 
         protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
@@ -205,6 +214,9 @@ namespace NationalFundingDev.Controls.Editable
             var agPEC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             agPEC.ProgramElementCode = e.Value;
             siftaDB.SubmitChanges();
+
+            rcbMatchPair.Enabled = false;
+            rcbProgramElementCode.Enabled = false;
         }
 
     }

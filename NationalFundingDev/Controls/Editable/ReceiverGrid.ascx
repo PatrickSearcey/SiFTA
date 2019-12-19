@@ -3,10 +3,11 @@
 <telerik:RadAjaxPanel runat="server" ID="rapReceiver">
     
 <div runat="server" id="mpcDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
-    <span>Default Match Pair Code: </span>
+    <asp:ImageButton runat="server" Height="12px" Width="12px" ImageUrl="~/Images/editPencil.png" OnClick="PencilEdit" />
+    <span>&nbsp;&nbsp;Default Match Pair Code: </span>
     <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
                 DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
-                OnSelectedIndexChanged="rcbMatchPair_SelectedIndexChanged" AutoPostBack="true" >
+                OnSelectedIndexChanged="rcbMatchPair_SelectedIndexChanged" AutoPostBack="true" Enabled="false" >
         <ItemTemplate>
             <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
         </ItemTemplate>
@@ -14,7 +15,7 @@
     <span>Default Program Element Code: </span>
     <telerik:RadComboBox runat="server" ID="rcbProgramElementCode" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbPEC"
                 DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
-                OnSelectedIndexChanged="rcbProgramElementCode_SelectedIndexChanged" AutoPostBack="true" >
+                OnSelectedIndexChanged="rcbProgramElementCode_SelectedIndexChanged" AutoPostBack="true" Enabled="false" >
         <ItemTemplate>
             <b></b><%# ProcessMyDataItem(Eval("ProgramElementCode")) %></b><br />
         </ItemTemplate>
