@@ -20,7 +20,7 @@ namespace NationalFundingDev.Controls.Editable
         {
             modID = int.Parse(Request.QueryString["AgreementID"]);
             aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
-            var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             try
             {
                 rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
