@@ -111,7 +111,9 @@ namespace NationalFundingDev.Controls.Editable
                 mod = null;
             }
 
-            rec.AgreementModID = agreement.AgreementID;
+            var aModID = siftaDB.AgreementMods.First(p => p.AgreementID == agreement.AgreementID).AgreementModID;
+
+            rec.AgreementModID = aModID;
             rec.FundSourceFY = Convert.ToInt32(rtbFiscalYear.Text);
             rec.AccountNumber = rcbAccount.SelectedValue;
             rec.CustomerClass = rddlCustomerClass.SelectedValue;
