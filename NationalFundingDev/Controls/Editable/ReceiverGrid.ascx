@@ -30,7 +30,7 @@
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
                  OnItemDataBound="rgReceiver_ItemDataBound"
                  AutoGenerateColumns="false" >
-    <MasterTableView DataKeyNames="AFSID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
+    <MasterTableView DataKeyNames="AFSID" CommandItemSettings-AddNewRecordText="Add New Fund Source" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>
             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
