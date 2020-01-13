@@ -50,6 +50,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 //Show Update Button
                 btnUpdate.Visible = true;
                 //Set the Agreement Type selcted value to what the customers agreement type is
+                rcbAgreementType.SelectedValue = customer.CustomerAgreementTypeID.ToString();
             }
         }
     }

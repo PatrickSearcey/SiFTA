@@ -265,6 +265,21 @@
                         </td>
                     </tr>
                     <tr>
+                        <td align="right">Agreement Type:
+                        </td>
+                        <td>
+                            <telerik:RadComboBox runat="server" ID="rcbAgreementType"
+                                Skin="Silk" AppendDataBoundItems="true" DataSourceID="ldsAgreementType"
+                                DataTextField="Type" DataValueField="CustomerAgreementTypeID">
+                                <Items>
+                                    <telerik:RadComboBoxItem Text="" />
+                                </Items>
+                            </telerik:RadComboBox>
+                            <asp:RequiredFieldValidator ID="rfvAgreementType" runat="server" ErrorMessage="* Required"
+                                ControlToValidate="rcbAgreementType" ValidationGroup="vgCustomer" Font-Size="X-Small" ForeColor="Red" />
+                        </td>
+                    </tr>
+                    <tr>
                         <td align="right">FBMS Customer Number:
                         </td>
                         <td>

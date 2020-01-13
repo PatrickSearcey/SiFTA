@@ -42,6 +42,24 @@ namespace NationalFundingDev.Controls.RadGrid
         protected global::Telerik.Web.UI.RadTextBox rtbCustomerCd;
 
         /// <summary>
+        /// rcbAgreementType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadComboBox rcbAgreementType;
+
+        /// <summary>
+        /// rfvAgreementType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAgreementType;
+
+        /// <summary>
         /// rntbCustomerNo control.
         /// </summary>
         /// <remarks>
