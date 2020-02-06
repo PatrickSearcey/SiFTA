@@ -528,8 +528,7 @@
         <telerik:RadPageView ID="rpvCoopFunding" runat="server" TabIndex="7">
             <telerik:RadGrid ID="rgCoopFunding" runat="server" Width="100%" 
                 AutoGenerateColumns="False" Skin="Silk" AllowPaging="true"
-                PageSize="10" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" OnItemDataBound="rgCoopFunding_ItemDataBound" >
-                <PagerStyle PageSizes="10" Mode="NextPrevAndNumeric" />
+                PageSize="50" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" OnItemDataBound="rgCoopFunding_ItemDataBound" >
                 <ItemStyle />
                 <MasterTableView Width="100%" DataKeyNames="AgreementID" AllowMultiColumnSorting="True" GroupsDefaultExpanded="true" HierarchyDefaultExpanded="true">
                     <CommandItemSettings ShowRefreshButton="false" />

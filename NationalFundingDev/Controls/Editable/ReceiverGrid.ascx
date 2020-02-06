@@ -29,7 +29,7 @@
                  OnUpdateCommand="rgReceiver_UpdateCommand" 
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
                  OnItemDataBound="rgReceiver_ItemDataBound"
-                 AutoGenerateColumns="false" >
+                 AutoGenerateColumns="false" PageSize="50" >
     <MasterTableView DataKeyNames="AFSID" CommandItemSettings-AddNewRecordText="Add New Fund Source" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>

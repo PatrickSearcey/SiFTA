@@ -137,18 +137,24 @@ namespace NationalFundingDev.Controls.Editable
         protected void rgReceiver_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
             int modID = int.Parse(Request.QueryString["AgreementID"]);
-            int aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
+            int agreementID = siftaDB.AgreementMods.First(p => p.AgreementModID == modID).AgreementID;
+            List<AgreementMod> aIDS = siftaDB.AgreementMods.Where(p => p.AgreementID == agreementID).ToList();
 
-            var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
-            double sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
-            double reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
-            grandTotal = sirTotal + reimTotal;
+            double grandTotal = 0, sirTotal = 0, reimTotal = 0, sumUSGS = 0, sumCust = 0;
 
-            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
-            double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
-            double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
+            foreach (var item in aIDS)
+            {
+                int aID = item.AgreementModID;
 
-            GridFooterItem footerItem = e.Item as GridFooterItem;
+                var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+                sirTotal += rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+                reimTotal += rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+                grandTotal = sirTotal + reimTotal;
+
+                var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
+                sumUSGS += funding.Sum(p => p.FundingUSGSCMF) ?? 0;
+                sumCust += funding.Sum(p => p.FundingCustomer) ?? 0;
+            }
 
             dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
             cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
