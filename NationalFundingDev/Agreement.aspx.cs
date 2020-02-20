@@ -984,8 +984,8 @@ namespace NationalFundingDev
 
         protected void rgCoopFunding_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
-            int modID = int.Parse(Request.QueryString["AgreementID"]);
-            int agreementID = siftaDB.AgreementMods.First(p => p.AgreementModID == modID).AgreementID;
+            int agreementID = int.Parse(Request.QueryString["AgreementID"]);
+            //int agreementID = siftaDB.AgreementMods.First(p => p.AgreementModID == modID).AgreementID;
             List<AgreementMod> aIDS = siftaDB.AgreementMods.Where(p => p.AgreementID == agreementID).ToList();
 
             double grandTotal = 0, sirTotal = 0, reimTotal = 0, sumUSGS = 0, sumCust = 0;
