@@ -468,7 +468,7 @@
       <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -667,7 +667,7 @@
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -793,9 +793,9 @@
       <Association Name="AgreementMod_FundingSite" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.lutMatchPairCode" Member="lutMatchPairCodes">
-    <Type Name="lutMatchPairCode">
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+  <Table Name="dbo.lutMatchPair" Member="lutMatchPairs">
+    <Type Name="lutMatchPair">
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.lutProgramElementCode" Member="lutProgramElementCodes">
@@ -815,7 +815,7 @@
       <Column Name="CustomerName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="CustomerAgreementType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
       <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
       <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -875,7 +875,7 @@
       <Column Name="RecordID" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
       <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -907,7 +907,7 @@
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -934,7 +934,7 @@
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -1014,7 +1014,7 @@
       <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1222,7 +1222,7 @@
       <Column Name="Number" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />

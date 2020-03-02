@@ -38,7 +38,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
                 try
                 {
-                    rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                    rcbMatchPair.SelectedValue = ag.MatchPair.ToString();
                     rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
                 }
                 catch { }
@@ -80,7 +80,7 @@ namespace NationalFundingDev.Controls.RadGrid
 
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
-            e.Result = siftaDB.lutMatchPairCodes.Select(p => p);
+            e.Result = siftaDB.lutMatchPairs.Select(p => p);
         }
 
         protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)

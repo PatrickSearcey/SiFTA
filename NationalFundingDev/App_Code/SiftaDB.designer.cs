@@ -108,9 +108,9 @@ namespace NationalFundingDev
     partial void InsertFundingSite(FundingSite instance);
     partial void UpdateFundingSite(FundingSite instance);
     partial void DeleteFundingSite(FundingSite instance);
-    partial void InsertlutMatchPairCode(lutMatchPairCode instance);
-    partial void UpdatelutMatchPairCode(lutMatchPairCode instance);
-    partial void DeletelutMatchPairCode(lutMatchPairCode instance);
+    partial void InsertlutMatchPair(lutMatchPair instance);
+    partial void UpdatelutMatchPair(lutMatchPair instance);
+    partial void DeletelutMatchPair(lutMatchPair instance);
     partial void InsertlutProgramElementCode(lutProgramElementCode instance);
     partial void UpdatelutProgramElementCode(lutProgramElementCode instance);
     partial void DeletelutProgramElementCode(lutProgramElementCode instance);
@@ -499,11 +499,11 @@ namespace NationalFundingDev
 			}
 		}
 		
-		public System.Data.Linq.Table<lutMatchPairCode> lutMatchPairCodes
+		public System.Data.Linq.Table<lutMatchPair> lutMatchPairs
 		{
 			get
 			{
-				return this.GetTable<lutMatchPairCode>();
+				return this.GetTable<lutMatchPair>();
 			}
 		}
 		
@@ -9370,7 +9370,7 @@ namespace NationalFundingDev
 		
 		private string _BillingCycleFrequency;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -9598,18 +9598,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}
@@ -12873,7 +12873,7 @@ namespace NationalFundingDev
 		
 		private string _PurchaseOrderNumber;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -12969,18 +12969,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}
@@ -15278,43 +15278,43 @@ namespace NationalFundingDev
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lutMatchPairCode")]
-	public partial class lutMatchPairCode : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.lutMatchPair")]
+	public partial class lutMatchPair : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnMatchPairCodeChanging(string value);
-    partial void OnMatchPairCodeChanged();
+    partial void OnMatchPairChanging(string value);
+    partial void OnMatchPairChanged();
     #endregion
 		
-		public lutMatchPairCode()
+		public lutMatchPair()
 		{
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(2) NOT NULL", CanBeNull=false, IsPrimaryKey=true)]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this.OnMatchPairCodeChanging(value);
+					this.OnMatchPairChanging(value);
 					this.SendPropertyChanging();
-					this._MatchPairCode = value;
-					this.SendPropertyChanged("MatchPairCode");
-					this.OnMatchPairCodeChanged();
+					this._MatchPair = value;
+					this.SendPropertyChanged("MatchPair");
+					this.OnMatchPairChanged();
 				}
 			}
 		}
@@ -15470,7 +15470,7 @@ namespace NationalFundingDev
 		
 		private string _PurchaseOrderNumber;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _AccountNumber;
 		
@@ -15632,18 +15632,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}
@@ -16502,7 +16502,7 @@ namespace NationalFundingDev
 		
 		private string _ProgramElementCode;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -16566,8 +16566,8 @@ namespace NationalFundingDev
     partial void OnPurchaseOrderNumberChanged();
     partial void OnProgramElementCodeChanging(string value);
     partial void OnProgramElementCodeChanged();
-    partial void OnMatchPairCodeChanging(string value);
-    partial void OnMatchPairCodeChanged();
+    partial void OnMatchPairChanging(string value);
+    partial void OnMatchPairChanged();
     partial void OnSalesDocumentChanging(string value);
     partial void OnSalesDocumentChanged();
     partial void OnFundsTypeChanging(string value);
@@ -16721,22 +16721,22 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this.OnMatchPairCodeChanging(value);
+					this.OnMatchPairChanging(value);
 					this.SendPropertyChanging();
-					this._MatchPairCode = value;
-					this.SendPropertyChanged("MatchPairCode");
-					this.OnMatchPairCodeChanged();
+					this._MatchPair = value;
+					this.SendPropertyChanged("MatchPair");
+					this.OnMatchPairChanged();
 				}
 			}
 		}
@@ -17343,7 +17343,7 @@ namespace NationalFundingDev
 		
 		private string _PurchaseOrderNumber;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -17431,18 +17431,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}
@@ -17734,7 +17734,7 @@ namespace NationalFundingDev
 		
 		private string _PurchaseOrderNumber;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -17856,18 +17856,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}
@@ -18792,7 +18792,7 @@ namespace NationalFundingDev
 		
 		private string _BillingCycleFrequency;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -19020,18 +19020,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}
@@ -21722,7 +21722,7 @@ namespace NationalFundingDev
 		
 		private string _PurchaseOrderNumber;
 		
-		private string _MatchPairCode;
+		private string _MatchPair;
 		
 		private string _SalesDocument;
 		
@@ -21854,18 +21854,18 @@ namespace NationalFundingDev
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPairCode", DbType="NVarChar(10)")]
-		public string MatchPairCode
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_MatchPair", DbType="NVarChar(10)")]
+		public string MatchPair
 		{
 			get
 			{
-				return this._MatchPairCode;
+				return this._MatchPair;
 			}
 			set
 			{
-				if ((this._MatchPairCode != value))
+				if ((this._MatchPair != value))
 				{
-					this._MatchPairCode = value;
+					this._MatchPair = value;
 				}
 			}
 		}

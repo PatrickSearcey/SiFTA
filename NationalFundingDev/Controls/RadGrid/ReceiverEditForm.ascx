@@ -67,9 +67,9 @@
         </td>
         <td valign="top">
             <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
-                                     DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
+                                     DataTextField="MatchPair" DataValueField="MatchPair" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
                 <ItemTemplate>
-                    <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
+                    <b></b><%# ProcessMyDataItem(Eval("MatchPair")) %></b><br />
                 </ItemTemplate>
             </telerik:RadComboBox>
         </td>

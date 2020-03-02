@@ -141,7 +141,7 @@
                         <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
                         <telerik:GridBoundColumn HeaderText="Mod" SortExpression="Number" DataField="ModName" UniqueName="ModName" />
                         <telerik:GridBoundColumn HeaderText="Purchase Order Number" SortExpression="PurchaseOrderNumber" DataField="PurchaseOrderNumber" UniqueName="PurchaseOrderNumber" />
-                        <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPairCode" SortExpression="MatchPairCode" UniqueName="MatchPairCode" Visible="false" />
+                        <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPair" SortExpression="MatchPair" UniqueName="MatchPair" Visible="false" />
                         <telerik:GridBoundColumn HeaderText="Start" DataField="StartDate" SortExpression="StartDate" UniqueName="StartDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" SortExpression="EndDate" UniqueName="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="SignUSGSDate" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:MM/dd/yyyy}" />

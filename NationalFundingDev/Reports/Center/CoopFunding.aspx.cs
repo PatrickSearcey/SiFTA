@@ -83,7 +83,7 @@ namespace NationalFundingDev.Reports
             var cbFundsStatus = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "FundsStatus");
             var cbComments = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "Comments");
             var cbSalesDocument = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "SalesDocument");
-            var cbMatchPairCode = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "MatchPairCode");
+            var cbMatchPair = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "MatchPair");
 
             switch(rcbFormat.SelectedValue)
             {
@@ -99,7 +99,7 @@ namespace NationalFundingDev.Reports
                     cbComments.Checked = true;
                     cbAgreementType.Checked = true;
                     cbSalesDocument.Checked = true;
-                    cbMatchPairCode.Checked = true;
+                    cbMatchPair.Checked = true;
                     break;
                 case "TotalBottom":
                     cbFiscalYear.Checked = false;
@@ -112,7 +112,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = false;
                     cbComments.Checked = false;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
                 case "UnsignedCustomer":
                     cbFiscalYear.Checked = false;
@@ -125,7 +125,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = true;
                     cbComments.Checked = true;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
                 case "Proposed":
                     cbFiscalYear.Checked = false;
@@ -138,7 +138,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = true;
                     cbComments.Checked = true;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
                 case "CoopBalance":
                     cbFiscalYear.Checked = false;
@@ -151,7 +151,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = true;
                     cbComments.Checked = false;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
             }
             rgCooperativeFunding.Rebind();
@@ -248,8 +248,8 @@ namespace NationalFundingDev.Reports
                     case "Comments":
                         rgCooperativeFunding.Columns.FindByUniqueName("Remarks").Visible = col.Checked;
                         break;
-                    case "MatchPairCode":
-                        rgCooperativeFunding.Columns.FindByUniqueName("MatchPairCode").Visible = col.Checked;
+                    case "MatchPair":
+                        rgCooperativeFunding.Columns.FindByUniqueName("MatchPair").Visible = col.Checked;
                         break;
                     case "SalesDocument":
                         rgCooperativeFunding.Columns.FindByUniqueName("SalesDocument").Visible = col.Checked;
@@ -362,9 +362,9 @@ namespace NationalFundingDev.Reports
                             select += ", Remarks";
                             groupBy += ", Remarks";
                             break;
-                        case "MatchPairCode":
-                            select += ", MatchPairCode";
-                            groupBy += ", MatchPairCode";
+                        case "MatchPair":
+                            select += ", MatchPair";
+                            groupBy += ", MatchPair";
                             break;
                         case "SalesDocument":
                             select += ", SalesDocument";
@@ -680,9 +680,9 @@ namespace NationalFundingDev.Reports
                 connectionString = "Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True";
 #endif
 
-                var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] " +
+                var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPair, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] " +
                     "FROM [" + dbconn + "].[dbo].[vCoopFundingReportMultiYear] " + 
-                    "WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
+                    "WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPair, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
                 var dt = new DataTable();
                 using (SqlConnection conn = new SqlConnection(connectionString))
                 {

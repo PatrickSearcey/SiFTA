@@ -104,7 +104,7 @@
                         <telerik:RadListBoxItem Text="Customer Info" Value="CustomerInfo" />
                         <telerik:RadListBoxItem Text="Agreement Type" Value="AgreementType" />
                         <telerik:RadListBoxItem Text="Agreement Info" Value="AgreementInfo" />
-                        <telerik:RadListBoxItem Text="Match Pair Code" Value="MatchPairCode" />
+                        <telerik:RadListBoxItem Text="Match Pair" Value="MatchPair" />
                         <telerik:RadListBoxItem Text="Sales Document" Value="SalesDocument" />
                         <telerik:RadListBoxItem Text="Signatures" Value="Signatures" />
                         <telerik:RadListBoxItem Text="Account Info" Value="AccountInfo" />
@@ -135,7 +135,7 @@
                             <telerik:GridBoundColumn DataField="CustomerName" HeaderText="Name" SortExpression="CustomerName" UniqueName="CustomerName" ColumnGroupName="Customer" />
                             <telerik:GridBoundColumn DataField="CustomerAgreementType" HeaderText="Agreement Type" SortExpression="CustomerAgreementType" UniqueName="CustomerAgreementType" ColumnGroupName="Customer" />
                             <telerik:GridBoundColumn DataField="PurchaseOrderNumber" HeaderText="Purchase Order Number" SortExpression="PurchaseOrderNumber" UniqueName="PurchaseOrderNumber" />
-                            <telerik:GridBoundColumn DataField="MatchPairCode" HeaderText="Match Pair Code" SortExpression="MatchPairCode" UniqueName="MatchPairCode" />
+                            <telerik:GridBoundColumn DataField="MatchPair" HeaderText="Match Pair" SortExpression="MatchPair" UniqueName="MatchPair" />
                             <telerik:GridBoundColumn DataField="SalesDocument" HeaderText="Sales Document" SortExpression="SalesDocument" UniqueName="SalesDocument" />
                             <telerik:GridBoundColumn DataField="ModNumber" HeaderText="Mod" SortExpression="ModNumber" UniqueName="ModNumber" />
                             <telerik:GridBoundColumn DataField="SignUSGSDate" HeaderText="USGS" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:d}" ColumnGroupName="Signed" />

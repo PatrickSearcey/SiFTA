@@ -401,7 +401,7 @@
       </nodes>
     </associationConnector>
     <classShape Id="b4822c5a-e562-44c9-a7bf-9ba258db93ee" absoluteBounds="0.75, 8.75, 2, 1.0016910807291666">
-      <DataClassMoniker Name="/SiftaDBDataContext/lutMatchPairCode" />
+      <DataClassMoniker Name="/SiftaDBDataContext/lutMatchPair" />
       <nestedChildShapes>
         <elementListCompartment Id="6e91745a-1502-45a3-92fa-aa46ec3c18f3" absoluteBounds="0.765, 9.21, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>

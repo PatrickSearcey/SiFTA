@@ -23,7 +23,7 @@ namespace NationalFundingDev.Controls.Editable
             var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             try
             {
-                rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                rcbMatchPair.SelectedValue = ag.MatchPair.ToString();
                 rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
             }
             catch { }
@@ -199,13 +199,13 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
-            e.Result = siftaDB.lutMatchPairCodes.Select(p => p);
+            e.Result = siftaDB.lutMatchPairs.Select(p => p);
         }
 
         protected void rcbMatchPair_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
             var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
-            agMPC.MatchPairCode = e.Value;
+            agMPC.MatchPair = e.Value;
             siftaDB.SubmitChanges();
 
             rcbMatchPair.Enabled = false;

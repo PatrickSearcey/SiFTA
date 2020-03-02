@@ -4,12 +4,12 @@
     
 <div runat="server" id="mpcDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
     <asp:ImageButton runat="server" Height="12px" Width="12px" ImageUrl="~/Images/editPencil.png" OnClick="PencilEdit" />
-    <span>&nbsp;&nbsp;Default Match Pair Code: </span>
+    <span>&nbsp;&nbsp;Default Match Pair: </span>
     <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
-                DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
+                DataTextField="MatchPair" DataValueField="MatchPair" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
                 OnSelectedIndexChanged="rcbMatchPair_SelectedIndexChanged" AutoPostBack="true" Enabled="false" >
         <ItemTemplate>
-            <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
+            <b></b><%# ProcessMyDataItem(Eval("MatchPair")) %></b><br />
         </ItemTemplate>
     </telerik:RadComboBox>&nbsp;&nbsp;
     <span>Default Program Element Code: </span>
