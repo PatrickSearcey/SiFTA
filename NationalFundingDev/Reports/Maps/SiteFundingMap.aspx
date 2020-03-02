@@ -33,7 +33,7 @@
                         <telerik:RadComboBox runat="server" ID="rcbOrganization" Skin="Silk" Width="350px">
                             <Items>
                                 <telerik:RadComboBoxItem Text="Federal Priority Streamgages" Value="FPS" />
-                                <telerik:RadComboBoxItem Text="National Water-Quality Assessment" Value="NAWQA" />
+                                <telerik:RadComboBoxItem Text="National Water Quality Monitoring Network" Value="NAWQA" />
                                 <telerik:RadComboBoxItem Text="United States Army Corps of Engineers" Value="USACE" />
                                 <telerik:RadComboBoxItem Text="International Joint Commission" Value="IJC" />
                             </Items>

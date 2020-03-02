@@ -1024,7 +1024,7 @@ namespace NationalFundingDev
             aogtTd.InnerHtml = "<span>$" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
 
             double gDiff = (grandTotal - (sumUSGS + sumCust));
-            string gStyle = gDiff < 0 ? "color:red" : "";
+            string gStyle = gDiff != 0 ? "color:red" : "";
 
             diff3Td.InnerHtml = "<span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
         }

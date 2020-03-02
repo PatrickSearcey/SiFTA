@@ -145,14 +145,14 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Other Funding:
+        <td align="right">In Kind Funding:
         </td>
         <td>
             <telerik:RadNumericTextBox runat="server" ID="rntbOtherFunding" Type="Currency" NumberFormat-DecimalDigits="2" Skin="Silk" Value="<%# mod.FundingOther %>" />
         </td>
     </tr>
     <tr>
-        <td align="right" valign="top">Other Funding Reason: 
+        <td align="right" valign="top">In Kind Funding Reason: 
         </td>
         <td colspan="2">
             <telerik:RadTextBox runat="server" ID="rtbOtherFundingReason" Skin="Silk" TextMode="MultiLine" Height="50px" Text="<%# mod.FundingOtherReason %>" />

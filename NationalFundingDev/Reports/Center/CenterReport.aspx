@@ -97,7 +97,7 @@
                         <telerik:GridBoundColumn HeaderText="Billing Cycle" SortExpression="BillingCycleFrequency" DataField="BillingCycleFrequency" />
                         <telerik:GridBoundColumn HeaderText="USGS Funding" SortExpression="FundingUSGSCMFSum" DataField="FundingUSGSCMFSum" DataFormatString="{0:C0}" />
                         <telerik:GridBoundColumn HeaderText="Customer Funding" SortExpression="FundingCustomerSum" DataField="FundingCustomerSum" DataFormatString="{0:C0}" />
-                        <telerik:GridBoundColumn HeaderText="Other Funding" SortExpression="FundingOtherSum" DataField="FundingOtherSum" DataFormatString="{0:C0}" />
+                        <telerik:GridBoundColumn HeaderText="In Kind Funding" SortExpression="FundingOtherSum" DataField="FundingOtherSum" DataFormatString="{0:C0}" />
                         <telerik:GridBoundColumn HeaderText="Total Funding" SortExpression="TotalFundingSum" DataField="TotalFundingSum" DataFormatString="{0:C0}" />
                     </Columns>
                     <GroupByExpressions>
