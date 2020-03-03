@@ -411,7 +411,7 @@
                                 <a style="color: #2dabc1" href='<%# string.Format("Agreement.aspx?AgreementID={0}",Eval("AgreementID")) %>'><%# Eval("PurchaseOrderNumber")%></a>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridBoundColumn DataField="MatchPair" HeaderText="MP" ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="MatchPair" HeaderText="Match Pair" ItemStyle-HorizontalAlign="Center"  />
                         <telerik:GridBoundColumn DataField="SalesDocument" HeaderText="Sales Order" ItemStyle-HorizontalAlign="Center"  />
                         <telerik:GridBoundColumn DataField="StartDate" DataFormatString="{0:d}" HeaderText="Start"
                             ItemStyle-HorizontalAlign="Center"  />
