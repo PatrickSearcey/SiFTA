@@ -1008,7 +1008,7 @@ namespace NationalFundingDev
             cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
 
             double dirDiff = sirTotal - sumUSGS;
-            string dirStyle = dirDiff < 0 ? "color:red" : "";
+            string dirStyle = dirDiff != 0 ? "color:red" : "";
 
             diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
 
@@ -1016,7 +1016,7 @@ namespace NationalFundingDev
             custTd.InnerHtml = "<span>$" + sumCust.ToString("#,##0") + "</span>";
 
             double reimDiff = reimTotal - sumCust;
-            string reimStyle = reimDiff < 0 ? "color:red" : "";
+            string reimStyle = reimDiff != 0 ? "color:red" : "";
 
             diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
 
