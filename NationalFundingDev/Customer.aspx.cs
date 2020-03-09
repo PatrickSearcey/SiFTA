@@ -176,6 +176,7 @@ namespace NationalFundingDev
                 Remarks = agreement.Remarks,
                 CustomerBillingContact = agreement.CustomerBillingContact,
                 CustomerTechnicalContact = agreement.CustomerTechnicalContact,
+                Customer2Group = agreement.Customer2Group,
                 USGSBillingContact = agreement.USGSBillingContact,
                 USGSTechnicalContact = agreement.USGSTechnicalContact,
                 CreatedBy = user.ID,
