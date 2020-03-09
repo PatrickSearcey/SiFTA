@@ -46,6 +46,8 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_InsertCommand(object sender, GridCommandEventArgs e)
         {
+            UpdateDifferences();
+
             //Cast the GridCommandEventArgs item as an editable item
             GridEditableItem editedItem = e.Item as GridEditableItem;
             //Find the user control used by that item save it as a UserControl
@@ -69,6 +71,8 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_UpdateCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
+            UpdateDifferences();
+
             GridEditableItem editedItem = e.Item as GridEditableItem;
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
             var ID = Convert.ToInt32(editedItem.GetDataKeyValue("AFSID").ToString());
@@ -79,6 +83,8 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_DeleteCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
+            UpdateDifferences();
+
             var recID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["AFSID"];
             siftaDB.AccountFundSources.DeleteOnSubmit(siftaDB.AccountFundSources.FirstOrDefault(p => p.AFSID == recID));
             siftaDB.SubmitChanges();
@@ -133,8 +139,12 @@ namespace NationalFundingDev.Controls.Editable
             #endregion
         }
 
-        //grandTotal = 0, sirTotal = 0, reimTotal
         protected void rgReceiver_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
+        {
+            UpdateDifferences();
+        }
+
+        private void UpdateDifferences()
         {
             int agreementID = int.Parse(Request.QueryString["AgreementID"]);
             //int agreementID = siftaDB.AgreementMods.First(p => p.AgreementModID == modID).AgreementID;
