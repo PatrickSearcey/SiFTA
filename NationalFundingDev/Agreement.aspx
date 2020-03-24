@@ -150,7 +150,7 @@
                         <telerik:GridBoundColumn HeaderText="Billing Cycle" DataField="BillingCycleFrequency" SortExpression="BillingCycleFrequency" UniqueName="BillingCycleFrequency" />
                         <telerik:GridBoundColumn HeaderText="USGS CMF" DataField="FundingUSGSCMF" SortExpression="FundingUSGSCMF" UniqueName="FundingUSGSCMF" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn HeaderText="Customer" DataField="FundingCustomer" SortExpression="FundingCustomer" UniqueName="FundingCustomer" DataFormatString="{0:c0}" />
-                        <telerik:GridBoundColumn HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
+                        <telerik:GridBoundColumn HeaderText="In Kind" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingTotal" DataFormatString="{0:c0}" />
 
                         <telerik:GridButtonColumn ConfirmText="Are you sure you want to remove this mod?" ButtonType="ImageButton"
@@ -537,7 +537,7 @@
                         <telerik:GridBoundColumn DataField="FundSourceFY" HeaderText="Fiscal Year" />
                         <telerik:GridBoundColumn DataField="AccountNumber" HeaderText="Account Number" />
                         <telerik:GridBoundColumn DataField="AccountName" HeaderText="Account Name" />
-                        <telerik:GridBoundColumn DataField="FundingUSGSCMF" HeaderText="USGS" DataFormatString="{0:c0}"  />
+                        <telerik:GridBoundColumn DataField="FundingUSGSCMF" HeaderText="USGS CMF" DataFormatString="{0:c0}"  />
                         <telerik:GridBoundColumn DataField="FundingUSGSAllocation" HeaderText="USGS Appropriated" DataFormatString="{0:c0}"  />
                         <telerik:GridBoundColumn DataField="FundingReimbCustomer" HeaderText="Cooperator" DataFormatString="{0:c0}" />
                         <telerik:GridBoundColumn DataField="Total" HeaderText="Total" DataFormatString="{0:c0}" />
