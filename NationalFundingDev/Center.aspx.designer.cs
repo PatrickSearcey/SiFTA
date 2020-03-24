@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NationalFundingDev {
-    
-    
-    public partial class CenterPage {
-        
+namespace NationalFundingDev
+{
+
+
+    public partial class CenterPage
+    {
+
         /// <summary>
         /// ram control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxManager ram;
-        
+
         /// <summary>
         /// ralp control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxLoadingPanel ralp;
-        
+
         /// <summary>
         /// rtsCenterOptions control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTabStrip rtsCenterOptions;
-        
+
         /// <summary>
         /// rmpCenterOptions control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadMultiPage rmpCenterOptions;
-        
+
         /// <summary>
         /// rpvCustomers control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvCustomers;
-        
+
         /// <summary>
         /// rcbCustomer control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox rcbCustomer;
-        
+
         /// <summary>
         /// rgCustomers control.
         /// </summary>
@@ -74,50 +76,5 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgCustomers;
-        
-        /// <summary>
-        /// rpvCooperativeFunding control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvCooperativeFunding;
-        
-        /// <summary>
-        /// rsbCoopFunding control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSearchBox rsbCoopFunding;
-        
-        /// <summary>
-        /// rbShowAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbShowAll;
-        
-        /// <summary>
-        /// rbViewReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbViewReport;
-        
-        /// <summary>
-        /// rgCoopFunding control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid rgCoopFunding;
     }
 }

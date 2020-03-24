@@ -30,12 +30,13 @@
             <telerik:RadTab TabIndex="1" Text="Funding Overview" />
             <telerik:RadTab TabIndex="2" Text="Contacts" />
             <telerik:RadTab TabIndex="3" Text="Collection Codes" />
+            <telerik:RadTab TabIndex="4" Text="Comprehensive Funding Report" />
             <telerik:RadTab Text="Exceptions">
                 <Tabs>
-                    <telerik:RadTab TabIndex="4" Text="Customers Missing Icons" />
-                    <telerik:RadTab TabIndex="5" Text="Agreements Missing Documents" />
-                    <telerik:RadTab TabIndex="6" Text="Agreement Status" />
-                    <telerik:RadTab TabIndex="7" Text="Agreement Difference" />
+                    <telerik:RadTab TabIndex="5" Text="Customers Missing Icons" />
+                    <telerik:RadTab TabIndex="6" Text="Agreements Missing Documents" />
+                    <telerik:RadTab TabIndex="7" Text="Agreement Status" />
+                    <telerik:RadTab TabIndex="8" Text="Agreement Difference" />
                 </Tabs>
             </telerik:RadTab>
         </Tabs>
@@ -174,7 +175,97 @@
                 </MasterTableView>
             </telerik:RadGrid>
         </telerik:RadPageView>
-        <telerik:RadPageView TabIndex="4" runat="server" ID="rpvCustomerMissingIcons">
+
+
+         <!-- Cooperative Funding -->
+        <telerik:RadPageView runat="server" ID="rpvCooperativeFunding" TabIndex="4">
+            <table>
+                <tr>
+                    <td>
+                        <telerik:RadSearchBox Width="250px" runat="server" ID="rsbCoopFunding" OnSearch="rsbCoopFunding_Search" Skin="Silk" DropDownSettings-Height="0px" />
+                    </td>
+                    <td>
+                        <telerik:RadButton runat="server" ID="rbShowAll" Text="Show All"
+                            Skin="Silk" OnClick="rbShowAll_Click" /> <telerik:RadButton runat="server" ID="rbViewReport" Text="View Report"
+                            Skin="Silk" OnClick="rbViewReport_Click" /> 
+                    </td>
+                </tr>
+            </table>
+            <telerik:RadGrid ID="rgCoopFunding" runat="server" Width="100%"
+                AutoGenerateColumns="False" Skin="Silk" AllowPaging="true" 
+                PageSize="10" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" AllowSorting="true" OnDetailTableDataBind="rgCoopFunding_DetailTableDataBind" OnInsertCommand="rgCoopFunding_InsertCommand" OnUpdateCommand="rgCoopFunding_UpdateCommand">
+                <PagerStyle PageSizes="10" Mode="NextPrevAndNumeric" />
+                <ItemStyle />
+                <MasterTableView Width="100%" DataKeyNames="AgreementID" AllowMultiColumnSorting="True">
+                    <CommandItemSettings ShowRefreshButton="false" />
+                    <GroupHeaderItemStyle ForeColor="Black" />
+                    <DetailTables>
+                        <telerik:GridTableView AllowSorting="true" InsertItemDisplay="Bottom"  CommandItemDisplay="Top" ShowGroupFooter="true" ShowFooter="true" DataKeyNames="CooperativeFundingID"
+                            Name="Accounts" Width="100%" EditMode="EditForms" AllowPaging="false">
+                            <EditFormSettings UserControlName="Controls/RadGrid/CoopFundingControl.ascx" EditFormType="WebUserControl" />
+                            <HeaderStyle BackColor="LightBlue" ForeColor="Black"  Font-Bold="true" />
+                            <CommandItemSettings AddNewRecordText="Add New Account" ShowRefreshButton="false"  />
+                            <Columns>
+                                <telerik:GridButtonColumn ButtonType="ImageButton" HeaderStyle-BackColor="#acdbe3" HeaderStyle-Font-Size="Small"
+                                    CommandName="Edit" Text="Edit" UniqueName="Edit" />
+                                <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FiscalYear" SortExpression="FiscalYear" AllowSorting="true" />
+                                <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber" >
+                                    <ItemTemplate>
+                                        <%# (Eval("ModNumber").ToString() == "0") ? "" : String.Format("{0}", Eval("ModNumber")) %>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridBoundColumn HeaderText="Account" DataField="AccountNumber" FooterAggregateFormatString="Agreement Total" FooterStyle-HorizontalAlign="Right" Aggregate="Count" />
+                                <telerik:GridBoundColumn HeaderText="USGS" DataField="FundingUSGSCMF" DataFormatString="{0:c2}" Aggregate="Sum" />
+                                <telerik:GridBoundColumn HeaderText="Cooperator" DataField="FundingCustomer" DataFormatString="{0:c2}" Aggregate="Sum" />
+                                <telerik:GridBoundColumn HeaderText="Status" DataField="Status" />
+                                <telerik:GridBoundColumn HeaderText="Remarks" DataField="Remarks" />
+                                <telerik:GridBoundColumn HeaderText="Last Edited" DataField="ModifiedDate" DataFormatString="{0:d}" />
+                                <telerik:GridBoundColumn HeaderText="Edited By" DataField="ModifiedBy" />
+                            </Columns>
+                        </telerik:GridTableView>
+                    </DetailTables>
+                    <Columns>
+                        <telerik:GridTemplateColumn DataField="Code" HeaderText="Customer" ItemStyle-HorizontalAlign="Center" ItemStyle-BackColor="#e5e4e4">
+                            <ItemTemplate>
+                                <a style="color: #2dabc1" title='<%# Eval("Name")  %>' href='<%# string.Format("Customer.aspx?CustomerID={0}",Eval("CustomerID")) %>'><%# Eval("Code")%></a>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridBoundColumn DataField="Number" HeaderText="Number" ItemStyle-HorizontalAlign="Center" ItemStyle-BackColor="#e5e4e4" />
+                        <telerik:GridTemplateColumn DataField="PurchaseOrderNumber" HeaderText="Agreement">
+                            <ItemTemplate>
+                                <a style="color: #2dabc1" href='<%# string.Format("Agreement.aspx?AgreementID={0}",Eval("AgreementID")) %>'><%# Eval("PurchaseOrderNumber")%></a>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridBoundColumn DataField="MatchPair" HeaderText="Match Pair" ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="SalesDocument" HeaderText="Sales Order" ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="StartDate" DataFormatString="{0:d}" HeaderText="Start"
+                            ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="EndDate" DataFormatString="{0:d}" HeaderText="End"  />
+                        <telerik:GridBoundColumn DataField="SignUSGSDate" DataFormatString="{0:d}" HeaderText="USGS Sign"/>
+                        <telerik:GridBoundColumn DataField="SignCustomerDate" DataFormatString="{0:d}" HeaderText="Cust. sign"  />
+                        <telerik:GridBoundColumn DataField="FundsType" HeaderText="Fund Type"  />
+                        <telerik:GridBoundColumn DataField="BillingCycleFrequency" HeaderText="Cycle"  />
+                    </Columns>
+                    <GroupByExpressions>
+                        <telerik:GridGroupByExpression>
+                            <SelectFields>
+                                <telerik:GridGroupByField FieldName="Name" FormatString="{0}"  />
+                            </SelectFields>
+                            <GroupByFields>
+                                <telerik:GridGroupByField FieldName="Name" FormatString="{0}"  />
+                            </GroupByFields>
+                        </telerik:GridGroupByExpression>
+                    </GroupByExpressions>
+                </MasterTableView>
+            </telerik:RadGrid>
+        </telerik:RadPageView>
+
+
+
+
+
+
+        <telerik:RadPageView TabIndex="5" runat="server" ID="rpvCustomerMissingIcons">
             <telerik:RadGrid runat="server" MasterTableView-CommandItemSettings-ShowAddNewRecordButton="false" ID="rgCustomersMissingIcons" MasterTableView-CommandItemSettings-ShowRefreshButton="true" MasterTableView-CommandItemDisplay="Top" AutoGenerateColumns="false" OnNeedDataSource="rgCustomersMissingIcons_NeedDataSource">
                 <MasterTableView>
                     <Columns>
@@ -187,7 +278,7 @@
                 </MasterTableView>
             </telerik:RadGrid>
         </telerik:RadPageView>
-        <telerik:RadPageView TabIndex="5" runat="server" ID="rpvAgreementsMissingDocuments">
+        <telerik:RadPageView TabIndex="6" runat="server" ID="rpvAgreementsMissingDocuments">
             <telerik:RadAjaxPanel runat="server" ID="rapMissingDocuments">
                 <center>Show agreements ending after
                 <telerik:RadDatePicker runat="server" ID="rdpAgreementsMissingDocuments" AutoPostBack="true" OnSelectedDateChanged="rdpAgreementsMissingDocuments_SelectedDateChanged" /></center>
@@ -204,7 +295,7 @@
                 </telerik:RadGrid>
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
-        <telerik:RadPageView runat="server" ID="rpvAgreementStatus" TabIndex="6">
+        <telerik:RadPageView runat="server" ID="rpvAgreementStatus" TabIndex="7">
             <telerik:RadAjaxPanel runat="server" ID="rapAgreementStatus">
                 <center>Showing Agreements and Mods with end dates after <telerik:RadDatePicker runat="server" ID="rdpAgreementStatusEndDate" OnSelectedDateChanged="rdpAgreementStatusEndDate_SelectedDateChanged" AutoPostBack="true" /></center>
                 <br />
@@ -258,7 +349,7 @@
                 </telerik:RadGrid>
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
-        <telerik:RadPageView runat="server" ID="rpvAgreementDifference" TabIndex="7">
+        <telerik:RadPageView runat="server" ID="rpvAgreementDifference" TabIndex="8">
             <telerik:RadAjaxPanel runat="server" ID="rapAgreementDifference">
                 <center>Showing Agreements and Mods with end dates after <telerik:RadDatePicker runat="server" ID="rdpAgreementDifference" OnSelectedDateChanged="rdpAgreementDifference_SelectedDateChanged" AutoPostBack="true" /></center>
                 <br />
@@ -301,5 +392,6 @@
                 </telerik:RadGrid>
             </telerik:RadAjaxPanel>
         </telerik:RadPageView>
+
     </telerik:RadMultiPage>
 </asp:Content>
