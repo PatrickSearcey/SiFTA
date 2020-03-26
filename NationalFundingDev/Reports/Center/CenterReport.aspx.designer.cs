@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NationalFundingDev {
-    
-    
-    public partial class CenterReport {
-        
+namespace NationalFundingDev
+{
+
+
+    public partial class CenterReport
+    {
+
         /// <summary>
         /// ltlTitle control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlTitle;
-        
+
         /// <summary>
         /// ram control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxManager ram;
-        
+
         /// <summary>
         /// ralpSilk control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxLoadingPanel ralpSilk;
-        
+
         /// <summary>
         /// rtsCenterReportOptions control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTabStrip rtsCenterReportOptions;
-        
+
         /// <summary>
         /// rmpCenterReportOptions control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadMultiPage rmpCenterReportOptions;
-        
+
         /// <summary>
         /// rpvUnfundedRTSites control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvUnfundedRTSites;
-        
+
         /// <summary>
         /// rapUnfundedRTSites control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxPanel rapUnfundedRTSites;
-        
+
         /// <summary>
         /// ltlRTSiteUnfundedNumber control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlRTSiteUnfundedNumber;
-        
+
         /// <summary>
         /// rdpUnfundedRTSitesDate control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpUnfundedRTSitesDate;
-        
+
         /// <summary>
         /// btnViewMap control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnViewMap;
-        
+
         /// <summary>
         /// rgUnfundedSites control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgUnfundedSites;
-        
+
         /// <summary>
         /// rpvFundingOverview control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvFundingOverview;
-        
+
         /// <summary>
         /// ltlAgreementsEnding control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltlAgreementsEnding;
-        
+
         /// <summary>
         /// rdpFOStart control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpFOStart;
-        
+
         /// <summary>
         /// rdpFOEnd control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpFOEnd;
-        
+
         /// <summary>
         /// rbFundingOverview control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton rbFundingOverview;
-        
+
         /// <summary>
         /// rgFundingOverview control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgFundingOverview;
-        
+
         /// <summary>
         /// rpvContacts control.
         /// </summary>
@@ -173,7 +175,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvContacts;
-        
+
         /// <summary>
         /// rgContacts control.
         /// </summary>
@@ -182,7 +184,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgContacts;
-        
+
         /// <summary>
         /// rpvCollectionCodes control.
         /// </summary>
@@ -191,7 +193,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvCollectionCodes;
-        
+
         /// <summary>
         /// rgCollectionCodes control.
         /// </summary>
@@ -200,7 +202,52 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgCollectionCodes;
-        
+
+        /// <summary>
+        /// rpvCooperativeFunding control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadPageView rpvCooperativeFunding;
+
+        /// <summary>
+        /// rsbCoopFunding control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadSearchBox rsbCoopFunding;
+
+        /// <summary>
+        /// rbShowAll control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbShowAll;
+
+        /// <summary>
+        /// rbViewReport control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadButton rbViewReport;
+
+        /// <summary>
+        /// rgCoopFunding control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::Telerik.Web.UI.RadGrid rgCoopFunding;
+
         /// <summary>
         /// rpvCustomerMissingIcons control.
         /// </summary>
@@ -209,7 +256,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvCustomerMissingIcons;
-        
+
         /// <summary>
         /// rgCustomersMissingIcons control.
         /// </summary>
@@ -218,7 +265,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgCustomersMissingIcons;
-        
+
         /// <summary>
         /// rpvAgreementsMissingDocuments control.
         /// </summary>
@@ -227,7 +274,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvAgreementsMissingDocuments;
-        
+
         /// <summary>
         /// rapMissingDocuments control.
         /// </summary>
@@ -236,7 +283,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxPanel rapMissingDocuments;
-        
+
         /// <summary>
         /// rdpAgreementsMissingDocuments control.
         /// </summary>
@@ -245,7 +292,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpAgreementsMissingDocuments;
-        
+
         /// <summary>
         /// rgAgreementsMissingDocuments control.
         /// </summary>
@@ -254,7 +301,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgAgreementsMissingDocuments;
-        
+
         /// <summary>
         /// rpvAgreementStatus control.
         /// </summary>
@@ -263,7 +310,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvAgreementStatus;
-        
+
         /// <summary>
         /// rapAgreementStatus control.
         /// </summary>
@@ -272,7 +319,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxPanel rapAgreementStatus;
-        
+
         /// <summary>
         /// rdpAgreementStatusEndDate control.
         /// </summary>
@@ -281,7 +328,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpAgreementStatusEndDate;
-        
+
         /// <summary>
         /// rgAgreementStatus control.
         /// </summary>
@@ -290,7 +337,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadGrid rgAgreementStatus;
-        
+
         /// <summary>
         /// rpvAgreementDifference control.
         /// </summary>
@@ -299,7 +346,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadPageView rpvAgreementDifference;
-        
+
         /// <summary>
         /// rapAgreementDifference control.
         /// </summary>
@@ -308,7 +355,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAjaxPanel rapAgreementDifference;
-        
+
         /// <summary>
         /// rdpAgreementDifference control.
         /// </summary>
@@ -317,7 +364,7 @@ namespace NationalFundingDev {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadDatePicker rdpAgreementDifference;
-        
+
         /// <summary>
         /// rgAgreementDifference control.
         /// </summary>

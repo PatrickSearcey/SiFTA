@@ -165,6 +165,11 @@ namespace NationalFundingDev
             var coopFunding = mod.CooperativeFundings.ToList();
             //Grabs the list of studies funding for the original mod
             var studiesFunding = mod.FundingStudies.ToList();
+
+            //Grab list of account fund sources
+            var accFundSrc = siftaDB.AccountFundSources.Where(x => x.AgreementModID == mod.AgreementModID).ToList();
+
+
             //Create a new mod
             var copyMod = new AgreementMod();
             //Create a new Agreement and assign it values from the old one
@@ -286,6 +291,28 @@ namespace NationalFundingDev
                 });
             }
             siftaDB.SubmitChanges();
+
+            foreach(var accFund in accFundSrc)
+            {
+                var newFund = new AccountFundSource();
+                newFund.AgreementModID = copyMod.AgreementModID;
+                newFund.FundSourceFY = accFund.FundSourceFY;
+                newFund.AccountNumber = accFund.AccountNumber;
+                newFund.CustomerClass = accFund.CustomerClass;
+                newFund.MatchPair = accFund.MatchPair;
+                newFund.ProgramElementCode = accFund.ProgramElementCode;
+                newFund.Funding = accFund.Funding;
+                newFund.FundStatus = accFund.FundStatus;
+                newFund.Remarks = accFund.Remarks;
+                newFund.CreatedBy = user.ID;
+                newFund.CreatedDate = DateTime.Now;
+                newFund.ModifiedBy = user.ID;
+                newFund.ModifiedDate = DateTime.Now;
+
+                siftaDB.AccountFundSources.InsertOnSubmit(newFund);
+            }
+            siftaDB.SubmitChanges();
+
             //Update Records with Unique Record ID's
             RecordIdentifiers.UpdateRecords();
             //Rebind the agreement grid
