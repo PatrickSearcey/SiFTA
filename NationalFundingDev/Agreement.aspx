@@ -527,20 +527,20 @@
         </telerik:RadPageView>
         <telerik:RadPageView ID="rpvCoopFunding" runat="server" TabIndex="7">
             <telerik:RadGrid ID="rgCoopFunding" runat="server" Width="100%" 
-                AutoGenerateColumns="False" Skin="Silk" AllowPaging="true"
+                AutoGenerateColumns="False" Skin="Silk" AllowPaging="true" AllowSorting="true"
                 PageSize="50" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" OnItemDataBound="rgCoopFunding_ItemDataBound" >
                 <ItemStyle />
-                <MasterTableView Width="100%" DataKeyNames="AgreementID" AllowMultiColumnSorting="True" GroupsDefaultExpanded="true" HierarchyDefaultExpanded="true">
+                <MasterTableView Width="100%" DataKeyNames="AgreementID" GroupsDefaultExpanded="true" HierarchyDefaultExpanded="true">
                     <CommandItemSettings ShowRefreshButton="false" />
                     <GroupHeaderItemStyle ForeColor="Black" />
                     <Columns>
-                        <telerik:GridBoundColumn DataField="FundSourceFY" HeaderText="Fiscal Year" />
-                        <telerik:GridBoundColumn DataField="AccountNumber" HeaderText="Account Number" />
-                        <telerik:GridBoundColumn DataField="AccountName" HeaderText="Account Name" />
-                        <telerik:GridBoundColumn DataField="FundingUSGSCMF" HeaderText="USGS CMF" DataFormatString="{0:c0}"  />
-                        <telerik:GridBoundColumn DataField="FundingUSGSAllocation" HeaderText="USGS Appropriated" DataFormatString="{0:c0}"  />
-                        <telerik:GridBoundColumn DataField="FundingReimbCustomer" HeaderText="Cooperator" DataFormatString="{0:c0}" />
-                        <telerik:GridBoundColumn DataField="Total" HeaderText="Total" DataFormatString="{0:c0}" />
+                        <telerik:GridBoundColumn DataField="FundSourceFY" HeaderText="Fiscal Year" AllowSorting="true" />
+                        <telerik:GridBoundColumn DataField="AccountNumber" HeaderText="Account Number" AllowSorting="true" />
+                        <telerik:GridBoundColumn DataField="AccountName" HeaderText="Account Name" AllowSorting="true" />
+                        <telerik:GridBoundColumn DataField="FundingUSGSCMF" HeaderText="USGS CMF" DataFormatString="{0:c0}" AllowSorting="true" />
+                        <telerik:GridBoundColumn DataField="FundingUSGSAllocation" HeaderText="USGS Appropriated" DataFormatString="{0:c0}" AllowSorting="true" />
+                        <telerik:GridBoundColumn DataField="FundingReimbCustomer" HeaderText="Cooperator" DataFormatString="{0:c0}" AllowSorting="true" />
+                        <telerik:GridBoundColumn DataField="Total" HeaderText="Total" DataFormatString="{0:c0}" AllowSorting="true" />
                     </Columns>
                 </MasterTableView>
             </telerik:RadGrid>
