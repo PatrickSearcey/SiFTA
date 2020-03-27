@@ -49,10 +49,10 @@ namespace NationalFundingDev
             {
                 rtsCustomerOptions.Tabs.Add(new RadTab() { Text = "Edit Customer", TabIndex = 2 });
                 //Check for Texas Users Only
-                if (customer.Center.CoopDBAccess)
+                /*if (customer.Center.CoopDBAccess)
                 {
                     rtsCustomerOptions.Tabs.Add(new RadTab() { Text = "Account Funding", TabIndex = 3 });
-                }
+                }*/
                 
             }
             //Set the search box to be a blank list

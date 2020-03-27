@@ -39,7 +39,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 GrayOutAgreementSections();
                 var customer = agreement.Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (agreement.Customer2Group == "23A")
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
@@ -62,7 +62,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 if (mod.Number != 0) GrayOutAgreementSections();
                 var customer = agreement.Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (agreement.Customer2Group == "23A")
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;

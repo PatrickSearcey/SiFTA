@@ -32,13 +32,6 @@ namespace NationalFundingDev
                 rdpAgreementDifference.SelectedDate = DateTime.Now;
                 rdpAgreementsMissingDocuments.SelectedDate = DateTime.Now;
             }
-
-
-
-            //Set the User to be a User from this OrgCode for Permissions
-            user = new User(Request.QueryString["OrgCode"]);
-            rgCoopFunding.Rebind();
-            rsbCoopFunding.DataSource = new List<string>();
         }
 
         #region Tab Clicking
@@ -63,27 +56,32 @@ namespace NationalFundingDev
             switch(rmpCenterReportOptions.SelectedIndex)
             {
                 case 0:
-                    rgUnfundedSites.Rebind();
+                    user = new User(Request.QueryString["OrgCode"]);
+                    rgCoopFunding.Rebind();
+                    rsbCoopFunding.DataSource = new List<string>();
                     break;
                 case 1:
-                    rgFundingOverview.Rebind();
+                    rgUnfundedSites.Rebind();
                     break;
                 case 2:
-                    rgContacts.Rebind();
+                    rgFundingOverview.Rebind();
                     break;
                 case 3:
-                    rgCollectionCodes.Rebind();
+                    rgContacts.Rebind();
                     break;
                 case 4:
-                    rgCustomersMissingIcons.Rebind();
+                    rgCollectionCodes.Rebind();
                     break;
                 case 5:
-                    rgAgreementsMissingDocuments.Rebind();
+                    rgCustomersMissingIcons.Rebind();
                     break;
                 case 6:
-                    rgAgreementStatus.Rebind();
+                    rgAgreementsMissingDocuments.Rebind();
                     break;
                 case 7:
+                    rgAgreementStatus.Rebind();
+                    break;
+                case 8:
                     rgAgreementDifference.Rebind();
                     break;
             }
