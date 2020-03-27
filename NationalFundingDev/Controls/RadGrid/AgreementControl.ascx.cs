@@ -38,7 +38,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 btnInsert.Visible = true;
                 var customer = siftaDB.Customers.FirstOrDefault(p=>p.CustomerID.ToString() == Request.QueryString["CustomerID"]);
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (customer.CustomerAgreementTypeID == 1)
                 {
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
@@ -62,7 +62,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 rcbBillingCycle.SelectedValue = agreement.BillingCycleFrequency;
                 var customer = siftaDB.Customers.FirstOrDefault(p => p.CustomerID.ToString() == Request.QueryString["CustomerID"]);
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (customer.CustomerAgreementTypeID == 1)
                 {
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;

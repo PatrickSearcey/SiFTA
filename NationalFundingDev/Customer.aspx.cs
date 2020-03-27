@@ -445,6 +445,9 @@ namespace NationalFundingDev
             var rdpCustomerSigned = (uc.FindControl("rdpCustomerSigned") as RadDatePicker);
             var rdpUSGSSigned = (uc.FindControl("rdpUSGSSigned") as RadDatePicker);
             var rcbFundsType = (uc.FindControl("rcbFundsType") as RadComboBox);
+
+            var rcbAType = (uc.FindControl("rcbAType") as RadComboBox);
+
             var rcbBillingCycle = (uc.FindControl("rcbBillingCycle") as RadComboBox);
             var rntbCustomerFunding = (uc.FindControl("rntbCustomerFunding") as RadNumericTextBox);
             var rntbOtherFunding = (uc.FindControl("rntbOtherFunding") as RadNumericTextBox);
@@ -459,6 +462,7 @@ namespace NationalFundingDev
             a.FundsType = rcbFundsType.SelectedValue;
             a.SalesDocument = rtbSalesDocument.Text;
             a.PurchaseOrderNumber = rtbPurchaseOrderNumber.Text;
+            a.Customer2Group = rcbAType.SelectedValue;
             //Mod Info
             a.StartDate = m.StartDate = rdpStartDate.SelectedDate;
             a.EndDate = m.EndDate = rdpEndDate.SelectedDate;
