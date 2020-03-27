@@ -34,7 +34,8 @@ namespace NationalFundingDev.Controls.Editable
             int modID = agreement.AgreementID;
             int aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
 
-            rgReceiver.DataSource = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+            rgReceiver.DataSource = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID).OrderByDescending(x => x.FundSourceFY)
+                .ThenByDescending(x => x.AccountNumber).ThenByDescending(x => x.MatchPair).ThenByDescending(x => x.CustomerClass);
             rgReceiver.Columns.FindByUniqueName("Edit").Visible = Edit;
             rgReceiver.Columns.FindByUniqueName("Delete").Visible = Delete;
             if (AddNewRecords)
