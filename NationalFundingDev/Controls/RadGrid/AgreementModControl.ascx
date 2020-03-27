@@ -72,6 +72,16 @@
             <telerik:RadDatePicker runat="server" ID="rdpCustomerSigned" Skin="Silk" SelectedDate="<%# mod.SignCustomerDate %>" />
         </td>
     </tr>
+
+    <tr ID="rcbFundsTypeDiv" runat="server">
+        <td align="right">Agreement Type:
+        </td>
+        <td>
+            <telerik:RadComboBox runat="server" ID="rcbAgType" Skin="Silk" Width="160px" >
+            </telerik:RadComboBox>
+        </td>
+    </tr>
+
     <tr>
         <td align="right">Billing Type:
         </td>

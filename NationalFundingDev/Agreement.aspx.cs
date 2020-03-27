@@ -376,6 +376,9 @@ namespace NationalFundingDev
             var rdpCustomerSigned = (uc.FindControl("rdpCustomerSigned") as RadDatePicker);
             var rdpUSGSSigned = (uc.FindControl("rdpUSGSSigned") as RadDatePicker);
             var rcbFundsType = (uc.FindControl("rcbFundsType") as RadComboBox);
+
+            var rcbAgType = (uc.FindControl("rcbAgType") as RadComboBox);
+
             var rcbBillingCycle = (uc.FindControl("rcbBillingCycle") as RadComboBox);
             var rntbCustomerFunding = (uc.FindControl("rntbCustomerFunding") as RadNumericTextBox);
             var rntbOtherFunding = (uc.FindControl("rntbOtherFunding") as RadNumericTextBox);
@@ -385,6 +388,11 @@ namespace NationalFundingDev
             #endregion
 
             #region Assign Values
+            if(m.Number == 0)
+            {
+                a.Customer2Group = rcbAgType.SelectedValue;
+            }
+
             //Agreement Info
             a.BillingCycleFrequency = rcbBillingCycle.SelectedValue;
             a.FundsType = rcbFundsType.SelectedValue;
