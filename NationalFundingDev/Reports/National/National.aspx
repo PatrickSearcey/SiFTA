@@ -48,7 +48,7 @@
                                 <a style="color: #2DABC1;" target="_blank" href='<%# AppendBaseURL(String.Format("Agreement.aspx?AgreementID={0}", Eval("AgreementID"))) %>'><%# String.Format("{0}", Eval("PurchaseOrderNumber")) %></a> - <%# Eval("CustomerName") %>
                             </ItemTemplate>
                         </telerik:GridTemplateColumn>
-                        <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPairCode" />
+                        <telerik:GridBoundColumn HeaderText="MPC" DataField="MatchPair" />
                         <telerik:GridBoundColumn HeaderText="Start" DataField="StartDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="USGSSignDate" DataFormatString="{0:MM/dd/yyyy}" />

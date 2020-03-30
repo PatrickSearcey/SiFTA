@@ -346,7 +346,7 @@
                                 </telerik:GridTemplateColumn>
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="USGS CMF" DataField="FundingUSGSCMF" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="Customer" DataField="FundingCustomer" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
-                                <telerik:GridBoundColumn AllowSorting="true" HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
+                                <telerik:GridBoundColumn AllowSorting="true" HeaderText="In Kind" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                                 <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingTotal" DataFormatString="{0:c0}" FooterAggregateFormatString="<b>{0:c0}</b>" Aggregate="Sum" />
                                 <telerik:GridTemplateColumn AllowSorting="true" HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks">
                                     <ItemTemplate>
@@ -395,7 +395,7 @@
                                 <telerik:GridBoundColumn DataType="System.String" HeaderText="Remarks" DataField="Remarks" SortExpression="Remarks" />
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="USGS CMF" DataField="FundingUSGSCMF" DataFormatString="{0:c0}" />
                                 <telerik:GridBoundColumn AllowSorting="true" DataType="System.Double" HeaderText="Customer" DataField="FundingCustomer" DataFormatString="{0:c0}" />
-                                <telerik:GridBoundColumn AllowSorting="true" HeaderText="Other" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
+                                <telerik:GridBoundColumn AllowSorting="true" HeaderText="In Kind" DataField="FundingOther" SortExpression="FundingOther" UniqueName="FundingOther" DataFormatString="{0:c0}" />
                                 <telerik:GridBoundColumn HeaderText="Total" DataField="FundingTotal" SortExpression="FundingTotal" UniqueName="FundingTotal" DataFormatString="{0:c0}" />
                             </Columns>
                         </MasterTableView>

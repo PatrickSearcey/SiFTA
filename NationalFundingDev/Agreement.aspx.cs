@@ -40,7 +40,7 @@ namespace NationalFundingDev
             {
                 rtsAgreementOptions.Tabs.FindTabByValue("Coop").Visible = true;
                 //Set the search box to be a blank list
-                rsbCoopFunding.DataSource = new List<string>();
+                //rsbCoopFunding.DataSource = new List<string>();
             }
 
             if(user.IsSuperUser || user.IsCenterAdmin)
@@ -370,13 +370,15 @@ namespace NationalFundingDev
             #region User Controls
             //Grab the controls from the user controls
             var rtbPurchaseOrderNumber = (uc.FindControl("rtbPurchaseOrderNumber") as RadTextBox);
-            var rtbMPC = (uc.FindControl("rtbMPC") as RadTextBox);
             var rtbSalesDocument = (uc.FindControl("rtbSalesDocument") as RadTextBox);
             var rdpStartDate = (uc.FindControl("rdpStartDate") as RadDatePicker);
             var rdpEndDate = (uc.FindControl("rdpEndDate") as RadDatePicker);
             var rdpCustomerSigned = (uc.FindControl("rdpCustomerSigned") as RadDatePicker);
             var rdpUSGSSigned = (uc.FindControl("rdpUSGSSigned") as RadDatePicker);
             var rcbFundsType = (uc.FindControl("rcbFundsType") as RadComboBox);
+
+            var rcbAgType = (uc.FindControl("rcbAgType") as RadComboBox);
+
             var rcbBillingCycle = (uc.FindControl("rcbBillingCycle") as RadComboBox);
             var rntbCustomerFunding = (uc.FindControl("rntbCustomerFunding") as RadNumericTextBox);
             var rntbOtherFunding = (uc.FindControl("rntbOtherFunding") as RadNumericTextBox);
@@ -386,10 +388,14 @@ namespace NationalFundingDev
             #endregion
 
             #region Assign Values
+            if(m.Number == 0)
+            {
+                a.Customer2Group = rcbAgType.SelectedValue;
+            }
+
             //Agreement Info
             a.BillingCycleFrequency = rcbBillingCycle.SelectedValue;
             a.FundsType = rcbFundsType.SelectedValue;
-            a.MatchPairCode = rtbMPC.Text;
             a.SalesDocument = rtbSalesDocument.Text;
             a.PurchaseOrderNumber = rtbPurchaseOrderNumber.Text;
             //Mod Info
@@ -980,85 +986,55 @@ namespace NationalFundingDev
         #region Cooperative Funding
         protected void rgCoopFunding_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
-            rgCoopFunding.DataSource = siftaDB.spCooperativeFunding(agreement.Customer.Center.OrgCode, rsbCoopFunding.Text).Where(p => p.AgreementID == agreement.AgreementID).OrderByDescending(p => p.StartDate);
+            int modID = agreement.AgreementID;
+            rgCoopFunding.DataSource = siftaDB.vAccountSummaries.Where(p => p.AgreementID == modID);
         }
 
-        protected void rgCoopFunding_DetailTableDataBind(object sender, GridDetailTableDataBindEventArgs e)
+        protected void rgCoopFunding_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
-            GridDataItem dataItem = (GridDataItem)e.DetailTableView.ParentItem;
-            if (e.DetailTableView.Name == "Accounts")
+            int agreementID = int.Parse(Request.QueryString["AgreementID"]);
+            //int agreementID = siftaDB.AgreementMods.First(p => p.AgreementModID == modID).AgreementID;
+            List<AgreementMod> aIDS = siftaDB.AgreementMods.Where(p => p.AgreementID == agreementID).ToList();
+
+            double grandTotal = 0, sirTotal = 0, reimTotal = 0, sumUSGS = 0, sumCust = 0;
+
+            foreach (var item in aIDS)
             {
-                var AgreementID = Convert.ToInt32(dataItem.GetDataKeyValue("AgreementID"));
-                e.DetailTableView.DataSource = siftaDB.CooperativeFundings.Where(p => p.AgreementID == AgreementID).OrderBy(p => p.FiscalYear);
+                int aID = item.AgreementModID;
+
+                var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+                sirTotal += rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+                reimTotal += rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+                grandTotal = sirTotal + reimTotal;
+
+                var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
+                sumUSGS += funding.Sum(p => p.FundingUSGSCMF) ?? 0;
+                sumCust += funding.Sum(p => p.FundingCustomer) ?? 0;
             }
-        }
 
-        protected void rgCoopFunding_InsertCommand(object sender, GridCommandEventArgs e)
-        {
-            UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            GridDataItem parentItem = (GridDataItem)e.Item.OwnerTableView.ParentItem;
-            var AgreementID = Convert.ToInt32(parentItem.GetDataKeyValue("AgreementID"));
-            var cf = new CooperativeFunding();
-            GrabCooperativeFundingValuesFromForm(ref cf, userControl);
-            cf.AgreementID = AgreementID;
-            cf.CreatedBy = user.ID;
-            cf.CreatedDate = DateTime.Now;
-            siftaDB.CooperativeFundings.InsertOnSubmit(cf);
-            //Add metrics
-            var metric = new MetricHandler(agreement.Customer.OrgCode, agreement.CustomerID, agreement.AgreementID, MetricType.RecordAdded, "Cooperative Funding", "Cooperative Funding Added");
-            metric.SubmitChanges();
-            siftaDB.SubmitChanges();
-        }
+            dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
+            cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
 
-        protected void rgCoopFunding_UpdateCommand(object sender, GridCommandEventArgs e)
-        {
-            UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            GridDataItem parentItem = (GridDataItem)e.Item.OwnerTableView.ParentItem;
-            GridEditableItem editedItem = (GridEditableItem)e.Item;
-            var CooperativeFundingID = Convert.ToInt32(editedItem.GetDataKeyValue("CooperativeFundingID"));
-            var cf = siftaDB.CooperativeFundings.FirstOrDefault(p => p.CooperativeFundingID == CooperativeFundingID);
-            GrabCooperativeFundingValuesFromForm(ref cf, userControl);
-            //Add metrics
-            var metric = new MetricHandler(agreement.Customer.OrgCode, agreement.CustomerID, agreement.AgreementID, MetricType.RecordUpdate, "Cooperative Funding", String.Format("CooperativeFundingID = {0}", CooperativeFundingID));
-            metric.SubmitChanges();
-            siftaDB.SubmitChanges();
-        }
-        private void GrabCooperativeFundingValuesFromForm(ref CooperativeFunding cf, UserControl control)
-        {
-            var rntbFiscalYear = (RadNumericTextBox)control.FindControl("rntbFiscalYear");
-            var rcbMod = (RadComboBox)control.FindControl("rcbMod");
-            var rcbAccount = (RadComboBox)control.FindControl("rcbAccount");
-            var rntbUSGS = (RadNumericTextBox)control.FindControl("rntbUSGS");
-            var rntbCooperator = (RadNumericTextBox)control.FindControl("rntbCooperator");
-            var rcbStatus = (RadComboBox)control.FindControl("rcbStatus");
-            var rtbRemarks = (RadTextBox)control.FindControl("rtbRemarks");
+            double dirDiff = sirTotal - sumUSGS;
+            string dirStyle = dirDiff != 0 ? "color:red" : "";
 
-            var mod = siftaDB.AgreementMods.FirstOrDefault(p => p.AgreementModID.ToString() == rcbMod.SelectedValue);
-            cf.ModNumber = mod.Number;
-            cf.AgreementModID = mod.AgreementModID;
-            cf.FiscalYear = Convert.ToInt32(rntbFiscalYear.Value);
-            cf.AccountNumber = rcbAccount.Text;
-            cf.FundingUSGSCMF = Convert.ToDouble(rntbUSGS.Value);
-            cf.FundingCustomer = Convert.ToDouble(rntbCooperator.Value);
-            cf.Status = rcbStatus.SelectedValue;
-            cf.Remarks = rtbRemarks.Text;
-            cf.ModifiedBy = user.ID;
-            cf.ModifiedDate = DateTime.Now;
-        }
-        protected void rbShowAll_Click(object sender, EventArgs e)
-        {
-            rsbCoopFunding.Text = "";
-            rgCoopFunding.Rebind();
-        }
+            diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
 
-        protected void rsbCoopFunding_Search(object sender, SearchBoxEventArgs e)
-        {
-            rgCoopFunding.Rebind();
-        }
+            reimTd.InnerHtml = "<span>$" + reimTotal.ToString("#,##0") + "</span>";
+            custTd.InnerHtml = "<span>$" + sumCust.ToString("#,##0") + "</span>";
 
-        protected void rbViewReport_Click(object sender, EventArgs e)
-        {
-            Response.Redirect(String.Format("Reports/Center/CoopFunding.aspx?OrgCode={0}", agreement.Customer.Center.OrgCode).AppendBaseURL());
+            double reimDiff = reimTotal - sumCust;
+            string reimStyle = reimDiff != 0 ? "color:red" : "";
+
+            diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
+
+            totalsTd.InnerHtml = "<span>$" + grandTotal.ToString("#,##0") + "</span>";
+            aogtTd.InnerHtml = "<span>$" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
+
+            double gDiff = (grandTotal - (sumUSGS + sumCust));
+            string gStyle = gDiff != 0 ? "color:red" : "";
+
+            diff3Td.InnerHtml = "<span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
         }
         #endregion
 
@@ -1215,12 +1191,18 @@ namespace NationalFundingDev
                         }
 
                         //Select all cells in column
-                        var query = (from cell in ws.Cells["f:f"] where cell.Value is double select cell);
+                        var query = (from cell in ws.Cells["f:f"] select cell);
 
                         for (int n = 0; n < query.Count(); n++)
                         {
                             int i = n + 2;
                             //StatusLabel.Text += "<br><br>";
+
+
+                            if (ws.Cells["B" + i].Value == null && ws.Cells["E" + i].Value == null && ws.Cells["F" + i].Value == null)
+                            {
+                                break;
+                            }
 
                             var temp1 = ws.Cells["A" + i].Value;  // entry.SiteName;          Table: Site
                             var temp2 = ws.Cells["B" + i].Value;  // entry.SiteNumber;        Table: FundingSite

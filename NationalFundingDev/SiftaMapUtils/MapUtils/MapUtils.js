@@ -396,8 +396,8 @@ M.initMap = function ( opts ) {
                     "<b>" + $.trim(feature.properties.SiteNumber) + " " + $.trim(feature.properties.SiteName) + "</b>" + "<br/>" +
                     "<br/>" +
                     "<a href='https://sifta.water.usgs.gov/NationalFunding/Site.aspx?SiteNumber="+ $.trim(feature.properties.SiteNumber) +"'        target='_blank'>Funding Details Page              </a>" + "<br/>" +
-                    "<a href='http://sims.water.usgs.gov/SIMS/StationInfo.aspx?agency_cd=USGS&site_no="+ $.trim(feature.properties.SiteNumber) +"' target='_blank'>SIMS Station Information Page Page</a>" + "<br/>" +
-                    "<a href='http://waterdata.usgs.gov/nwis/inventory?site_no="+ $.trim(feature.properties.SiteNumber) +"'                              target='_blank'>NWIS Web                          </a>" + "<br/>" +
+                    "<a href='https://sims.water.usgs.gov/SIMS/StationInfo.aspx?agency_cd=USGS&site_no="+ $.trim(feature.properties.SiteNumber) +"' target='_blank'>SIMS Station Information Page Page</a>" + "<br/>" +
+                    "<a href='https://waterdata.usgs.gov/nwis/inventory?site_no="+ $.trim(feature.properties.SiteNumber) +"'                              target='_blank'>NWIS Web                          </a>" + "<br/>" +
                     "<br/>" +
                     "<a href='javascript: M.maps[\""+opts.mapElemID+"\"].setView(["+feature.geometry.coordinates[1]+","+feature.geometry.coordinates[0]+"], M.maps[\""+opts.mapElemID+"\"].getMaxZoom()); void(0);'>Zoom To</a>"
                 )
@@ -495,18 +495,18 @@ M.makeMap = function ( opts ) {
     
     // basemaps (uses esri-leaflet.js) - need new layers for each map
     var basemap_topo = L.layerGroup([
-        L.esri.tiledMapLayer("http://basemap.nationalmap.gov/ArcGIS/rest/services/USGSTopo/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
+        L.esri.tiledMapLayer("https://basemap.nationalmap.gov/ArcGIS/rest/services/USGSTopo/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
     ]);
     var basemap_streets = L.layerGroup([
-        L.esri.tiledMapLayer("http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
+        L.esri.tiledMapLayer("https://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer", {"opacity":M.startup_basemapOpacity} ) // base with labels
     ]);
     var basemap_imagery = L.layerGroup([
-        L.esri.tiledMapLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",                           {"opacity":M.startup_basemapOpacity} ), // base
-        L.esri.tiledMapLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
+        L.esri.tiledMapLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer",                           {"opacity":M.startup_basemapOpacity} ), // base
+        L.esri.tiledMapLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
     ]);
     var basemap_relief = L.layerGroup([
-        L.esri.tiledMapLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer",                     {"opacity":M.startup_basemapOpacity} ), // base
-        L.esri.tiledMapLayer("http://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
+        L.esri.tiledMapLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Shaded_Relief/MapServer",                     {"opacity":M.startup_basemapOpacity} ), // base
+        L.esri.tiledMapLayer("https://services.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer", {"opacity":M.startup_basemapOpacity} )  // labels
     ]);
     
     // create map

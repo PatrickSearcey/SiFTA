@@ -44,7 +44,7 @@ namespace NationalFundingDev.Reports.National
         #region One Sided Agreements
         protected void rgOneSidedAgreements_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgOneSidedAgreements.DataSource = siftaDB.Agreements.Where(p => SqlMethods.Like(p.SalesDocument, "-%")).Select(p => new { OrgCode = p.Customer.Center.OrgCode, CenterName = p.Customer.Center.Name, CustomerID = p.Customer.CustomerID, CustomerName = p.Customer.Name, AgreementID = p.AgreementID, PurchaseOrderNumber = p.PurchaseOrderNumber, MatchPairCode = p.MatchPairCode, SalesDocument = p.SalesDocument, StartDate = p.StartDate, EndDate = p.EndDate, USGSSignDate = p.AgreementMods.FirstOrDefault(s=>s.Number ==0).SignUSGSDate, CustomerSignDate = p.AgreementMods.FirstOrDefault(c=>c.Number ==0).SignCustomerDate, FundingUSGSCMF = p.AgreementMods.Sum(fusgs=>fusgs.FundingUSGSCMF)  }).ToList();
+            rgOneSidedAgreements.DataSource = siftaDB.Agreements.Where(p => SqlMethods.Like(p.SalesDocument, "-%")).Select(p => new { OrgCode = p.Customer.Center.OrgCode, CenterName = p.Customer.Center.Name, CustomerID = p.Customer.CustomerID, CustomerName = p.Customer.Name, AgreementID = p.AgreementID, PurchaseOrderNumber = p.PurchaseOrderNumber, MatchPair = p.MatchPair, SalesDocument = p.SalesDocument, StartDate = p.StartDate, EndDate = p.EndDate, USGSSignDate = p.AgreementMods.FirstOrDefault(s=>s.Number ==0).SignUSGSDate, CustomerSignDate = p.AgreementMods.FirstOrDefault(c=>c.Number ==0).SignCustomerDate, FundingUSGSCMF = p.AgreementMods.Sum(fusgs=>fusgs.FundingUSGSCMF)  }).ToList();
         }
         #endregion
 

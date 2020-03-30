@@ -49,10 +49,10 @@ namespace NationalFundingDev
             {
                 rtsCustomerOptions.Tabs.Add(new RadTab() { Text = "Edit Customer", TabIndex = 2 });
                 //Check for Texas Users Only
-                if (customer.Center.CoopDBAccess)
+                /*if (customer.Center.CoopDBAccess)
                 {
                     rtsCustomerOptions.Tabs.Add(new RadTab() { Text = "Account Funding", TabIndex = 3 });
-                }
+                }*/
                 
             }
             //Set the search box to be a blank list
@@ -119,8 +119,10 @@ namespace NationalFundingDev
         {
             imgCustomer.ImageUrl = String.Format("https://sifta.water.usgs.gov/Services/REST/Customer/CustomerIcon.ashx?CustomerID={0}", customer.CustomerID);
             rtbCustomerCd.Text = customer.Code;
+
             rcbAgreementType.DataBind();
             rcbAgreementType.SelectedValue = customer.CustomerAgreementTypeID.ToString();
+
             rntbCustomerNo.Value = customer.Number;
             rtbCustomerName.Text = customer.Name;
             rtbCustomerAbbrev.Text = customer.Abbreviation;
@@ -163,6 +165,11 @@ namespace NationalFundingDev
             var coopFunding = mod.CooperativeFundings.ToList();
             //Grabs the list of studies funding for the original mod
             var studiesFunding = mod.FundingStudies.ToList();
+
+            //Grab list of account fund sources
+            var accFundSrc = siftaDB.AccountFundSources.Where(x => x.AgreementModID == mod.AgreementModID).ToList();
+
+
             //Create a new mod
             var copyMod = new AgreementMod();
             //Create a new Agreement and assign it values from the old one
@@ -174,6 +181,7 @@ namespace NationalFundingDev
                 Remarks = agreement.Remarks,
                 CustomerBillingContact = agreement.CustomerBillingContact,
                 CustomerTechnicalContact = agreement.CustomerTechnicalContact,
+                Customer2Group = agreement.Customer2Group,
                 USGSBillingContact = agreement.USGSBillingContact,
                 USGSTechnicalContact = agreement.USGSTechnicalContact,
                 CreatedBy = user.ID,
@@ -283,6 +291,28 @@ namespace NationalFundingDev
                 });
             }
             siftaDB.SubmitChanges();
+
+            foreach(var accFund in accFundSrc)
+            {
+                var newFund = new AccountFundSource();
+                newFund.AgreementModID = copyMod.AgreementModID;
+                newFund.FundSourceFY = accFund.FundSourceFY;
+                newFund.AccountNumber = accFund.AccountNumber;
+                newFund.CustomerClass = accFund.CustomerClass;
+                newFund.MatchPair = accFund.MatchPair;
+                newFund.ProgramElementCode = accFund.ProgramElementCode;
+                newFund.Funding = accFund.Funding;
+                newFund.FundStatus = accFund.FundStatus;
+                newFund.Remarks = accFund.Remarks;
+                newFund.CreatedBy = user.ID;
+                newFund.CreatedDate = DateTime.Now;
+                newFund.ModifiedBy = user.ID;
+                newFund.ModifiedDate = DateTime.Now;
+
+                siftaDB.AccountFundSources.InsertOnSubmit(newFund);
+            }
+            siftaDB.SubmitChanges();
+
             //Update Records with Unique Record ID's
             RecordIdentifiers.UpdateRecords();
             //Rebind the agreement grid
@@ -415,6 +445,9 @@ namespace NationalFundingDev
             var rdpCustomerSigned = (uc.FindControl("rdpCustomerSigned") as RadDatePicker);
             var rdpUSGSSigned = (uc.FindControl("rdpUSGSSigned") as RadDatePicker);
             var rcbFundsType = (uc.FindControl("rcbFundsType") as RadComboBox);
+
+            var rcbAType = (uc.FindControl("rcbAType") as RadComboBox);
+
             var rcbBillingCycle = (uc.FindControl("rcbBillingCycle") as RadComboBox);
             var rntbCustomerFunding = (uc.FindControl("rntbCustomerFunding") as RadNumericTextBox);
             var rntbOtherFunding = (uc.FindControl("rntbOtherFunding") as RadNumericTextBox);
@@ -429,6 +462,7 @@ namespace NationalFundingDev
             a.FundsType = rcbFundsType.SelectedValue;
             a.SalesDocument = rtbSalesDocument.Text;
             a.PurchaseOrderNumber = rtbPurchaseOrderNumber.Text;
+            a.Customer2Group = rcbAType.SelectedValue;
             //Mod Info
             a.StartDate = m.StartDate = rdpStartDate.SelectedDate;
             a.EndDate = m.EndDate = rdpEndDate.SelectedDate;
@@ -796,8 +830,10 @@ namespace NationalFundingDev
         {
             #region Assign Values
             customer.Code = rtbCustomerCd.Text;
+
             //If the combo box had a selected value convert it to int and store it as the customer agreement type. If not set the agreementtypeID to null
             if (!String.IsNullOrEmpty(rcbAgreementType.SelectedValue)) customer.CustomerAgreementTypeID = Convert.ToInt32(rcbAgreementType.SelectedValue); else customer.CustomerAgreementTypeID = null;
+
             //Convert double to long to store in db
             customer.Number = Convert.ToInt64(rntbCustomerNo.Value);
             customer.Name = rtbCustomerName.Text;
@@ -867,6 +903,21 @@ namespace NationalFundingDev
                 }
             }
         }
-        
+
+        public String Cust2Group(object item)
+        {
+            string retVal = "";
+            try
+            {
+                var temp = siftaDB.lutCustomer2Groups.First(x => x.Customer2GroupCode == item.ToString());
+                retVal = temp.Customer2Group;
+            }
+            catch (Exception ex)
+            {
+                retVal = "Not Assigned";
+            }
+            return retVal;
+        }
+
     }
 }

@@ -7,29 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NationalFundingDev.Reports.Metrics {
-    
-    
-    public partial class ImageSearch {
-        
-        /// <summary>
-        /// form1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
-        
-        /// <summary>
-        /// rsm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadScriptManager rsm;
-        
+namespace NationalFundingDev.Reports.Metrics
+{
+
+
+    public partial class ImageSearch
+    {
+
         /// <summary>
         /// rtbSearch control.
         /// </summary>
@@ -38,7 +22,7 @@ namespace NationalFundingDev.Reports.Metrics {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbSearch;
-        
+
         /// <summary>
         /// rbSearchClick control.
         /// </summary>
@@ -47,7 +31,7 @@ namespace NationalFundingDev.Reports.Metrics {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton rbSearchClick;
-        
+
         /// <summary>
         /// rgImages control.
         /// </summary>

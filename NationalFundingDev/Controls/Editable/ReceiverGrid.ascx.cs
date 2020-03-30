@@ -14,15 +14,16 @@ namespace NationalFundingDev.Controls.Editable
         public Agreement agreement;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         private User user = new User();
-        public int aID;
+        public int aID, modID;
         private double grandTotal = 0, sirTotal = 0, reimTotal = 0;
         protected void Page_Load(object sender, EventArgs e)
         {
-            aID = int.Parse(Request.QueryString["AgreementID"]);
-            var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            modID = int.Parse(Request.QueryString["AgreementID"]);
+            aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
+            var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             try
             {
-                rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                rcbMatchPair.SelectedValue = ag.MatchPair.ToString();
                 rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
             }
             catch { }
@@ -30,7 +31,11 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_NeedDataSource(object sender, Telerik.Web.UI.GridNeedDataSourceEventArgs e)
         {
-            rgReceiver.DataSource = siftaDB.Receivers.Where(p => p.AgreementID == agreement.AgreementID);
+            int modID = agreement.AgreementID;
+            int aID = siftaDB.AgreementMods.First(p => p.AgreementID == modID).AgreementModID;
+
+            rgReceiver.DataSource = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID).OrderByDescending(x => x.FundSourceFY)
+                .ThenByDescending(x => x.AccountNumber).ThenByDescending(x => x.MatchPair).ThenByDescending(x => x.CustomerClass);
             rgReceiver.Columns.FindByUniqueName("Edit").Visible = Edit;
             rgReceiver.Columns.FindByUniqueName("Delete").Visible = Delete;
             if (AddNewRecords)
@@ -42,38 +47,51 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rgReceiver_InsertCommand(object sender, GridCommandEventArgs e)
         {
+            UpdateDifferences();
+
             //Cast the GridCommandEventArgs item as an editable item
             GridEditableItem editedItem = e.Item as GridEditableItem;
             //Find the user control used by that item save it as a UserControl
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            var rec = new Receiver();
+            var rec = new AccountFundSource();
             GrabValuesFromUserControl(userControl, ref rec);
 
-            int id = siftaDB.Receivers.Max(p => p.RecID);
-            rec.RecID = id + 1;
+            try
+            {
+                int id = siftaDB.AccountFundSources.Max(p => p.AFSID);
+                rec.AFSID = id + 1;
+            }
+            catch(Exception ex)
+            {
+                rec.AFSID = 0;
+            }
 
-            siftaDB.Receivers.InsertOnSubmit(rec);
+            siftaDB.AccountFundSources.InsertOnSubmit(rec);
             siftaDB.SubmitChanges();
         }
 
         protected void rgReceiver_UpdateCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
+            UpdateDifferences();
+
             GridEditableItem editedItem = e.Item as GridEditableItem;
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
-            var ID = Convert.ToInt32(editedItem.GetDataKeyValue("RecID").ToString());
-            var rec = siftaDB.Receivers.FirstOrDefault(p => p.RecID == ID);
+            var ID = Convert.ToInt32(editedItem.GetDataKeyValue("AFSID").ToString());
+            var rec = siftaDB.AccountFundSources.FirstOrDefault(p => p.AFSID == ID);
             GrabValuesFromUserControl(userControl, ref rec);
             siftaDB.SubmitChanges();
         }
 
         protected void rgReceiver_DeleteCommand(object sender, Telerik.Web.UI.GridCommandEventArgs e)
         {
-            var recID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["RecID"];
-            siftaDB.Receivers.DeleteOnSubmit(siftaDB.Receivers.FirstOrDefault(p => p.RecID == recID));
+            UpdateDifferences();
+
+            var recID = (int)(e.Item as GridDataItem).OwnerTableView.DataKeyValues[e.Item.ItemIndex]["AFSID"];
+            siftaDB.AccountFundSources.DeleteOnSubmit(siftaDB.AccountFundSources.FirstOrDefault(p => p.AFSID == recID));
             siftaDB.SubmitChanges();
         }
 
-        private void GrabValuesFromUserControl(UserControl uc, ref Receiver rec)
+        private void GrabValuesFromUserControl(UserControl uc, ref AccountFundSource rec)
         {
             #region User Controls
             //Grab the controls from the user controls
@@ -84,7 +102,6 @@ namespace NationalFundingDev.Controls.Editable
             var rcbMatchPair = (uc.FindControl("rcbMatchPair") as RadComboBox);
             var rcbProgramElementCode = (uc.FindControl("rcbProgramElementCode") as RadComboBox);
             var rtbFunding = (uc.FindControl("rtbFunding") as RadTextBox);
-            var rcbMod = (uc.FindControl("rcbMod") as RadComboBox);
             var rddlStatus = (uc.FindControl("rddlStatus") as RadDropDownList);
             var rtbRemarks = (uc.FindControl("rtbRemarks") as RadTextBox);
 
@@ -101,49 +118,68 @@ namespace NationalFundingDev.Controls.Editable
                 mod = null;
             }
 
-            rec.AgreementID = agreement.AgreementID;
-            rec.FY = Convert.ToInt32(rtbFiscalYear.Text);
+            var aModID = siftaDB.AgreementMods.First(p => p.AgreementID == agreement.AgreementID).AgreementModID;
+
+            rec.AgreementModID = aModID;
+            rec.FundSourceFY = Convert.ToInt32(rtbFiscalYear.Text);
             rec.AccountNumber = rcbAccount.SelectedValue;
             rec.CustomerClass = rddlCustomerClass.SelectedValue;
             rec.MatchPair = rcbMatchPair.SelectedValue;
             rec.ProgramElementCode = rcbProgramElementCode.SelectedValue;
-            rec.Funding = Convert.ToDecimal(rtbFunding.Text);
-            rec.ModNumber = rcbMod.SelectedValue;
-            rec.Status = rddlStatus.SelectedValue;
+            rec.Funding = Convert.ToDouble(rtbFunding.Text);
+            rec.FundStatus = rddlStatus.SelectedValue;
             rec.Remarks = rtbRemarks.Text;
-            rec.EditedBy = user.ID;
-            rec.EditedWhen = DateTime.Now;
+            rec.ModifiedBy = user.ID;
+            rec.ModifiedDate = DateTime.Now;
+
+            if(String.IsNullOrEmpty(rec.CreatedBy))
+            {
+                rec.CreatedBy = user.ID;
+                rec.CreatedDate = DateTime.Now;
+            }
             #endregion
         }
 
-        //grandTotal = 0, sirTotal = 0, reimTotal
         protected void rgReceiver_ItemDataBound(object sender, Telerik.Web.UI.GridItemEventArgs e)
         {
-            int aID = int.Parse(Request.QueryString["AgreementID"]);
-            var rec = siftaDB.Receivers.Where(p => p.AgreementID == aID);
-            decimal sirTotal = rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
-            decimal reimTotal = rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
-            grandTotal = (Decimal.ToDouble(sirTotal + reimTotal));
+            UpdateDifferences();
+        }
 
-            var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementID == aID);
-            double sumUSGS = funding.Sum(p => p.FundingUSGSCMF) ?? 0;
-            double sumCust = funding.Sum(p => p.FundingCustomer) ?? 0;
+        private void UpdateDifferences()
+        {
+            int agreementID = int.Parse(Request.QueryString["AgreementID"]);
+            //int agreementID = siftaDB.AgreementMods.First(p => p.AgreementModID == modID).AgreementID;
+            List<AgreementMod> aIDS = siftaDB.AgreementMods.Where(p => p.AgreementID == agreementID).ToList();
 
-            GridFooterItem footerItem = e.Item as GridFooterItem;
+            double grandTotal = 0, sirTotal = 0, reimTotal = 0, sumUSGS = 0, sumCust = 0;
+
+            foreach (var item in aIDS)
+            {
+                int aID = item.AgreementModID;
+
+                var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+                sirTotal += rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+                reimTotal += rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+                grandTotal = sirTotal + reimTotal;
+
+                var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
+                sumUSGS += funding.Sum(p => p.FundingUSGSCMF) ?? 0;
+                sumCust += funding.Sum(p => p.FundingCustomer) ?? 0;
+            }
 
             dirTd.InnerHtml = "<span>$" + sirTotal.ToString("#,##0") + "</span>";
             cmfTd.InnerHtml = "<span>$" + sumUSGS.ToString("#,##0") + "</span>";
 
-            double dirDiff = (Decimal.ToDouble(sirTotal) - sumUSGS);
-            string dirStyle = dirDiff < 0 ? "color:red" : "";
+            double dirDiff = sirTotal - sumUSGS;
+            string dirStyle = dirDiff != 0 ? "color:red" : "";
 
             diff1Td.InnerHtml = "<span style='" + dirStyle + "'>$" + dirDiff.ToString("#,##0") + "</span>";
 
             reimTd.InnerHtml = "<span>$" + reimTotal.ToString("#,##0") + "</span>";
             custTd.InnerHtml = "<span>$" + sumCust.ToString("#,##0") + "</span>";
 
-            double reimDiff = (Decimal.ToDouble(reimTotal) - sumCust);
-            string reimStyle = reimDiff < 0 ? "color:red" : "";
+            double reimDiff = reimTotal - sumCust;
+            string reimStyle = reimDiff != 0 ? "color:red" : "";
 
             diff2Td.InnerHtml = "<span style='" + reimStyle + "'>$" + reimDiff.ToString("#,##0") + "</span>";
 
@@ -151,9 +187,15 @@ namespace NationalFundingDev.Controls.Editable
             aogtTd.InnerHtml = "<span>$" + (sumUSGS + sumCust).ToString("#,##0") + "</span>";
 
             double gDiff = (grandTotal - (sumUSGS + sumCust));
-            string gStyle = gDiff < 0 ? "color:red" : "";
+            string gStyle = gDiff != 0 ? "color:red" : "";
 
             diff3Td.InnerHtml = "<span style='" + gStyle + "'>$" + gDiff.ToString("#,##0") + "</span>";
+        }
+
+        protected void PencilEdit(object sender, ImageClickEventArgs e)
+        {
+            rcbMatchPair.Enabled = true;
+            rcbProgramElementCode.Enabled = true;
         }
 
         public string ProcessMyDataItem(object myValue)
@@ -168,14 +210,17 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
-            e.Result = siftaDB.lutMatchPairCodes.Select(p => p);
+            e.Result = siftaDB.lutMatchPairs.Select(p => p);
         }
 
         protected void rcbMatchPair_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
-            agMPC.MatchPairCode = e.Value;
+            var agMPC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
+            agMPC.MatchPair = e.Value;
             siftaDB.SubmitChanges();
+
+            rcbMatchPair.Enabled = false;
+            rcbProgramElementCode.Enabled = false;
         }
 
         protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
@@ -185,9 +230,12 @@ namespace NationalFundingDev.Controls.Editable
 
         protected void rcbProgramElementCode_SelectedIndexChanged(object sender, RadComboBoxSelectedIndexChangedEventArgs e)
         {
-            var agPEC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == aID);
+            var agPEC = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             agPEC.ProgramElementCode = e.Value;
             siftaDB.SubmitChanges();
+
+            rcbMatchPair.Enabled = false;
+            rcbProgramElementCode.Enabled = false;
         }
 
     }

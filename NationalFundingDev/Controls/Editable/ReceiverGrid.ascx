@@ -3,18 +3,19 @@
 <telerik:RadAjaxPanel runat="server" ID="rapReceiver">
     
 <div runat="server" id="mpcDiv" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;">
-    <span>Default Match Pair Code: </span>
+    <asp:ImageButton runat="server" Height="12px" Width="12px" ImageUrl="~/Images/editPencil.png" OnClick="PencilEdit" />
+    <span>&nbsp;&nbsp;Default Match Pair: </span>
     <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
-                DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
-                OnSelectedIndexChanged="rcbMatchPair_SelectedIndexChanged" AutoPostBack="true" >
+                DataTextField="MatchPair" DataValueField="MatchPair" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
+                OnSelectedIndexChanged="rcbMatchPair_SelectedIndexChanged" AutoPostBack="true" Enabled="false" >
         <ItemTemplate>
-            <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
+            <b></b><%# ProcessMyDataItem(Eval("MatchPair")) %></b><br />
         </ItemTemplate>
-    </telerik:RadComboBox><br />
+    </telerik:RadComboBox>&nbsp;&nbsp;
     <span>Default Program Element Code: </span>
     <telerik:RadComboBox runat="server" ID="rcbProgramElementCode" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbPEC"
                 DataTextField="ProgramElementCode" DataValueField="ProgramElementCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"
-                OnSelectedIndexChanged="rcbProgramElementCode_SelectedIndexChanged" AutoPostBack="true" >
+                OnSelectedIndexChanged="rcbProgramElementCode_SelectedIndexChanged" AutoPostBack="true" Enabled="false" >
         <ItemTemplate>
             <b></b><%# ProcessMyDataItem(Eval("ProgramElementCode")) %></b><br />
         </ItemTemplate>
@@ -28,21 +29,16 @@
                  OnUpdateCommand="rgReceiver_UpdateCommand" 
                  OnDeleteCommand="rgReceiver_DeleteCommand" 
                  OnItemDataBound="rgReceiver_ItemDataBound"
-                 AutoGenerateColumns="false" >
-    <MasterTableView DataKeyNames="RecID" CommandItemSettings-AddNewRecordText="Add New Receiver" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
+                 AutoGenerateColumns="false" PageSize="50" >
+    <MasterTableView DataKeyNames="AFSID" CommandItemSettings-AddNewRecordText="Add New Fund Source" CommandItemSettings-ShowRefreshButton="true" ShowGroupFooter="true" >
         <EditFormSettings UserControlName="~/Controls/RadGrid/ReceiverEditForm.ascx" EditFormType="WebUserControl" />
         <Columns>
             <telerik:GridEditCommandColumn ButtonType="ImageButton" UniqueName="Edit" Visible="false" />
             <telerik:GridBoundColumn HeaderText="AgreementID" DataField="AgreementID" SortExpression="AgreementID" Visible="false" AllowSorting="true" />
-            <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FY" SortExpression="FY" AllowSorting="true" />
-            <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber" UniqueName="ModNumber">
-                <ItemTemplate>
-                    <%# Eval("ModNumber").ToString() == "0" ? "" : Eval("ModNumber") %>
-                </ItemTemplate>
-            </telerik:GridTemplateColumn>
+            <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FundSourceFY" SortExpression="FY" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Account Number" DataField="AccountNumber" SortExpression="AccountNumber" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Customer Class" DataField="CustomerClass" SortExpression="CustomerClass" AllowSorting="true" />
-            <telerik:GridBoundColumn HeaderText="Status" DataField="Status" SortExpression="Status" AllowSorting="true" />
+            <telerik:GridBoundColumn HeaderText="Status" DataField="FundStatus" SortExpression="Status" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Match Pair" DataField="MatchPair" SortExpression="MatchPair" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Program Element Code" DataField="ProgramElementCode" SortExpression="ProgramElementCode" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Funding Amount" DataField="Funding" SortExpression="Funding" AllowSorting="true" DataFormatString="{0:c0}" />
@@ -57,7 +53,7 @@
     <table style="width:100%;table-layout:auto;empty-cells:show;border-collapse:collapse;">
         <tr style="background-color: #bd8f04; color: white; font-weight: bold">
             <td align="right" style="padding:3px;"></td>
-            <td style="padding:3px;">Planned Total (From Receivers)</td>
+            <td style="padding:3px;">Planned Total (From Fund Sources)</td>
             <td align="right" style="padding:3px;">Direct(SIR) Total:</td>
             <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
             <td align="right" style="padding:3px;">Reimbursable Total:</td>

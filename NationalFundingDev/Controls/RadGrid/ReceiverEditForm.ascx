@@ -4,14 +4,14 @@
         <td valign="top" align="right">Agreement ID:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbAgreementMod" Text="<%# rec.AgreementID %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadTextBox runat="server" ID="rtbAgreementMod" Text="<%# rec.AgreementModID %>" Skin="Silk" TextMode="SingleLine" />
         </td>
     </tr>
     <tr>
         <td valign="top" align="right">Fiscal Year:
         </td>
         <td valign="top">
-            <telerik:RadTextBox runat="server" ID="rtbFiscalYear" Text="<%# rec.FY %>" Skin="Silk" TextMode="SingleLine" />
+            <telerik:RadTextBox runat="server" ID="rtbFiscalYear" Text="<%# rec.FundSourceFY %>" Skin="Silk" TextMode="SingleLine" />
         </td>
     </tr>
     <tr>
@@ -67,9 +67,9 @@
         </td>
         <td valign="top">
             <telerik:RadComboBox runat="server" ID="rcbMatchPair" Filter="Contains" AllowCustomText="false" MarkFirstMatch="true" HighlightTemplatedItems="true" DataSourceID="rcbMPC"
-                                     DataTextField="MatchPairCode" DataValueField="MatchPairCode" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
+                                     DataTextField="MatchPair" DataValueField="MatchPair" ItemsPerRequest="5" Height="150px"  DropDownAutoWidth="Enabled"  >
                 <ItemTemplate>
-                    <b></b><%# ProcessMyDataItem(Eval("MatchPairCode")) %></b><br />
+                    <b></b><%# ProcessMyDataItem(Eval("MatchPair")) %></b><br />
                 </ItemTemplate>
             </telerik:RadComboBox>
         </td>

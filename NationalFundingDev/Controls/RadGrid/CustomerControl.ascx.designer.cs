@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NationalFundingDev.Controls.RadGrid {
-    
-    
-    public partial class CustomerControl {
-        
+namespace NationalFundingDev.Controls.RadGrid
+{
+
+
+    public partial class CustomerControl
+    {
+
         /// <summary>
         /// imgCustomer control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadBinaryImage imgCustomer;
-        
+
         /// <summary>
         /// rauImage control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadAsyncUpload rauImage;
-        
+
         /// <summary>
         /// rtbCustomerCd control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbCustomerCd;
-        
+
         /// <summary>
         /// rcbAgreementType control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadComboBox rcbAgreementType;
-        
+
         /// <summary>
         /// rfvAgreementType control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvAgreementType;
-        
+
         /// <summary>
         /// rntbCustomerNo control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadNumericTextBox rntbCustomerNo;
-        
+
         /// <summary>
         /// rtbCustomerName control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbCustomerName;
-        
+
         /// <summary>
         /// rfvCustomerNm control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.RequiredFieldValidator rfvCustomerNm;
-        
+
         /// <summary>
         /// rtbCustomerAbbrev control.
         /// </summary>
@@ -92,7 +94,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbCustomerAbbrev;
-        
+
         /// <summary>
         /// rtbCustomerUrl control.
         /// </summary>
@@ -101,7 +103,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbCustomerUrl;
-        
+
         /// <summary>
         /// rtbRemarks control.
         /// </summary>
@@ -110,7 +112,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbRemarks;
-        
+
         /// <summary>
         /// ltCustomerTin control.
         /// </summary>
@@ -119,7 +121,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal ltCustomerTin;
-        
+
         /// <summary>
         /// rtbCustomerTin control.
         /// </summary>
@@ -128,7 +130,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadTextBox rtbCustomerTin;
-        
+
         /// <summary>
         /// btnUpdate control.
         /// </summary>
@@ -137,7 +139,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnUpdate;
-        
+
         /// <summary>
         /// btnInsert control.
         /// </summary>
@@ -146,7 +148,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnInsert;
-        
+
         /// <summary>
         /// btnCancel control.
         /// </summary>
@@ -155,7 +157,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::Telerik.Web.UI.RadButton btnCancel;
-        
+
         /// <summary>
         /// ldsAgreementType control.
         /// </summary>
@@ -164,7 +166,7 @@ namespace NationalFundingDev.Controls.RadGrid {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.LinqDataSource ldsAgreementType;
-        
+
         /// <summary>
         /// ldsTags control.
         /// </summary>

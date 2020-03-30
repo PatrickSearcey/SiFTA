@@ -1,5 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8"?><Database Name="siftadb_dev" Class="SiftaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
-  <Connection Mode="WebSettings" ConnectionString="Data Source=IGSKIACWVMi02;Initial Catalog=siftadb_dev;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="siftadbConnectionString" Provider="System.Data.SqlClient" />
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="siftadb" Class="SiftaDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=IGSKIACWVMi02;Initial Catalog=siftadb;Integrated Security=True" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="siftadbConnectionString" Provider="System.Data.SqlClient" />
   <Table Name="dbo.Account" Member="Accounts">
     <Type Name="Account">
       <Column Name="AccountID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -461,23 +461,6 @@
       <Column Name="RealTime" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.vAgreementFundingOverview" Member="vAgreementFundingOverview1s">
-    <Type Name="vAgreementFundingOverview1">
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="ModName" Type="System.String" DbType="VarChar(14)" CanBeNull="true" />
-      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingOther" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SiteFundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="SiteFundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="StudiesFundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="StudiesFundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Total" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Allocated" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Difference" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.vAgreementDocumentInformation" Member="vAgreementDocumentInformations">
     <Type Name="vAgreementDocumentInformation">
       <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -485,7 +468,7 @@
       <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -576,30 +559,6 @@
       <Column Name="Difference" Type="System.Double" DbType="Float" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.vAgreementInformation" Member="vAgreementInformations">
-    <Type Name="vAgreementInformation">
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
-      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="CustomerBillingContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerTechnicalContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="USGSBillingContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="USGSTechnicalContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Tags" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FundingUSGSCMFSum" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingCustomerSum" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingOtherSum" Type="System.Double" DbType="Float" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.vSiteFundingSum" Member="vSiteFundingSums">
     <Type Name="vSiteFundingSum">
       <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
@@ -632,33 +591,6 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.vCooperativeFundingReport" Member="vCooperativeFundingReports">
-    <Type Name="vCooperativeFundingReport">
-      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CooperativeFundingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="CustomerCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
-      <Column Name="CustomerAgreementType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
-      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="FiscalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="AccountStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
-      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-    </Type>
-  </Table>
   <Table Name="dbo.CooperativeFunding" Member="CooperativeFundings">
     <Type Name="CooperativeFunding">
       <Column Name="CooperativeFundingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
@@ -676,34 +608,6 @@
       <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="AgreementMod_CooperativeFunding" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
-    </Type>
-  </Table>
-  <Table Name="dbo.vAgreementModInformation" Member="vAgreementModInformations">
-    <Type Name="vAgreementModInformation">
-      <Column Name="ModName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
-      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
-      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="CustomerBillingContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="CustomerTechnicalContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="USGSBillingContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="USGSTechnicalContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingOther" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
-      <Column Name="FundingOtherReason" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="Remarks" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.AgreementMod" Member="AgreementMods">
@@ -763,7 +667,7 @@
       <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -808,7 +712,6 @@
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Association Name="lutResearchCode_FundingStudy" Member="lutResearchCode" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode" IsForeignKey="true" />
       <Association Name="AgreementMod_FundingStudy" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
-      <Association Name="lutResearchCode1_FundingStudy" Member="lutResearchCode1" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="lutResearchCode1" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.vStudiesFundingInformation" Member="vStudiesFundingInformations">
@@ -890,22 +793,9 @@
       <Association Name="AgreementMod_FundingSite" Member="AgreementMod" ThisKey="AgreementModID" OtherKey="AgreementModID" Type="AgreementMod" IsForeignKey="true" />
     </Type>
   </Table>
-  <Table Name="dbo.lutResearchCode" Member="lutResearchCode1s">
-    <Type Name="lutResearchCode1">
-      <Column Name="ResearchCodeID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Code" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="Description" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
-      <Column Name="LegacyID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Association Name="lutResearchCode1_FundingStudy" Member="FundingStudies" ThisKey="ResearchCodeID" OtherKey="ResearchCodeID" Type="FundingStudy" />
-    </Type>
-  </Table>
-  <Table Name="dbo.lutMatchPairCode" Member="lutMatchPairCodes">
-    <Type Name="lutMatchPairCode">
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+  <Table Name="dbo.lutMatchPair" Member="lutMatchPairs">
+    <Type Name="lutMatchPair">
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(2) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
     </Type>
   </Table>
   <Table Name="dbo.lutProgramElementCode" Member="lutProgramElementCodes">
@@ -915,21 +805,67 @@
       <Column Name="Active" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
     </Type>
   </Table>
-  <Table Name="dbo.Receiver" Member="Receivers">
-    <Type Name="Receiver">
-      <Column Name="RecID" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+  <Table Name="dbo.vCooperativeFundingReport" Member="vCooperativeFundingReports">
+    <Type Name="vCooperativeFundingReport">
+      <Column Name="OrgCode" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AgreementID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="FY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CooperativeFundingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CustomerName" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
+      <Column Name="CustomerAgreementType" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
+      <Column Name="OfficeCode" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="FiscalYear" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="AccountStatusID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Status" Type="System.String" DbType="NVarChar(5)" CanBeNull="true" />
+      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AccountFundSource" Member="AccountFundSources">
+    <Type Name="AccountFundSource">
+      <Column Name="AFSID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FundSourceFY" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="CustomerClass" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Funding" Type="System.Decimal" DbType="Money" CanBeNull="true" />
-      <Column Name="ModNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Funding" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundStatus" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="Remarks" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
-      <Column Name="EditedWhen" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="EditedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="CreatedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="ModifiedDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vAccountSummary" Member="vAccountSummaries">
+    <Type Name="vAccountSummary">
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FundSourceFY" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AccountNumber" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AccountName" Type="System.String" DbType="NVarChar(35)" CanBeNull="true" />
+      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingUSGSAllocation" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="FundingReimbCustomer" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+      <Column Name="Total" Type="System.Double" DbType="Float NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.lutCustomer2Group" Member="lutCustomer2Groups">
+    <Type Name="lutCustomer2Group">
+      <Column Name="Customer2GroupCode" Type="System.String" DbType="NVarChar(50) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Customer2Group" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
     </Type>
   </Table>
   <Table Name="dbo.Agreement" Member="Agreements">
@@ -939,7 +875,7 @@
       <Column Name="RecordID" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
       <Column Name="ProgramElementCode" Type="System.String" DbType="NVarChar(25)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
@@ -957,12 +893,66 @@
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="Lock" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Customer2Group" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Association Name="Agreement_AgreementMod" Member="AgreementMods" ThisKey="AgreementID" OtherKey="AgreementID" Type="AgreementMod" />
       <Association Name="Customer_Agreement" Member="Customer" ThisKey="CustomerID" OtherKey="CustomerID" Type="Customer" IsForeignKey="true" />
       <Association Name="CustomerContactAddress_Agreement" Member="CustomerContactAddress" ThisKey="CustomerBillingContact" OtherKey="CustomerContactAddressID" Type="CustomerContactAddress" IsForeignKey="true" />
       <Association Name="CustomerContactAddress_Agreement1" Member="CustomerContactAddress1" ThisKey="CustomerTechnicalContact" OtherKey="CustomerContactAddressID" Type="CustomerContactAddress" IsForeignKey="true" />
       <Association Name="Employee_Agreement" Member="Employee" ThisKey="USGSBillingContact" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
       <Association Name="Employee_Agreement1" Member="Employee1" ThisKey="USGSTechnicalContact" OtherKey="EmployeeID" Type="Employee" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vAgreementInformation" Member="vAgreementInformations">
+    <Type Name="vAgreementInformation">
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="CustomerBillingContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerTechnicalContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USGSBillingContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USGSTechnicalContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Tags" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FundingUSGSCMFSum" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingCustomerSum" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingOtherSum" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="Customer2Group" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.vAgreementModInformation" Member="vAgreementModInformations">
+    <Type Name="vAgreementModInformation">
+      <Column Name="ModName" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="CustomerID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgreementID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AgreementModID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
+      <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="CustomerBillingContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CustomerTechnicalContact" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="USGSBillingContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="USGSTechnicalContact" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Number" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignUSGSDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="SignCustomerDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FundingUSGSCMF" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingCustomer" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingOther" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingTotal" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="FundingOtherReason" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="Remarks" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
     </Type>
   </Table>
   <Function Name="dbo.spAccountFundingAccountDetail" Method="spAccountFundingAccountDetail">
@@ -1024,7 +1014,7 @@
       <Column Name="ModNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="StartDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="EndDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
@@ -1232,7 +1222,7 @@
       <Column Name="Number" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
       <Column Name="Name" Type="System.String" DbType="NVarChar(150)" CanBeNull="true" />
       <Column Name="PurchaseOrderNumber" Type="System.String" DbType="NVarChar(75)" CanBeNull="true" />
-      <Column Name="MatchPairCode" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="MatchPair" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
       <Column Name="SalesDocument" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
       <Column Name="FundsType" Type="System.String" DbType="NVarChar(1)" CanBeNull="true" />
       <Column Name="BillingCycleFrequency" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />

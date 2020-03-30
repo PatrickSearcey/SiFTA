@@ -83,7 +83,7 @@ namespace NationalFundingDev.Reports
             var cbFundsStatus = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "FundsStatus");
             var cbComments = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "Comments");
             var cbSalesDocument = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "SalesDocument");
-            var cbMatchPairCode = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "MatchPairCode");
+            var cbMatchPair = rlbColumnSelection.Items.FirstOrDefault(p => p.Value == "MatchPair");
 
             switch(rcbFormat.SelectedValue)
             {
@@ -99,7 +99,7 @@ namespace NationalFundingDev.Reports
                     cbComments.Checked = true;
                     cbAgreementType.Checked = true;
                     cbSalesDocument.Checked = true;
-                    cbMatchPairCode.Checked = true;
+                    cbMatchPair.Checked = true;
                     break;
                 case "TotalBottom":
                     cbFiscalYear.Checked = false;
@@ -112,7 +112,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = false;
                     cbComments.Checked = false;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
                 case "UnsignedCustomer":
                     cbFiscalYear.Checked = false;
@@ -125,7 +125,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = true;
                     cbComments.Checked = true;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
                 case "Proposed":
                     cbFiscalYear.Checked = false;
@@ -138,7 +138,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = true;
                     cbComments.Checked = true;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
                 case "CoopBalance":
                     cbFiscalYear.Checked = false;
@@ -151,7 +151,7 @@ namespace NationalFundingDev.Reports
                     cbFundsStatus.Checked = true;
                     cbComments.Checked = false;
                     cbSalesDocument.Checked = false;
-                    cbMatchPairCode.Checked = false;
+                    cbMatchPair.Checked = false;
                     break;
             }
             rgCooperativeFunding.Rebind();
@@ -195,7 +195,13 @@ namespace NationalFundingDev.Reports
             get
             {
                 var dt = new DataTable();
-                using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True"))
+                string connectionString;
+#if DEBUG
+                connectionString = "Data Source=IGSKIACWVMi02;Initial Catalog=siftadb;Integrated Security=True";
+#else
+                connectionString = "Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True";
+#endif
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     var da = new SqlDataAdapter();
                     da.SelectCommand = new SqlCommand(CoopFundingQuery, conn);
@@ -242,8 +248,8 @@ namespace NationalFundingDev.Reports
                     case "Comments":
                         rgCooperativeFunding.Columns.FindByUniqueName("Remarks").Visible = col.Checked;
                         break;
-                    case "MatchPairCode":
-                        rgCooperativeFunding.Columns.FindByUniqueName("MatchPairCode").Visible = col.Checked;
+                    case "MatchPair":
+                        rgCooperativeFunding.Columns.FindByUniqueName("MatchPair").Visible = col.Checked;
                         break;
                     case "SalesDocument":
                         rgCooperativeFunding.Columns.FindByUniqueName("SalesDocument").Visible = col.Checked;
@@ -279,25 +285,28 @@ namespace NationalFundingDev.Reports
         {
             get
             {
+
+                string dbconn = "siftadb";
+
                 if (rcbFormat.SelectedValue == "TotalBottom")
                 {
                     var cmd = "SELECT  COALESCE(dtUSGSCMF.FundingUSGSCMF,0) AS FundingUSGSCMF, COALESCE(dtUSGSAllocation.FundingUSGSAllocation, 0) AS FundingUSGSAllocation, COALESCE(dtCustomer.FundingCustomer, 0) AS FundingCustomer, COALESCE(dtTotal.FundingTotal,0) AS FundingTotal " +
                               "FROM    (SELECT SUM(FundingUSGSCMF) AS FundingUSGSCMF " +
-                                        "FROM  siftadb.dbo.vCooperativeFundingReport " +
+                                        "FROM  " + dbconn + ".dbo.vCooperativeFundingReport " +
                                         "WHERE (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtUSGSCMF CROSS JOIN " +
                                       "(SELECT SUM(FundingCustomer) AS FundingUSGSAllocation " +
-                                        "FROM siftadb.dbo.vCooperativeFundingReport AS vCooperativeFundingReport_3 " +
+                                        "FROM " + dbconn + ".dbo.vCooperativeFundingReport AS vCooperativeFundingReport_3 " +
                                         "WHERE (CustomerAgreementType = 'FED') AND (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtUSGSAllocation CROSS JOIN " +
                                       "(SELECT SUM(FundingCustomer) AS FundingCustomer " +
-                                        "FROM siftadb.dbo.vCooperativeFundingReport AS vCooperativeFundingReport_2 " +
+                                        "FROM " + dbconn + ".dbo.vCooperativeFundingReport AS vCooperativeFundingReport_2 " +
                                         "WHERE (CustomerAgreementType <> 'FED') AND (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtCustomer CROSS JOIN " +
                                       "(SELECT SUM(FundingTotal) AS FundingTotal " +
-                                        "FROM siftadb.dbo.vCooperativeFundingReport AS vCooperativeFundingReport_1 " +
+                                        "FROM " + dbconn + ".dbo.vCooperativeFundingReport AS vCooperativeFundingReport_1 " +
                                         "WHERE (FiscalYear = '{0}') AND (OrgCode = '{1}')) AS dtTotal";
                     return String.Format(cmd, rcbYear.SelectedValue, center.OrgCode);
                 }
                 String select = "SELECT ",
-                       from = "FROM [siftadb].dbo.vCooperativeFundingReport ",
+                       from = "FROM [" + dbconn + "].dbo.vCooperativeFundingReport ",
                        orderBy = " ",
                        where = String.Format("WHERE (OrgCode = '{0}') AND (FiscalYear = {1})", center.OrgCode, rcbYear.SelectedValue),
                        groupBy = "GROUP BY FiscalYear";
@@ -353,9 +362,9 @@ namespace NationalFundingDev.Reports
                             select += ", Remarks";
                             groupBy += ", Remarks";
                             break;
-                        case "MatchPairCode":
-                            select += ", MatchPairCode";
-                            groupBy += ", MatchPairCode";
+                        case "MatchPair":
+                            select += ", MatchPair";
+                            groupBy += ", MatchPair";
                             break;
                         case "SalesDocument":
                             select += ", SalesDocument";
@@ -401,16 +410,16 @@ namespace NationalFundingDev.Reports
                 return String.Format("{0} {1} {2} {3} {4}", select, from, where, groupBy, orderBy);
             }
         }
-        #endregion
+#endregion
 
-        #region Download Excel
+#region Download Excel
         protected void btnDownloadExcel_Click(object sender, EventArgs e)
         {
             using (MemoryStream ms = new MemoryStream())
             {
                 using (ExcelPackage package = new ExcelPackage(ms))
                 {
-                    #region Trimming Data Set
+#region Trimming Data Set
                     var ds = CooperativeFundingDataSource;
                     if (ds.Columns.Contains("AccountStatusID"))
                     {
@@ -420,9 +429,9 @@ namespace NationalFundingDev.Reports
                     {
                         ds.Columns.Remove("CooperativeFundingID");
                     }
-                    #endregion
+#endregion
 
-                    #region Inserting Data
+#region Inserting Data
                     var worksheet = package.Workbook.Worksheets.Add(rcbFormat.Text);
                     //Add data to worksheet
                     for (int colIDX = 0; colIDX < ds.Columns.Count; colIDX++)
@@ -433,9 +442,9 @@ namespace NationalFundingDev.Reports
                             cell.Value = ds.Rows[rowIDX][colIDX];
                         }
                     }
-                    #endregion
+#endregion
 
-                    #region Adding and Formatting Headers
+#region Adding and Formatting Headers
                     //Add and format Headers
                     for (int idx = 1; idx <= ds.Columns.Count; idx++)
                     {
@@ -458,12 +467,12 @@ namespace NationalFundingDev.Reports
                         cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightBlue);
                     }
-                    #endregion
+#endregion
 
                     //Auto fit the cells width
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
-                    #region About Section
+#region About Section
                     var about = package.Workbook.Worksheets.Add("About");
                     var aboutSection = new List<Tuple<String, String>>();
                     aboutSection.Add(new Tuple<string, string>("Center", center.Name));
@@ -480,9 +489,9 @@ namespace NationalFundingDev.Reports
                         about.Cells[idx + 1, 2].Value = aboutSection[idx].Item2;
                     }
                     about.Cells[about.Dimension.Address].AutoFitColumns();
-                    #endregion
+#endregion
 
-                    #region Write Out to Response
+#region Write Out to Response
                     //Write the file out
                     using (Stream fileStream = Response.OutputStream)
                     {
@@ -491,13 +500,13 @@ namespace NationalFundingDev.Reports
                         package.SaveAs(fileStream);
                         Response.End();
                     }
-                    #endregion
+#endregion
                 }
             }
         }
-        #endregion
+#endregion
 
-        #region Properties
+#region Properties
         public int CurrentFiscalYear
         {
             get
@@ -554,9 +563,9 @@ namespace NationalFundingDev.Reports
                 else return "";
             }
         }
-        #endregion
+#endregion
 
-        #region Inline Functions
+#region Inline Functions
         public String ObjectToString(object item, string field)
         {
             try
@@ -567,7 +576,7 @@ namespace NationalFundingDev.Reports
                 return "";
             }
         }
-        #endregion
+#endregion
 
         protected void rbDownloadAllCurrentAndFuture_Click(object sender, EventArgs e)
         {
@@ -575,7 +584,7 @@ namespace NationalFundingDev.Reports
             {
                 using (ExcelPackage package = new ExcelPackage(ms))
                 {
-                    #region Trimming Data Set
+#region Trimming Data Set
                     var ds = CooperativeFundingDataSourceAllCurrentAndFutureEntries;
                     if (ds.Columns.Contains("AccountStatusID"))
                     {
@@ -585,9 +594,9 @@ namespace NationalFundingDev.Reports
                     {
                         ds.Columns.Remove("CooperativeFundingID");
                     }
-                    #endregion
+#endregion
 
-                    #region Inserting Data
+#region Inserting Data
                     var worksheet = package.Workbook.Worksheets.Add(rcbFormat.Text);
                     //Add data to worksheet
                     for (int colIDX = 0; colIDX < ds.Columns.Count; colIDX++)
@@ -598,9 +607,9 @@ namespace NationalFundingDev.Reports
                             cell.Value = ds.Rows[rowIDX][colIDX];
                         }
                     }
-                    #endregion
+#endregion
 
-                    #region Adding and Formatting Headers
+#region Adding and Formatting Headers
                     //Add and format Headers
                     for (int idx = 1; idx <= ds.Columns.Count; idx++)
                     {
@@ -623,12 +632,12 @@ namespace NationalFundingDev.Reports
                         cell.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
                         cell.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightBlue);
                     }
-                    #endregion
+#endregion
 
                     //Auto fit the cells width
                     worksheet.Cells[worksheet.Dimension.Address].AutoFitColumns();
 
-                    #region About Section
+#region About Section
                     var about = package.Workbook.Worksheets.Add("About");
                     var aboutSection = new List<Tuple<String, String>>();
                     aboutSection.Add(new Tuple<string, string>("Center", center.Name));
@@ -645,9 +654,9 @@ namespace NationalFundingDev.Reports
                         about.Cells[idx + 1, 2].Value = aboutSection[idx].Item2;
                     }
                     about.Cells[about.Dimension.Address].AutoFitColumns();
-                    #endregion
+#endregion
 
-                    #region Write Out to Response
+#region Write Out to Response
                     //Write the file out
                     using (Stream fileStream = Response.OutputStream)
                     {
@@ -656,7 +665,7 @@ namespace NationalFundingDev.Reports
                         package.SaveAs(fileStream);
                         Response.End();
                     }
-                    #endregion
+#endregion
                 }
             }
         }
@@ -664,9 +673,18 @@ namespace NationalFundingDev.Reports
         {
             get
             {
-                var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] FROM [siftadb].[dbo].[vCoopFundingReportMultiYear] WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPairCode, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
+                string connectionString, dbconn = "siftadb";
+#if DEBUG
+                connectionString = "Data Source=IGSKIACWVMi02;Initial Catalog=siftadb;Integrated Security=True";
+#else
+                connectionString = "Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True";
+#endif
+
+                var query = String.Format("SELECT FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType, PurchaseOrderNumber, ModNumber, MatchPair, SalesDocument, AccountNumber, AccountName, [Status], AccountStatusID, Remarks , SUM(FundingUSGSCMF) AS FundingUSGSCMF, SUM(CASE WHEN CustomerAgreementType = 'FED' THEN FundingCustomer ELSE 0 END) AS FundingUSGSAllocation, SUM(CASE WHEN CustomerAgreementType <> 'FED' THEN FundingCustomer ELSE 0 END) AS FundingCustomer, SUM(FundingTotal) AS FundingTotal, [ModifiedBy] ,[ModifiedDate] " +
+                    "FROM [" + dbconn + "].[dbo].[vCoopFundingReportMultiYear] " + 
+                    "WHERE OrgCode = '{0}' AND FiscalYear >= {1} GROUP BY FiscalYear, OfficeCode, CustomerCode, CustomerName, CustomerAgreementType,PurchaseOrderNumber, ModNumber, MatchPair, SalesDocument, AccountNumber, AccountName,[Status], AccountStatusID, Remarks,[ModifiedBy],[ModifiedDate]", center.OrgCode, GetFiscalYear());
                 var dt = new DataTable();
-                using (SqlConnection conn = new SqlConnection("Data Source=IGSKIACWVMi01;Initial Catalog=siftadb;Integrated Security=True"))
+                using (SqlConnection conn = new SqlConnection(connectionString))
                 {
                     var da = new SqlDataAdapter();
                     da.SelectCommand = new SqlCommand(query, conn);

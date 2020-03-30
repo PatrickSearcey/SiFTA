@@ -120,9 +120,8 @@
             //Set its max zoom to be 14
             map.options.maxZoom = 14;
             map.setView([50.8282, -110.5795], 3);
-            L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Map data &copy;' }).addTo(map);
-
-            $.getJSON("https://sifta.water.usgs.gov/Services/api/Site/CenterRealTimeSiteFunding", function (data) {
+            L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', { attribution: 'Map data &copy;' }).addTo(map);
+            $.getJSON("../../SiftaMapUtils/proxy/proxy.ashx?https://sifta.water.usgs.gov/Services/api/Site/CenterRealTimeSiteFunding", function (data) {
                 L.geoJson(data, { style: style, onEachFeature: onEachFeature }).addTo(map);
             });
 
@@ -138,8 +137,8 @@
             info.update = function (props) {
                 this._div.innerHTML = (props ?
                     '<h4>' + props.Center + '</h4>' + props.TotalSites + ' Real-Time Sites <br/>'
-                    + props.Percentage + '% (' + props.FundedSites + ' sites) Funded<br/>'
-                    + (100 - props.Percentage).toFixed(2) + '% (' + (props.TotalSites - props.FundedSites) + ' sites) Unfunded'
+                    + props.FundedSites + ' Sites (' + props.Percentage + '%) Funded<br/>'
+                    + (props.TotalSites - props.FundedSites) + ' Sites (' + (100 - props.Percentage).toFixed(2) +  '%) Unfunded'
                     : 'Hover over a Center for more information <br/> Double-click a Center to view a report');
             };
 

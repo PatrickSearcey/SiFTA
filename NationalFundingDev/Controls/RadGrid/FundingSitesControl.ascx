@@ -139,7 +139,7 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Other Funds:</td>
+        <td align="right">In Kind Funds:</td>
         <td>
             <telerik:RadNumericTextBox runat="server" ID="rntbOtherFunding" Type="Currency" Value="<%# siteFunding.FundingOther %>" /></td>
     </tr>

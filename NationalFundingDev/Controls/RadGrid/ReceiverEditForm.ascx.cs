@@ -18,7 +18,7 @@ namespace NationalFundingDev.Controls.RadGrid
             set { this._dataItem = value; }
         }
         #endregion
-        public Receiver rec;
+        public AccountFundSource rec;
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         public string OrgCode;
         private int AgreementID;
@@ -32,25 +32,24 @@ namespace NationalFundingDev.Controls.RadGrid
             //Insert
             if (DataItem is GridInsertionObject)
             {
-                rec = new Receiver();
+                rec = new AccountFundSource();
                 btnInsert.Visible = true;
 
                 var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
                 try
                 {
-                    rcbMatchPair.SelectedValue = ag.MatchPairCode.ToString();
+                    rcbMatchPair.SelectedValue = ag.MatchPair.ToString();
                     rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
                 }
                 catch { }
             }
             //Update
-            else if (DataItem != null && DataItem.GetType() == typeof(Receiver))
+            else if (DataItem != null && DataItem.GetType() == typeof(AccountFundSource))
             {
-                rec = (Receiver)DataItem;
+                rec = (AccountFundSource)DataItem;
                 rcbAccount.SelectedValue = rec.AccountNumber;
                 rddlCustomerClass.SelectedValue = rec.CustomerClass;
-                rddlStatus.SelectedValue = rec.Status;
-                rcbMod.SelectedValue = rec.ModNumber;
+                rddlStatus.SelectedValue = rec.FundStatus;
                 btnUpdate.Visible = true;
             }
         }
@@ -81,7 +80,7 @@ namespace NationalFundingDev.Controls.RadGrid
 
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
-            e.Result = siftaDB.lutMatchPairCodes.Select(p => p);
+            e.Result = siftaDB.lutMatchPairs.Select(p => p);
         }
 
         protected void rcbPEC_Selecting(object sender, LinqDataSourceSelectEventArgs e)

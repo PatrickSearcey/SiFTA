@@ -22,9 +22,13 @@ namespace NationalFundingDev.Controls.RadGrid
         private SiftaDBDataContext siftaDB = new SiftaDBDataContext();
         protected void Page_Load(object sender, EventArgs e)
         {
+            AddAgTypeToComboBox();
+
             //Insert
             if (DataItem is GridInsertionObject)
             {
+                rcbFundsTypeDiv.Visible = false;
+
                 var AgreementID = Convert.ToInt32(Request.QueryString["AgreementID"]);
                 agreement = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
                 //create a new AgreementMod
@@ -35,12 +39,11 @@ namespace NationalFundingDev.Controls.RadGrid
                 GrayOutAgreementSections();
                 var customer = agreement.Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
                 }
-                
             }
             //Update
             else if (DataItem != null && DataItem.GetType() == typeof(vAgreementModInformation))
@@ -59,7 +62,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 if (mod.Number != 0) GrayOutAgreementSections();
                 var customer = agreement.Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSFunding.ReadOnly = true;
                     rntbUSGSFunding.BackColor = System.Drawing.Color.LightGray;
@@ -69,13 +72,22 @@ namespace NationalFundingDev.Controls.RadGrid
                 if (mod.StartDate != null) rdpEndDate.MinDate = Convert.ToDateTime(mod.StartDate);
 
                 if (mod.EndDate > mod.StartDate) rdpEndDate.SelectedDate = mod.EndDate;
+
+                if (mod.Number == 0)
+                {
+                    var c2g = agreement.Customer2Group;
+                    rcbAgType.SelectedValue = c2g;
+                }
+                else
+                {
+                    rcbFundsTypeDiv.Visible = false;
+                }
             }
-            
+
         }
+
         private void GrayOutAgreementSections()
         {
-            rtbMPC.ReadOnly = true;
-            rtbMPC.BackColor = System.Drawing.Color.LightGray;
             rtbPurchaseOrderNumber.ReadOnly = true;
             rtbPurchaseOrderNumber.BackColor = System.Drawing.Color.LightGray;
             rtbSalesDocument.ReadOnly = true;
@@ -83,6 +95,7 @@ namespace NationalFundingDev.Controls.RadGrid
             rcbBillingCycle.Enabled = false;
             rcbFundsType.Enabled = false;
         }
+
         private void BindComboBoxes()
         {
             rcbBillingCycle.DataBind();
@@ -95,6 +108,15 @@ namespace NationalFundingDev.Controls.RadGrid
         {
             if (rdpStartDate != null) rdpEndDate.MinDate = Convert.ToDateTime(rdpStartDate.SelectedDate);
             else rdpEndDate.MinDate = new DateTime(1700, 1, 1);
+        }
+
+        private void AddAgTypeToComboBox()
+        {
+            var types = siftaDB.lutCustomer2Groups.Where(x => x.Customer2GroupCode != "#");
+            foreach (var type in types)
+            {
+                rcbAgType.Items.Add(new RadComboBoxItem() { Text = type.Customer2Group, Value = type.Customer2GroupCode });
+            }
         }
     }
 }

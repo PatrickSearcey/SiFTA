@@ -31,31 +31,31 @@ namespace NationalFundingDev
             //Set the Session variable Title 
             Session["Title"] = center.Name.Replace(" Water Science Center", " ");
             //Check to see if they have acess to the Admin Page for this center
-            if(user.CanInsert || user.CanUpdate)
-            {
-                if(!Page.IsPostBack)
-                {
-                    //Check for Texas Users Only
-                    if(center.CoopDBAccess)
-                    {
-                        rtsCenterOptions.Tabs.Add(new RadTab()
-                        {
-                            Text = "Account Funding",
-                            TabIndex = 1
-                        });
-                        rtsCenterOptions.SelectedIndex = rmpCenterOptions.SelectedIndex = SelectedIndex;
-                    }
-                }
-            }
-            rsbCoopFunding.DataSource = new List<string>();
+            //if(user.CanInsert || user.CanUpdate)
+            //{
+            //    if(!Page.IsPostBack)
+            //    {
+            //        //Check for Texas Users Only
+            //        if(center.CoopDBAccess)
+            //        {
+            //            rtsCenterOptions.Tabs.Add(new RadTab()
+            //            {
+            //                Text = "Account Funding",
+            //                TabIndex = 1
+            //            });
+            //            rtsCenterOptions.SelectedIndex = rmpCenterOptions.SelectedIndex = SelectedIndex;
+            //        }
+            //    }
+            //}
+            //rsbCoopFunding.DataSource = new List<string>();
         }
         protected void rtsCenterOptions_TabClick(object sender, Telerik.Web.UI.RadTabStripEventArgs e)
         {
             rmpCenterOptions.SelectedIndex = rtsCenterOptions.SelectedTab.TabIndex;
-            if(rtsCenterOptions.SelectedIndex == 1)
+            /*if(rtsCenterOptions.SelectedIndex == 1)
             {
                 rgCoopFunding.Rebind();
-            }
+            }*/
         }
 
         #region Customers Section
@@ -170,7 +170,8 @@ namespace NationalFundingDev
             c.OrgCode = center.OrgCode;
             c.Code = rtbCustomerCd.Text;
             //If the combo box had a selected value convert it to int and store it as the customer agreement type. If not set the agreementtypeID to null
-            if (!String.IsNullOrEmpty(rcbAgreementType.SelectedValue)) c.CustomerAgreementTypeID = Convert.ToInt32(rcbAgreementType.SelectedValue); else c.CustomerAgreementTypeID = null;
+            //if (!String.IsNullOrEmpty(rcbAgreementType.SelectedValue)) c.CustomerAgreementTypeID = Convert.ToInt32(rcbAgreementType.SelectedValue); else c.CustomerAgreementTypeID = null;
+            c.CustomerAgreementTypeID = null;
             //Convert double to long to store in db
             if (rntbCustomerNo.Value != null) c.Number = Convert.ToInt64(rntbCustomerNo.Value); else c.Number = null;
             c.Name = rtbCustomerName.Text;
@@ -217,6 +218,7 @@ namespace NationalFundingDev
         #endregion
         #endregion
 
+        /*
         #region Cooperative Funding
         protected void rgCoopFunding_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
@@ -301,6 +303,7 @@ namespace NationalFundingDev
             Response.Redirect(String.Format("Reports/Center/CoopFunding.aspx?OrgCode={0}",center.OrgCode).AppendBaseURL());
         }
         #endregion
+        */
 
         public String CenterAddress
         {
