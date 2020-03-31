@@ -60,51 +60,6 @@ namespace NationalFundingDev
         protected global::Telerik.Web.UI.RadMultiPage rmpCenterReportOptions;
 
         /// <summary>
-        /// rpvCooperativeFunding control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadPageView rpvCooperativeFunding;
-
-        /// <summary>
-        /// rsbCoopFunding control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadSearchBox rsbCoopFunding;
-
-        /// <summary>
-        /// rbShowAll control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbShowAll;
-
-        /// <summary>
-        /// rbViewReport control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadButton rbViewReport;
-
-        /// <summary>
-        /// rgCoopFunding control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::Telerik.Web.UI.RadGrid rgCoopFunding;
-
-        /// <summary>
         /// rpvUnfundedRTSites control.
         /// </summary>
         /// <remarks>

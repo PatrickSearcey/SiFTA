@@ -56,32 +56,27 @@ namespace NationalFundingDev
             switch(rmpCenterReportOptions.SelectedIndex)
             {
                 case 0:
-                    user = new User(Request.QueryString["OrgCode"]);
-                    rgCoopFunding.Rebind();
-                    rsbCoopFunding.DataSource = new List<string>();
-                    break;
-                case 1:
                     rgUnfundedSites.Rebind();
                     break;
-                case 2:
+                case 1:
                     rgFundingOverview.Rebind();
                     break;
-                case 3:
+                case 2:
                     rgContacts.Rebind();
                     break;
-                case 4:
+                case 3:
                     rgCollectionCodes.Rebind();
                     break;
-                case 5:
+                case 4:
                     rgCustomersMissingIcons.Rebind();
                     break;
-                case 6:
+                case 5:
                     rgAgreementsMissingDocuments.Rebind();
                     break;
-                case 7:
+                case 6:
                     rgAgreementStatus.Rebind();
                     break;
-                case 8:
+                case 7:
                     rgAgreementDifference.Rebind();
                     break;
             }
@@ -318,7 +313,7 @@ namespace NationalFundingDev
 
 
 
-
+        /*
         #region Cooperative Funding
         protected void rgCoopFunding_NeedDataSource(object sender, GridNeedDataSourceEventArgs e)
         {
@@ -404,7 +399,97 @@ namespace NationalFundingDev
             Response.Redirect(String.Format("Reports/Center/CoopFunding.aspx?OrgCode={0}", center.OrgCode).AppendBaseURL());
         }
         #endregion
+        */
 
+        /*
+         
+        
+        <!-- Cooperative Funding -->
+        <!-- <telerik:RadPageView runat="server" ID="rpvCooperativeFunding" Visible="false">
+            <table>
+                <tr>
+                    <td>
+                        <telerik:RadSearchBox Width="250px" runat="server" ID="rsbCoopFunding" OnSearch="rsbCoopFunding_Search" Skin="Silk" DropDownSettings-Height="0px" />
+                    </td>
+                    <td>
+                        <telerik:RadButton runat="server" ID="rbShowAll" Text="Show All"
+                            Skin="Silk" OnClick="rbShowAll_Click" /> <telerik:RadButton runat="server" ID="rbViewReport" Text="View Report"
+                            Skin="Silk" OnClick="rbViewReport_Click" /> 
+                    </td>
+                </tr>
+            </table>
+            <telerik:RadGrid ID="rgCoopFunding" runat="server" Width="100%"
+                AutoGenerateColumns="False" Skin="Silk" AllowPaging="true" 
+                PageSize="10" AllowMultiRowSelection="False" OnNeedDataSource="rgCoopFunding_NeedDataSource" AllowSorting="true" OnDetailTableDataBind="rgCoopFunding_DetailTableDataBind" OnInsertCommand="rgCoopFunding_InsertCommand" OnUpdateCommand="rgCoopFunding_UpdateCommand">
+                <PagerStyle PageSizes="10" Mode="NextPrevAndNumeric" />
+                <ItemStyle />
+                <MasterTableView Width="100%" DataKeyNames="AgreementID" AllowMultiColumnSorting="True">
+                    <CommandItemSettings ShowRefreshButton="false" />
+                    <GroupHeaderItemStyle ForeColor="Black" />
+                    <DetailTables>
+                        <telerik:GridTableView AllowSorting="true" InsertItemDisplay="Bottom"  CommandItemDisplay="Top" ShowGroupFooter="true" ShowFooter="true" DataKeyNames="CooperativeFundingID"
+                            Name="Accounts" Width="100%" EditMode="EditForms" AllowPaging="false">
+                            <EditFormSettings UserControlName="Controls/RadGrid/CoopFundingControl.ascx" EditFormType="WebUserControl" />
+                            <HeaderStyle BackColor="LightBlue" ForeColor="Black"  Font-Bold="true" />
+                            <CommandItemSettings AddNewRecordText="Add New Account" ShowRefreshButton="false"  />
+                            <Columns>
+                                <telerik:GridButtonColumn ButtonType="ImageButton" HeaderStyle-BackColor="#acdbe3" HeaderStyle-Font-Size="Small"
+                                    CommandName="Edit" Text="Edit" UniqueName="Edit" />
+                                <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FiscalYear" SortExpression="FiscalYear" AllowSorting="true" />
+                                <telerik:GridTemplateColumn HeaderText="Mod" DataField="ModNumber" >
+                                    <ItemTemplate>
+                                        <%# (Eval("ModNumber").ToString() == "0") ? "" : String.Format("{0}", Eval("ModNumber")) %>
+                                    </ItemTemplate>
+                                </telerik:GridTemplateColumn>
+                                <telerik:GridBoundColumn HeaderText="Account" DataField="AccountNumber" FooterAggregateFormatString="Agreement Total" FooterStyle-HorizontalAlign="Right" Aggregate="Count" />
+                                <telerik:GridBoundColumn HeaderText="USGS" DataField="FundingUSGSCMF" DataFormatString="{0:c2}" Aggregate="Sum" />
+                                <telerik:GridBoundColumn HeaderText="Cooperator" DataField="FundingCustomer" DataFormatString="{0:c2}" Aggregate="Sum" />
+                                <telerik:GridBoundColumn HeaderText="Status" DataField="Status" />
+                                <telerik:GridBoundColumn HeaderText="Remarks" DataField="Remarks" />
+                                <telerik:GridBoundColumn HeaderText="Last Edited" DataField="ModifiedDate" DataFormatString="{0:d}" />
+                                <telerik:GridBoundColumn HeaderText="Edited By" DataField="ModifiedBy" />
+                            </Columns>
+                        </telerik:GridTableView>
+                    </DetailTables>
+                    <Columns>
+                        <telerik:GridTemplateColumn DataField="Code" HeaderText="Customer" ItemStyle-HorizontalAlign="Center" ItemStyle-BackColor="#e5e4e4">
+                            <ItemTemplate>
+                                <a style="color: #2dabc1" title='<%# Eval("Name")  %>' href='<%# string.Format("Customer.aspx?CustomerID={0}",Eval("CustomerID")) %>'><%# Eval("Code")%></a>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridBoundColumn DataField="Number" HeaderText="Number" ItemStyle-HorizontalAlign="Center" ItemStyle-BackColor="#e5e4e4" />
+                        <telerik:GridTemplateColumn DataField="PurchaseOrderNumber" HeaderText="Agreement">
+                            <ItemTemplate>
+                                <a style="color: #2dabc1" href='<%# string.Format("Agreement.aspx?AgreementID={0}",Eval("AgreementID")) %>'><%# Eval("PurchaseOrderNumber")%></a>
+                            </ItemTemplate>
+                        </telerik:GridTemplateColumn>
+                        <telerik:GridBoundColumn DataField="MatchPair" HeaderText="Match Pair" ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="SalesDocument" HeaderText="Sales Order" ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="StartDate" DataFormatString="{0:d}" HeaderText="Start"
+                            ItemStyle-HorizontalAlign="Center"  />
+                        <telerik:GridBoundColumn DataField="EndDate" DataFormatString="{0:d}" HeaderText="End"  />
+                        <telerik:GridBoundColumn DataField="SignUSGSDate" DataFormatString="{0:d}" HeaderText="USGS Sign"/>
+                        <telerik:GridBoundColumn DataField="SignCustomerDate" DataFormatString="{0:d}" HeaderText="Cust. sign"  />
+                        <telerik:GridBoundColumn DataField="FundsType" HeaderText="Fund Type"  />
+                        <telerik:GridBoundColumn DataField="BillingCycleFrequency" HeaderText="Cycle"  />
+                    </Columns>
+                    <GroupByExpressions>
+                        <telerik:GridGroupByExpression>
+                            <SelectFields>
+                                <telerik:GridGroupByField FieldName="Name" FormatString="{0}"  />
+                            </SelectFields>
+                            <GroupByFields>
+                                <telerik:GridGroupByField FieldName="Name" FormatString="{0}"  />
+                            </GroupByFields>
+                        </telerik:GridGroupByExpression>
+                    </GroupByExpressions>
+                </MasterTableView>
+            </telerik:RadGrid>
+        </telerik:RadPageView>
+             -->
+          
+         
+         */
 
     }
 }
