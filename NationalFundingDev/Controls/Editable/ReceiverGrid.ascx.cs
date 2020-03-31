@@ -208,6 +208,23 @@ namespace NationalFundingDev.Controls.Editable
             return myValue.ToString();
         }
 
+        public string ProcessItem(object myValue)
+        {
+            string value = "";
+            if (myValue == null)
+            {
+                return "";
+            }
+            else
+            {
+                string temp = myValue.ToString();
+                var acc = siftaDB.Accounts.FirstOrDefault(x => x.AccountNumber == temp);
+                value = acc.AccountName;
+            }
+
+            return value;
+        }
+
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
         {
             e.Result = siftaDB.lutMatchPairs.Select(p => p);

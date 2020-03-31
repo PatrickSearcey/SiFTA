@@ -37,6 +37,11 @@
             <telerik:GridBoundColumn HeaderText="AgreementID" DataField="AgreementID" SortExpression="AgreementID" Visible="false" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FundSourceFY" SortExpression="FY" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Account Number" DataField="AccountNumber" SortExpression="AccountNumber" AllowSorting="true" />
+            <telerik:GridTemplateColumn HeaderText="Account Name" SortExpression="AccountName" AllowSorting="true">
+                <ItemTemplate>
+                    <%# ProcessItem(Eval("AccountNumber")) %>
+                </ItemTemplate>
+            </telerik:GridTemplateColumn>
             <telerik:GridBoundColumn HeaderText="Customer Class" DataField="CustomerClass" SortExpression="CustomerClass" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Status" DataField="FundStatus" SortExpression="Status" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Match Pair" DataField="MatchPair" SortExpression="MatchPair" AllowSorting="true" />
