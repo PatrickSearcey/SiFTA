@@ -25,7 +25,7 @@
         </td>
     </tr>
     <tr>
-        <td align="right">Agreement Type:
+        <td align="right">Customer Type:
         </td>
         <td>
             <telerik:RadComboBox runat="server" ID="rcbAgreementType" ValidationGroup="vgCustomerControl"
