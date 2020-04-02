@@ -226,19 +226,26 @@ namespace NationalFundingDev.Controls.Editable
 
         public string ProcessItem(object myValue)
         {
-            string value = "";
-            if (myValue == null)
+            try
+            {
+                string value = "";
+                if (myValue == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    string temp = myValue.ToString();
+                    var acc = siftaDB.Accounts.FirstOrDefault(x => x.AccountNumber == temp);
+                    value = acc.AccountName;
+                }
+
+                return value;
+            }
+            catch
             {
                 return "";
             }
-            else
-            {
-                string temp = myValue.ToString();
-                var acc = siftaDB.Accounts.FirstOrDefault(x => x.AccountNumber == temp);
-                value = acc.AccountName;
-            }
-
-            return value;
         }
 
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)
