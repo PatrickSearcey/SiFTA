@@ -115,7 +115,7 @@ namespace NationalFundingDev.Controls.RadGrid
             var types = siftaDB.lutCustomer2Groups.Where(x => x.Customer2GroupCode != "#");
             foreach (var type in types)
             {
-                rcbAgType.Items.Add(new RadComboBoxItem() { Text = type.Customer2Group, Value = type.Customer2GroupCode });
+                rcbAgType.Items.Add(new RadComboBoxItem() { Text = type.Customer2GroupCode + " " + type.Customer2Group, Value = type.Customer2GroupCode });
             }
         }
     }
