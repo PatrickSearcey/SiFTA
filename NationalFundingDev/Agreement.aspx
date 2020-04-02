@@ -552,9 +552,9 @@
                     <tr style="background-color: #bd8f04; color: white; font-weight: bold">
                         <td align="right" style="padding:3px;"></td>
                         <td style="padding:3px;">Planned Total (From Fund Sources)</td>
-                        <td align="right" style="padding:3px;">USGS Total:</td>
+                        <td align="right" style="padding:3px;">USGS CMF:</td>
                         <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
-                        <td align="right" style="padding:3px;">Cooperator Total:</td>
+                        <td align="right" style="padding:3px;">Customer:</td>
                         <td align="right" style="padding:3px;" runat="server" id="reimTd"></td>
                         <td align="right" style="padding:3px;">Grand Total:</td>
                         <td align="right" style="padding:3px;" runat="server" id="totalsTd"></td>
