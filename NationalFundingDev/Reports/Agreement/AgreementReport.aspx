@@ -11,7 +11,7 @@
         }
 
         #ContentImage {
-            height: 110px !important;
+            height: 124px !important;
             width: 110px !important;
         }
 
@@ -72,6 +72,7 @@
     <br />
     <a href="<%: AppendBaseURL(String.Format("Customer.aspx?CustomerID={0}", agreement.Customer.CustomerID)) %>">Customer: <%: agreement.Customer.Code %> - <%: agreement.Customer.Name %></a><br />
     FBMS Customer Number: <%: agreement.Customer.Number %><br />
+    Default Match Pair Code: <%: agreement.MatchPair %><br />
     <a id="CustomerWebsite" href="<%= agreement.Customer.URL %>" target="_blank">Customer Website</a><br />
     <script type="text/javascript">
         if (!$("#CustomerWebsite").attr("href")) $("#CustomerWebsite").hide();
