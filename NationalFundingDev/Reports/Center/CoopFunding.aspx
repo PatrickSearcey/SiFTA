@@ -68,20 +68,22 @@
     <hr />
 </asp:Content>
 <asp:Content ID="Content7" ContentPlaceHolderID="cphBody" runat="server">
-    Test
+    
     <table style="height:100%; width:100%; min-height:500px; min-width:800px;">
         <tr>
             <td valign="top" align="left" style="width:200px; min-width:200px;">
-                <hr />
-                <h4>Quick Download</h4>
-                <telerik:RadComboBox runat="server" ID="rcbQuickDownloadOptions" Width="100%" >
-                    <Items>
-                        <telerik:RadComboBoxItem Text="All Years" Value="All" />
-                        <telerik:RadComboBoxItem Text="Recent & Future" Value="Recent&Future" />
-                    </Items>
-                </telerik:RadComboBox><br /><br />
-                <telerik:RadButton Width="100%" runat="server" ID="rbDownloadAllCurrentAndFuture" OnClick="rbDownloadAllCurrentAndFuture_Click" Text="Download Excel" />
-                <hr />
+                <span style="display:none;">
+                    <hr />
+                    <h4>Quick Download</h4>
+                    <telerik:RadComboBox runat="server" ID="rcbQuickDownloadOptions" Width="100%" >
+                        <Items>
+                            <telerik:RadComboBoxItem Text="All Years" Value="All" />
+                            <telerik:RadComboBoxItem Text="Recent & Future" Value="Recent&Future" />
+                        </Items>
+                    </telerik:RadComboBox><br /><br />
+                    <telerik:RadButton Width="100%" runat="server" ID="rbDownloadAllCurrentAndFuture" OnClick="rbDownloadAllCurrentAndFuture_Click" Text="Download Excel" />
+                    <hr />
+                </span>
                 <h4>Fiscal Year</h4>
                 <telerik:RadComboBox runat="server" ID="rcbYear" Width="100%" AutoPostBack="true" OnSelectedIndexChanged="rcbYear_SelectedIndexChanged" />
                 <hr />

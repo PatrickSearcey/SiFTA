@@ -37,6 +37,11 @@
             <telerik:GridBoundColumn HeaderText="AgreementID" DataField="AgreementID" SortExpression="AgreementID" Visible="false" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Fiscal Year" DataField="FundSourceFY" SortExpression="FY" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Account Number" DataField="AccountNumber" SortExpression="AccountNumber" AllowSorting="true" />
+            <telerik:GridTemplateColumn HeaderText="Account Name" SortExpression="AccountName" AllowSorting="true">
+                <ItemTemplate>
+                    <%# ProcessItem(Eval("AccountNumber")) %>
+                </ItemTemplate>
+            </telerik:GridTemplateColumn>
             <telerik:GridBoundColumn HeaderText="Customer Class" DataField="CustomerClass" SortExpression="CustomerClass" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Status" DataField="FundStatus" SortExpression="Status" AllowSorting="true" />
             <telerik:GridBoundColumn HeaderText="Match Pair" DataField="MatchPair" SortExpression="MatchPair" AllowSorting="true" />
@@ -54,9 +59,9 @@
         <tr style="background-color: #bd8f04; color: white; font-weight: bold">
             <td align="right" style="padding:3px;"></td>
             <td style="padding:3px;">Planned Total (From Fund Sources)</td>
-            <td align="right" style="padding:3px;">Direct(SIR) Total:</td>
+            <td align="right" style="padding:3px;">USGS CMF:</td>
             <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
-            <td align="right" style="padding:3px;">Reimbursable Total:</td>
+            <td align="right" style="padding:3px;">Customer:</td>
             <td align="right" style="padding:3px;" runat="server" id="reimTd"></td>
             <td align="right" style="padding:3px;">Grand Total:</td>
             <td align="right" style="padding:3px;" runat="server" id="totalsTd"></td>

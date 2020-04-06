@@ -654,6 +654,7 @@
     <None Include="Properties\PublishProfiles\Dev.pubxml" />
     <Content Include="SiftaMapUtils\proxy\proxy.ashx" />
     <Content Include="SiftaMapUtils\proxy\proxy.config" />
+    <None Include="Properties\PublishProfiles\Pub.pubxml" />
     <None Include="SiftaMapUtils\proxy\proxy.xsd">
       <SubType>Designer</SubType>
     </None>
@@ -726,7 +727,7 @@
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
-      <UserProperties UseJQuerySupport="True" UseAjaxifiedTemplates="True" />
+      <UserProperties UseAjaxifiedTemplates="True" UseJQuerySupport="True" />
     </VisualStudio>
   </ProjectExtensions>
 </Project>

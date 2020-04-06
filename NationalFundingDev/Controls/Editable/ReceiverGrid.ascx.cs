@@ -156,10 +156,26 @@ namespace NationalFundingDev.Controls.Editable
             foreach (var item in aIDS)
             {
                 int aID = item.AgreementModID;
+                IQueryable<AccountFundSource> rec;
 
-                var rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
-                sirTotal += rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
-                reimTotal += rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+                List<Agreement> cIDS = siftaDB.Agreements.Where(p => p.AgreementID == item.AgreementID).ToList();
+
+                foreach(var cID in cIDS)
+                {
+                    List<Customer> cust = siftaDB.Customers.Where(p => p.CustomerID == cID.CustomerID).ToList();
+                    if(cust[0].CustomerAgreementTypeID == 5)
+                    {
+                        rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+                        reimTotal += rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+                        sirTotal = 0;
+                    }
+                    else
+                    {
+                        rec = siftaDB.AccountFundSources.Where(p => p.AgreementModID == aID);
+                        sirTotal += rec.Where(p => p.CustomerClass.Contains("SIR")).Sum(p => p.Funding) ?? 0;
+                        reimTotal += rec.Where(p => p.CustomerClass.Contains("Reim")).Sum(p => p.Funding) ?? 0;
+                    }
+                }
                 grandTotal = sirTotal + reimTotal;
 
                 var funding = siftaDB.vAgreementFundingOverviews.Where(p => p.AgreementModID == aID);
@@ -206,6 +222,30 @@ namespace NationalFundingDev.Controls.Editable
             }
 
             return myValue.ToString();
+        }
+
+        public string ProcessItem(object myValue)
+        {
+            try
+            {
+                string value = "";
+                if (myValue == null)
+                {
+                    return "";
+                }
+                else
+                {
+                    string temp = myValue.ToString();
+                    var acc = siftaDB.Accounts.FirstOrDefault(x => x.AccountNumber == temp);
+                    value = acc.AccountName;
+                }
+
+                return value;
+            }
+            catch
+            {
+                return "";
+            }
         }
 
         protected void rcbMPC_Selecting(object sender, LinqDataSourceSelectEventArgs e)

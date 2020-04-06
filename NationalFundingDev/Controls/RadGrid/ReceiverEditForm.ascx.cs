@@ -50,6 +50,8 @@ namespace NationalFundingDev.Controls.RadGrid
                 rcbAccount.SelectedValue = rec.AccountNumber;
                 rddlCustomerClass.SelectedValue = rec.CustomerClass;
                 rddlStatus.SelectedValue = rec.FundStatus;
+                rcbMatchPair.SelectedValue = rec.MatchPair;
+                rcbProgramElementCode.SelectedValue = rec.ProgramElementCode;
                 btnUpdate.Visible = true;
             }
         }

@@ -65,6 +65,7 @@ namespace NationalFundingDev
                 OrgCode = HttpContext.Current.Request.QueryString["OrgCode"];
                 user = new User(OrgCode);
                 reportsItem.Items.Add(new Telerik.Web.UI.RadMenuItem() { Text = "Center", NavigateUrl = String.Format("~/Reports/Center/CenterReport.aspx?OrgCode={0}", OrgCode) });
+                reportsItem.Items.Add(new Telerik.Web.UI.RadMenuItem() { Text = "Coop Funding", NavigateUrl = String.Format("~/Reports/Center/CoopFunding.aspx?OrgCode={0}", OrgCode) });
                 if (user.AdminPortalVisible)
                 {
                     menu.Items.Add(new Telerik.Web.UI.RadMenuItem() { Text = "Center Admin", NavigateUrl = String.Format("~/Admin.aspx?OrgCode={0}", OrgCode), OuterCssClass = "adminMenuItem" });

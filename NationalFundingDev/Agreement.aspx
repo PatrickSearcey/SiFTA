@@ -6,7 +6,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphStyles" runat="server">
     <style type="text/css">
         #ContentImage {
-            height: 115px !important;
+            height: 128px !important;
             width: 110px !important;
         }
 
@@ -81,6 +81,7 @@
     <a href="<%: String.Format("Customer.aspx?CustomerID={0}", agreement.Customer.CustomerID) %>">Customer: <%: agreement.Customer.Code %> - <%: agreement.Customer.Name %></a><br />
     FBMS Customer Number: <%: agreement.Customer.Number %><br />
     Sales Order Number: <%: agreement.SalesDocument %><br />
+    Default Match Pair Code: <%: agreement.MatchPair %><br />
     <a id="CustomerWebsite" href="<%= agreement.Customer.URL %>" target="_blank">Customer Website</a><br />
     <script type="text/javascript">
         if (!$("#CustomerWebsite").attr("href")) $("#CustomerWebsite").hide();
@@ -111,7 +112,7 @@
             <telerik:RadTab TabIndex="2" Text="Site Funding" />
             <telerik:RadTab TabIndex="3" Text="Studies / Support" />
             <telerik:RadTab TabIndex="6" Text="Agreement Log" />
-            <telerik:RadTab Text="Account Funding" Value="Coop" >
+            <telerik:RadTab Text="Accounting" Value="Coop" >
                 <Tabs>
                     <telerik:RadTab TabIndex="7" Text="Account Summary" />
                     <telerik:RadTab TabIndex="8" Text="Fund Sources" />
@@ -146,7 +147,7 @@
                         <telerik:GridBoundColumn HeaderText="End" DataField="EndDate" SortExpression="EndDate" UniqueName="EndDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="USGS Sign" DataField="SignUSGSDate" SortExpression="SignUSGSDate" UniqueName="SignUSGSDate" DataFormatString="{0:MM/dd/yyyy}" />
                         <telerik:GridBoundColumn HeaderText="Cust Sign" DataField="SignCustomerDate" SortExpression="SignCustomerDate" UniqueName="SignCustomerDate" DataFormatString="{0:MM/dd/yyyy}" />
-                        
+
                         <telerik:GridBoundColumn HeaderText="Agreement Type" DataField="Customer2Group" SortExpression="Customer2Group" UniqueName="Customer2Group" Visible="false" />
 
                         <telerik:GridBoundColumn HeaderText="Billing Type" DataField="FundsType" SortExpression="FundsType" UniqueName="FundsType" />
@@ -552,9 +553,9 @@
                     <tr style="background-color: #bd8f04; color: white; font-weight: bold">
                         <td align="right" style="padding:3px;"></td>
                         <td style="padding:3px;">Planned Total (From Fund Sources)</td>
-                        <td align="right" style="padding:3px;">USGS Total:</td>
+                        <td align="right" style="padding:3px;">USGS CMF:</td>
                         <td align="right" style="padding:3px;" runat="server" id="dirTd"></td>
-                        <td align="right" style="padding:3px;">Cooperator Total:</td>
+                        <td align="right" style="padding:3px;">Customer:</td>
                         <td align="right" style="padding:3px;" runat="server" id="reimTd"></td>
                         <td align="right" style="padding:3px;">Grand Total:</td>
                         <td align="right" style="padding:3px;" runat="server" id="totalsTd"></td>
