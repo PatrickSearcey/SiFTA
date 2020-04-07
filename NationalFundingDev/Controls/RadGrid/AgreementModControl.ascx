@@ -62,14 +62,14 @@
         <td align="right">USGS Signed:
         </td>
         <td>
-            <telerik:RadDatePicker runat="server" ID="rdpUSGSSigned" Skin="Silk" SelectedDate="<%# mod.SignUSGSDate %>" />
+            <telerik:RadDatePicker runat="server" ID="rdpUSGSSigned" Skin="Silk" />
         </td>
     </tr>
     <tr>
         <td align="right">Customer Signed:
         </td>
         <td>
-            <telerik:RadDatePicker runat="server" ID="rdpCustomerSigned" Skin="Silk" SelectedDate="<%# mod.SignCustomerDate %>" />
+            <telerik:RadDatePicker runat="server" ID="rdpCustomerSigned" Skin="Silk" />
         </td>
     </tr>
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OfficeOpenXml.FormulaParsing.Excel.Functions.DateTime;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -76,12 +77,24 @@ namespace NationalFundingDev.Controls.RadGrid
                 if (mod.Number == 0)
                 {
                     var c2g = agreement.Customer2Group;
-                    rcbAgType.SelectedValue = c2g;
+                    if (c2g == "#")
+                        rcbAgType.SelectedIndex = 0;
+                    else
+                        rcbAgType.SelectedValue = c2g;
                 }
                 else
                 {
                     rcbFundsTypeDiv.Visible = false;
                 }
+
+                if (mod.SignUSGSDate != null)
+                    rdpUSGSSigned.SelectedDate = mod.SignUSGSDate;
+                else
+                    rdpUSGSSigned.SelectedDate = DateTime.Today;
+                if (mod.SignCustomerDate != null)
+                    rdpCustomerSigned.SelectedDate = mod.SignCustomerDate;
+                else
+                    rdpCustomerSigned.SelectedDate = DateTime.Today;
             }
 
         }
