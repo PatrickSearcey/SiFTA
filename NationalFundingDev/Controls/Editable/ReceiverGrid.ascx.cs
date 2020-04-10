@@ -23,8 +23,10 @@ namespace NationalFundingDev.Controls.Editable
             var ag = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == modID);
             try
             {
-                rcbMatchPair.SelectedValue = ag.MatchPair.ToString();
-                rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
+                if (ag.MatchPair != null)
+                    rcbMatchPair.SelectedValue = ag.MatchPair.ToString();
+                if (ag.ProgramElementCode != null)
+                    rcbProgramElementCode.SelectedValue = ag.ProgramElementCode.ToString();
             }
             catch { }
         }
@@ -224,23 +226,24 @@ namespace NationalFundingDev.Controls.Editable
             return myValue.ToString();
         }
 
-        public string ProcessItem(object myValue)
+        public string ProcessItem(object accNum)
         {
             try
             {
-                string value = "";
-                if (myValue == null)
+                string accName = "";
+                if (accNum == null)
                 {
                     return "";
                 }
                 else
                 {
-                    string temp = myValue.ToString();
+                    string temp = accNum.ToString();
                     var acc = siftaDB.Accounts.FirstOrDefault(x => x.AccountNumber == temp);
-                    value = acc.AccountName;
+                    if(acc != null)
+                        accName = acc.AccountName;
                 }
 
-                return value;
+                return accName;
             }
             catch
             {

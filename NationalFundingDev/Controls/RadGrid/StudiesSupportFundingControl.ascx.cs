@@ -26,6 +26,7 @@ namespace NationalFundingDev.Controls.RadGrid
         {
             //Grab the AgreementID from the URL
             AgreementID = Convert.ToInt32(Request.QueryString["AgreementID"]);
+            var agreement = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID == AgreementID);
             mod = siftaDB.AgreementMods.FirstOrDefault(p => p.AgreementID == AgreementID);
             if (rcbType.Items.Count <= 1)
             {
@@ -45,7 +46,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 btnInsert.Visible = true;
                 var customer = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID.ToString() == Request.QueryString["AgreementID"]).Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSCMFFunding.ReadOnly = true;
                     rntbUSGSCMFFunding.BackColor = System.Drawing.Color.LightGray;
@@ -66,7 +67,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 btnUpdate.Visible = true;
                 var customer = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID.ToString() == Request.QueryString["AgreementID"]).Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSCMFFunding.ReadOnly = true;
                     rntbUSGSCMFFunding.BackColor = System.Drawing.Color.LightGray;
