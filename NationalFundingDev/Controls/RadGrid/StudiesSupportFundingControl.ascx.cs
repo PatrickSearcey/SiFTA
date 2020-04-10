@@ -67,7 +67,7 @@ namespace NationalFundingDev.Controls.RadGrid
                 btnUpdate.Visible = true;
                 var customer = siftaDB.Agreements.FirstOrDefault(p => p.AgreementID.ToString() == Request.QueryString["AgreementID"]).Customer;
                 //Check to see if it is a JFA 1=JFA
-                if (customer.CustomerAgreementTypeID != 1)
+                if (agreement.Customer2Group != "23A")
                 {
                     rntbUSGSCMFFunding.ReadOnly = true;
                     rntbUSGSCMFFunding.BackColor = System.Drawing.Color.LightGray;

@@ -89,12 +89,8 @@ namespace NationalFundingDev.Controls.RadGrid
 
                 if (mod.SignUSGSDate != null)
                     rdpUSGSSigned.SelectedDate = mod.SignUSGSDate;
-                else
-                    rdpUSGSSigned.SelectedDate = DateTime.Today;
                 if (mod.SignCustomerDate != null)
                     rdpCustomerSigned.SelectedDate = mod.SignCustomerDate;
-                else
-                    rdpCustomerSigned.SelectedDate = DateTime.Today;
             }
 
         }
