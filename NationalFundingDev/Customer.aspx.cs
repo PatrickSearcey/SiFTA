@@ -296,13 +296,13 @@ namespace NationalFundingDev
             {
                 var newFund = new AccountFundSource();
                 newFund.AgreementModID = copyMod.AgreementModID;
-                newFund.FundSourceFY = accFund.FundSourceFY;
+                newFund.FundSourceFY = accFund.FundSourceFY + 1;
                 newFund.AccountNumber = accFund.AccountNumber;
                 newFund.CustomerClass = accFund.CustomerClass;
                 newFund.MatchPair = accFund.MatchPair;
                 newFund.ProgramElementCode = accFund.ProgramElementCode;
                 newFund.Funding = accFund.Funding;
-                newFund.FundStatus = accFund.FundStatus;
+                newFund.FundStatus = "LOW";
                 newFund.Remarks = accFund.Remarks;
                 newFund.CreatedBy = user.ID;
                 newFund.CreatedDate = DateTime.Now;
