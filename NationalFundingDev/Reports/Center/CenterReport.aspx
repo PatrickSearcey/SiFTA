@@ -55,7 +55,7 @@
                     <asp:Literal runat="server" ID="ltlRTSiteUnfundedNumber" /> unfunded real-time sites after 
                     <telerik:RadDatePicker runat="server" ID="rdpUnfundedRTSitesDate" OnSelectedDateChanged="rdpUnfundedRTSitesDate_SelectedDateChanged" AutoPostBack="true" /> (Default: Todays Date)
                     <telerik:RadButton ID="btnViewMap" runat="server" OnClick="btnViewMap_Click" autopostback="true" Text="View National Map" />
-                    <a href="https://my.usgs.gov/confluence/display/SIFTA/Get+a+station+off+the+Unfunded+Real-time+Sites+report">How to Remove Sites</a>
+                    <a href="https://doimspp.sharepoint.com/sites/usgs-portal/collaboration/wg/SiFTA/SitePages/Remove%20Unfunded%20Site.aspx">How to Remove Sites</a>
                 </center>
                 <br />
                 <telerik:RadGrid ID="rgUnfundedSites" runat="server" AllowSorting="True" OnNeedDataSource="rgUnfundedSites_NeedDataSource"

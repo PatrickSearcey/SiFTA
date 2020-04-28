@@ -313,9 +313,10 @@ namespace NationalFundingDev
             UserControl userControl = (UserControl)e.Item.FindControl(GridEditFormItem.EditFormUserControlID);
             //Grab the Mod that was edited
             var mod = new AgreementMod();
-            GrabValuesFromUserControl(userControl, ref agreement, ref mod);
             var highestModNumber = agreement.AgreementMods.OrderByDescending(p => p.Number).FirstOrDefault().Number;
             mod.Number = highestModNumber + 1;
+            GrabValuesFromUserControl(userControl, ref agreement, ref mod);
+            
             //Add Mod to teh agreement
             agreement.AgreementMods.Add(mod);
             //Submit Changes to the database
