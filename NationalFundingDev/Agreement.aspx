@@ -315,7 +315,7 @@
             
             <telerik:RadAjaxPanel runat="server" ID="rapFundedSites" LoadingPanelID="ralpSilk">
                 <div runat="server" id="bulkDlUl" style="border-radius:4px; border: lightgray 1px solid; padding: 10px;" visible="false">
-                    <span style="font-weight:bold;">Bulk Upload Help available <a href="https://my.usgs.gov/confluence/display/SIFTA/Bulk+Upload+for+Site+Funding">here</a>.</span>
+                    <span style="font-weight:bold;">Bulk Upload Help available <a href="https://doimspp.sharepoint.com/sites/usgs-portal/collaboration/wg/SiFTA/SitePages/Bulk%20Upload.aspx">here</a>.</span>
                     <br /><br />
                     <hr />
                     <span style="font-weight:bold;">Download</span>
