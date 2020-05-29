@@ -170,8 +170,8 @@ namespace NationalFundingDev
             c.OrgCode = center.OrgCode;
             c.Code = rtbCustomerCd.Text;
             //If the combo box had a selected value convert it to int and store it as the customer agreement type. If not set the agreementtypeID to null
-            //if (!String.IsNullOrEmpty(rcbAgreementType.SelectedValue)) c.CustomerAgreementTypeID = Convert.ToInt32(rcbAgreementType.SelectedValue); else c.CustomerAgreementTypeID = null;
-            c.CustomerAgreementTypeID = null;
+            if (!String.IsNullOrEmpty(rcbAgreementType.SelectedValue)) c.CustomerAgreementTypeID = Convert.ToInt32(rcbAgreementType.SelectedValue); else c.CustomerAgreementTypeID = null;
+            //c.CustomerAgreementTypeID = null;
             //Convert double to long to store in db
             if (rntbCustomerNo.Value != null) c.Number = Convert.ToInt64(rntbCustomerNo.Value); else c.Number = null;
             c.Name = rtbCustomerName.Text;
